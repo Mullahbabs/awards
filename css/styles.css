@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: hidden;
   padding: 20px;
 }
 
@@ -173,6 +173,7 @@ body {
   font-weight: 600;
   transition: var(--transition);
   box-shadow: 0 5px 20px rgba(230, 179, 37, 0.3);
+  margin-top: 15px;
   position: relative;
   overflow: hidden;
 }
