@@ -60,19 +60,19 @@ body {
 }
 
 .slide:nth-child(1) {
-  background-image: url("https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+  background-image: url("/img/awards.jpg");
 }
 
 .slide:nth-child(2) {
-  background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+  background-image: url("/img/awards1.jpg");
 }
 
 .slide:nth-child(3) {
-  background-image: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+  background-image: url("/img/awards2.jpg");
 }
 
 .slide:nth-child(4) {
-  background-image: url("https://images.unsplash.com/photo-1551135049-8a33b42738b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+  background-image: url("/img/awards3.jpg");
 }
 
 .gradient-overlay {
@@ -84,7 +84,7 @@ body {
   background: linear-gradient(
     135deg,
     rgba(22, 33, 62, 0.85) 0%,
-    rgba(26, 26, 46, 0.9) 100%
+    rgba(26, 26, 46, 0.5) 100%
   );
   z-index: 2;
 }
