@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calabar Enterprise Awards - E-Voting</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">Calabar Enterprise Awards</div>
+        <div class="tagline">Celebrating Excellence in Business Innovation</div>
+      </header>
+
+      <div class="main-content">
+        <div class="categories">
+          <h2>Categories</h2>
+          <ul class="category-list">
+            <li class="category-item active" data-category="tech">
+              Technology Innovation
+            </li>
+            <li class="category-item" data-category="retail">
+              Retail Excellence
+            </li>
+            <li class="category-item" data-category="hospitality">
+              Hospitality & Tourism
+            </li>
+            <li class="category-item" data-category="manufacturing">
+              Manufacturing
+            </li>
+            <li class="category-item" data-category="sme">SME of the Year</li>
+            <li class="category-item" data-category="sustainability">
+              Sustainability Champion
+            </li>
+          </ul>
+        </div>
+
+        <div class="voting-area">
+          <h2 class="category-title">Technology Innovation</h2>
+          <div class="nominees" id="nominees-container">
+            <!-- Nominees will be dynamically loaded here -->
+          </div>
+          <div class="voting-controls">
+            <button class="vote-btn" id="prev-category">
+              Previous Category
+            </button>
+            <button class="vote-btn" id="next-category">Next Category</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button class="submit-btn" id="submit-votes" disabled>
+          Submit Your Votes
+        </button>
+        <div class="confirmation" id="confirmation">
+          <h3>Thank You for Voting!</h3>
+          <p>
+            Your votes have been successfully submitted for the Calabar
+            Enterprise Awards.
+          </p>
+          <p>
+            We appreciate your participation in recognizing business excellence.
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2023 Calabar Enterprise Awards. All rights reserved.</p>
+      </footer>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
