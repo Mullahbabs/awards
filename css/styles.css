@@ -27,10 +27,11 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin: 20px;
+  align-items: center;
   overflow: hidden;
+  padding: 20px;
 }
 
 .background-slideshow {
@@ -92,52 +93,83 @@ body {
   position: relative;
   z-index: 3;
   text-align: center;
-  max-width: 800px;
-  padding: 0 20px;
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 1.5s ease forwards 0.5s;
 }
 
+.logo-container {
+  margin-bottom: 2vh;
+  width: 100%;
+}
+
 .logo {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
-  margin-bottom: 20px;
   color: var(--accent);
   text-shadow: 0 0 15px rgba(230, 179, 37, 0.4);
   letter-spacing: 2px;
+  line-height: 1.2;
 }
 
 .tagline {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  margin-top: 1vh;
   opacity: 0.9;
   font-weight: 300;
 }
 
+.overview-container {
+  width: 100%;
+  margin: 2vh 0 4vh;
+}
+
 .overview {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 50px;
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  line-height: 1.7;
   opacity: 0.9;
-  text-align: justify;
+  text-align: center;
   background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
+  padding: clamp(20px, 4vw, 30px);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.overview p {
+  margin-bottom: 15px;
+}
+
+.overview p:last-child {
+  margin-bottom: 0;
+}
+
+.cta-container {
+  margin-top: 2vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   background: var(--accent);
   color: var(--primary);
   text-decoration: none;
-  padding: 18px 40px;
+  padding: clamp(14px, 2.5vw, 18px) clamp(30px, 5vw, 45px);
   border-radius: 50px;
-  font-size: 1.3rem;
-  margin-top: 10px;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
   font-weight: 600;
   transition: var(--transition);
   box-shadow: 0 5px 20px rgba(230, 179, 37, 0.3);
@@ -170,6 +202,13 @@ body {
   left: 100%;
 }
 
+.awards-icon {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 2vh;
+  color: var(--accent);
+  animation: pulse 2s infinite;
+}
+
 .sparkle {
   position: absolute;
   width: 10px;
@@ -178,43 +217,43 @@ body {
   border-radius: 50%;
   opacity: 0;
   animation: sparkle 3s linear infinite;
+  z-index: 3;
 }
 
 .sparkle:nth-child(1) {
-  top: 20%;
+  top: 10%;
   left: 10%;
   animation-delay: 0s;
 }
 
 .sparkle:nth-child(2) {
-  top: 60%;
-  left: 85%;
+  top: 15%;
+  right: 10%;
   animation-delay: 1s;
 }
 
 .sparkle:nth-child(3) {
-  top: 80%;
+  bottom: 20%;
   left: 15%;
   animation-delay: 2s;
 }
 
 .sparkle:nth-child(4) {
-  top: 30%;
-  left: 70%;
+  bottom: 15%;
+  right: 15%;
   animation-delay: 1.5s;
 }
 
 .sparkle:nth-child(5) {
-  top: 10%;
-  left: 50%;
+  top: 50%;
+  left: 5%;
   animation-delay: 0.5s;
 }
 
-.awards-icon {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: var(--accent);
-  animation: pulse 2s infinite;
+.sparkle:nth-child(6) {
+  top: 60%;
+  right: 5%;
+  animation-delay: 2.5s;
 }
 
 @keyframes fadeUp {
@@ -255,33 +294,73 @@ body {
   }
 }
 
-.footer1 {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  z-index: 3;
-  opacity: 0.7;
-  font-size: 0.9rem;
+/* Scrollbar styling for overview */
+.overview::-webkit-scrollbar {
+  width: 6px;
 }
 
+.overview::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.overview::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+/* Mobile-specific adjustments */
 @media (max-width: 768px) {
-  .logo {
-    font-size: 2.5rem;
+  .welcome-container {
+    padding: 15px;
+    justify-content: space-between;
   }
 
-  .tagline {
-    font-size: 1.2rem;
+  .content {
+    padding: 10px;
   }
 
   .overview {
-    font-size: 1rem;
-    padding: 20px;
+    max-height: 45vh;
+    padding: 15px;
   }
 
   .cta-button {
-    padding: 15px 35px;
-    font-size: 1.1rem;
+    padding: 16px 35px;
+  }
+
+  footer {
+    bottom: 15px;
+  }
+}
+
+@media (max-height: 700px) {
+  .logo-container {
+    margin-bottom: 1vh;
+  }
+
+  .overview-container {
+    margin: 1vh 0 2vh;
+  }
+
+  .overview {
+    max-height: 35vh;
+  }
+
+  .cta-container {
+    margin-top: 1vh;
+  }
+}
+
+@media (max-height: 500px) {
+  .overview {
+    max-height: 30vh;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .awards-icon {
+    margin-bottom: 1vh;
   }
 }
 
