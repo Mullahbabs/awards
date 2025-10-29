@@ -4,8 +4,454 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calabar Enterprise Awards - E-Voting</title>
-    <link rel="stylesheet" href="css/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <style>
+      :root {
+        --primary: #1a1a2e;
+        --secondary: #16213e;
+        --accent: #e6b325;
+        --accent-dark: #b88c1d;
+        --light: #f5f5f5;
+        --success: #28a745;
+        --danger: #dc3545;
+        --transition: all 0.5s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--light);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 0;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+      }
+
+      .logo {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--accent);
+        text-shadow: 0 0 10px rgba(230, 179, 37, 0.3);
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        margin-bottom: 30px;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 0.5s;
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .categories {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .categories h2 {
+        color: var(--accent);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .category-list {
+        list-style: none;
+      }
+
+      .category-item {
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        border-left: 3px solid transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .category-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+
+      .category-item.active {
+        background: rgba(230, 179, 37, 0.2);
+        border-left: 3px solid var(--accent);
+      }
+
+      .voting-area {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .category-title {
+        color: var(--accent);
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nominees {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .nominee-card {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        border: 1px solid transparent;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .nominee-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 5px 15px rgba(230, 179, 37, 0.2);
+      }
+
+      .nominee-card.selected {
+        background: rgba(230, 179, 37, 0.15);
+        border-color: var(--accent);
+      }
+
+      .nominee-card.voted {
+        background: rgba(40, 167, 69, 0.15);
+        border-color: var(--success);
+      }
+
+      .nominee-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        background: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+        overflow: hidden;
+      }
+
+      .nominee-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .nominee-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .nominee-description {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 15px;
+      }
+
+      .vote-btn {
+        background: var(--accent);
+        color: var(--primary);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .vote-btn:hover {
+        background: var(--accent-dark);
+        transform: scale(1.05);
+      }
+
+      .vote-btn:disabled {
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.5);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .voting-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .vote-btn.disabled,
+      .vote-btn:disabled {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(255, 255, 255, 0.5) !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .vote-btn.submitted {
+        background: rgba(40, 167, 69, 0.2) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        border-color: var(--success) !important;
+      }
+
+      .nominee-card.voted-disabled {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .vote-status {
+        margin-left: 10px;
+        font-size: 0.9em;
+      }
+
+      .submit-section {
+        text-align: center;
+        padding: 40px 0;
+        opacity: 0;
+      }
+
+      .submit-btn {
+        background: var(--success);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+      }
+
+      .submit-btn:disabled {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: none;
+        transform: none;
+        cursor: not-allowed;
+      }
+
+      /* Modal Styles */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        transform: scale(0.9);
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .modal.active .modal-content {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        margin-bottom: 20px;
+      }
+
+      .modal-title {
+        color: var(--accent);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .modal-category {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1rem;
+      }
+
+      .modal-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        border: 3px solid var(--accent);
+        overflow: hidden;
+        background: var(--secondary);
+      }
+
+      .modal-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .modal-description {
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .modal-btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .modal-btn.confirm {
+        background: var(--success);
+        color: white;
+      }
+
+      .modal-btn.cancel {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+      }
+
+      .modal-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .success-modal .modal-content {
+        background: linear-gradient(135deg, #1a3a1a, #2d5a2d);
+        border: 1px solid rgba(40, 167, 69, 0.3);
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: var(--success);
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      .progress-bar {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+
+      .progress {
+        height: 100%;
+        background: var(--accent);
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s forwards;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 0;
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -19,20 +465,28 @@
           <h2>Categories</h2>
           <ul class="category-list">
             <li class="category-item active" data-category="tech">
-              Technology Innovation
+              <span>Technology Innovation</span>
+              <span class="vote-status" id="tech-status"></span>
             </li>
             <li class="category-item" data-category="retail">
-              Retail Excellence
+              <span>Retail Excellence</span>
+              <span class="vote-status" id="retail-status"></span>
             </li>
             <li class="category-item" data-category="hospitality">
-              Hospitality & Tourism
+              <span>Hospitality & Tourism</span>
+              <span class="vote-status" id="hospitality-status"></span>
             </li>
             <li class="category-item" data-category="manufacturing">
-              Manufacturing
+              <span>Manufacturing</span>
+              <span class="vote-status" id="manufacturing-status"></span>
             </li>
-            <li class="category-item" data-category="sme">SME of the Year</li>
+            <li class="category-item" data-category="sme">
+              <span>SME of the Year</span>
+              <span class="vote-status" id="sme-status"></span>
+            </li>
             <li class="category-item" data-category="sustainability">
-              Sustainability Champion
+              <span>Sustainability Champion</span>
+              <span class="vote-status" id="sustainability-status"></span>
             </li>
           </ul>
         </div>
@@ -55,23 +509,59 @@
         <button class="submit-btn" id="submit-votes" disabled>
           Submit Your Votes
         </button>
-        <div class="confirmation" id="confirmation">
-          <h3>Thank You for Voting!</h3>
-          <p>
-            Your votes have been successfully submitted for the Calabar
-            Enterprise Awards.
-          </p>
-          <p>
-            We appreciate your participation in recognizing business excellence.
-          </p>
-        </div>
       </div>
 
       <footer>
-        <p>&copy; 2025 Calabar Enterprise Awards. All rights reserved.</p>
-        <p>Powered by <a href="#">BellaTECH NG</a></p>
+        <p>&copy; 2023 Calabar Enterprise Awards. All rights reserved.</p>
       </footer>
     </div>
-    <script src="js/script.js"></script>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-nominee-name">Nominee Name</h3>
+          <p class="modal-category" id="modal-category-name">Category Name</p>
+        </div>
+        <div class="modal-image">
+          <img id="modal-nominee-image" src="" alt="Nominee" />
+        </div>
+        <p class="modal-description" id="modal-nominee-description">
+          Nominee description goes here.
+        </p>
+        <div class="modal-actions">
+          <button class="modal-btn cancel" id="cancel-vote">Cancel</button>
+          <button class="modal-btn confirm" id="confirm-vote">
+            Confirm Vote
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal success-modal" id="success-modal">
+      <div class="modal-content">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="modal-header">
+          <h3 class="modal-title">Vote Submitted Successfully!</h3>
+          <p class="modal-category">Thank you for participating</p>
+        </div>
+        <p class="modal-description">
+          Your vote has been recorded, We appreciate your participation in
+          recognizing business excellence.
+        </p>
+        <div class="progress-bar">
+          <div class="progress" id="success-progress"></div>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn confirm" id="close-success">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="js/vote.js"></script>
   </body>
 </html>
