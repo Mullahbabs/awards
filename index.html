@@ -3,74 +3,374 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calabar Enterprise Awards - E-Voting</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <title>Calabar Enterprise Awards - Welcome</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #1a1a2e;
+        --secondary: #16213e;
+        --accent: #e6b325;
+        --accent-dark: #b88c1d;
+        --light: #f5f5f5;
+        --transition: all 0.8s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: var(--primary);
+        color: var(--light);
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .welcome-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .background-slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide:nth-child(1) {
+        background-image: url("https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      }
+
+      .slide:nth-child(2) {
+        background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      }
+
+      .slide:nth-child(3) {
+        background-image: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      }
+
+      .slide:nth-child(4) {
+        background-image: url("https://images.unsplash.com/photo-1551135049-8a33b42738b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      }
+
+      .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(22, 33, 62, 0.85) 0%,
+          rgba(26, 26, 46, 0.9) 100%
+        );
+        z-index: 2;
+      }
+
+      .content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 800px;
+        padding: 0 20px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1.5s ease forwards 0.5s;
+      }
+
+      .logo {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--accent);
+        text-shadow: 0 0 15px rgba(230, 179, 37, 0.4);
+        letter-spacing: 2px;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      .overview {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 50px;
+        opacity: 0.9;
+        text-align: justify;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--primary);
+        text-decoration: none;
+        padding: 18px 45px;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: 0 5px 20px rgba(230, 179, 37, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(230, 179, 37, 0.5);
+      }
+
+      .cta-button:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .cta-button:hover:before {
+        left: 100%;
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        animation: sparkle 3s linear infinite;
+      }
+
+      .sparkle:nth-child(1) {
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .sparkle:nth-child(2) {
+        top: 60%;
+        left: 85%;
+        animation-delay: 1s;
+      }
+
+      .sparkle:nth-child(3) {
+        top: 80%;
+        left: 15%;
+        animation-delay: 2s;
+      }
+
+      .sparkle:nth-child(4) {
+        top: 30%;
+        left: 70%;
+        animation-delay: 1.5s;
+      }
+
+      .sparkle:nth-child(5) {
+        top: 10%;
+        left: 50%;
+        animation-delay: 0.5s;
+      }
+
+      .awards-icon {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--accent);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes sparkle {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      footer {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        z-index: 3;
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 2.5rem;
+        }
+
+        .tagline {
+          font-size: 1.2rem;
+        }
+
+        .overview {
+          font-size: 1rem;
+          padding: 20px;
+        }
+
+        .cta-button {
+          padding: 15px 35px;
+          font-size: 1.1rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <div class="logo">Calabar Enterprise Awards</div>
-        <div class="tagline">Celebrating Excellence in Business Innovation</div>
-      </header>
-
-      <div class="main-content">
-        <div class="categories">
-          <h2>Categories</h2>
-          <ul class="category-list">
-            <li class="category-item active" data-category="tech">
-              Technology Innovation
-            </li>
-            <li class="category-item" data-category="retail">
-              Retail Excellence
-            </li>
-            <li class="category-item" data-category="hospitality">
-              Hospitality & Tourism
-            </li>
-            <li class="category-item" data-category="manufacturing">
-              Manufacturing
-            </li>
-            <li class="category-item" data-category="sme">SME of the Year</li>
-            <li class="category-item" data-category="sustainability">
-              Sustainability Champion
-            </li>
-          </ul>
-        </div>
-
-        <div class="voting-area">
-          <h2 class="category-title">Technology Innovation</h2>
-          <div class="nominees" id="nominees-container">
-            <!-- Nominees will be dynamically loaded here -->
-          </div>
-          <div class="voting-controls">
-            <button class="vote-btn" id="prev-category">
-              Previous Category
-            </button>
-            <button class="vote-btn" id="next-category">Next Category</button>
-          </div>
-        </div>
+    <div class="welcome-container">
+      <!-- Background Slideshow -->
+      <div class="background-slideshow">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
       </div>
 
-      <div class="submit-section">
-        <button class="submit-btn" id="submit-votes" disabled>
-          Submit Your Votes
-        </button>
-        <div class="confirmation" id="confirmation">
-          <h3>Thank You for Voting!</h3>
+      <!-- Gradient Overlay -->
+      <div class="gradient-overlay"></div>
+
+      <!-- Sparkle Effects -->
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+      <div class="sparkle"></div>
+
+      <!-- Main Content -->
+      <div class="content">
+        <div class="awards-icon">
+          <i class="fas fa-award"></i>
+        </div>
+        <h1 class="logo" style="font-size: 19px">Calabar Enterprise Awards</h1>
+        <p class="tagline">Celebrating Excellence in Business Innovation</p>
+
+        <div class="overview">
           <p>
-            Your votes have been successfully submitted for the Calabar
-            Enterprise Awards.
+            The Calabar Enterprise Awards is the premier event recognizing
+            outstanding achievements and innovations in the business community
+            of Calabar and beyond.
           </p>
           <p>
-            We appreciate your participation in recognizing business excellence.
+            This prestigious ceremony honors enterprises that have demonstrated
+            exceptional performance, creativity, and impact across various
+            sectors including technology, retail, hospitality, manufacturing,
+            and sustainability.
+          </p>
+          <p>
+            Join us in celebrating the visionaries and trailblazers who are
+            shaping the future of business in our region. Your vote helps
+            recognize and reward the exceptional contributions of these
+            outstanding enterprises.
           </p>
         </div>
+
+        <a href="categories.html" class="cta-button">
+          <i class="fas fa-star" style="margin-right: 10px"></i>
+          View Categories
+          <i class="fas fa-chevron-right" style="margin-left: 10px"></i>
+        </a>
       </div>
 
       <footer>
-        <p>&copy; 2023 Calabar Enterprise Awards. All rights reserved.</p>
+        <p class="footer1">
+          &copy; 2025 Calabar Enterprise Awards. All rights reserved.
+        </p>
       </footer>
     </div>
-    <script src="js/script.js"></script>
+
+    <script>
+      // Background image slideshow
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        let currentSlide = 0;
+
+        function nextSlide() {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+      });
+    </script>
   </body>
 </html>
