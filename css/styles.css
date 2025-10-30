@@ -4,6 +4,7 @@
   --accent: #e6b325;
   --accent-dark: #b88c1d;
   --light: #f5f5f5;
+  --danger: #dc3545;
   --success: #28a745;
   --transition: all 0.5s ease;
 }
@@ -128,7 +129,8 @@ body {
 
 .overview-container {
   width: 100%;
-  margin: 2vh 0 4vh;
+  margin: 4vh 0 6vh;
+  padding: 20px;
 }
 
 .overview {
@@ -137,12 +139,12 @@ body {
   opacity: 0.9;
   text-align: center;
   background: rgba(255, 255, 255, 0.05);
-  padding: clamp(20px, 4vw, 30px);
+  padding: (20px, 4vw, 30px);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  max-height: 40vh;
+  max-height: 50vh;
   overflow-y: auto;
 }
 
@@ -155,7 +157,7 @@ body {
 }
 
 .cta-container {
-  margin-top: 2vh;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -434,6 +436,9 @@ header {
   cursor: pointer;
   transition: var(--transition);
   border-left: 3px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .category-item:hover {
@@ -491,6 +496,11 @@ header {
   border-color: var(--accent);
 }
 
+.nominee-card.voted {
+  background: rgba(40, 167, 69, 0.15);
+  border-color: var(--success);
+}
+
 .nominee-image {
   width: 100px;
   height: 100px;
@@ -503,6 +513,13 @@ header {
   font-size: 2rem;
   color: var(--accent);
   border: 2px solid var(--accent);
+  overflow: hidden;
+}
+
+.nominee-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nominee-name {
@@ -547,6 +564,32 @@ header {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.vote-btn.disabled,
+.vote-btn:disabled {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.vote-btn.submitted {
+  background: rgba(40, 167, 69, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-color: var(--success) !important;
+}
+
+.nominee-card.voted-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.vote-status {
+  margin-left: 10px;
+  font-size: 0.9em;
+}
+
 .submit-section {
   text-align: center;
   padding: 40px 0;
@@ -576,6 +619,215 @@ header {
   box-shadow: none;
   transform: none;
   cursor: not-allowed;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: var(--primary);
+  text-decoration: none;
+  padding: clamp(14px, 2.5vw, 18px) clamp(30px, 5vw, 45px);
+  border-radius: 50px;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 5px 20px rgba(230, 179, 37, 0.3);
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(230, 179, 37, 0.5);
+}
+
+.cta-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.cta-button:hover:before {
+  left: 100%;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.9);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.modal-category {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.modal-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 3px solid var(--accent);
+  overflow: hidden;
+  background: var(--secondary);
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-description {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.modal-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-btn.confirm {
+  background: var(--success);
+  color: white;
+}
+
+.modal-btn.cancel {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--light);
+}
+
+.modal-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.success-modal .modal-content {
+  background: linear-gradient(135deg, #1a3a1a, #2d5a2d);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: var(--success);
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+.progress-bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  opacity: 0.7;
+  font-size: 0.9rem;
 }
 
 .confirmation {
