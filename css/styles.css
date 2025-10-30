@@ -138,13 +138,14 @@ body {
   line-height: 1.7;
   opacity: 0.9;
   text-align: center;
-  background: rgba(255, 255, 255, 0.05);
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.1);
   padding: (20px, 4vw, 30px);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  max-height: 50vh;
+  max-height: 60vh;
   overflow-y: auto;
 }
 
