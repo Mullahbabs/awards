@@ -217,10 +217,10 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: white;
+  background: var(--secondary);
   border-radius: 50%;
   opacity: 0;
-  animation: sparkle 3s linear infinite;
+  animation: sparkle 4s ease-in infinite;
   z-index: 3;
 }
 
