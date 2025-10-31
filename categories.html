@@ -32,50 +32,78 @@
       <div class="sparkle"><img src="img/meda.png" /></div>
       <div class="sparkle"><img src="img/meda.png" /></div>
 
-      <div class="main-content">
-        <div class="categories">
-          <h2>Categories</h2>
-          <ul class="category-list">
-            <li class="category-item active" data-category="tech">
-              <span>Technology Innovation</span>
-              <span class="vote-status" id="tech-status"></span>
-            </li>
-            <li class="category-item" data-category="retail">
-              <span>Retail Excellence</span>
-              <span class="vote-status" id="retail-status"></span>
-            </li>
-            <li class="category-item" data-category="hospitality">
-              <span>Hospitality & Tourism</span>
-              <span class="vote-status" id="hospitality-status"></span>
-            </li>
-            <li class="category-item" data-category="manufacturing">
-              <span>Manufacturing</span>
-              <span class="vote-status" id="manufacturing-status"></span>
-            </li>
-            <li class="category-item" data-category="sme">
-              <span>SME of the Year</span>
-              <span class="vote-status" id="sme-status"></span>
-            </li>
-            <li class="category-item" data-category="sustainability">
-              <span>Sustainability Champion</span>
-              <span class="vote-status" id="sustainability-status"></span>
-            </li>
-          </ul>
+      
+   <div class="main-content">
+      <div class="categories">
+        <h2>Categories</h2>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" data-tab="startups">🚀 Startups</button>
+            <button class="tab-btn" data-tab="existing">🏢 Existing Businesses</button>
         </div>
 
-        <div class="voting-area">
-          <h2 class="category-title">Technology Innovation</h2>
-          <div class="nominees" id="nominees-container">
-            <!-- Nominees will be dynamically loaded here -->
-          </div>
-          <div class="voting-controls">
-            <button class="vote-btn" id="prev-category">
-              Previous Category
-            </button>
-            <button class="vote-btn" id="next-category">Next Category</button>
-          </div>
+        <!-- Startups Tab Content -->
+        <div class="tab-content active" id="startups-tab">
+            <ul class="category-list">
+                <li class="category-item active" data-category="tech-startup">
+                    <span>Technology Innovation</span>
+                    <span class="vote-status" id="tech-startup-status"></span>
+                </li>
+                <li class="category-item" data-category="sme-startup">
+                    <span>SME of the Year</span>
+                    <span class="vote-status" id="sme-startup-status"></span>
+                </li>
+                <li class="category-item" data-category="sustainability-startup">
+                    <span>Sustainability Champion</span>
+                    <span class="vote-status" id="sustainability-startup-status"></span>
+                </li>
+                <li class="category-item" data-category="innovation-startup">
+                    <span>Most Innovative Startup</span>
+                    <span class="vote-status" id="innovation-startup-status"></span>
+                </li>
+            </ul>
         </div>
-      </div>
+
+        <!-- Existing Businesses Tab Content -->
+        <div class="tab-content" id="existing-tab">
+            <ul class="category-list">
+                <li class="category-item" data-category="tech-existing">
+                    <span>Technology Excellence</span>
+                    <span class="vote-status" id="tech-existing-status"></span>
+                </li>
+                <li class="category-item" data-category="retail">
+                    <span>Retail Excellence</span>
+                    <span class="vote-status" id="retail-status"></span>
+                </li>
+                <li class="category-item" data-category="hospitality">
+                    <span>Hospitality & Tourism</span>
+                    <span class="vote-status" id="hospitality-status"></span>
+                </li>
+                <li class="category-item" data-category="manufacturing">
+                    <span>Manufacturing</span>
+                    <span class="vote-status" id="manufacturing-status"></span>
+                </li>
+                <li class="category-item" data-category="sustainability-existing">
+                    <span>Sustainability Leader</span>
+                    <span class="vote-status" id="sustainability-existing-status"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="voting-area">
+        <h2 class="category-title">Technology Innovation - Startups</h2>
+        <div class="nominees" id="nominees-container">
+            <!-- Nominees will be dynamically loaded here -->
+        </div>
+        <div class="voting-controls">
+            <button class="vote-btn" id="prev-category">Previous Category</button>
+            <button class="vote-btn" id="next-category">Next Category</button>
+        </div>
+    </div>
+  </div>  
+
 
       <div class="submit-section">
         <button class="submit-btn" id="submit-votes" disabled>
@@ -140,27 +168,24 @@
     </div>
 
     <!-- Success Modal -->
-    <div class="modal success-modal" id="success-modal">
-      <div class="modal-content">
+<div class="modal success-modal" id="success-modal">
+    <div class="modal-content">
         <div class="success-icon">
-          <i class="fas fa-check-circle"></i>
+            <i class="fas fa-check-circle"></i>
         </div>
         <div class="modal-header">
-          <h3 class="modal-title">Vote Submitted Successfully!</h3>
-          <p class="modal-category">Thank you for participating</p>
+            <h3 class="modal-title">Vote Submitted Successfully!</h3>
+            <p class="modal-category">Thank you for participating</p>
         </div>
-        <p class="modal-description">
-          Your vote has been recorded, We appreciate your participation in
-          recognizing business excellence.
-        </p>
+        <p class="modal-description">Your votes have been recorded and a confirmation email has been sent. We appreciate your participation in recognizing business excellence.</p>
         <div class="progress-bar">
-          <div class="progress" id="success-progress"></div>
+            <div class="progress" id="success-progress"></div>
         </div>
         <div class="modal-actions">
-          <button class="modal-btn confirm" id="close-success">Close</button>
+            <button class="modal-btn confirm" id="close-success">Close</button>
         </div>
-      </div>
     </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="js/vote.js"></script>

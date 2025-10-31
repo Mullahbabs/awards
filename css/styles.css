@@ -409,6 +409,164 @@ header {
   }
 }
 
+/* Add these styles to your existing CSS */
+
+/* Tab Navigation Styles */
+.tab-navigation {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.tab-btn.active {
+  background: rgba(230, 179, 37, 0.2);
+  color: var(--accent);
+  box-shadow: 0 2px 10px rgba(230, 179, 37, 0.2);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Enhanced category items for tabs */
+.category-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.category-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.category-list::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+/* Category type indicators */
+.category-item[data-category*="startup"] {
+  border-left: 3px solid #4caf50;
+}
+
+.category-item[data-category*="existing"] {
+  border-left: 3px solid #2196f3;
+}
+
+.category-item.active[data-category*="startup"] {
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.category-item.active[data-category*="existing"] {
+  background: rgba(33, 150, 243, 0.1);
+}
+
+/* Voting area header enhancement */
+.voting-area-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-badge {
+  background: var(--accent);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-startup {
+  background: #4caf50;
+  color: white;
+}
+
+.badge-existing {
+  background: #2196f3;
+  color: white;
+}
+
+/* Enhanced animations */
+@keyframes tabSwitch {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-content.active {
+  animation: tabSwitch 0.4s ease;
+}
+
+/* Mobile responsive tabs */
+@media (max-width: 768px) {
+  .tab-navigation {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tab-btn {
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+
+  .voting-area-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .category-badge {
+    align-self: flex-start;
+  }
+}
+
 .categories {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
