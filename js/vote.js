@@ -1,15 +1,128 @@
 // Initialize EmailJS with your credentials
 emailjs.init("FO2RWy5Ovnsvs1Qvk");
 
-// Updated nomineesData structure with Startups and Existing Businesses
+// Updated nomineesData structure with all 10 categories for Startups and Existing Businesses
 const nomineesData = {
-  // Startups Categories
-  "tech-startup": [
+  // ========== STARTUPS CATEGORIES ==========
+  "agriculture-startup": [
     {
       id: 1,
-      name: "TechGen Startup",
+      name: "AgriTech Solutions",
       description:
-        "AI-powered business analytics platform for emerging businesses.",
+        "Innovative farming technology and supply chain solutions for modern agriculture.",
+      image:
+        "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "FreshFarm Connect",
+      description:
+        "Digital platform connecting local farmers directly with urban markets.",
+      image:
+        "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "CropGuard Analytics",
+      description:
+        "AI-powered crop monitoring and yield prediction for small-scale farmers.",
+      image:
+        "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "EcoHarvest Ventures",
+      description:
+        "Sustainable farming practices and organic produce distribution network.",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "retail-startup": [
+    {
+      id: 1,
+      name: "QuickMart Digital",
+      description:
+        "Mobile-first retail platform for fast consumer goods delivery.",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "LocalSource Hub",
+      description:
+        "Marketplace connecting local producers with neighborhood retailers.",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "SmartStock Solutions",
+      description: "Inventory management AI for small retail businesses.",
+      image:
+        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "EcoPack Distributors",
+      description:
+        "Sustainable packaging and distribution for retail products.",
+      image:
+        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "fashion-startup": [
+    {
+      id: 1,
+      name: "StyleCanvas Creations",
+      description:
+        "Custom fashion design platform for emerging African designers.",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "AfroChic Studios",
+      description:
+        "Contemporary African fashion with modern styling techniques.",
+      image:
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "EcoThread Collective",
+      description:
+        "Sustainable fashion using recycled materials and ethical production.",
+      image:
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Digital Runway",
+      description:
+        "Virtual styling and fashion tech solutions for modern consumers.",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "technology-startup": [
+    {
+      id: 1,
+      name: "TechGen Innovations",
+      description:
+        "Cutting-edge software solutions for emerging market challenges.",
       image:
         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
@@ -17,235 +130,577 @@ const nomineesData = {
     {
       id: 2,
       name: "InnoSoft Labs",
-      description: "Custom software solutions for startup ventures.",
+      description:
+        "AI and machine learning applications for business optimization.",
       image:
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "Digital Bridge Startup",
-      description: "Fintech solutions tailored for new financial ventures.",
+      name: "Digital Bridge Africa",
+      description: "Fintech solutions bridging financial inclusion gaps.",
       image:
         "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 4,
-      name: "CloudFirst Startup",
-      description: "Cloud infrastructure for scaling startups.",
+      name: "CloudFirst Startups",
+      description: "Cloud infrastructure tailored for African tech startups.",
       image:
         "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
-  "sme-startup": [
+  "tourism-startup": [
     {
       id: 1,
-      name: "CraftWorks Startup",
-      description: "Artisanal crafts with modern entrepreneurial approach.",
+      name: "ExploreCalabar Tours",
+      description: "Curated cultural and adventure tourism experiences.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "FreshFarm Startup",
-      description: "Organic produce delivery for urban communities.",
+      name: "AfroStay Hospitality",
+      description: "Boutique accommodation platform showcasing local culture.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "TechTutors Startup",
-      description: "Digital skills training for startup ecosystem.",
+      name: "Culinary Journey Co.",
+      description: "Food tourism showcasing Calabar's rich culinary heritage.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "EcoTourism Ventures",
+      description: "Sustainable tourism promoting environmental conservation.",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
-  "sustainability-startup": [
+  "entertainment-startup": [
     {
       id: 1,
-      name: "GreenFuture Startup",
-      description: "Renewable energy solutions for new businesses.",
+      name: "AfroBeat Digital",
+      description: "Music streaming platform promoting African artists.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "EcoWaste Startup",
-      description: "Sustainable waste management for new ventures.",
+      name: "Calabar Creative Hub",
+      description:
+        "Co-working space and studio for entertainment professionals.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "CleanWater Startup",
-      description: "Water solutions for startup communities.",
+      name: "Digital Storytellers",
+      description: "Content creation and digital media production company.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "EventTech Solutions",
+      description: "Technology platform for event management and ticketing.",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
-  "innovation-startup": [
+  "transportation-startup": [
     {
       id: 1,
-      name: "Innovate Labs",
-      description: "Cutting-edge technology solutions for startups.",
+      name: "QuickRide Africa",
+      description: "Ride-hailing service optimized for urban African cities.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "Future Tech Startup",
-      description: "Next-generation business solutions.",
+      name: "LogiTech Solutions",
+      description: "AI-powered logistics and delivery optimization platform.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "Smart Solutions Startup",
-      description: "AI-driven innovation for new businesses.",
+      name: "EcoMovers",
+      description: "Sustainable transportation using electric vehicles.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "SmartFleet Management",
+      description: "Fleet management software for small transport businesses.",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "artisan-startup": [
+    {
+      id: 1,
+      name: "CraftMaster Collective",
+      description: "Platform connecting skilled artisans with global markets.",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Heritage Crafts Co.",
+      description:
+        "Preserving traditional crafts with modern business approach.",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "SkillBridge Academy",
+      description:
+        "Training and certification for skilled trade professionals.",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Artisan Digital Market",
+      description: "E-commerce platform for handmade and custom products.",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "event-startup": [
+    {
+      id: 1,
+      name: "EventPro Africa",
+      description: "End-to-end event management and concept development.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Concept Creators Ltd",
+      description: "Innovative event concepts and experiential marketing.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Virtual Events NG",
+      description: "Hybrid and virtual event solutions for modern audiences.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Cultural Experience Co.",
+      description: "Authentic cultural event planning and execution.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "entrepreneur-startup": [
+    {
+      id: 1,
+      name: "Visionary Leaders Group",
+      description: "Multi-sector entrepreneurial ventures with social impact.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Innovation Catalyst",
+      description: "Serial entrepreneur with multiple successful startups.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Growth Architects",
+      description: "Business scaling experts with proven track record.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Community Builder Inc.",
+      description: "Entrepreneur focused on sustainable community development.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
 
-  // Existing Businesses Categories
-  "tech-existing": [
+  // ========== EXISTING BUSINESSES CATEGORIES ==========
+  "agriculture-existing": [
     {
       id: 1,
-      name: "TechGen Enterprise",
-      description: "Enterprise-level AI and analytics solutions.",
+      name: "AgroPrime Enterprises",
+      description: "Large-scale agricultural production and export company.",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "FarmTech Corporation",
+      description: "Advanced agricultural technology and equipment solutions.",
+      image:
+        "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "ValueChain Distributors",
+      description:
+        "Integrated supply chain management for agricultural products.",
+      image:
+        "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "GreenHarvest Ltd",
+      description: "Sustainable large-scale farming and processing operations.",
+      image:
+        "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "retail-existing": [
+    {
+      id: 1,
+      name: "MegaMart Chain",
+      description: "Nationwide retail chain with multiple store locations.",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Prime Distributors Ltd",
+      description: "Leading wholesale distribution network across regions.",
+      image:
+        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Urban Retail Group",
+      description: "Premium retail spaces and shopping center management.",
+      image:
+        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "National Supply Co.",
+      description: "Comprehensive distribution services for consumer goods.",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "fashion-existing": [
+    {
+      id: 1,
+      name: "Elite Fashion House",
+      description: "Premium fashion brand with international recognition.",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Style Empire Ltd",
+      description: "Multi-brand fashion retail and styling services.",
+      image:
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Heritage Textiles Co.",
+      description: "Traditional fabric production and contemporary design.",
+      image:
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Fashion Retail Group",
+      description: "National chain of fashion boutiques and outlets.",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "technology-existing": [
+    {
+      id: 1,
+      name: "TechSolutions Enterprise",
+      description: "Enterprise software and IT infrastructure solutions.",
       image:
         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "InnoSoft Enterprise",
-      description: "Large-scale software development solutions.",
+      name: "Innovation Systems Ltd",
+      description: "Advanced technology research and development firm.",
       image:
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Digital Bridge Enterprise",
-      description: "Enterprise fintech solutions.",
+      name: "Digital Transformation Co.",
+      description:
+        "Comprehensive digital solutions for established businesses.",
       image:
         "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
+    {
+      id: 4,
+      name: "Enterprise Cloud Systems",
+      description: "Cloud computing and data management for corporations.",
+      image:
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
   ],
-  retail: [
+  "tourism-existing": [
     {
       id: 1,
-      name: "Urban Mart Enterprise",
-      description: "Established retail chain with nationwide presence.",
+      name: "Premier Hospitality Group",
+      description: "Luxury hotels and resort management company.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "StyleHub Enterprise",
-      description: "Premium fashion retailer with multiple locations.",
+      name: "Heritage Tours Ltd",
+      description: "Established cultural and historical tour operator.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "QuickBuy Stores",
-      description: "Convenience retail franchise network.",
+      name: "Calabar Resort & Spa",
+      description: "Premium hospitality and wellness destination.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Business Travel Solutions",
+      description: "Corporate travel and accommodation services.",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  hospitality: [
+  "entertainment-existing": [
     {
       id: 1,
-      name: "Calabar Grand Hotel",
-      description: "Luxury accommodation and events venue.",
+      name: "Media Empire Group",
+      description: "Multi-platform entertainment and media company.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "RiverView Resort",
-      description: "Premium waterfront hospitality experience.",
+      name: "Lifestyle Brands Ltd",
+      description: "Diversified entertainment and lifestyle enterprises.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Taste of Calabar",
-      description: "Authentic local cuisine restaurant.",
+      name: "Creative Production House",
+      description: "Film, music, and content production studio.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Entertainment Venues Co.",
+      description: "Management of theaters, clubs, and event spaces.",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  manufacturing: [
+  "transportation-existing": [
     {
       id: 1,
-      name: "Prime Manufacturing",
-      description: "Industrial equipment manufacturing leader.",
+      name: "National Transport Ltd",
+      description: "Comprehensive transportation and logistics network.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "BuildMat Industries",
-      description: "Construction materials manufacturing expert.",
+      name: "Logistics Solutions Inc.",
+      description: "Supply chain and freight management services.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "AgroProcess Ltd",
-      description: "Agricultural processing solutions.",
+      name: "Fleet Management Corp",
+      description: "Large-scale vehicle fleet operations and maintenance.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Cargo Express Ltd",
+      description: "International shipping and cargo transportation.",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "sustainability-existing": [
+  "artisan-existing": [
     {
       id: 1,
-      name: "GreenFuture Enterprise",
-      description: "Large-scale renewable energy solutions.",
+      name: "Master Craftsmen Guild",
+      description: "Association of highly skilled trade professionals.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "EcoWaste Enterprise",
-      description: "Comprehensive waste management services.",
+      name: "Heritage Artisans Co.",
+      description: "Traditional craft preservation and commercial production.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Sustainable Farms Enterprise",
-      description: "Large-scale organic agriculture.",
+      name: "Skilled Works Enterprise",
+      description: "Large-scale skilled labor and contracting services.",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Professional Trades Ltd",
+      description: "Certified trade services and apprenticeship programs.",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "event-existing": [
+    {
+      id: 1,
+      name: "Grand Events Management",
+      description: "Full-service event planning and execution company.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Concept Development Group",
+      description: "Creative event concepts and brand experiences.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Corporate Events Ltd",
+      description: "Business conferences and corporate gathering specialists.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Festival Productions Co.",
+      description: "Large-scale public events and festival management.",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "entrepreneur-existing": [
+    {
+      id: 1,
+      name: "Business Empire Group",
+      description: "Diversified business portfolio across multiple industries.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Industry Leader Corp",
+      description: "Market leader with significant economic impact.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Visionary Holdings",
+      description: "Strategic investments and business development.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Enterprise Solutions Ltd",
+      description: "Comprehensive business services and consulting.",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
@@ -255,7 +710,7 @@ const nomineesData = {
 //  Global variables
 // -------------------------------------------------
 let userVotes = {};
-let currentCategory = "tech-startup";
+let currentCategory = "agriculture-startup";
 let currentTab = "startups";
 let selectedNominee = null;
 let hasSubmittedAllVotes = false;
@@ -414,15 +869,28 @@ function createNomineeCard(cat, nom, hasCatVote, idx) {
 }
 function getCategoryName(cat) {
   const map = {
-    "tech-startup": "Technology Innovation",
-    "sme-startup": "SME of the Year",
-    "sustainability-startup": "Sustainability Champion",
-    "innovation-startup": "Most Innovative Startup",
-    "tech-existing": "Technology Excellence",
-    retail: "Retail Excellence",
-    hospitality: "Hospitality & Tourism",
-    manufacturing: "Manufacturing",
-    "sustainability-existing": "Sustainability Leader",
+    "agriculture-startup": "Agriculture and Value Chain",
+    "retail-startup": "Retail, Wholesale and Distributorship",
+    "fashion-startup": "Fashion and Styling",
+    "technology-startup": "Technology and Innovation",
+    "tourism-startup": "Tourism and Hospitality",
+    "entertainment-startup": "Entertainment and Lifestyle",
+    "transportation-startup": "Transportation and Logistics",
+    "artisan-startup": "Artisan and Skilled Works",
+    "event-startup": "Event Management and Concept",
+    "entrepreneur-startup": "Overall Entrepreneur of the Year",
+
+    // Existing Businesses
+    "agriculture-existing": "Agriculture and Value Chain",
+    "retail-existing": "Retail, Wholesale and Distributorship",
+    "fashion-existing": "Fashion and Styling",
+    "technology-existing": "Technology and Innovation",
+    "tourism-existing": "Tourism and Hospitality",
+    "entertainment-existing": "Entertainment and Lifestyle",
+    "transportation-existing": "Transportation and Logistics",
+    "artisan-existing": "Artisan and Skilled Works",
+    "event-existing": "Event Management and Concept",
+    "entrepreneur-existing": "Overall Entrepreneur of the Year",
   };
   return map[cat] || cat;
 }
