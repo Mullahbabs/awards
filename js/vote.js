@@ -1,5 +1,6 @@
 // Initialize EmailJS with your credentials
-emailjs.init("FO2RWy5Ovnsvs1Qvk");
+emailjs.init("_JHzclbB7XxiSqGDZ");
+console.log("Init done");
 
 // Updated nomineesData structure with all 10 categories for Startups and Existing Businesses
 const nomineesData = {
@@ -925,7 +926,7 @@ function confirmSingleVote() {
   if (!selectedNominee) return;
   const { cat, nom } = selectedNominee;
 
-  // 1. Store locally (same as before)
+  // Store vote locally
   userVotes[cat] = {
     nomineeId: nom.id,
     nomineeName: nom.name,
@@ -935,42 +936,60 @@ function confirmSingleVote() {
     submitted: false,
     timestamp: new Date().toISOString(),
   };
+
   saveVotesToStorage();
   updateVoteStatus();
   updateSubmitButton();
   closeConfirmationModal();
   loadCategory(currentCategory);
 
-  // 2. SEND **individual** email
+  // Send individual email with proper parameters
   const userId = generateUserIdentifier();
-  const params = {
-    to_email: "bennybeshel@gmail.com",
-    from_name: "Calabar Awards Voting",
+
+  // CRITICAL: Use the exact parameter names that match your EmailJS template
+  const templateParams = {
+    to_email: "peoplesfirstenterpriseawards@gmail.com",
+    from_name: "Calabar Awards Voting System",
     voter_id: userId,
-    category: getCategoryName(cat),
+    category: getCategoryName(cat), // Changed to match likely template variable
     nominee_name: nom.name,
     nominee_type: nom.type,
     nominee_description: nom.description,
     vote_time: new Date().toLocaleString(),
+    // Add these common required parameters:
+    subject: `New Vote for ${getCategoryName(cat)}`,
+    message: `A new vote has been cast for ${nom.name} in ${getCategoryName(
+      cat
+    )} category.`,
   };
 
-  // Show progress modal immediately
+  console.log("Sending email with params:", templateParams);
   showIndividualProgressModal();
 
+  // Use the CORRECT service and template IDs
   emailjs
-    .send("service_btnfset", "template_individual_vote", params) // <-- NEW TEMPLATE
-    .then(() => {
-      // mark this *single* vote as sent
+    .send("service_ipsz5gs", "template_shqjapb", templateParams)
+    .then((response) => {
+      console.log("EmailJS Success:", response.status, response.text);
       userVotes[cat].submitted = true;
       saveVotesToStorage();
       updateVoteStatus();
       loadCategory(currentCategory);
-      finishIndividualModal(true, `Your vote for **${nom.name}** was sent!`);
+      finishIndividualModal(
+        true,
+        `Your vote for ${nom.name} was sent successfully!`
+      );
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error("EmailJS Full Error:", error);
+      console.error("Error details:", {
+        status: error.status,
+        text: error.text,
+        message: error.message,
+      });
       finishIndividualModal(
         false,
-        "Failed to send this vote. You can try again."
+        "Failed to send vote. Please check console for details."
       );
     });
 }
@@ -1143,7 +1162,7 @@ function sendAllVoteSummary(data) {
 
   const userId = generateUserIdentifier();
   const params = {
-    to_email: "bennybeshel@gmail.com",
+    to_email: "template_individual_vote",
     from_name: "Calabar Awards Voting System",
     total_votes: data.totalVotes.toString(),
     submission_time: data.timestamp,
@@ -1161,7 +1180,7 @@ function sendAllVoteSummary(data) {
   };
 
   emailjs
-    .send("service_btnfset", "template_3sbuxvb", params) // <-- ORIGINAL TEMPLATE
+    .send("service_ipsz5gs", "template_r6m8lmk", params) // <-- ORIGINAL TEMPLATE
     .then(() => {
       markAllAsSubmitted();
       finishIndividualModal(
