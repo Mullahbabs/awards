@@ -1,5 +1,5 @@
 // Initialize EmailJS with your credentials
-emailjs.init("_JHzclbB7XxiSqGDZ");
+emailjs.init("_");
 console.log("Init done");
 
 // Updated nomineesData structure with all 10 categories for Startups and Existing Businesses
