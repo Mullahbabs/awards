@@ -361,6 +361,193 @@ const nomineesData = {
       type: "startup",
     },
   ],
+  "education-startup": [
+    {
+      id: 1,
+      name: "EduTech Innovations",
+      description:
+        "Digital learning platforms and educational technology solutions for modern classrooms.",
+      image:
+        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "LearnSphere Africa",
+      description:
+        "Mobile-first educational content and skills development for African youth.",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Advocacy Voice Platform",
+      description:
+        "Digital tools for social advocacy and community awareness campaigns.",
+      image:
+        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "SkillBridge Academy",
+      description:
+        "Vocational training and advocacy for underprivileged communities.",
+      image:
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "health-startup": [
+    {
+      id: 1,
+      name: "HealthTech Solutions NG",
+      description:
+        "Telemedicine and digital health platforms for accessible healthcare.",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Wellness Connect Africa",
+      description:
+        "Mental health and wellness apps with community support features.",
+      image:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "FitLife Digital",
+      description:
+        "AI-powered fitness tracking and personalized wellness programs.",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "MedSupply Chain",
+      description:
+        "Digital platform for medical supplies distribution in rural areas.",
+      image:
+        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "media-startup": [
+    {
+      id: 1,
+      name: "Digital News Hub",
+      description:
+        "Independent digital journalism platform focusing on investigative reporting.",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Community Voice Media",
+      description: "Hyperlocal news and community storytelling platform.",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "FactCheck Africa",
+      description:
+        "Digital media platform dedicated to fact-checking and media literacy.",
+      image:
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Youth Journalism Initiative",
+      description:
+        "Platform training and empowering young journalists across Africa.",
+      image:
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "sports-startup": [
+    {
+      id: 1,
+      name: "SportTech Africa",
+      description:
+        "Digital platforms for sports management and athlete development.",
+      image:
+        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "FitCommunity App",
+      description:
+        "Social fitness platform connecting exercise enthusiasts and trainers.",
+      image:
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Aerobics Digital Studio",
+      description: "Virtual aerobics classes and fitness streaming service.",
+      image:
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Youth Sports Development",
+      description:
+        "Community-based sports programs and talent development platform.",
+      image:
+        "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "content-startup": [
+    {
+      id: 1,
+      name: "Creative Storytellers NG",
+      description:
+        "Digital content creation and storytelling platform for African narratives.",
+      image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "FilmTech Studios",
+      description:
+        "Independent film production and digital distribution platform.",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Content Creator Hub",
+      description:
+        "Platform supporting and monetizing African content creators.",
+      image:
+        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Digital Cinema Network",
+      description: "Streaming platform for independent African filmmakers.",
+      image:
+        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
 
   // ========== EXISTING BUSINESSES CATEGORIES ==========
   "agriculture-existing": [
@@ -705,6 +892,192 @@ const nomineesData = {
       type: "existing",
     },
   ],
+  "education-existing": [
+    {
+      id: 1,
+      name: "Heritage Educational Group",
+      description:
+        "Established educational institution with multiple campuses and programs.",
+      image:
+        "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Advocacy Foundation Ltd",
+      description:
+        "Long-standing organization driving policy changes and social advocacy.",
+      image:
+        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Professional Training Institute",
+      description:
+        "Comprehensive professional development and certification programs.",
+      image:
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Community Education Network",
+      description:
+        "Nationwide educational outreach and community empowerment programs.",
+      image:
+        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "health-existing": [
+    {
+      id: 1,
+      name: "Wellness Medical Group",
+      description:
+        "Comprehensive healthcare services with multiple specialist facilities.",
+      image:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Prime Healthcare Systems",
+      description:
+        "Integrated healthcare network with hospitals and wellness centers.",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Fitness Empire Ltd",
+      description: "Chain of premium fitness centers and wellness programs.",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Community Health Initiative",
+      description: "Public health advocacy and community wellness programs.",
+      image:
+        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "media-existing": [
+    {
+      id: 1,
+      name: "National Media Network",
+      description:
+        "Established media house with print, broadcast, and digital platforms.",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Journalism Excellence Group",
+      description:
+        "Award-winning investigative journalism and media production.",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Broadcast Media Corporation",
+      description: "Leading television and radio broadcasting company.",
+      image:
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Digital Publishing House",
+      description:
+        "Established publisher with extensive media reach and influence.",
+      image:
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "sports-existing": [
+    {
+      id: 1,
+      name: "Professional Sports Academy",
+      description: "Elite sports training facility with national recognition.",
+      image:
+        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Fitness Chain Corporation",
+      description:
+        "National chain of sports and fitness centers with comprehensive programs.",
+      image:
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Aerobics Federation Ltd",
+      description:
+        "National governing body for aerobics and fitness competitions.",
+      image:
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Sports Development Foundation",
+      description:
+        "Organization promoting sports at grassroots and professional levels.",
+      image:
+        "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "content-existing": [
+    {
+      id: 1,
+      name: "Media Production Studio",
+      description:
+        "Established film and content production company with international reach.",
+      image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Cinema Distribution Network",
+      description:
+        "Major film distribution company with nationwide cinema presence.",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Content Creation Empire",
+      description:
+        "Multi-platform content company with extensive digital presence.",
+      image:
+        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Film Production House",
+      description:
+        "Award-winning film production company with international recognition.",
+      image:
+        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
 };
 
 // -------------------------------------------------
@@ -880,6 +1253,11 @@ function getCategoryName(cat) {
     "artisan-startup": "Artisan and Skilled Works",
     "event-startup": "Event Management and Concept",
     "entrepreneur-startup": "Overall Entrepreneur of the Year",
+    "education-startup": "Education and Advocacy",
+    "health-startup": "Health and Wellness",
+    "media-startup": "Media and Journalism",
+    "sports-startup": "Sports and Aerobics",
+    "content-startup": "Content Creation and Filmmaking",
 
     // Existing Businesses
     "agriculture-existing": "Agriculture and Value Chain",
@@ -892,6 +1270,11 @@ function getCategoryName(cat) {
     "artisan-existing": "Artisan and Skilled Works",
     "event-existing": "Event Management and Concept",
     "entrepreneur-existing": "Overall Entrepreneur of the Year",
+    "education-existing": "Education and Advocacy",
+    "health-existing": "Health and Wellness",
+    "media-existing": "Media and Journalism",
+    "sports-existing": "Sports and Aerobics",
+    "content-existing": "Content Creation and Filmmaking",
   };
   return map[cat] || cat;
 }
