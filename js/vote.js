@@ -2,7 +2,6 @@
 emailjs.init("_");
 console.log("Init done");
 
-// Updated nomineesData structure with all 10 categories for Startups and Existing Businesses
 const nomineesData = {
   // ========== STARTUPS CATEGORIES ==========
   "agriculture-startup": [
@@ -1254,7 +1253,7 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-// HANDLE CONFIRM VOTE (with email validation)
+// HANDLE CONFIRM VOTE WITH EMAIL VALIDATION
 function handleConfirmVote() {
   const email = voterEmailInput.value.trim();
 
@@ -1273,7 +1272,7 @@ function handleConfirmVote() {
   voterEmail = email;
   saveEmailToStorage();
 
-  confirmSingleVote(); // Proceed with vote + email send
+  confirmSingleVote();
 }
 
 // -------------------------------------------------
@@ -1303,18 +1302,17 @@ function confirmSingleVote() {
   // Send individual email with proper parameters
   const userId = generateUserIdentifier();
 
-  // CRITICAL: Use the exact parameter names that match your EmailJS template
   const templateParams = {
     to_email: "peoplesfirstenterpriseawards@gmail.com",
     from_name: "Calabar Awards Voting System",
     voter_id: userId,
     voter_email: voterEmail,
-    category: getCategoryName(cat), // Changed to match likely template variable
+    category: getCategoryName(cat),
     nominee_name: nom.name,
     nominee_type: nom.type,
     nominee_description: nom.description,
     vote_time: new Date().toLocaleString(),
-    // Add these common required parameters:
+
     subject: `New Vote for ${getCategoryName(cat)}`,
     message: `A new vote has been cast for ${nom.name} in ${getCategoryName(
       cat
@@ -1324,7 +1322,6 @@ function confirmSingleVote() {
   console.log("Sending vote with email:", templateParams);
   showIndividualProgressModal();
 
-  // Use the CORRECT service and template IDs
   emailjs
     .send("service_ipsz5gs", "template_shqjapb", templateParams)
     .then((response) => {
@@ -1353,7 +1350,7 @@ function confirmSingleVote() {
 }
 
 // -------------------------------------------------
-//  INDIVIDUAL MODAL HELPERS (reuse existing #success-modal)
+//  INDIVIDUAL MODAL HELPERS
 // -------------------------------------------------
 function showIndividualProgressModal() {
   successModal.classList.add("active");
@@ -1470,7 +1467,7 @@ function updateSubmitButton() {
 }
 
 // -------------------------------------------------
-//  FINAL “SUBMIT ALL” (unchanged, only renamed)
+//  FINAL “SUBMIT ALL”
 // -------------------------------------------------
 function submitAllVotes() {
   if (!voterEmail) {
@@ -1543,7 +1540,7 @@ function sendAllVoteSummary(data) {
   };
 
   emailjs
-    .send("service_ipsz5gs", "template_r6m8lmk", params) // <-- ORIGINAL TEMPLATE
+    .send("service_ipsz5gs", "template_r6m8lmk", params)
     .then(() => {
       markAllAsSubmitted();
       finishIndividualModal(
