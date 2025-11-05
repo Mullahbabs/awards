@@ -78,19 +78,17 @@
         
         <div class="countdown-container">
             <!-- Circular Progress Countdown -->
-            <div class="countdown-circle">
-                <div class="circle-progress">
-                    <svg class="progress-ring" width="300" height="300">
-                        <circle class="progress-ring-background" cx="150" cy="150" r="130" stroke-width="8"></circle>
-                        <circle class="progress-ring-circle" cx="150" cy="150" r="130" stroke-width="8" 
-                        stroke-dasharray="816.8" stroke-dashoffset="0"></circle>
-                    </svg>
-                    <div class="countdown-content">
-                        <div class="days-count" id="days-count">00</div>
-                        <div class="days-label">Days</div>
-                    </div>
-                </div>
-            </div>
+            <div class="circle-progress">
+    <svg class="progress-ring" viewBox="0 0 300 300">
+        <circle class="progress-ring-background" cx="150" cy="150" r="130" stroke-width="8"></circle>
+        <circle class="progress-ring-circle" cx="150" cy="150" r="130" stroke-width="8" 
+                stroke-dasharray="816.8" stroke-dashoffset="0"></circle>
+    </svg>
+    <div class="countdown-content">
+        <div class="days-count" id="days-count">00</div>
+        <div class="days-label">Days</div>
+    </div>
+</div>
             
             <!-- Time Units Grid -->
             <div class="time-grid">
@@ -235,11 +233,16 @@ function updateCountdown() {
     document.getElementById('minutes-count').textContent = minutes.toString().padStart(2, '0');
     document.getElementById('seconds-count').textContent = seconds.toString().padStart(2, '0');
     
-    // Update circular progress
-    const totalDays = Math.ceil((awardDate - new Date('January 1, 2025').getTime()) / (1000 * 60 * 60 * 24));
-    const progress = ((totalDays - days) / totalDays) * 816.8; // 816.8 is circumference (2 * π * 130)
+    // Update circular progress with dynamic radius calculation
     const circle = document.querySelector('.progress-ring-circle');
-    circle.style.strokeDashoffset = 816.8 - progress;
+    const circleRadius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * circleRadius;
+    
+    const totalDays = Math.ceil((awardDate - new Date('January 1, 2025').getTime()) / (1000 * 60 * 60 * 24));
+    const progress = ((totalDays - days) / totalDays) * circumference;
+    
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset = circumference - progress;
 }
 
 // Calendar Integration
