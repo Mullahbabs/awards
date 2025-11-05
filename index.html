@@ -248,10 +248,10 @@ function updateCountdown() {
 // Calendar Integration
 function addToCalendar(platform) {
     const eventDetails = {
-        title: 'Calabar Enterprise Awards 2025',
-        description: 'Join us for the prestigious Calabar Enterprise Awards ceremony celebrating business excellence and innovation.',
-        location: 'Calabar International Convention Centre, Calabar, Nigeria',
-        start: '20251130T180000',
+        title: 'People First Enterprise Awards 2025',
+        description: 'Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.',
+        location: 'Hoggis Royal Conference Hall, Calabar, Nigeria',
+        start: '20251130T160000',
         end: '20251130T220000',
         timezone: 'Africa/Lagos'
     };
@@ -289,7 +289,7 @@ function addToAppleCalendar(details) {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'Calabar-Enterprise-Awards-2025.ics';
+    link.download = 'People first Enterprise-Awards-2025.ics';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
