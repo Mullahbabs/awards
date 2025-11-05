@@ -327,40 +327,6 @@ const nomineesData = {
       type: "startup",
     },
   ],
-  "entrepreneur-startup": [
-    {
-      id: 1,
-      name: "Visionary Leaders Group",
-      description: "Multi-sector entrepreneurial ventures with social impact.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Innovation Catalyst",
-      description: "Serial entrepreneur with multiple successful startups.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Growth Architects",
-      description: "Business scaling experts with proven track record.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Community Builder Inc.",
-      description: "Entrepreneur focused on sustainable community development.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
   "education-startup": [
     {
       id: 1,
@@ -858,40 +824,6 @@ const nomineesData = {
       type: "existing",
     },
   ],
-  "entrepreneur-existing": [
-    {
-      id: 1,
-      name: "Business Empire Group",
-      description: "Diversified business portfolio across multiple industries.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Industry Leader Corp",
-      description: "Market leader with significant economic impact.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Visionary Holdings",
-      description: "Strategic investments and business development.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Enterprise Solutions Ltd",
-      description: "Comprehensive business services and consulting.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-  ],
   "education-existing": [
     {
       id: 1,
@@ -1252,7 +1184,6 @@ function getCategoryName(cat) {
     "transportation-startup": "Transportation and Logistics",
     "artisan-startup": "Artisan and Skilled Works",
     "event-startup": "Event Management and Concept",
-    "entrepreneur-startup": "Overall Entrepreneur of the Year",
     "education-startup": "Education and Advocacy",
     "health-startup": "Health and Wellness",
     "media-startup": "Media and Journalism",
@@ -1269,7 +1200,6 @@ function getCategoryName(cat) {
     "transportation-existing": "Transportation and Logistics",
     "artisan-existing": "Artisan and Skilled Works",
     "event-existing": "Event Management and Concept",
-    "entrepreneur-existing": "Overall Entrepreneur of the Year",
     "education-existing": "Education and Advocacy",
     "health-existing": "Health and Wellness",
     "media-existing": "Media and Journalism",
