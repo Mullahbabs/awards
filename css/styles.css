@@ -1408,3 +1408,381 @@ footer a {
     font-size: 1.2rem;
   }
 }
+
+.countdown-section {
+  background: linear-gradient(135deg, #0c0c1a 0%, #1a1a2e 50%, #16213e 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.countdown-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.countdown-title {
+  color: var(--accent);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(230, 179, 37, 0.4);
+  background: linear-gradient(45deg, #e6b325, #ffd700, #e6b325);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.countdown-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Circular Progress Countdown */
+.countdown-circle {
+  position: relative;
+}
+
+.circle-progress {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-background {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-ring-circle {
+  fill: transparent;
+  stroke: url(#gradient);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+  filter: drop-shadow(0 0 10px rgba(230, 179, 37, 0.6));
+}
+
+.countdown-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.days-count {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(230, 179, 37, 0.8);
+  line-height: 1;
+}
+
+.days-label {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+/* Time Units Grid */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.time-unit {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.time-unit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 179, 37, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.time-unit:hover::before {
+  left: 100%;
+}
+
+.time-unit:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(230, 179, 37, 0.2);
+}
+
+.time-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(230, 179, 37, 0.5);
+  margin-bottom: 8px;
+}
+
+.time-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Calendar Integration */
+.calendar-integration {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.calendar-title {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.calendar-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.calendar-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calendar-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.ios-btn {
+  background: linear-gradient(135deg, #000000, #333333);
+  color: white;
+}
+
+.ios-btn:hover {
+  background: linear-gradient(135deg, #333333, #555555);
+}
+
+.android-btn {
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  color: white;
+}
+
+.android-btn:hover {
+  background: linear-gradient(135deg, #34a853, #4285f4);
+}
+
+.outlook-btn {
+  background: linear-gradient(135deg, #0078d4, #00a4ef);
+  color: white;
+}
+
+.outlook-btn:hover {
+  background: linear-gradient(135deg, #00a4ef, #0078d4);
+}
+
+/* Floating Particles */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  width: 4px;
+  height: 4px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+  width: 8px;
+  height: 8px;
+  top: 40%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+  width: 5px;
+  height: 5px;
+  top: 80%;
+  left: 40%;
+  animation-delay: 3s;
+}
+
+.particle:nth-child(5) {
+  width: 7px;
+  height: 7px;
+  top: 30%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(6) {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 30%;
+  animation-delay: 5s;
+}
+
+.particle:nth-child(7) {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 90%;
+  animation-delay: 6s;
+}
+
+.particle:nth-child(8) {
+  width: 5px;
+  height: 5px;
+  top: 10%;
+  left: 60%;
+  animation-delay: 7s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .countdown-title {
+    font-size: 2.2rem;
+  }
+
+  .countdown-container {
+    gap: 30px;
+  }
+
+  .circle-progress {
+    width: 250px;
+    height: 250px;
+  }
+
+  .days-count {
+    font-size: 3rem;
+  }
+
+  .time-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 250px;
+  }
+
+  .time-unit {
+    padding: 20px 15px;
+  }
+
+  .time-number {
+    font-size: 2rem;
+  }
+
+  .calendar-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .calendar-btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-title {
+    font-size: 1.8rem;
+  }
+
+  .countdown-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .circle-progress {
+    width: 200px;
+    height: 200px;
+  }
+
+  .days-count {
+    font-size: 2.5rem;
+  }
+}
