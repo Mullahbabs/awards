@@ -1460,10 +1460,13 @@ footer a {
   position: relative;
   width: 300px;
   height: 300px;
+  margin: 0 auto;
 }
 
 .progress-ring {
   transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
 }
 
 .progress-ring-background {
@@ -1738,10 +1741,6 @@ footer a {
   .circle-progress {
     width: 250px;
     height: 250px;
-  }
-
-  .progress-ring {
-    position: relative;
   }
 
   .days-count {
