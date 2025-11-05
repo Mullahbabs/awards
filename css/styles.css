@@ -1409,6 +1409,7 @@ footer a {
   }
 }
 
+/* Countdown Section */
 .countdown-section {
   background: linear-gradient(135deg, #0c0c1a 0%, #1a1a2e 50%, #16213e 100%);
   padding: 80px 0;
@@ -1737,6 +1738,10 @@ footer a {
   .circle-progress {
     width: 250px;
     height: 250px;
+  }
+
+  .progress-ring {
+    position: relative;
   }
 
   .days-count {
