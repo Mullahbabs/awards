@@ -303,25 +303,39 @@
 
     <!-- Confirmation Modal -->
     <div class="modal" id="confirmation-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="modal-nominee-name">Nominee Name</h3>
-          <p class="modal-category" id="modal-category-name">Category Name</p>
-        </div>
-        <div class="modal-image">
-          <img id="modal-nominee-image" src="" alt="Nominee" />
-        </div>
-        <p class="modal-description" id="modal-nominee-description">
-          Nominee description goes here.
-        </p>
-        <div class="modal-actions">
-          <button class="modal-btn cancel" id="cancel-vote">Cancel</button>
-          <button class="modal-btn confirm" id="confirm-vote">
-            Confirm Vote
-          </button>
-        </div>
-      </div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-nominee-name">Nominee Name</h3>
+      <p class="modal-category" id="modal-category-name">Category Name</p>
     </div>
+    <div class="modal-image">
+      <img id="modal-nominee-image" src="" alt="Nominee" />
+    </div>
+    <p class="modal-description" id="modal-nominee-description">
+      Nominee description goes here.
+    </p>
+
+    <!-- ADD THIS EMAIL FIELD -->
+    <div class="email-input-container">
+      <label for="voter-email">Your Email (Required)</label>
+      <input 
+        type="email" 
+        id="voter-email" 
+        placeholder="you@example.com" 
+        required 
+        style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;"
+      />
+      <small id="email-error" style="color: var(--danger); display: none;">Please enter a valid email address.</small>
+    </div>
+
+    <div class="modal-actions">
+      <button class="modal-btn cancel" id="cancel-vote">Cancel</button>
+      <button class="modal-btn confirm" id="confirm-vote">
+        Confirm Vote
+      </button>
+    </div>
+  </div>
+</div>
 
     <!-- Success Modal -->
 <div class="modal success-modal" id="success-modal">
@@ -347,7 +361,7 @@
     <script src="js/vote.js"></script>
     <script src="js/ticker.js"></script>
     <script>
-      emailjs.init("_");console.log('Init done');
+      emailjs.init("");console.log('Init done');
     </script>
   </body>
 </html>

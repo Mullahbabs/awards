@@ -1020,8 +1020,8 @@ let currentCategory = "agriculture-startup";
 let currentTab = "startups";
 let selectedNominee = null;
 let hasSubmittedAllVotes = false;
+let voterEmail = "";
 
-// -------------------------------------------------
 //  DOM Elements
 // -------------------------------------------------
 const tabButtons = document.querySelectorAll(".tab-btn");
@@ -1044,6 +1044,8 @@ const cancelVoteBtn = document.getElementById("cancel-vote");
 const confirmVoteBtn = document.getElementById("confirm-vote");
 const closeSuccessBtn = document.getElementById("close-success");
 const successProgress = document.getElementById("success-progress");
+const voterEmailInput = document.getElementById("voter-email");
+const emailError = document.getElementById("email-error");
 
 // -------------------------------------------------
 //  INITIALISATION
@@ -1089,7 +1091,7 @@ function setupEventListeners() {
   nextBtn.addEventListener("click", goToNextCategory);
   submitBtn.addEventListener("click", submitAllVotes);
   cancelVoteBtn.addEventListener("click", closeConfirmationModal);
-  confirmVoteBtn.addEventListener("click", confirmSingleVote); // NEW
+  confirmVoteBtn.addEventListener("click", handleConfirmVote);
   closeSuccessBtn.addEventListener("click", closeSuccessModal);
 }
 
@@ -1098,17 +1100,24 @@ function setupEventListeners() {
 // -------------------------------------------------
 function loadVotesFromStorage() {
   const saved = localStorage.getItem("calabarAwardsVotes");
+  const savedEmail = localStorage.getItem("calabarVoterEmail");
   if (saved) {
     userVotes = JSON.parse(saved);
     updateVoteStatus();
     if (localStorage.getItem("calabarAwardsSubmitted") === "true")
       hasSubmittedAllVotes = true;
   }
+  if (savedEmail) {
+    voterEmail = savedEmail;
+    if (voterEmailInput) voterEmailInput.value = voterEmail;
+  }
 }
 function saveVotesToStorage() {
   localStorage.setItem("calabarAwardsVotes", JSON.stringify(userVotes));
 }
-
+function saveEmailToStorage() {
+  localStorage.setItem("calabarVoterEmail", voterEmail);
+}
 // -------------------------------------------------
 //  CATEGORY / NOMINEE UI
 // -------------------------------------------------
@@ -1216,20 +1225,55 @@ function getVoteButtonText(hasCatVote, isVoted, isSubmitted, allSubmitted) {
   return "Vote";
 }
 
-// -------------------------------------------------
-//  CONFIRMATION MODAL
-// -------------------------------------------------
+// CONFIRMATION MODAL
 function showConfirmationModal(cat, nom) {
   selectedNominee = { cat, nom };
   modalNomineeName.textContent = nom.name;
   modalCategoryName.textContent = getCategoryName(cat);
   modalNomineeImage.src = nom.image;
   modalNomineeDescription.textContent = nom.description;
+
+  // Pre-fill email if already saved
+  if (voterEmail) {
+    voterEmailInput.value = voterEmail;
+  } else {
+    voterEmailInput.value = "";
+  }
+  emailError.style.display = "none";
+
   confirmationModal.classList.add("active");
 }
 function closeConfirmationModal() {
   confirmationModal.classList.remove("active");
   selectedNominee = null;
+}
+
+// VALIDATE EMAIL
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// HANDLE CONFIRM VOTE (with email validation)
+function handleConfirmVote() {
+  const email = voterEmailInput.value.trim();
+
+  if (!email) {
+    emailError.textContent = "Email is required.";
+    emailError.style.display = "block";
+    return;
+  }
+  if (!validateEmail(email)) {
+    emailError.textContent = "Please enter a valid email address.";
+    emailError.style.display = "block";
+    return;
+  }
+
+  emailError.style.display = "none";
+  voterEmail = email;
+  saveEmailToStorage();
+
+  confirmSingleVote(); // Proceed with vote + email send
 }
 
 // -------------------------------------------------
@@ -1264,6 +1308,7 @@ function confirmSingleVote() {
     to_email: "peoplesfirstenterpriseawards@gmail.com",
     from_name: "Calabar Awards Voting System",
     voter_id: userId,
+    voter_email: voterEmail,
     category: getCategoryName(cat), // Changed to match likely template variable
     nominee_name: nom.name,
     nominee_type: nom.type,
@@ -1276,7 +1321,7 @@ function confirmSingleVote() {
     )} category.`,
   };
 
-  console.log("Sending email with params:", templateParams);
+  console.log("Sending vote with email:", templateParams);
   showIndividualProgressModal();
 
   // Use the CORRECT service and template IDs
@@ -1428,6 +1473,10 @@ function updateSubmitButton() {
 //  FINAL “SUBMIT ALL” (unchanged, only renamed)
 // -------------------------------------------------
 function submitAllVotes() {
+  if (!voterEmail) {
+    alert("Please cast at least one vote to provide your email.");
+    return;
+  }
   submitBtn.disabled = true;
   submitBtn.textContent = "Submitting…";
 
@@ -1477,6 +1526,7 @@ function sendAllVoteSummary(data) {
   const params = {
     to_email: "template_individual_vote",
     from_name: "Calabar Awards Voting System",
+    voter_email: voterEmail,
     total_votes: data.totalVotes.toString(),
     submission_time: data.timestamp,
     vote_details: formatAllVoteDetails(data.votes),
