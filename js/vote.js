@@ -138,10 +138,9 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Digital Bridge Africa",
-      description: "Fintech solutions bridging financial inclusion gaps.",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      name: "BellaTECH NG",
+      description: "Beshel Benjamin.",
+      image: "img/me.jpg",
       type: "startup",
     },
     {
