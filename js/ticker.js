@@ -11,13 +11,18 @@ const sponsorsData = [
     type: "Gold",
   },
   {
+    name: "UDUA Premium E-Commerce",
+    logo: "img/232.jpg",
+    type: "Gold",
+  },
+  {
     name: "Sterling Bank",
     logo: "img/sterling.jpg",
     type: "Platinum",
   },
   {
-    name: "Cally Air",
-    logo: "img/cally.jpg",
+    name: "Destination Cross River",
+    logo: "img/crs.jpg",
     type: "Silver",
   },
   {
@@ -31,13 +36,18 @@ const sponsorsData = [
     type: "Bronze",
   },
   {
+    name: "UDUA Premium E-Commerce",
+    logo: "img/232.jpg",
+    type: "Gold",
+  },
+  {
     name: "Sterling Bank",
     logo: "img/sterling.jpg",
     type: "Silver",
   },
   {
-    name: "Cally Air",
-    logo: "img/cally.jpg",
+    name: "Destination Cross River",
+    logo: "img/crs.jpg",
     type: "Bronze",
   },
   {
@@ -51,13 +61,18 @@ const sponsorsData = [
     type: "Bronze",
   },
   {
+    name: "UDUA Premium E-Commerce",
+    logo: "img/232.jpg",
+    type: "Gold",
+  },
+  {
     name: "Sterling Bank",
     logo: "img/sterling.jpg",
     type: "Silver",
   },
   {
-    name: "Cally Air",
-    logo: "img/cally.jpg",
+    name: "Destination Cross River",
+    logo: "img/crs.jpg",
     type: "Bronze",
   },
 ];
