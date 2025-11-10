@@ -32,6 +32,68 @@
       <div class="sparkle"><img src="img/meda.png" /></div>
       <div class="sparkle"><img src="img/meda.png" /></div>
 
+      <section class="uduaflow-section">
+    <div class="uduaflow-container">
+        <!-- Main Ticker Track -->
+        <div class="uduaflow-track">
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            
+            <!-- Duplicated for seamless loop -->
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+            <div class="uduaflow-card">
+                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
+                <div class="uduaflow-sparkle"></div>
+            </div>
+        </div>
+        
+        <!-- Gradient Overlays -->
+        <div class="uduaflow-veil uduaflow-veil-left"></div>
+        <div class="uduaflow-veil uduaflow-veil-right"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="uduaflow-aurora">
+            <div class="uduaflow-wave wave-1"></div>
+            <div class="uduaflow-wave wave-2"></div>
+            <div class="uduaflow-wave wave-3"></div>
+        </div>
+    </div>
+</section>
+
+
       
    <div class="main-content">
       <div class="categories">
@@ -359,6 +421,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="js/vote.js"></script>
     <script src="js/ticker.js"></script>
+    <script>
+// Enhanced interactive effects for UDUA Flow
+document.addEventListener('DOMContentLoaded', function() {
+    const uduaflowCards = document.querySelectorAll('.uduaflow-card');
+    const uduaflowTrack = document.querySelector('.uduaflow-track');
+    
+    // Add random initial animation delays
+    uduaflowCards.forEach((card, index) => {
+        const delay = (index * 0.1) + 's';
+        card.style.animationDelay = delay;
+        
+        // Add click to highlight
+        card.addEventListener('click', function() {
+            this.style.animationPlayState = 'paused';
+            this.style.transform = 'scale(1.1)';
+            this.style.background = 'rgba(230, 179, 37, 0.15)';
+            this.style.borderColor = 'rgba(230, 179, 37, 0.6)';
+            
+            setTimeout(() => {
+                this.style.animationPlayState = 'running';
+                this.style.transform = '';
+                this.style.background = '';
+                this.style.borderColor = '';
+            }, 2000);
+        });
+    });
+    
+    // Dynamic wave creation
+    function createUduaWave() {
+        const wave = document.createElement('div');
+        wave.className = 'uduaflow-wave';
+        wave.style.cssText = `
+            top: ${Math.random() * 100}%;
+            animation-delay: -${Math.random() * 20}s;
+            filter: blur(${15 + Math.random() * 15}px);
+            opacity: ${0.2 + Math.random() * 0.3};
+        `;
+        document.querySelector('.uduaflow-aurora').appendChild(wave);
+        
+        setTimeout(() => {
+            wave.remove();
+        }, 30000);
+    }
+    
+    // Create initial waves
+    for (let i = 0; i < 5; i++) {
+        createUduaWave();
+    }
+    
+    // Continuous wave creation
+    setInterval(createUduaWave, 5000);
+});
+</script>
     <script>
       emailjs.init("_JHzclbB7XxiSqGDZ");console.log('Init done');
     </script>

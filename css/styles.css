@@ -1799,3 +1799,353 @@ footer a {
     font-size: 2.5rem;
   }
 }
+
+/* Unique UDUA Flow Section */
+.uduaflow-section {
+  background: linear-gradient(135deg, #0c0c1a 0%, #151528 50%, #1a1a2e 100%);
+  padding: 70px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(230, 179, 37, 0.1);
+  border-bottom: 1px solid rgba(230, 179, 37, 0.1);
+}
+
+.uduaflow-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  overflow: hidden;
+}
+
+/* UDUA Flow Track */
+.uduaflow-track {
+  display: flex;
+  animation: uduaflowScroll 45s linear infinite;
+  gap: 0;
+  padding: 25px 0;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+.uduaflow-track:hover {
+  animation-play-state: paused;
+}
+
+/* UDUA Flow Cards */
+.uduaflow-card {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 15px 35px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(230, 179, 37, 0.2);
+  border-radius: 15px;
+  margin: 0 15px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.uduaflow-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 179, 37, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.uduaflow-card:hover::before {
+  left: 100%;
+}
+
+.uduaflow-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(230, 179, 37, 0.4);
+  box-shadow: 0 10px 30px rgba(230, 179, 37, 0.2);
+}
+
+/* UDUA Flow Text */
+.uduaflow-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: transparent;
+  white-space: nowrap;
+  background: linear-gradient(
+    135deg,
+    #e6b325 0%,
+    #ffd700 25%,
+    #ffed4e 50%,
+    #ffd700 75%,
+    #e6b325 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: uduaflowTextGlow 4s ease-in-out infinite;
+  text-shadow: 0 2px 8px rgba(230, 179, 37, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+/* UDUA Flow Sparkle */
+.uduaflow-sparkle {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-left: 25px;
+  position: relative;
+  animation: uduaflowSparkleSpin 3s linear infinite;
+}
+
+.uduaflow-sparkle::before,
+.uduaflow-sparkle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: uduaflowSparklePulse 2s ease-in-out infinite;
+}
+
+.uduaflow-sparkle::before {
+  width: 16px;
+  height: 16px;
+  background: rgba(230, 179, 37, 0.3);
+  animation-delay: 0.1s;
+}
+
+.uduaflow-sparkle::after {
+  width: 24px;
+  height: 24px;
+  background: rgba(230, 179, 37, 0.15);
+  animation-delay: 0.2s;
+}
+
+/* UDUA Flow Veils (Gradient Overlays) */
+.uduaflow-veil {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.uduaflow-veil-left {
+  left: 0;
+  background: linear-gradient(90deg, #0c0c1a 0%, transparent 100%);
+}
+
+.uduaflow-veil-right {
+  right: 0;
+  background: linear-gradient(270deg, #0c0c1a 0%, transparent 100%);
+}
+
+/* UDUA Flow Aurora Background */
+.uduaflow-aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.uduaflow-wave {
+  position: absolute;
+  width: 300%;
+  height: 100px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 179, 37, 0.1),
+    transparent
+  );
+  animation: uduaflowWaveMove 20s linear infinite;
+}
+
+.wave-1 {
+  top: 20%;
+  animation-delay: 0s;
+  filter: blur(15px);
+}
+
+.wave-2 {
+  top: 50%;
+  animation-delay: -7s;
+  filter: blur(20px);
+  opacity: 0.4;
+}
+
+.wave-3 {
+  top: 80%;
+  animation-delay: -14s;
+  filter: blur(25px);
+  opacity: 0.3;
+}
+
+/* Animations */
+@keyframes uduaflowScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+@keyframes uduaflowTextGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes uduaflowSparkleSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes uduaflowSparklePulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+@keyframes uduaflowWaveMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Interactive Effects */
+.uduaflow-card:hover .uduaflow-text {
+  animation: uduaflowTextGlow 1s ease-in-out infinite;
+}
+
+.uduaflow-card:hover .uduaflow-sparkle {
+  animation: uduaflowSparkleSpin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .uduaflow-container {
+    padding: 0 20px;
+  }
+
+  .uduaflow-card {
+    padding: 12px 25px;
+    margin: 0 10px;
+  }
+
+  .uduaflow-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .uduaflow-section {
+    padding: 50px 0;
+  }
+
+  .uduaflow-track {
+    animation-duration: 35s;
+    padding: 20px 0;
+  }
+
+  .uduaflow-card {
+    padding: 10px 20px;
+    margin: 0 8px;
+  }
+
+  .uduaflow-text {
+    font-size: 1rem;
+  }
+
+  .uduaflow-sparkle {
+    margin-left: 15px;
+  }
+
+  .uduaflow-veil {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uduaflow-container {
+    padding: 0 15px;
+  }
+
+  .uduaflow-track {
+    animation-duration: 30s;
+  }
+
+  .uduaflow-card {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 12px;
+  }
+
+  .uduaflow-text {
+    font-size: 0.9rem;
+  }
+
+  .uduaflow-sparkle {
+    width: 6px;
+    height: 6px;
+    margin-left: 12px;
+  }
+
+  .uduaflow-veil {
+    width: 60px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .uduaflow-track,
+  .uduaflow-text,
+  .uduaflow-sparkle,
+  .uduaflow-wave {
+    animation: none;
+  }
+
+  .uduaflow-track {
+    animation: uduaflowScroll 90s linear infinite;
+  }
+}
