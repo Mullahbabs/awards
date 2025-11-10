@@ -1,5 +1,5 @@
 // Initialize EmailJS with your credentials
-emailjs.init("_");
+emailjs.init("service_ipsz5gs");
 console.log("Init done");
 
 const nomineesData = {
