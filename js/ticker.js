@@ -218,3 +218,55 @@ function filterSponsors(type) {
     }
   });
 }
+
+// Enhanced interactive effects for UDUA Flow
+document.addEventListener("DOMContentLoaded", function () {
+  const uduaflowCards = document.querySelectorAll(".uduaflow-card");
+  const uduaflowTrack = document.querySelector(".uduaflow-track");
+
+  // Add random initial animation delays
+  uduaflowCards.forEach((card, index) => {
+    const delay = index * 0.4 + "s";
+    card.style.animationDelay = delay;
+
+    // Add click to highlight
+    card.addEventListener("click", function () {
+      this.style.animationPlayState = "paused";
+      this.style.transform = "scale(1.1)";
+      this.style.background = "rgba(230, 179, 37, 0.15)";
+      this.style.borderColor = "rgba(230, 179, 37, 0.6)";
+
+      setTimeout(() => {
+        this.style.animationPlayState = "running";
+        this.style.transform = "";
+        this.style.background = "";
+        this.style.borderColor = "";
+      }, 2000);
+    });
+  });
+
+  // Dynamic wave creation
+  function createUduaWave() {
+    const wave = document.createElement("div");
+    wave.className = "uduaflow-wave";
+    wave.style.cssText = `
+            top: ${Math.random() * 100}%;
+            animation-delay: -${Math.random() * 20}s;
+            filter: blur(${15 + Math.random() * 15}px);
+            opacity: ${0.2 + Math.random() * 0.3};
+        `;
+    document.querySelector(".uduaflow-aurora").appendChild(wave);
+
+    setTimeout(() => {
+      wave.remove();
+    }, 30000);
+  }
+
+  // Create initial waves
+  for (let i = 0; i < 5; i++) {
+    createUduaWave();
+  }
+
+  // Continuous wave creation
+  setInterval(createUduaWave, 5000);
+});

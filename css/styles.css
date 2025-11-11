@@ -1821,7 +1821,7 @@ footer a {
 /* UDUA Flow Track */
 .uduaflow-track {
   display: flex;
-  animation: uduaflowScroll 45s linear infinite;
+  animation: uduaflowScroll 25s linear infinite;
   gap: 0;
   padding: 25px 0;
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
@@ -1975,7 +1975,7 @@ footer a {
     rgba(230, 179, 37, 0.1),
     transparent
   );
-  animation: uduaflowWaveMove 20s linear infinite;
+  animation: uduaflowWaveMove 15s linear infinite;
 }
 
 .wave-1 {
@@ -2084,7 +2084,7 @@ footer a {
   }
 
   .uduaflow-track {
-    animation-duration: 35s;
+    animation-duration: 15s;
     padding: 20px 0;
   }
 
@@ -2112,7 +2112,7 @@ footer a {
   }
 
   .uduaflow-track {
-    animation-duration: 30s;
+    animation-duration: 10s;
   }
 
   .uduaflow-card {
