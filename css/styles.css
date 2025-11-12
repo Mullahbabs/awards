@@ -1050,11 +1050,13 @@ footer a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   position: relative;
+  z-index: 2;
 }
 
 .sponsors-header {
   text-align: left;
   margin-bottom: 60px;
+  z-index: 11;
 }
 
 .sponsors-title {
@@ -1236,7 +1238,7 @@ footer a {
 }
 
 .special-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
 }
 
@@ -1252,7 +1254,6 @@ footer a {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
   max-width: 600px;
-  margin: 0 auto;
 }
 
 .special-cards {
@@ -1266,7 +1267,7 @@ footer a {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   padding: 35px 30px;
-  text-align: center;
+  text-align: left;
   transition: all 0.4s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
