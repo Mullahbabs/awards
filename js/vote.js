@@ -509,14 +509,14 @@ const nomineesData = {
       type: "existing",
     },
   ],
-  "entertainment-existing": [
+  "entertainment-startup": [
     {
       id: 1,
       name: "Vogue",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 2,
@@ -524,15 +524,7 @@ const nomineesData = {
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Office Pub",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 4,
@@ -540,7 +532,7 @@ const nomineesData = {
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 5,
@@ -548,10 +540,36 @@ const nomineesData = {
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 6,
+      name: "Romaan Premium",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 7,
+      name: "Voltage",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "entertainment-existing": [
+    {
+      id: 1,
+      name: "Office Pub",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
       name: "Amber",
       description: "",
       image:
@@ -559,7 +577,7 @@ const nomineesData = {
       type: "existing",
     },
     {
-      id: 7,
+      id: 3,
       name: "Bays bar",
       description: "",
       image:
@@ -567,23 +585,7 @@ const nomineesData = {
       type: "existing",
     },
     {
-      id: 8,
-      name: "Romaan Premium",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 9,
-      name: "Voltage",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 10,
+      id: 4,
       name: "Deluxe",
       description: "",
       image:
