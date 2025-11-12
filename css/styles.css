@@ -1552,7 +1552,7 @@ footer a {
   left: 50%;
   transform: translateX(-50%);
   font-size: 11px;
-  color: var(--accent);
+  color: whitesmoke;
   font-weight: 600;
   white-space: nowrap;
 }
