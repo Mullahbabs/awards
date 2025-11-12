@@ -1514,6 +1514,88 @@ footer a {
   margin-top: 5px;
 }
 
+.countdown-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.nominee-form-btn {
+  position: relative;
+  background: linear-gradient(135deg, #0078d4, #005a9e);
+  color: white;
+  border: none;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+}
+
+.nominee-form-btn:hover {
+  background: linear-gradient(135deg, #005a9e, #004578);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 120, 212, 0.4);
+}
+
+.nominee-form-btn::before {
+  content: "(Nominees Only)";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.view-categories-btn {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.view-categories-btn:hover {
+  background: linear-gradient(135deg, #1e7e34, #155724);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .countdown-actions {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 10px;
+  }
+
+  .nominee-form-btn,
+  .view-categories-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .nominee-form-btn::before {
+    font-size: 10px;
+    top: -18px;
+  }
+}
+
 /* Time Units Grid */
 .time-grid {
   display: grid;

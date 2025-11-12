@@ -4,1008 +4,1062 @@ console.log("Init done");
 
 const nomineesData = {
   // ========== STARTUPS CATEGORIES ==========
+
   "agriculture-startup": [
     {
       id: 1,
-      name: "AgriTech Solutions",
-      description:
-        "Innovative farming technology and supply chain solutions for modern agriculture.",
+      name: "Hozzby Concept",
+      description: "Ikenna Onyinye Ezem",
       image:
         "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "FreshFarm Connect",
-      description:
-        "Digital platform connecting local farmers directly with urban markets.",
+      name: "Saminahibor Ltd.",
+      description: "INAH IBOR SAM",
       image:
         "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "CropGuard Analytics",
-      description:
-        "AI-powered crop monitoring and yield prediction for small-scale farmers.",
+      name: "Obemkpan Concept Nig.",
+      description: "Etta, Kenneth Obem",
       image:
         "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 4,
-      name: "EcoHarvest Ventures",
-      description:
-        "Sustainable farming practices and organic produce distribution network.",
+      name: "AA Petana Services Ltd.",
+      description: "EKPENYONG ANAKARI ANA",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "nawiwi agro",
+      description: "Laniyi Stephens",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "Sat Farms",
+      description: "Uzo Eni-Abogu",
       image:
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
-  "retail-startup": [
+  "agriculture-existing": [
     {
       id: 1,
-      name: "QuickMart Digital",
-      description:
-        "Mobile-first retail platform for fast consumer goods delivery.",
+      name: "STEVECODAN FARMS",
+      description: "STEPHEN AGBOR NDANG",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
     {
       id: 2,
-      name: "LocalSource Hub",
-      description:
-        "Marketplace connecting local producers with neighborhood retailers.",
+      name: "OBUDU FARMS LTD",
+      description: "KECHI MATTHEW ESSA",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+        "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
     {
       id: 3,
-      name: "SmartStock Solutions",
-      description: "Inventory management AI for small retail businesses.",
+      name: "Alexi Newton",
+      description: "Mrs Chimmuanya Alex Ukam",
       image:
-        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+        "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
     {
       id: 4,
-      name: "EcoPack Distributors",
-      description:
-        "Sustainable packaging and distribution for retail products.",
+      name: "Yutiee Marti",
+      description: "Utibe",
       image:
-        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "fashion-startup": [
-    {
-      id: 1,
-      name: "StyleCanvas Creations",
-      description:
-        "Custom fashion design platform for emerging African designers.",
-      image:
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "AfroChic Studios",
-      description:
-        "Contemporary African fashion with modern styling techniques.",
-      image:
-        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "EcoThread Collective",
-      description:
-        "Sustainable fashion using recycled materials and ethical production.",
-      image:
-        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Digital Runway",
-      description:
-        "Virtual styling and fashion tech solutions for modern consumers.",
-      image:
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "technology-startup": [
-    {
-      id: 1,
-      name: "TechGen Innovations",
-      description:
-        "Cutting-edge software solutions for emerging market challenges.",
-      image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "InnoSoft Labs",
-      description:
-        "AI and machine learning applications for business optimization.",
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "BellaTECH NG",
-      description: "Beshel Benjamin.",
-      image: "img/me.jpg",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "CloudFirst Startups",
-      description: "Cloud infrastructure tailored for African tech startups.",
-      image:
-        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
   ],
   "tourism-startup": [
     {
       id: 1,
-      name: "ExploreCalabar Tours",
-      description: "Curated cultural and adventure tourism experiences.",
+      name: "Destiny pasteries and food Ltd.",
+      description: "Destiny",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "AfroStay Hospitality",
-      description: "Boutique accommodation platform showcasing local culture.",
+      name: "Green Dishes",
+      description: "Ima",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "Culinary Journey Co.",
-      description: "Food tourism showcasing Calabar's rich culinary heritage.",
+      name: "Acana's Kitchen",
+      description: "Chimsom Achikeh",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 4,
-      name: "EcoTourism Ventures",
-      description: "Sustainable tourism promoting environmental conservation.",
+      name: "Luscious Treats",
+      description: "Nwaokolo Chinagbanbo",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Beuberry",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
-  "entertainment-startup": [
+  "tourism-existing": [
     {
       id: 1,
-      name: "AfroBeat Digital",
-      description: "Music streaming platform promoting African artists.",
+      name: "Stainless Kitchen and Event Mgt.",
+      description: "CLEMENT IKPA ONAH",
       image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Calabar Creative Hub",
-      description:
-        "Co-working space and studio for entertainment professionals.",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Digital Storytellers",
-      description: "Content creation and digital media production company.",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "EventTech Solutions",
-      description: "Technology platform for event management and ticketing.",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "transportation-startup": [
-    {
-      id: 1,
-      name: "QuickRide Africa",
-      description: "Ride-hailing service optimized for urban African cities.",
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "LogiTech Solutions",
-      description: "AI-powered logistics and delivery optimization platform.",
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "EcoMovers",
-      description: "Sustainable transportation using electric vehicles.",
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "SmartFleet Management",
-      description: "Fleet management software for small transport businesses.",
-      image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "artisan-startup": [
-    {
-      id: 1,
-      name: "CraftMaster Collective",
-      description: "Platform connecting skilled artisans with global markets.",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Heritage Crafts Co.",
-      description:
-        "Preserving traditional crafts with modern business approach.",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "SkillBridge Academy",
-      description:
-        "Training and certification for skilled trade professionals.",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Artisan Digital Market",
-      description: "E-commerce platform for handmade and custom products.",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "event-startup": [
-    {
-      id: 1,
-      name: "EventPro Africa",
-      description: "End-to-end event management and concept development.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Concept Creators Ltd",
-      description: "Innovative event concepts and experiential marketing.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Virtual Events NG",
-      description: "Hybrid and virtual event solutions for modern audiences.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Cultural Experience Co.",
-      description: "Authentic cultural event planning and execution.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "education-startup": [
-    {
-      id: 1,
-      name: "EduTech Innovations",
-      description:
-        "Digital learning platforms and educational technology solutions for modern classrooms.",
-      image:
-        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "LearnSphere Africa",
-      description:
-        "Mobile-first educational content and skills development for African youth.",
-      image:
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Advocacy Voice Platform",
-      description:
-        "Digital tools for social advocacy and community awareness campaigns.",
-      image:
-        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "SkillBridge Academy",
-      description:
-        "Vocational training and advocacy for underprivileged communities.",
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "health-startup": [
-    {
-      id: 1,
-      name: "HealthTech Solutions NG",
-      description:
-        "Telemedicine and digital health platforms for accessible healthcare.",
-      image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Wellness Connect Africa",
-      description:
-        "Mental health and wellness apps with community support features.",
-      image:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "FitLife Digital",
-      description:
-        "AI-powered fitness tracking and personalized wellness programs.",
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "MedSupply Chain",
-      description:
-        "Digital platform for medical supplies distribution in rural areas.",
-      image:
-        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "media-startup": [
-    {
-      id: 1,
-      name: "Digital News Hub",
-      description:
-        "Independent digital journalism platform focusing on investigative reporting.",
-      image:
-        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Community Voice Media",
-      description: "Hyperlocal news and community storytelling platform.",
-      image:
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "FactCheck Africa",
-      description:
-        "Digital media platform dedicated to fact-checking and media literacy.",
-      image:
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Youth Journalism Initiative",
-      description:
-        "Platform training and empowering young journalists across Africa.",
-      image:
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "sports-startup": [
-    {
-      id: 1,
-      name: "SportTech Africa",
-      description:
-        "Digital platforms for sports management and athlete development.",
-      image:
-        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "FitCommunity App",
-      description:
-        "Social fitness platform connecting exercise enthusiasts and trainers.",
-      image:
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Aerobics Digital Studio",
-      description: "Virtual aerobics classes and fitness streaming service.",
-      image:
-        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Youth Sports Development",
-      description:
-        "Community-based sports programs and talent development platform.",
-      image:
-        "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "content-startup": [
-    {
-      id: 1,
-      name: "Creative Storytellers NG",
-      description:
-        "Digital content creation and storytelling platform for African narratives.",
-      image:
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "FilmTech Studios",
-      description:
-        "Independent film production and digital distribution platform.",
-      image:
-        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Content Creator Hub",
-      description:
-        "Platform supporting and monetizing African content creators.",
-      image:
-        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Digital Cinema Network",
-      description: "Streaming platform for independent African filmmakers.",
-      image:
-        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-
-  // ========== EXISTING BUSINESSES CATEGORIES ==========
-  "agriculture-existing": [
-    {
-      id: 1,
-      name: "AgroPrime Enterprises",
-      description: "Large-scale agricultural production and export company.",
-      image:
-        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "FarmTech Corporation",
-      description: "Advanced agricultural technology and equipment solutions.",
+      name: "Zhanga Food",
+      description: "Joseph Ewah",
       image:
-        "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "ValueChain Distributors",
-      description:
-        "Integrated supply chain management for agricultural products.",
+      name: "Hara's Place",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "GreenHarvest Ltd",
-      description: "Sustainable large-scale farming and processing operations.",
+      name: "Alice Ice",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Queenieez Kitchen",
+      description: "Queensley Bassey",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "retail-existing": [
+  "fashion-startup": [
     {
       id: 1,
-      name: "MegaMart Chain",
-      description: "Nationwide retail chain with multiple store locations.",
+      name: "Splendour Fashion Home",
+      description: "WINIFRED UGUANA ANA",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 2,
-      name: "Prime Distributors Ltd",
-      description: "Leading wholesale distribution network across regions.",
+      name: "The Milliner Girl",
+      description: "Chinenye Ibiam",
       image:
-        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 3,
-      name: "Urban Retail Group",
-      description: "Premium retail spaces and shopping center management.",
+      name: "SEWFITICATED BY IB",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "National Supply Co.",
-      description: "Comprehensive distribution services for consumer goods.",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
   ],
   "fashion-existing": [
     {
       id: 1,
-      name: "Elite Fashion House",
-      description: "Premium fashion brand with international recognition.",
+      name: "MozAfrik fashion and styles",
+      description: "Ocheigu Moses Lazarus",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Style Empire Ltd",
-      description: "Multi-brand fashion retail and styling services.",
+      name: "Hillary Fashion",
+      description: "HILARY ADAH UDAYI",
       image:
         "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Heritage Textiles Co.",
-      description: "Traditional fabric production and contemporary design.",
+      name: "Gallery 08 et al Ltd.",
+      description: "Dr. Uwana Nnochiri",
       image:
         "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Fashion Retail Group",
-      description: "National chain of fashion boutiques and outlets.",
+      name: "Ajeboh Clothing & Branding",
+      description: "Ajeboh Krislawrence",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "ENYIQUE.NG",
+      description: "Abba Kelechi",
+      image:
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 6,
+      name: "Dressaddiction Clothiers",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 7,
+      name: "CouturebyRia",
+      description: "Gloria Olinya",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "technology-existing": [
+  "transportation-startup": [
     {
       id: 1,
-      name: "TechSolutions Enterprise",
-      description: "Enterprise software and IT infrastructure solutions.",
+      name: "Usetu Logistics",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Kwik Logistics",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Now Now Logistics",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Legedis Errands",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Mee's Logistics",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "transportation-existing": [
+    {
+      id: 1,
+      name: "GIG Logistics",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Innovation Systems Ltd",
-      description: "Advanced technology research and development firm.",
+      name: "Sea Express",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Digital Transformation Co.",
-      description:
-        "Comprehensive digital solutions for established businesses.",
+      name: "Abito Travels",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Enterprise Cloud Systems",
-      description: "Cloud computing and data management for corporations.",
+      name: "Brightflow Conglomerate",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Joza Global",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "tourism-existing": [
+  "event-startup": [
     {
       id: 1,
-      name: "Premier Hospitality Group",
-      description: "Luxury hotels and resort management company.",
+      name: "Kamich Event",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Sharp Catering and Events",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "event-existing": [
+    {
+      id: 1,
+      name: "Ruvant",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Heritage Tours Ltd",
-      description: "Established cultural and historical tour operator.",
+      name: "Slaishows Ltd.",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Calabar Resort & Spa",
-      description: "Premium hospitality and wellness destination.",
+      name: "Jossy E Concept",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Business Travel Solutions",
-      description: "Corporate travel and accommodation services.",
+      name: "Vicky Nanky",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Genie",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 6,
+      name: "Yetty Partyaffairs",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 7,
+      name: "Jayhnes Touch Events",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 8,
+      name: "Uwayen's Events and Bridals",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
+  "manufacturing-startup": [
+    {
+      id: 1,
+      name: "Ekeng Duke Nig. Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "DeFilas Group (Paint)",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Dividonai Confectioneries Ltd",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Sure Wash",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Abisac ventures",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "Seekees Footies",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "manufacturing-existing": [
+    {
+      id: 1,
+      name: "Tripple E Footwears",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Ejile Furnitures",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "OMATECH FEED",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Ediye by Pdbraide ltd",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
   "entertainment-existing": [
     {
       id: 1,
-      name: "Media Empire Group",
-      description: "Multi-platform entertainment and media company.",
+      name: "Vogue",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Lifestyle Brands Ltd",
-      description: "Diversified entertainment and lifestyle enterprises.",
+      name: "Beer hub",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Creative Production House",
-      description: "Film, music, and content production studio.",
+      name: "Office Pub",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Entertainment Venues Co.",
-      description: "Management of theaters, clubs, and event spaces.",
+      name: "Palladium by B",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Tipsy Mistress",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 6,
+      name: "Amber",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 7,
+      name: "Bays bar",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 8,
+      name: "Romaan Premium",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 9,
+      name: "Voltage",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 10,
+      name: "Deluxe",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "transportation-existing": [
+  "retail-startup": [
     {
       id: 1,
-      name: "National Transport Ltd",
-      description: "Comprehensive transportation and logistics network.",
+      name: "Barbier and More",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Tessy Ventures",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Beefy Koncept",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Shakara By Lona",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Chika Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "retail-existing": [
+    {
+      id: 1,
+      name: "Birdview Interior Designs",
+      description: "MEDA Exhibitor",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Logistics Solutions Inc.",
-      description: "Supply chain and freight management services.",
+      name: "Christy-Mary Ventures",
+      description: "From IFC",
       image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Fleet Management Corp",
-      description: "Large-scale vehicle fleet operations and maintenance.",
+      name: "CJ Distributor Enterprise",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Cargo Express Ltd",
-      description: "International shipping and cargo transportation.",
+      name: "Barbier and More",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Gracelee Global Resources",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
-  "artisan-existing": [
+  "technology-startup": [
     {
       id: 1,
-      name: "Master Craftsmen Guild",
-      description: "Association of highly skilled trade professionals.",
+      name: "Gob Media Enterprise",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 2,
-      name: "Heritage Artisans Co.",
-      description: "Traditional craft preservation and commercial production.",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      name: "BellaTECH NG.",
+      description: "Beshel Benjamin (Mullahbabs)",
+      image: "img/me.jpg",
+      type: "startup",
     },
     {
       id: 3,
-      name: "Skilled Works Enterprise",
-      description: "Large-scale skilled labor and contracting services.",
+      name: "Bright Light International",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 4,
-      name: "Professional Trades Ltd",
-      description: "Certified trade services and apprenticeship programs.",
+      name: "Emma's World Ent.",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Edison Phones",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "Uwanodung electronics limited",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 7,
+      name: "Hack51 Africa LTD",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 8,
+      name: "Top Great Computer Academy",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 9,
+      name: "Odutoocute Designz",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 10,
+      name: "E2O",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
   ],
-  "event-existing": [
+  "media-startup": [
     {
       id: 1,
-      name: "Grand Events Management",
-      description: "Full-service event planning and execution company.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Concept Development Group",
-      description: "Creative event concepts and brand experiences.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Corporate Events Ltd",
-      description: "Business conferences and corporate gathering specialists.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Festival Productions Co.",
-      description: "Large-scale public events and festival management.",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-  ],
-  "education-existing": [
-    {
-      id: 1,
-      name: "Heritage Educational Group",
-      description:
-        "Established educational institution with multiple campuses and programs.",
-      image:
-        "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Advocacy Foundation Ltd",
-      description:
-        "Long-standing organization driving policy changes and social advocacy.",
-      image:
-        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Professional Training Institute",
-      description:
-        "Comprehensive professional development and certification programs.",
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Community Education Network",
-      description:
-        "Nationwide educational outreach and community empowerment programs.",
-      image:
-        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-  ],
-  "health-existing": [
-    {
-      id: 1,
-      name: "Wellness Medical Group",
-      description:
-        "Comprehensive healthcare services with multiple specialist facilities.",
-      image:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Prime Healthcare Systems",
-      description:
-        "Integrated healthcare network with hospitals and wellness centers.",
-      image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Fitness Empire Ltd",
-      description: "Chain of premium fitness centers and wellness programs.",
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Community Health Initiative",
-      description: "Public health advocacy and community wellness programs.",
-      image:
-        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-  ],
-  "media-existing": [
-    {
-      id: 1,
-      name: "National Media Network",
-      description:
-        "Established media house with print, broadcast, and digital platforms.",
-      image:
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Journalism Excellence Group",
-      description:
-        "Award-winning investigative journalism and media production.",
+      name: "Magreda Business Ventures",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Akubushi Communication Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 3,
-      name: "Broadcast Media Corporation",
-      description: "Leading television and radio broadcasting company.",
+      name: "E-Cliques Media",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 4,
-      name: "Digital Publishing House",
-      description:
-        "Established publisher with extensive media reach and influence.",
+      name: "Eco'Art Studio",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Calabar Gist",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
   ],
-  "sports-existing": [
+  "content-startup": [
     {
       id: 1,
-      name: "Professional Sports Academy",
-      description: "Elite sports training facility with national recognition.",
-      image:
-        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 2,
-      name: "Fitness Chain Corporation",
-      description:
-        "National chain of sports and fitness centers with comprehensive programs.",
-      image:
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Aerobics Federation Ltd",
-      description:
-        "National governing body for aerobics and fitness competitions.",
-      image:
-        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Sports Development Foundation",
-      description:
-        "Organization promoting sports at grassroots and professional levels.",
-      image:
-        "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-  ],
-  "content-existing": [
-    {
-      id: 1,
-      name: "Media Production Studio",
-      description:
-        "Established film and content production company with international reach.",
+      name: "Kandy Umoh",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 2,
-      name: "Cinema Distribution Network",
-      description:
-        "Major film distribution company with nationwide cinema presence.",
+      name: "Patrick Dominic",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 3,
-      name: "Content Creation Empire",
-      description:
-        "Multi-platform content company with extensive digital presence.",
+      name: "Mc Mbakara",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
     },
     {
       id: 4,
-      name: "Film Production House",
-      description:
-        "Award-winning film production company with international recognition.",
+      name: "Celyn Ukam",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Mc Koboko",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "Yenne's Diary",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 7,
+      name: "Beezy Mouth",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 8,
+      name: "Sister Becky",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "health-startup": [
+    {
+      id: 1,
+      name: "Oma Dance Academy",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "SR Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Profitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Mikki fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Ifiok Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "Hogis Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 7,
+      name: "Romaan Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 8,
+      name: "Fusion Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 9,
+      name: "Andrew Millers Fitness",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 10,
+      name: "fit wit gym and spa",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "artisan-startup": [
+    {
+      id: 1,
+      name: "Chris Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Bullajo Global",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Oratex Limited",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Ricrubby Ltd.",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Dajien Concept",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "New Age Sharp Carpenters Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 7,
+      name: "Benco Fabrication",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 8,
+      name: "Edigie Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "education-startup": [
+    {
+      id: 1,
+      name: "Surestar Fun Academy",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "NAI ART Therapy Studio",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "Cheriehill School Ltd.",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "My Business, My Tomorrow with the speaking nightingale",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Walkathon by Healthy Billionaire Club",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "the orange show by Abimere",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
   ],
 };
