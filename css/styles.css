@@ -129,7 +129,7 @@ body {
 
 .overview-container {
   width: 100%;
-  margin: 4vh 0 6vh;
+  margin: 6vh 0 6vh;
   padding: 20px;
 }
 
@@ -137,7 +137,7 @@ body {
   font-size: (0.95rem, 1.8vw, 1.2rem);
   line-height: 1.7;
   opacity: 0.9;
-  text-align: center;
+  text-align: left;
   margin: 10px;
   background: rgba(255, 255, 255, 0.1);
   padding: (40px, 50px);
@@ -151,6 +151,7 @@ body {
 
 .overview p {
   margin-bottom: 15px;
+  padding: 0 15px;
 }
 
 .overview p:last-child {
