@@ -58,7 +58,7 @@ const nomineesData = {
   "agriculture-existing": [
     {
       id: 1,
-      name: "STEVECODAN FARMS",
+      name: "KATYE'S DELYTE SERVICES",
       description: "STEPHEN AGBOR NDANG",
       image:
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -125,6 +125,14 @@ const nomineesData = {
     {
       id: 5,
       name: "Beuberry",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
+      name: "South Cafe",
       description: "",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
