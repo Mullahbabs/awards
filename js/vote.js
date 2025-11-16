@@ -1407,7 +1407,7 @@ function confirmSingleVote() {
       });
       finishIndividualModal(
         false,
-        "Failed to send vote. Please check console for details."
+        "Failed to send vote. Please contact admin."
       );
     });
 }
