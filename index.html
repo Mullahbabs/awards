@@ -1527,6 +1527,338 @@
           height: 200px;
         }
       }
+      /* UDUA Ticker Section Styles */
+      .awards-udua-ticker-section {
+        padding: 40px 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .awards-udua-ticker-wrapper {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Animated Background */
+      .awards-udua-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .awards-udua-particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        animation: awards-udua-float 6s ease-in-out infinite;
+      }
+
+      .awards-udua-particle:nth-child(1) {
+        width: 8px;
+        height: 8px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .awards-udua-particle:nth-child(2) {
+        width: 12px;
+        height: 12px;
+        top: 60%;
+        left: 80%;
+        animation-delay: 1s;
+      }
+
+      .awards-udua-particle:nth-child(3) {
+        width: 6px;
+        height: 6px;
+        top: 40%;
+        left: 20%;
+        animation-delay: 2s;
+      }
+
+      .awards-udua-particle:nth-child(4) {
+        width: 10px;
+        height: 10px;
+        top: 80%;
+        left: 60%;
+        animation-delay: 3s;
+      }
+
+      .awards-udua-particle:nth-child(5) {
+        width: 15px;
+        height: 15px;
+        top: 30%;
+        left: 90%;
+        animation-delay: 4s;
+      }
+
+      /* Main Ticker */
+      .awards-udua-ticker {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 15px 0;
+        margin: 0 auto 30px;
+        max-width: 800px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      .awards-udua-track {
+        display: flex;
+        animation: awards-udua-scroll 20s linear infinite;
+        gap: 40px;
+        padding: 0 20px;
+      }
+
+      .awards-udua-item {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .awards-udua-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .awards-udua-badge {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        animation: awards-udua-pulse 2s ease-in-out infinite;
+      }
+
+      .awards-udua-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.5px;
+      }
+
+      .awards-udua-sparkle {
+        font-size: 1.1rem;
+        animation: awards-udua-spin 3s linear infinite;
+      }
+
+      /* CTA Buttons */
+      .awards-udua-cta {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .awards-udua-notify-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%);
+        color: #2c3e50;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 217, 61, 0.4);
+      }
+
+      .awards-udua-notify-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 217, 61, 0.6);
+        background: linear-gradient(135deg, #ff9a3d 0%, #ffd93d 100%);
+      }
+
+      .awards-udua-learn-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .awards-udua-learn-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+      }
+
+      /* Animations */
+      @keyframes awards-udua-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-100% / 3 * 2));
+        }
+      }
+
+      @keyframes awards-udua-float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes awards-udua-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 rgba(255, 107, 107, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+        }
+      }
+
+      @keyframes awards-udua-spin {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.2);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+
+      /* Pause animation on hover */
+      .awards-udua-ticker:hover .awards-udua-track {
+        animation-play-state: paused;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .awards-udua-ticker {
+          border-radius: 25px;
+          padding: 12px 0;
+        }
+
+        .awards-udua-track {
+          gap: 25px;
+          padding: 0 15px;
+        }
+
+        .awards-udua-item {
+          padding: 8px 15px;
+          gap: 10px;
+        }
+
+        .awards-udua-text {
+          font-size: 1rem;
+        }
+
+        .awards-udua-badge {
+          font-size: 0.6rem;
+          padding: 3px 8px;
+        }
+
+        .awards-udua-cta {
+          gap: 15px;
+        }
+
+        .awards-udua-notify-btn,
+        .awards-udua-learn-btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        @keyframes awards-udua-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100% / 3 * 2));
+          }
+        }
+      }
+
+      @media (max-width: 480px) {
+        .awards-udua-ticker-section {
+          padding: 30px 0;
+        }
+
+        .awards-udua-ticker {
+          border-radius: 20px;
+          padding: 10px 0;
+        }
+
+        .awards-udua-track {
+          gap: 20px;
+          padding: 0 10px;
+        }
+
+        .awards-udua-item {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+          padding: 10px 15px;
+        }
+
+        .awards-udua-text {
+          font-size: 0.9rem;
+        }
+
+        .awards-udua-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .awards-udua-notify-btn,
+        .awards-udua-learn-btn {
+          width: 200px;
+          justify-content: center;
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .awards-udua-track,
+        .awards-udua-particle,
+        .awards-udua-badge,
+        .awards-udua-sparkle {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body class="awards-body">
@@ -1689,6 +2021,71 @@
           </div>
           <div class="awards-about-image">
             <img src="img/logo.jpg" alt="Awards Ceremony" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-udua-ticker-section">
+      <div class="awards-container">
+        <div class="awards-udua-ticker-wrapper">
+          <!-- Animated Background Elements -->
+          <div class="awards-udua-background">
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+          </div>
+
+          <!-- Main Ticker -->
+          <div class="awards-udua-ticker">
+            <div class="awards-udua-track">
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">NEW</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">✨</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">HOT</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">🌟</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">EXCLUSIVE</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">💫</div>
+              </div>
+              <!-- Duplicates for seamless loop -->
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">NEW</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">✨</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">HOT</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">🌟</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="awards-udua-cta">
+            <button class="awards-udua-notify-btn">
+              <i class="fas fa-bell"></i>
+              Comming Soon!!!
+            </button>
           </div>
         </div>
       </div>
@@ -1915,6 +2312,71 @@
           <a href="categories.html" class="awards-main-cta"
             >Enter Voting Area</a
           >
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-udua-ticker-section">
+      <div class="awards-container">
+        <div class="awards-udua-ticker-wrapper">
+          <!-- Animated Background Elements -->
+          <div class="awards-udua-background">
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+            <div class="awards-udua-particle"></div>
+          </div>
+
+          <!-- Main Ticker -->
+          <div class="awards-udua-ticker">
+            <div class="awards-udua-track">
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">NEW</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">✨</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">HOT</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">🌟</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">EXCLUSIVE</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">💫</div>
+              </div>
+              <!-- Duplicates for seamless loop -->
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">NEW</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">✨</div>
+              </div>
+              <div class="awards-udua-item">
+                <span class="awards-udua-badge">HOT</span>
+                <span class="awards-udua-text"
+                  >• UDUA PREMIUM E-COMMERCE STORE • COMING SOON!!!</span
+                >
+                <div class="awards-udua-sparkle">🌟</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="awards-udua-cta">
+            <button class="awards-udua-notify-btn">
+              <i class="fas fa-bell"></i>
+              Comming Soon!!!
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -2783,6 +3245,175 @@
         }
 
         awardsCheckPerformance();
+      });
+    </script>
+    <script>
+      // Interactive UDUA Ticker Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const awardsUduaTicker = document.querySelector(".awards-udua-ticker");
+        const awardsUduaItems = document.querySelectorAll(".awards-udua-item");
+        const awardsNotifyBtn = document.querySelector(
+          ".awards-udua-notify-btn"
+        );
+        const awardsLearnBtn = document.querySelector(".awards-udua-learn-btn");
+
+        // Add click effects to ticker items
+        awardsUduaItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Create ripple effect
+            const ripple = document.createElement("div");
+            ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: awards-udua-ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+
+            const size = Math.max(this.offsetWidth, this.offsetHeight);
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = event.offsetX - size / 2 + "px";
+            ripple.style.top = event.offsetY - size / 2 + "px";
+
+            this.style.position = "relative";
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+
+            // Show notification
+            showUduaNotification();
+          });
+        });
+
+        // Notify button functionality
+        awardsNotifyBtn.addEventListener("click", function () {
+          this.innerHTML = '<i class="fas fa-check"></i> Notified!';
+          this.style.background =
+            "linear-gradient(135deg, #4cd964 0%, #2ecc71 100%)";
+          this.style.transform = "scale(0.95)";
+
+          setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-bell"></i> Notify Me';
+            this.style.background =
+              "linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%)";
+            this.style.transform = "scale(1)";
+          }, 2000);
+
+          showUduaNotification(
+            "You will be notified when UDUA Premium launches! 🎉"
+          );
+        });
+
+        // Learn more button functionality
+        awardsLearnBtn.addEventListener("click", function () {
+          showUduaNotification(
+            "UDUA Premium - Revolutionizing E-commerce Experience! 🚀"
+          );
+        });
+
+        // Notification function
+        function showUduaNotification(
+          message = "UDUA Premium E-Commerce Store - Get Ready for Something Amazing! 💫"
+        ) {
+          // Create notification
+          const notification = document.createElement("div");
+          notification.className = "awards-udua-notification";
+          notification.innerHTML = `
+                <div class="awards-udua-notification-content">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+
+          // Add styles
+          notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                animation: awards-udua-slideIn 0.3s ease-out;
+                max-width: 300px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            `;
+
+          document.body.appendChild(notification);
+
+          // Remove after 3 seconds
+          setTimeout(() => {
+            notification.style.animation = "awards-udua-slideOut 0.3s ease-in";
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+              }
+            }, 300);
+          }, 3000);
+        }
+
+        // Add CSS for new animations
+        const style = document.createElement("style");
+        style.textContent = `
+            @keyframes awards-udua-ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes awards-udua-slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes awards-udua-slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            
+            .awards-udua-notification-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-weight: 600;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization
+        function awardsCheckUduaPerformance() {
+          const awardsReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          );
+
+          if (awardsReducedMotion.matches) {
+            const awardsAnimations = document.querySelectorAll("*");
+            awardsAnimations.forEach((el) => {
+              el.style.animationPlayState = "paused";
+            });
+          }
+        }
+
+        awardsCheckUduaPerformance();
       });
     </script>
   </body>
