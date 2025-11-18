@@ -290,14 +290,6 @@ const nomineesData = {
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
-    {
-      id: 5,
-      name: "CouturebyRia",
-      description: "Gloria Olinya",
-      image:
-        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
   ],
   "fashion-existing": [
     {
@@ -334,6 +326,14 @@ const nomineesData = {
     },
     {
       id: 5,
+      name: "CouturebyRia",
+      description: "Gloria Olinya",
+      image:
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 6,
       name: "SEWFITICATED BY IB",
       description: "",
       image:
@@ -453,14 +453,6 @@ const nomineesData = {
     {
       id: 4,
       name: "Genie",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 5,
-      name: "Jayhnes Touch Eventz",
       description: "",
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
