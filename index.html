@@ -3008,7 +3008,7 @@
 
       // Apple Calendar - Download .ics file
       function awardsAddToAppleCalendar(details) {
-        const icsContent = [
+        const awardsIcsContent = [
           "BEGIN:VCALENDAR",
           "VERSION:2.0",
           "BEGIN:VEVENT",
@@ -3025,15 +3025,18 @@
           "END:VCALENDAR",
         ].join("\n");
 
-        const blob = new Blob([icsContent], {
+        const awardsBlob = new Blob([awardsIcsContent], {
           type: "text/calendar;charset=utf-8",
         });
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = "People first Enterprise-Awards-2025.ics";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const awardsLink = document.createElement("a");
+        awardsLink.href = URL.createObjectURL(awardsBlob);
+        awardsLink.download = "People first Enterprise-Awards-2025.ics";
+        document.body.appendChild(awardsLink);
+        awardsLink.click();
+        document.body.removeChild(awardsLink);
+
+        // Show confirmation
+        awardsShowCalendarConfirmation("Apple Calendar");
       }
 
       // Google Calendar - Direct link
