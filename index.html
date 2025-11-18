@@ -3007,8 +3007,8 @@
       }
 
       // Apple Calendar - Download .ics file
-      function awardsAddToAppleCalendar(details) {
-        const awardsIcsContent = [
+      function awarsaAddToAppleCalendar(details) {
+        const icsContent = [
           "BEGIN:VCALENDAR",
           "VERSION:2.0",
           "BEGIN:VEVENT",
@@ -3025,23 +3025,20 @@
           "END:VCALENDAR",
         ].join("\n");
 
-        const awardsBlob = new Blob([awardsIcsContent], {
+        const blob = new Blob([icsContent], {
           type: "text/calendar;charset=utf-8",
         });
-        const awardsLink = document.createElement("a");
-        awardsLink.href = URL.createObjectURL(awardsBlob);
-        awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
-        document.body.appendChild(awardsLink);
-        awardsLink.click();
-        document.body.removeChild(awardsLink);
-
-        // Show confirmation
-        awardsShowCalendarConfirmation("Apple Calendar");
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "People first Enterprise-Awards-2025.ics";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
 
       // Google Calendar - Direct link
       function awardsAddToGoogleCalendar(details) {
-        const awardsGoogleParams = new URLSearchParams({
+        const params = new URLSearchParams({
           action: "TEMPLATE",
           text: details.title,
           details: details.description,
@@ -3051,15 +3048,14 @@
         });
 
         window.open(
-          `https://calendar.google.com/calendar/render?${awardsGoogleParams.toString()}`,
+          `https://calendar.google.com/calendar/render?${params.toString()}`,
           "_blank"
         );
-        awardsShowCalendarConfirmation("Google Calendar");
       }
 
       // Outlook Calendar - Direct link
       function awardsAddToOutlookCalendar(details) {
-        const awardsOutlookParams = new URLSearchParams({
+        const params = new URLSearchParams({
           path: "/calendar/action/compose",
           rru: "addevent",
           subject: details.title,
@@ -3070,10 +3066,9 @@
         });
 
         window.open(
-          `https://outlook.live.com/calendar/0/deeplink/compose?${awardsOutlookParams.toString()}`,
+          `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`,
           "_blank"
         );
-        awardsShowCalendarConfirmation("Outlook Calendar");
       }
 
       // Show calendar confirmation message
