@@ -407,6 +407,7 @@ header {
 @media (max-width: 768px) {
   .main-content {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -458,13 +459,6 @@ header {
 
 .tab-content.active {
   display: block;
-}
-
-/* Enhanced category items for tabs */
-.category-list {
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 5px;
 }
 
 .category-list::-webkit-scrollbar {
@@ -566,6 +560,202 @@ header {
   .category-badge {
     align-self: flex-start;
   }
+}
+
+.categories {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0;
+}
+
+.categories h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.category-item {
+  padding: 12px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-left: 3px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.category-item.active {
+  background: rgba(230, 179, 37, 0.2);
+  border-left: 3px solid var(--accent);
+}
+
+.voting-area {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.category-title {
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.3rem;
+}
+
+.nominees {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.nominee-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.nominee-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 5px 15px rgba(230, 179, 37, 0.2);
+}
+
+.nominee-card.selected {
+  background: rgba(230, 179, 37, 0.15);
+  border-color: var(--accent);
+}
+
+.nominee-card.voted {
+  background: rgba(40, 167, 69, 0.15);
+  border-color: var(--success);
+}
+
+.nominee-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  background: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  overflow: hidden;
+}
+
+.nominee-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nominee-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.nominee-description {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.vote-btn {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+
+.vote-btn:hover {
+  background: var(--accent-dark);
+  transform: scale(1.05);
+}
+
+.vote-btn:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.voting-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 10px;
+}
+
+.submit-section {
+  text-align: center;
+  padding: 30px 0;
+  opacity: 0;
+}
+
+.submit-btn {
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+}
+
+.submit-btn:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
 }
 
 .categories {
@@ -721,32 +911,6 @@ header {
   margin-top: 30px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.vote-btn.disabled,
-.vote-btn:disabled {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: rgba(255, 255, 255, 0.5) !important;
-  cursor: not-allowed !important;
-  transform: none !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.vote-btn.submitted {
-  background: rgba(40, 167, 69, 0.2) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  border-color: var(--success) !important;
-}
-
-.nominee-card.voted-disabled {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-.vote-status {
-  margin-left: 10px;
-  font-size: 0.9em;
 }
 
 .submit-section {

@@ -17,29 +17,21 @@ const nomineesData = {
     {
       id: 2,
       name: "Saminahibor Ltd.",
-      description: "INAH IBOR SAM",
+      description: "Inah Ibor Sam",
       image:
         "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "Obemkpan Concept Nig.",
-      description: "Etta, Kenneth Obem",
+      name: "Katye's Delyte Services Ltd",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 4,
-      name: "AA Petana Services Ltd.",
-      description: "EKPENYONG ANAKARI ANA",
-      image:
-        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 5,
       name: "nawiwi agro",
       description: "Laniyi Stephens",
       image:
@@ -47,9 +39,9 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 6,
+      id: 5,
       name: "Sat Farms",
-      description: "Uzo Eni-Abogu",
+      description: "Uzo Eni-abogu",
       image:
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
@@ -58,30 +50,38 @@ const nomineesData = {
   "agriculture-existing": [
     {
       id: 1,
-      name: "KATYE'S DELYTE SERVICES",
-      description: "STEPHEN AGBOR NDANG",
+      name: "Obenkpan",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "OBUDU FARMS LTD",
-      description: "KECHI MATTHEW ESSA",
+      name: "Mathias Ejukwa and Son's Ventures",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Alexi Newton",
-      description: "Mrs Chimmuanya Alex Ukam",
+      name: "Obudu Farms Ltd.",
+      description: "Kechi Mathew Essa",
       image:
         "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
+      name: "Alexi Newton",
+      description: "Mrs Chimmuanya Alex Ukam",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
       name: "Yutiee Marti",
       description: "Utibe",
       image:
@@ -130,20 +130,12 @@ const nomineesData = {
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
-    {
-      id: 6,
-      name: "South Cafe",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
   ],
   "tourism-existing": [
     {
       id: 1,
       name: "Stainless Kitchen and Event Mgt.",
-      description: "CLEMENT IKPA ONAH",
+      description: "Clement Ikpa Onah",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
@@ -166,7 +158,7 @@ const nomineesData = {
     },
     {
       id: 4,
-      name: "Alice Ice",
+      name: "Alyce-Ice",
       description: "",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -185,83 +177,83 @@ const nomineesData = {
     {
       id: 1,
       name: "Splendour Fashion Home",
-      description: "WINIFRED UGUANA ANA",
+      description: "Winifred Uguana Ana",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 2,
-      name: "The Milliner Girl",
-      description: "Chinenye Ibiam",
+      name: "MozAfrik fashion and styles",
+      description: "Ocheigu Moses Lazarus",
       image:
         "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
       id: 3,
-      name: "SEWFITICATED BY IB",
-      description: "",
+      name: "The Milliner Girl",
+      description: "Chinenye Ibiam",
       image:
         "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "ENYIQUE.NG",
+      description: "Abba Kelechi",
+      image:
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "CouturebyRia",
+      description: "Gloria Olinya",
+      image:
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
   ],
   "fashion-existing": [
     {
       id: 1,
-      name: "MozAfrik fashion and styles",
-      description: "Ocheigu Moses Lazarus",
+      name: "Hillary Fashion",
+      description: "Hilary Adah Udayi",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 2,
-      name: "Hillary Fashion",
-      description: "HILARY ADAH UDAYI",
+      name: "Gallery 08 et al Ltd.",
+      description: "Dr. Uwana Nnochiri",
       image:
         "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 3,
-      name: "Gallery 08 et al Ltd.",
-      description: "Dr. Uwana Nnochiri",
+      name: "Ajeboh Clothing & Branding",
+      description: "Ajeboh Krislawrence",
       image:
         "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 4,
-      name: "Ajeboh Clothing & Branding",
-      description: "Ajeboh Krislawrence",
+      name: "Dressaddiction Clothiers",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
       id: 5,
-      name: "ENYIQUE.NG",
-      description: "Abba Kelechi",
-      image:
-        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 6,
-      name: "Dressaddiction Clothiers",
+      name: "SEWFITICATED BY IB",
       description: "",
       image:
-        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 7,
-      name: "CouturebyRia",
-      description: "Gloria Olinya",
-      image:
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
   ],
@@ -318,7 +310,7 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "Sea Express",
+      name: "SeaExpress Travels",
       description: "",
       image:
         "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -326,7 +318,7 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Abito Travels",
+      name: "Abito Ferry",
       description: "",
       image:
         "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -352,7 +344,7 @@ const nomineesData = {
   "event-startup": [
     {
       id: 1,
-      name: "Kamich Event",
+      name: "Jossy E Concept",
       description: "",
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -360,7 +352,31 @@ const nomineesData = {
     },
     {
       id: 2,
+      name: "Kamich Event",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
       name: "Sharp Catering and Events",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "Genie",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Jayhnes Touch Eventz",
       description: "",
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -386,14 +402,6 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Jossy E Concept",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
       name: "Vicky Nanky",
       description: "",
       image:
@@ -401,15 +409,7 @@ const nomineesData = {
       type: "existing",
     },
     {
-      id: 5,
-      name: "Genie",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 6,
+      id: 4,
       name: "Yetty Partyaffairs",
       description: "",
       image:
@@ -417,15 +417,7 @@ const nomineesData = {
       type: "existing",
     },
     {
-      id: 7,
-      name: "Jayhnes Touch Events",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 8,
+      id: 5,
       name: "Uwayen's Events and Bridals",
       description: "",
       image:
@@ -444,14 +436,6 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "DeFilas Group (Paint)",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
       name: "Dividonai Confectioneries Ltd",
       description: "",
       image:
@@ -459,7 +443,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 4,
+      id: 3,
       name: "Sure Wash",
       description: "",
       image:
@@ -467,7 +451,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 5,
+      id: 4,
       name: "Abisac ventures",
       description: "",
       image:
@@ -475,7 +459,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 6,
+      id: 5,
       name: "Seekees Footies",
       description: "",
       image:
@@ -494,7 +478,7 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "Ejile Furnitures",
+      name: "Edigie Furnitures",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -502,7 +486,7 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "OMATECH FEED",
+      name: "DeFilas Group (Paint)",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -510,6 +494,14 @@ const nomineesData = {
     },
     {
       id: 4,
+      name: "Omatech Feed",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
       name: "Ediye by Pdbraide ltd",
       description: "",
       image:
@@ -528,22 +520,14 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "Beer hub",
+      name: "Palladium by Gerald",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
-      id: 4,
-      name: "Palladium by B",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 5,
+      id: 3,
       name: "Tipsy Mistress",
       description: "",
       image:
@@ -551,7 +535,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 6,
+      id: 4,
       name: "Romaan Premium",
       description: "",
       image:
@@ -559,8 +543,8 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 7,
-      name: "Voltage",
+      id: 5,
+      name: "Deluxe",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -570,7 +554,7 @@ const nomineesData = {
   "entertainment-existing": [
     {
       id: 1,
-      name: "Office Pub",
+      name: "Beer hub",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -578,7 +562,7 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "Amber",
+      name: "Office Pub",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -586,7 +570,7 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Bays bar",
+      name: "Amber",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -594,7 +578,15 @@ const nomineesData = {
     },
     {
       id: 4,
-      name: "Deluxe",
+      name: "Bays Bar",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Voltage",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -604,14 +596,6 @@ const nomineesData = {
   "retail-startup": [
     {
       id: 1,
-      name: "Barbier and More",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
       name: "Tessy Ventures",
       description: "",
       image:
@@ -619,7 +603,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 3,
+      id: 2,
       name: "Beefy Koncept",
       description: "",
       image:
@@ -627,7 +611,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 4,
+      id: 3,
       name: "Shakara By Lona",
       description: "",
       image:
@@ -635,45 +619,53 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 5,
+      id: 4,
       name: "Chika Enterprise",
       description: "",
       image:
         "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
+    {
+      id: 5,
+      name: "Motema Cherie Udoh",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
   ],
   "retail-existing": [
     {
       id: 1,
+      name: "Barbier and More",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
       name: "Birdview Interior Designs",
-      description: "MEDA Exhibitor",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
-      id: 2,
+      id: 3,
       name: "Christy-Mary Ventures",
-      description: "From IFC",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1556742044-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
-      id: 3,
-      name: "CJ Distributor Enterprise",
+      id: 4,
+      name: "Coslow Stores",
       description: "",
       image:
         "https://images.unsplash.com/photo-1556742045-3c6c8b7b1b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 4,
-      name: "Barbier and More",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
     },
     {
@@ -688,21 +680,6 @@ const nomineesData = {
   "technology-startup": [
     {
       id: 1,
-      name: "Gob Media Enterprise",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "BellaTECH NG.",
-      description: "Beshel Benjamin (Mullahbabs)",
-      image: "img/me.jpg",
-      type: "startup",
-    },
-    {
-      id: 3,
       name: "Bright Light International",
       description: "",
       image:
@@ -710,102 +687,77 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 4,
-      name: "Emma's World Ent.",
+      id: 2,
+      name: "Inwang Foods",
       description: "",
       image:
         "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
+      id: 3,
+      name: "Hack51 Africa Ltd.",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "BellaTECH NG.",
+      description: "Beshel Benjamin (Mullahbabs)",
+      image: "img/me.jpg",
+      type: "startup",
+    },
+    {
       id: 5,
-      name: "Edison Phones",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 6,
-      name: "Uwanodung electronics limited",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 7,
-      name: "Hack51 Africa LTD",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 8,
-      name: "Top Great Computer Academy",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 9,
       name: "Odutoocute Designz",
       description: "",
       image:
         "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
+  ],
+  "technology-existing": [
     {
-      id: 10,
+      id: 1,
+      name: "Gob Media Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Top Great Computer Academy",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Emma's World Ent.",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "C. Edison Phones",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
       name: "E2O",
       description: "",
       image:
         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-  ],
-  "media-startup": [
-    {
-      id: 1,
-      name: "Magreda Business Ventures",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Akubushi Communication Enterprise",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "E-Cliques Media",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Eco'Art Studio",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 5,
-      name: "Calabar Gist",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
   ],
   "content-startup": [
@@ -819,46 +771,6 @@ const nomineesData = {
     },
     {
       id: 2,
-      name: "Patrick Dominic",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
-      name: "Mc Mbakara",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 4,
-      name: "Celyn Ukam",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 5,
-      name: "Mc Koboko",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 6,
-      name: "Yenne's Diary",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 7,
       name: "Beezy Mouth",
       description: "",
       image:
@@ -866,12 +778,70 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 8,
+      id: 3,
       name: "Sister Becky",
       description: "",
       image:
         "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
+    },
+    {
+      id: 4,
+      name: "Abel The Influencer",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Perpetual Ekpo",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "content-existing": [
+    {
+      id: 1,
+      name: "Patrick Dominic",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Mc Mbakara",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Celyn Ukam",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1489599809505-7c6f0bdbe3e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Mc Koboko",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Gina Idor Poetry",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
   ],
   "health-startup": [
@@ -893,7 +863,7 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Profitness",
+      name: "Hogis Fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -901,7 +871,7 @@ const nomineesData = {
     },
     {
       id: 4,
-      name: "Mikki fitness",
+      name: "Romaan Fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -909,72 +879,58 @@ const nomineesData = {
     },
     {
       id: 5,
-      name: "Ifiok Fitness",
+      name: "Fusion Fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
+  ],
+  "health-existing": [
     {
-      id: 6,
-      name: "Hogis Fitness",
+      id: 1,
+      name: "Profitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 7,
-      name: "Romaan Fitness",
+      id: 2,
+      name: "Mikki fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 8,
-      name: "Fusion Fitness",
+      id: 3,
+      name: "Ifiok Fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1584467735871-8db9ac8e5e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 9,
+      id: 4,
       name: "Andrew Millers Fitness",
       description: "",
       image:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 10,
+      id: 5,
       name: "fit wit gym and spa",
       description: "",
       image:
         "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
   ],
   "artisan-startup": [
     {
       id: 1,
-      name: "Chris Enterprise",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 2,
-      name: "Bullajo Global",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
-    },
-    {
-      id: 3,
       name: "Oratex Limited",
       description: "",
       image:
@@ -982,7 +938,7 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 4,
+      id: 2,
       name: "Ricrubby Ltd.",
       description: "",
       image:
@@ -990,36 +946,54 @@ const nomineesData = {
       type: "startup",
     },
     {
-      id: 5,
-      name: "Dajien Concept",
+      id: 3,
+      name: "Dajieom Concept",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
     {
-      id: 6,
+      id: 4,
       name: "New Age Sharp Carpenters Enterprise",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
+  ],
+  "artisan-existing": [
     {
-      id: 7,
+      id: 1,
+      name: "Chris Enterprise",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Bullajo Global",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
       name: "Benco Fabrication",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 8,
+      id: 4,
       name: "Edigie Enterprise",
       description: "",
       image:
         "https://images.unsplash.com/photo-1583248369069-9d91f5bac537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
   ],
   "education-startup": [
@@ -1055,21 +1029,39 @@ const nomineesData = {
         "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
     },
+  ],
+  "education-existing": [
     {
-      id: 5,
+      id: 1,
       name: "Walkathon by Healthy Billionaire Club",
       description: "",
       image:
         "https://images.unsplash.com/photo-1588072432836-e100327d50a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
     },
     {
-      id: 6,
-      name: "the orange show by Abimere",
+      id: 2,
+      name: "The Orange Show by Abenmire",
       description: "",
       image:
         "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "AP Montessori",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1551836026-d5c8c1d20900?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Blazing Feet Schools",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
   ],
 };

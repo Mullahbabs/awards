@@ -3,472 +3,2786 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peoples First Enterprise Awards 2025 - Welcome</title>
+    <title>People First Enterprise Awards 2025</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary-color: #1a237e;
+        --secondary-color: #b71c1c;
+        --accent-color: #d4af37;
+        --text-dark: #212121;
+        --text-light: #212121;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+      }
+
+      .awards-body {
+        background-color: var(--white);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .awards-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      .awards-header-main {
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .awards-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .awards-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .awards-logo-accent {
+        color: var(--accent-color);
+      }
+
+      .awards-nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .awards-nav-item {
+        font-weight: 600;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .awards-nav-item:hover {
+        color: var(--primary-color);
+      }
+
+      .awards-nav-cta {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .awards-nav-cta:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .awards-mobile-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Carousel Styles */
+      .awards-hero-section {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+      }
+
+      .awards-carousel-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .awards-carousel-slide-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .awards-carousel-slide-bg.active {
+        opacity: 1;
+      }
+
+      .awards-carousel-slide-bg::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 35, 126, 0.7) 0%,
+          rgba(183, 28, 28, 0.5) 100%
+        );
+      }
+
+      .awards-carousel-overlay {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .awards-carousel-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .awards-carousel-text {
+        flex: 1;
+        position: relative;
+        height: 400px;
+      }
+
+      .awards-carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 20px;
+      }
+
+      .awards-carousel-slide.active {
+        opacity: 1;
+      }
+
+      .awards-carousel-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .awards-carousel-subtitle {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        max-width: 500px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .awards-carousel-cta {
+        display: inline-block;
+        background-color: #d4af37;
+        color: #212121;
+        padding: 15px 35px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .awards-carousel-cta:hover {
+        background-color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .awards-carousel-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 400px;
+      }
+
+      .awards-circular-text {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .awards-circle-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        animation: awards-rotate 25s linear infinite;
+      }
+
+      .awards-circle-text path {
+        fill: #ffffff;
+      }
+
+      .awards-circle-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #d4af37;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .awards-circle-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .awards-carousel-indicators {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 3;
+      }
+
+      .awards-carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .awards-carousel-dot.active {
+        background-color: #d4af37;
+        transform: scale(1.3);
+      }
+
+      .awards-carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+      }
+
+      .awards-carousel-nav:hover {
+        background-color: #d4af37;
+        color: #212121;
+      }
+
+      .awards-carousel-prev {
+        left: 30px;
+      }
+
+      .awards-carousel-next {
+        right: 30px;
+      }
+
+      @keyframes awards-rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 992px) {
+        .awards-carousel-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+          padding: 20px 0;
+        }
+
+        .awards-carousel-text {
+          height: auto;
+          min-height: 300px;
+          order: 2;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .awards-carousel-visual {
+          height: 300px;
+          order: 1;
+          margin-bottom: 20px;
+        }
+
+        .awards-carousel-slide {
+          position: relative;
+          opacity: 1;
+          padding-right: 0;
+        }
+
+        .awards-carousel-slide:not(.active) {
+          display: none;
+        }
+
+        .awards-carousel-title {
+          font-size: 2.5rem;
+        }
+
+        .awards-carousel-subtitle {
+          margin: 0 auto 30px;
+        }
+
+        .awards-circular-text {
+          width: 280px;
+          height: 280px;
+        }
+
+        .awards-circle-image {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .awards-hero-section {
+          height: 70vh;
+          min-height: 500px;
+        }
+
+        .awards-carousel-container {
+          gap: 15px;
+          padding: 15px 0;
+        }
+
+        .awards-carousel-title {
+          font-size: 2rem;
+        }
+
+        .awards-carousel-subtitle {
+          font-size: 1.1rem;
+          padding: 0 15px;
+        }
+
+        .awards-carousel-cta {
+          padding: 12px 25px;
+          font-size: 1rem;
+        }
+
+        .awards-carousel-visual {
+          height: 250px;
+        }
+
+        .awards-circular-text {
+          width: 220px;
+          height: 220px;
+        }
+
+        .awards-circle-image {
+          width: 100px;
+          height: 100px;
+        }
+
+        .awards-carousel-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+
+        .awards-carousel-prev {
+          left: 15px;
+        }
+
+        .awards-carousel-next {
+          right: 15px;
+        }
+
+        .awards-carousel-indicators {
+          bottom: 25px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .awards-hero-section {
+          height: 70vh;
+          min-height: 450px;
+        }
+
+        .awards-carousel-container {
+          gap: 10px;
+          padding: 10px 0;
+        }
+
+        .awards-carousel-title {
+          font-size: 1.8rem;
+        }
+
+        .awards-carousel-subtitle {
+          font-size: 1rem;
+          margin-bottom: 20px;
+        }
+
+        .awards-carousel-visual {
+          height: 200px;
+        }
+
+        .awards-circular-text {
+          width: 180px;
+          height: 180px;
+        }
+
+        .awards-circle-image {
+          width: 80px;
+          height: 80px;
+          border-width: 3px;
+        }
+
+        .awards-carousel-nav {
+          display: none;
+        }
+
+        .awards-carousel-indicators {
+          bottom: 20px;
+        }
+      }
+      /* About Section Styles */
+      .awards-about-section {
+        padding: 100px 0;
+        background-color: var(--white);
+      }
+
+      .awards-about-container {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .awards-about-content {
+        flex: 1;
+      }
+
+      .awards-section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        position: relative;
+        text-align: left;
+      }
+
+      .awards-section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent-color);
+      }
+
+      .awards-about-text {
+        color: var(--text-light);
+        font-size: 16px;
+        margin-bottom: 30px;
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      .awards-about-image {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .awards-about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s;
+      }
+
+      .awards-about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Categories Section Styles */
+      .awards-categories-section {
+        padding: 100px 0;
+        background-color: var(--light-gray);
+      }
+
+      .awards-section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .awards-categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .awards-category-card {
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .awards-category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .awards-category-icon {
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-size: 1.8rem;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .awards-category-content {
+        padding: 25px;
+      }
+
+      .awards-category-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .awards-category-description {
+        color: var(--text-light);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .awards-category-button {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        padding: 8px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .awards-category-button:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+
+      .awards-categories-cta {
+        text-align: center;
+      }
+
+      .awards-main-cta {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        padding: 15px 40px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: background-color 0.3s;
+      }
+
+      .awards-main-cta:hover {
+        background-color: var(--primary-color);
+      }
+
+      /* Gallery Section Styles */
+      .awards-gallery-section {
+        padding: 100px 0;
+        background-color: var(--white);
+      }
+
+      .awards-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .awards-gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .awards-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .awards-gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .awards-gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .awards-gallery-item:hover .awards-gallery-overlay {
+        opacity: 1;
+      }
+
+      .awards-gallery-caption {
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      /* Countdown Section Styles */
+      .awards-countdown-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .awards-countdown-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .awards-countdown-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .awards-countdown-icon {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+
+      .awards-countdown-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .awards-countdown-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-color);
+      }
+
+      .awards-countdown-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-top: 30px;
+      }
+
+      .awards-countdown-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+      }
+
+      /* Circular Progress Countdown */
+      .awards-circle-progress {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+
+      .awards-progress-ring {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .awards-progress-background {
+        fill: none;
+        stroke: rgba(26, 35, 126, 0.1);
+        stroke-width: 8;
+      }
+
+      .awards-progress-circle {
+        fill: none;
+        stroke: var(--primary-color);
+        stroke-width: 8;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1s ease-in-out;
+        stroke-dasharray: 816.8;
+        stroke-dashoffset: 0;
+      }
+
+      .awards-countdown-display {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .awards-days-count {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        line-height: 1;
+      }
+
+      .awards-days-label {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      /* Time Units Grid */
+      .awards-time-grid {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .awards-time-unit {
+        text-align: center;
+        background: var(--white);
+        padding: 25px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        min-width: 120px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .awards-time-unit:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .awards-time-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .awards-time-label {
+        font-size: 1rem;
+        color: var(--text-light);
+        font-weight: 600;
+      }
+
+      /* Calendar Integration */
+      .awards-calendar-integration {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .awards-calendar-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 25px;
+      }
+
+      .awards-calendar-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .awards-calendar-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+      }
+
+      .awards-ios-btn {
+        background-color: #000;
+        color: var(--white);
+      }
+
+      .awards-ios-btn:hover {
+        background-color: #333;
+      }
+
+      .awards-android-btn {
+        background-color: #4285f4;
+        color: var(--white);
+      }
+
+      .awards-android-btn:hover {
+        background-color: #3367d6;
+      }
+
+      .awards-outlook-btn {
+        background-color: #0078d4;
+        color: var(--white);
+      }
+
+      .awards-outlook-btn:hover {
+        background-color: #106ebe;
+      }
+
+      /* Countdown Actions */
+      .awards-countdown-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+        flex-wrap: wrap;
+      }
+
+      .awards-nominee-form-btn,
+      .awards-view-categories-btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 14px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+      }
+
+      .awards-nominee-form-btn:hover,
+      .awards-view-categories-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(183, 28, 28, 0.4);
+      }
+
+      /* Floating Particles Background */
+      .awards-particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .awards-particle {
+        position: absolute;
+        background-color: rgba(212, 175, 55, 0.2);
+        border-radius: 50%;
+        animation: awards-float 15s infinite linear;
+      }
+
+      .awards-particle:nth-child(1) {
+        width: 8px;
+        height: 8px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .awards-particle:nth-child(2) {
+        width: 12px;
+        height: 12px;
+        top: 60%;
+        left: 5%;
+        animation-delay: 2s;
+      }
+
+      .awards-particle:nth-child(3) {
+        width: 6px;
+        height: 6px;
+        top: 40%;
+        left: 80%;
+        animation-delay: 4s;
+      }
+
+      .awards-particle:nth-child(4) {
+        width: 10px;
+        height: 10px;
+        top: 80%;
+        left: 70%;
+        animation-delay: 6s;
+      }
+
+      .awards-particle:nth-child(5) {
+        width: 7px;
+        height: 7px;
+        top: 30%;
+        left: 60%;
+        animation-delay: 8s;
+      }
+
+      .awards-particle:nth-child(6) {
+        width: 9px;
+        height: 9px;
+        top: 70%;
+        left: 20%;
+        animation-delay: 10s;
+      }
+
+      .awards-particle:nth-child(7) {
+        width: 5px;
+        height: 5px;
+        top: 10%;
+        left: 40%;
+        animation-delay: 12s;
+      }
+
+      .awards-particle:nth-child(8) {
+        width: 11px;
+        height: 11px;
+        top: 50%;
+        left: 90%;
+        animation-delay: 14s;
+      }
+
+      @keyframes awards-float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(0) rotate(360deg);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .awards-countdown-title {
+          font-size: 2rem;
+        }
+
+        .awards-circle-progress {
+          width: 250px;
+          height: 250px;
+        }
+
+        .awards-days-count {
+          font-size: 3rem;
+        }
+
+        .awards-time-grid {
+          gap: 20px;
+        }
+
+        .awards-time-unit {
+          min-width: 100px;
+          padding: 20px 15px;
+        }
+
+        .awards-time-number {
+          font-size: 2rem;
+        }
+
+        .awards-calendar-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .awards-calendar-btn {
+          width: 200px;
+          justify-content: center;
+        }
+
+        .awards-countdown-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .awards-nominee-form-btn,
+        .awards-view-categories-btn {
+          width: 250px;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .awards-countdown-section {
+          padding: 70px 0;
+        }
+
+        .awards-countdown-title {
+          font-size: 1.8rem;
+        }
+
+        .awards-circle-progress {
+          width: 200px;
+          height: 200px;
+        }
+
+        .awards-days-count {
+          font-size: 2.5rem;
+        }
+
+        .awards-time-grid {
+          gap: 15px;
+        }
+
+        .awards-time-unit {
+          min-width: 80px;
+          padding: 15px 10px;
+        }
+
+        .awards-time-number {
+          font-size: 1.8rem;
+        }
+      }
+
+      /* Sponsors Section Styles */
+      .awards-sponsors-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .awards-sponsors-ticker {
+        position: relative;
+        margin: 50px 0;
+        padding: 30px 0;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .awards-ticker-track {
+        display: flex;
+        animation: awards-ticker-scroll 40s linear infinite;
+        gap: 30px;
+        padding: 0 20px;
+      }
+
+      .awards-sponsor-card {
+        flex: 0 0 auto;
+        width: 200px;
+        background: white;
+        border-radius: 15px;
+        padding: 25px 20px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(26, 35, 126, 0.1);
+      }
+
+      .awards-sponsor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-color: #d4af37;
+      }
+
+      .awards-sponsor-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #f0f0f0;
+        transition: all 0.3s ease;
+      }
+
+      .awards-sponsor-card:hover .awards-sponsor-logo {
+        border-color: #d4af37;
+        transform: scale(1.1);
+      }
+
+      .awards-sponsor-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .awards-sponsor-info {
+        margin-top: 10px;
+      }
+
+      .awards-sponsor-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a237e;
+        margin-bottom: 5px;
+        line-height: 1.3;
+      }
+
+      .awards-sponsor-tier {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #d4af37;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Sponsor Tiers */
+      .awards-sponsor-tiers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin: 50px 0;
+      }
+
+      .awards-tier-item {
+        text-align: center;
+        padding: 30px 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      .awards-tier-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .awards-tier-badge {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: white;
+      }
+
+      .awards-tier-badge.platinum {
+        background: linear-gradient(135deg, #e5e4e2 0%, #b4b4b4 100%);
+      }
+
+      .awards-tier-badge.gold {
+        background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+      }
+
+      .awards-tier-badge.silver {
+        background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%);
+      }
+
+      .awards-tier-badge.bronze {
+        background: linear-gradient(135deg, #cd7f32 0%, #a57164 100%);
+      }
+
+      .awards-tier-item h4 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1a237e;
+        margin-bottom: 10px;
+      }
+
+      .awards-tier-item p {
+        font-size: 0.9rem;
+        color: #757575;
+        line-height: 1.5;
+      }
+
+      /* Sponsor CTA */
+      .awards-sponsor-cta {
+        text-align: center;
+        background: white;
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+      }
+
+      .awards-sponsor-cta h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a237e;
+        margin-bottom: 15px;
+      }
+
+      .awards-sponsor-cta p {
+        font-size: 1.1rem;
+        color: #757575;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .awards-sponsor-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(26, 35, 126, 0.3);
+      }
+
+      .awards-sponsor-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(26, 35, 126, 0.4);
+        background: linear-gradient(135deg, #283593 0%, #1a237e 100%);
+      }
+
+      /* Animations */
+      @keyframes awards-ticker-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-200px * 6 - 30px * 6));
+        }
+      }
+
+      /* Pause animation on hover */
+      .awards-sponsors-ticker:hover .awards-ticker-track {
+        animation-play-state: paused;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .awards-sponsors-ticker {
+          margin: 30px 0;
+        }
+
+        .awards-sponsor-card {
+          width: 160px;
+          padding: 20px 15px;
+        }
+
+        .awards-ticker-track {
+          gap: 20px;
+        }
+
+        .awards-sponsor-tiers {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .awards-sponsor-cta {
+          padding: 30px 20px;
+        }
+
+        .awards-sponsor-cta h3 {
+          font-size: 1.6rem;
+        }
+
+        @keyframes awards-ticker-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-160px * 6 - 20px * 6));
+          }
+        }
+      }
+
+      @media (max-width: 480px) {
+        .awards-sponsor-tiers {
+          grid-template-columns: 1fr;
+        }
+
+        .awards-sponsor-card {
+          width: 140px;
+        }
+
+        @keyframes awards-ticker-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-140px * 6 - 20px * 6));
+          }
+        }
+      }
+
+      /* Footer Styles */
+      .awards-footer-main {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 70px 0 30px;
+      }
+
+      .awards-footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      .awards-footer-column h3 {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .awards-footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .awards-footer-links {
+        list-style: none;
+      }
+
+      .awards-footer-link {
+        margin-bottom: 12px;
+      }
+
+      .awards-footer-link a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .awards-footer-link a:hover {
+        color: var(--accent-color);
+      }
+
+      .awards-social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .awards-social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .awards-social-icon:hover {
+        background-color: var(--accent-color);
+      }
+
+      .awards-footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .awards-carousel-container {
+          flex-direction: column;
+        }
+
+        .awards-about-container {
+          flex-direction: column;
+        }
+
+        .awards-about-content {
+          order: 2;
+        }
+
+        .awards-about-image {
+          order: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .awards-nav-links {
+          display: none;
+        }
+
+        .awards-mobile-toggle {
+          display: block;
+        }
+
+        .awards-carousel-title {
+          font-size: 2rem;
+        }
+
+        .awards-circular-text {
+          width: 250px;
+          height: 250px;
+        }
+
+        .awards-circle-image {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .awards-categories-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .awards-gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .awards-gallery-item {
+          height: 200px;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div class="welcome-container">
-      <!-- Background Slideshow -->
-      <div class="background-slideshow">
-        <div class="slide active"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
+  <body class="awards-body">
+    <!-- Header -->
+    <header class="awards-header-main">
+      <div class="awards-container">
+        <nav class="awards-navbar">
+          <div class="awards-logo">
+            People First
+            <span class="awards-logo-accent">Enterprise Awards</span>
+          </div>
+          <ul class="awards-nav-links">
+            <li><a href="#" class="awards-nav-item">Home</a></li>
+            <li><a href="#about" class="awards-nav-item">About</a></li>
+            <li>
+              <a href="#categories" class="awards-nav-item">Categories</a>
+            </li>
+            <li><a href="#gallery" class="awards-nav-item">Past Events</a></li>
+            <li><a href="#footer" class="awards-nav-item">Contact</a></li>
+            <li>
+              <a href="categories.html" class="awards-nav-cta">Vote Now</a>
+            </li>
+          </ul>
+          <div class="awards-mobile-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Carousel -->
+    <section class="awards-hero-section">
+      <!-- Background Images -->
+      <div class="awards-carousel-background">
+        <div
+          class="awards-carousel-slide-bg active"
+          style="background-image: url('/img/awards.jpg')"
+        ></div>
+        <div
+          class="awards-carousel-slide-bg"
+          style="background-image: url('/img/awards1.jpg')"
+        ></div>
+        <div
+          class="awards-carousel-slide-bg"
+          style="background-image: url('/img/awards3.jpg')"
+        ></div>
       </div>
 
-      <!-- Gradient Overlay -->
-      <div class="gradient-overlay"></div>
-
-      <!-- Sparkle Effects -->
-      <div class="sparkle"><img src="img/meda.png" /></div>
-      <div class="sparkle"></div>
-      <div class="sparkle"><img src="img/meda.png" /></div>
-      <div class="sparkle"><img src="img/meda.png" /></i></div>
-      <div class="sparkle"><img src="img/meda.png" /></div>
-      <div class="sparkle"><img src="img/meda.png" /></div>
-
-      <!-- Main Content -->
-      <div class="content">  
-        <div class="awards-icon">
-          <i class="fas fa-award fa-2x"></i>
-        </div>
-        <h1 class="logo" style="font-size: 25px">
-          People first Enterprise Awards<br >2025
-        </h1>
-        <p class="tagline">Empowering Dreams, Transforming Futures!</p>
-
-        <div class="overview">
-          <p>
-            The People First Enterprise Awards is not just an event; 
-            it's a grand celebration of remarkable individuals and businesses 
-            that are making waves in our community! We are dedicated to honoring 
-            those who deliver exceptional value to Cross River State, bridging the 
-            unemployment gap through integrity and stewardship. Your unwavering dedication, 
-            innovation, and resilience have played a pivotal role in the growth and development 
-            of our vibrant business sector.
-          </p>
-          <p>
-           This year, we’re turning up the excitement by 
-           spotlighting the incredible efforts of small businesses 
-           across our three Senatorial Districts! Join us in recognizing 
-           their impactful contributions to job creation, product innovation, 
-           community engagement, and their commitment to shaping a thriving economic 
-           landscape that inspires countless entrepreneurs.
-          </p>
-          <p>
-            Our celebration this year promises to be a banger! Get ready 
-            for an unforgettable night filled with inspiration, networking, 
-            and recognition. Let’s come together to empower dreams and transform 
-            futures!
-          </p>
+      <!-- Content Overlay -->
+      <div class="awards-carousel-overlay">
+        <div class="awards-carousel-container">
+          <div class="awards-carousel-text">
+            <div class="awards-carousel-slide active">
+              <h2 class="awards-carousel-title">
+                Celebrating Excellence in Enterprise
+              </h2>
+              <p class="awards-carousel-subtitle">
+                Recognizing the organizations that put people first in their
+                business practices, culture, and community impact.
+              </p>
+              <a href="#categories" class="awards-carousel-cta"
+                >View Categories</a
+              >
+            </div>
+            <div class="awards-carousel-slide">
+              <h2 class="awards-carousel-title">Vote for Your Favorites</h2>
+              <p class="awards-carousel-subtitle">
+                Your voice matters! Participate in selecting the winners across
+                14 prestigious categories.
+              </p>
+              <a href="categories.html" class="awards-carousel-cta"
+                >Cast Your Vote</a
+              >
+            </div>
+            <div class="awards-carousel-slide">
+              <h2 class="awards-carousel-title">Join the Celebration</h2>
+              <p class="awards-carousel-subtitle">
+                Mark your calendar for the grand ceremony on December 5, 2025,
+                where we'll announce the winners.
+              </p>
+              <a href="#footer" class="awards-carousel-cta">Get Tickets</a>
+            </div>
+          </div>
+          <div class="awards-carousel-visual">
+            <div class="awards-circular-text">
+              <svg
+                class="awards-circle-text"
+                viewBox="0 0 100 100"
+                width="100"
+                height="100"
+              >
+                <defs>
+                  <path
+                    id="awards-circle"
+                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                  />
+                </defs>
+                <text font-size="8" fill="#ffffff">
+                  <textPath xlink:href="#awards-circle">
+                    PEOPLE FIRST ENTERPRISE AWARDS 2025 • CELEBRATING EXCELLENCE
+                    •
+                  </textPath>
+                </text>
+              </svg>
+              <div class="awards-circle-image">
+                <img src="img/icon.jpg" alt="Awards Trophy" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <section class="uduaflow-section">
-    <div class="uduaflow-container">
-        <!-- Main Ticker Track -->
-        <div class="uduaflow-track">
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            
-            <!-- Duplicated for seamless loop -->
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-        </div>
-        
-        <!-- Gradient Overlays -->
-        <div class="uduaflow-veil uduaflow-veil-left"></div>
-        <div class="uduaflow-veil uduaflow-veil-right"></div>
-        
-        <!-- Animated Background Elements -->
-        <div class="uduaflow-aurora">
-            <div class="uduaflow-wave wave-1"></div>
-            <div class="uduaflow-wave wave-2"></div>
-            <div class="uduaflow-wave wave-3"></div>
-        </div>
-    </div>
-</section>
+      <!-- Navigation Arrows -->
+      <button class="awards-carousel-nav awards-carousel-prev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="awards-carousel-nav awards-carousel-next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
 
+      <!-- Indicators -->
+      <div class="awards-carousel-indicators">
+        <div class="awards-carousel-dot active" data-slide="0"></div>
+        <div class="awards-carousel-dot" data-slide="1"></div>
+        <div class="awards-carousel-dot" data-slide="2"></div>
+      </div>
+    </section>
 
-    <section class="countdown-section">
-    <div class="container">
-        <div class="countdown-header">
-            <div class="awards-icon">
-                <i class="fas fa-award fa-2x"></i>
-            </div>
-            <h2 class="countdown-title"> WELCOME</h2>
-            <p class="countdown-subtitle">Counting down to the grand ceremony</p>
+    <!-- About Section -->
+    <section class="awards-about-section" id="about">
+      <div class="awards-container">
+        <div class="awards-about-container">
+          <div class="awards-about-content">
+            <h2 class="awards-section-title">About the Awards</h2>
+            <p class="awards-about-text">
+              The People First Enterprise Awards is not just an event; it's a
+              grand celebration of remarkable individuals and businesses that
+              are making waves in our community! We are dedicated to honoring
+              those who deliver exceptional value to Cross River State, bridging
+              the unemployment gap through integrity and stewardship. Your
+              unwavering dedication, innovation, and resilience have played a
+              pivotal role in the growth and development of our vibrant business
+              sector.
+            </p>
+            <p class="awards-about-text">
+              This year, we’re turning up the excitement by spotlighting the
+              incredible efforts of small businesses across our three Senatorial
+              Districts! Join us in recognizing their impactful contributions to
+              job creation, product innovation, community engagement, and their
+              commitment to shaping a thriving economic landscape that inspires
+              countless entrepreneurs.
+            </p>
+            <p class="awards-about-text">
+              Our celebration this year promises to be a banger! Get ready for
+              an unforgettable night filled with inspiration, networking, and
+              recognition. Let’s come together to empower dreams and transform
+              futures!
+            </p>
+          </div>
+          <div class="awards-about-image">
+            <img src="img/logo.jpg" alt="Awards Ceremony" />
+          </div>
         </div>
-        
-        <div class="countdown-container">
-            <!-- Circular Progress Countdown -->
-            <div class="circle-progress">
-    <svg class="progress-ring" viewBox="0 0 300 300">
-        <circle class="progress-ring-background" cx="150" cy="150" r="130" stroke-width="8"></circle>
-        <circle class="progress-ring-circle" cx="150" cy="150" r="130" stroke-width="8" 
-                stroke-dasharray="816.8" stroke-dashoffset="0"></circle>
-    </svg>
-    <div class="countdown-content">
-        <div class="days-count" id="days-count">00</div>
-        <div class="days-label">Days</div>
-    </div>
-</div>
-            
-            <!-- Time Units Grid -->
-            <div class="time-grid">
-                <div class="time-unit">
-                    <div class="time-number" id="hours-count">00</div>
-                    <div class="time-label">Hours</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-number" id="minutes-count">00</div>
-                    <div class="time-label">Minutes</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-number" id="seconds-count">00</div>
-                    <div class="time-label">Seconds</div>
-                </div>
-            </div>
-            
-            <!-- Calendar Integration -->
-            <div class="calendar-integration">
-                <h3 class="calendar-title">Add to Calendar</h3>
-                <div class="calendar-buttons">
-                    <button class="calendar-btn ios-btn" onclick="addToCalendar('ios')">
-                        <i class="fab fa-apple"></i>
-                        <span>Apple Calendar</span>
-                    </button>
-                    <button class="calendar-btn android-btn" onclick="addToCalendar('android')">
-                        <i class="fab fa-google"></i>
-                        <span>Google Calendar</span>
-                    </button>
-                    <button class="calendar-btn outlook-btn" onclick="addToCalendar('outlook')">
-                        <i class="fab fa-microsoft"></i>
-                        <span>Outlook</span>
-                    </button>
-                </div>
-            </div>
-            <div class="countdown-actions">
-              <a href="https://bit.ly/PFEABio" class="nominee-form-btn">
-                <i class="fas fa-star" style="margin-right: 10px; color: #e6b325"></i> 
-                Nominee Form</a>
-              <a href="categories.html" class="view-categories-btn">
-                <i class="fas fa-star" style="margin-right: 10px; color: #e6b"></i> 
-                View Categories</a>
-            </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="awards-categories-section" id="categories">
+      <div class="awards-container">
+        <div class="awards-section-header">
+          <h2 class="awards-section-title">Award Categories</h2>
+          <p class="awards-about-text">
+            Explore the 14 categories celebrating excellence across all aspects
+            of people-first enterprise
+          </p>
         </div>
-        
+        <div class="awards-categories-grid">
+          <!-- Agriculture and Value Chain -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-tractor"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Agriculture and Value Chain</h3>
+              <p class="awards-category-description">
+                Recognizing innovative agricultural businesses and value chain
+                development initiatives that transform the farming sector.
+              </p>
+            </div>
+          </div>
+
+          <!-- Retail, Wholesale and Distributorship -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">
+                Retail, Wholesale and Distributorship
+              </h3>
+              <p class="awards-category-description">
+                Celebrating excellence in retail operations, wholesale
+                distribution, and supply chain management.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fashion and Styling -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Fashion and Styling</h3>
+              <p class="awards-category-description">
+                Honoring innovative fashion designers, stylists, and brands
+                setting trends in the industry.
+              </p>
+            </div>
+          </div>
+
+          <!-- Technology and Innovation -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Technology and Innovation</h3>
+              <p class="awards-category-description">
+                Recognizing groundbreaking tech startups and innovative
+                solutions driving digital transformation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tourism and Hospitality -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-hotel"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Tourism and Hospitality</h3>
+              <p class="awards-category-description">
+                Celebrating excellence in tourism services, hospitality
+                management, and travel experiences.
+              </p>
+            </div>
+          </div>
+
+          <!-- Entertainment and Lifestyle -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Entertainment and Lifestyle</h3>
+              <p class="awards-category-description">
+                Honoring creators and businesses in entertainment, media, and
+                lifestyle industries.
+              </p>
+            </div>
+          </div>
+
+          <!-- Transportation and Logistics -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">
+                Transportation and Logistics
+              </h3>
+              <p class="awards-category-description">
+                Recognizing innovation in transportation services, logistics,
+                and supply chain solutions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Artisan and Skilled Works -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-hammer"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Artisan and Skilled Works</h3>
+              <p class="awards-category-description">
+                Celebrating master artisans, craftspeople, and skilled
+                professionals preserving traditional crafts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event Management and Concept -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">
+                Event Management and Concept
+              </h3>
+              <p class="awards-category-description">
+                Honoring exceptional event planners, organizers, and creative
+                concept developers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Education and Advocacy -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Education and Advocacy</h3>
+              <p class="awards-category-description">
+                Recognizing educational institutions, trainers, and advocacy
+                organizations making impact.
+              </p>
+            </div>
+          </div>
+
+          <!-- Health and Wellness -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Health and Wellness</h3>
+              <p class="awards-category-description">
+                Celebrating healthcare providers, wellness centers, and
+                health-focused businesses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Media and Journalism -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">Media and Journalism</h3>
+              <p class="awards-category-description">
+                Honoring media houses, journalists, and content creators shaping
+                public discourse.
+              </p>
+            </div>
+          </div>
+
+          <!-- Manufacturing and Production -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">
+                Manufacturing and Production
+              </h3>
+              <p class="awards-category-description">
+                Recognizing manufacturing excellence, production innovation, and
+                industrial development.
+              </p>
+            </div>
+          </div>
+
+          <!-- Content Creation and Filmmaking -->
+          <div class="awards-category-card">
+            <div class="awards-category-icon">
+              <i class="fas fa-film"></i>
+            </div>
+            <div class="awards-category-content">
+              <h3 class="awards-category-title">
+                Content Creation and Filmmaking
+              </h3>
+              <p class="awards-category-description">
+                Celebrating content creators, filmmakers, and digital media
+                producers.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="awards-categories-cta">
+          <a href="categories.html" class="awards-main-cta"
+            >Enter Voting Area</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-countdown-section">
+      <div class="awards-countdown-container">
+        <div class="awards-countdown-header">
+          <div class="awards-countdown-icon">
+            <i class="fas fa-award fa-2x"></i>
+          </div>
+          <h2 class="awards-countdown-title">The Countdown Has Begun!!!</h2>
+          <p class="awards-countdown-subtitle">
+            Counting down to the grand ceremony
+          </p>
+        </div>
+
+        <div class="awards-countdown-content">
+          <!-- Circular Progress Countdown -->
+          <div class="awards-circle-progress">
+            <svg class="awards-progress-ring" viewBox="0 0 300 300">
+              <circle
+                class="awards-progress-background"
+                cx="150"
+                cy="150"
+                r="130"
+                stroke-width="8"
+              ></circle>
+              <circle
+                class="awards-progress-circle"
+                cx="150"
+                cy="150"
+                r="130"
+                stroke-width="8"
+                stroke-dasharray="816.8"
+                stroke-dashoffset="0"
+              ></circle>
+            </svg>
+            <div class="awards-countdown-display">
+              <div class="awards-days-count" id="awards-days-count">00</div>
+              <div class="awards-days-label">Days</div>
+            </div>
+          </div>
+
+          <!-- Time Units Grid -->
+          <div class="awards-time-grid">
+            <div class="awards-time-unit">
+              <div class="awards-time-number" id="awards-hours-count">00</div>
+              <div class="awards-time-label">Hours</div>
+            </div>
+            <div class="awards-time-unit">
+              <div class="awards-time-number" id="awards-minutes-count">00</div>
+              <div class="awards-time-label">Minutes</div>
+            </div>
+            <div class="awards-time-unit">
+              <div class="awards-time-number" id="awards-seconds-count">00</div>
+              <div class="awards-time-label">Seconds</div>
+            </div>
+          </div>
+
+          <!-- Calendar Integration -->
+          <div class="awards-calendar-integration">
+            <h3 class="awards-calendar-title">Add to Calendar</h3>
+            <div class="awards-calendar-buttons">
+              <button
+                class="awards-calendar-btn awards-ios-btn"
+                onclick="addToCalendar('ios')"
+              >
+                <i class="fab fa-apple"></i>
+                <span>Apple Calendar</span>
+              </button>
+              <button
+                class="awards-calendar-btn awards-android-btn"
+                onclick="addToCalendar('android')"
+              >
+                <i class="fab fa-google"></i>
+                <span>Google Calendar</span>
+              </button>
+              <button
+                class="awards-calendar-btn awards-outlook-btn"
+                onclick="addToCalendar('outlook')"
+              >
+                <i class="fab fa-microsoft"></i>
+                <span>Outlook</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="awards-countdown-actions">
+            <a href="https://bit.ly/PFEABio" class="awards-nominee-form-btn">
+              <i
+                class="fas fa-star"
+                style="margin-right: 10px; color: #e6b325"
+              ></i>
+              Nominee Form
+            </a>
+            <a href="new.html" class="awards-view-categories-btn">
+              <i
+                class="fas fa-star"
+                style="margin-right: 10px; color: #e6b325"
+              ></i>
+              View Categories
+            </a>
+          </div>
+        </div>
+
         <!-- Floating Particles Background -->
-        <div class="particles-container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+        <div class="awards-particles-container">
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
+          <div class="awards-particle"></div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<svg width="0" height="0">
-    <defs>
-        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e6b325" />
-            <stop offset="50%" stop-color="#ffd700" />
-            <stop offset="100%" stop-color="#e6b325" />
-        </linearGradient>
-    </defs>
-</svg>
-    
-    <section class="uduaflow-section">
-    <div class="uduaflow-container">
-        <!-- Main Ticker Track -->
-        <div class="uduaflow-track">
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            
-            <!-- Duplicated for seamless loop -->
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🚀 UDUA Premium E-commerce Platform</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">⭐ Coming Soon to Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">💫 Think Udua, Think Cross River</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🎯 Revolutionizing E-commerce</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
-            <div class="uduaflow-card">
-                <span class="uduaflow-text">🌟 Premium Shopping Experience</span>
-                <div class="uduaflow-sparkle"></div>
-            </div>
+    <!-- Sponsors Ticker Section -->
+    <section class="awards-sponsors-section">
+      <div class="awards-container">
+        <div class="awards-section-header">
+          <h2 class="awards-section-title">Our Valued Sponsors</h2>
+          <p class="awards-about-text">
+            Proudly supported by industry leaders and innovation champions
+          </p>
         </div>
 
-        
-        
-        <!-- Gradient Overlays -->
-        <div class="uduaflow-veil uduaflow-veil-left"></div>
-        <div class="uduaflow-veil uduaflow-veil-right"></div>
-        
-        <!-- Animated Background Elements -->
-        <div class="uduaflow-aurora">
-            <div class="uduaflow-wave wave-1"></div>
-            <div class="uduaflow-wave wave-2"></div>
-            <div class="uduaflow-wave wave-3"></div>
-        </div>
-    </div>
-</section>
+        <!-- Main Sponsors Ticker -->
+        <div class="awards-sponsors-ticker">
+          <div class="awards-ticker-track">
+            <!-- Sponsor 1 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/crs.jpg" alt="TechCorp Solutions" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Destination Cross-River</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
 
-    <section class="sponsors-section">
-    <div class="container">
-        <div class="sponsors-header">
-            <div class="awards-icon">
-                <i class="fas fa-award fa-2x"></i>
+            <!-- Sponsor 2 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/meda.png" alt="Global Finance Group" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">MEDA CRS</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
             </div>
-            <h2 class="sponsors-title">Our Valued Sponsors</h2>
-            <p class="sponsors-subtitle">Proudly supported by industry leaders</p>
-        </div>
-        
-        <div class="ticker-container">
-            <div class="ticker-gradient-left"></div>
-            <div class="ticker-gradient-right"></div>
-            
-            <!-- First Row - Scrolls Left to Right -->
-            <div class="ticker-track" id="ticker-track-1">
-                <!-- Sponsors will be dynamically added here -->
-            </div>
-            
-            <!-- Second Row - Scrolls Right to Left -->
-            <div class="ticker-track ticker-track-reverse" id="ticker-track-2">
-                <!-- Sponsors will be dynamically added here -->
-            </div>
-        </div>
-    </div>
-</section>
 
-    <footer>
-      <p>
-        &copy; 2025 Cross River People first Enterprise Awards. All rights
-        reserved.
-      </p>
-      <p>Hosted By Microfinance &amp; Enterprise Development Agency (MEDA)</p>
+            <!-- Sponsor 3 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/uba.jpg" alt="Innovate Ventures" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">UBA Group</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 4 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/boa.jpg" alt="EcoFuture Ltd" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Bank Of industry</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 5 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/sterling.jpg" alt="Creative Minds Agency" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Sterling Bank</h4>
+                <span class="awards-sponsor-tier">Finance Partner</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 6 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/232.jpg" alt="Digital Wave Tech" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">UDUA Premium</h4>
+                <span class="awards-sponsor-tier">E-commerce Partner</span>
+              </div>
+            </div>
+
+            <!-- Duplicate for seamless loop -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/crs.jpg" alt="TechCorp Solutions" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Destination Cross-River</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 2 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/meda.png" alt="Global Finance Group" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">MEDA CRS</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 3 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/uba.jpg" alt="Innovate Ventures" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">UBA Group</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 4 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/boa.jpg" alt="EcoFuture Ltd" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Bank Of industry</h4>
+                <span class="awards-sponsor-tier">Sponsor</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 5 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/sterling.jpg" alt="Creative Minds Agency" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">Sterling Bank</h4>
+                <span class="awards-sponsor-tier">Finance Partner</span>
+              </div>
+            </div>
+
+            <!-- Sponsor 6 -->
+            <div class="awards-sponsor-card">
+              <div class="awards-sponsor-logo">
+                <img src="img/232.jpg" alt="Digital Wave Tech" />
+              </div>
+              <div class="awards-sponsor-info">
+                <h4 class="awards-sponsor-name">UDUA Premium</h4>
+                <span class="awards-sponsor-tier">E-commerce Partner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA for Sponsorship -->
+        <div class="awards-sponsor-cta">
+          <h3>Become a Sponsor</h3>
+          <p>
+            Join our prestigious list of sponsors and support the next
+            generation of enterprise leaders
+          </p>
+          <a href="#" class="awards-sponsor-btn">
+            <i class="fas fa-handshake"></i>
+            Partner With Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="awards-gallery-section" id="gallery">
+      <div class="awards-container">
+        <div class="awards-section-header">
+          <h2 class="awards-section-title">2024 Awards Ceremony</h2>
+          <p class="awards-about-text">
+            Relive the memorable moments from last year's celebration of
+            excellence
+          </p>
+        </div>
+        <div class="awards-gallery-grid">
+          <div class="awards-gallery-item">
+            <img src="img/awards.jpg" alt="Awards Ceremony" />
+            <div class="awards-gallery-overlay">
+              <div class="awards-gallery-caption">Grand Opening</div>
+            </div>
+          </div>
+          <div class="awards-gallery-item">
+            <img src="img/awards1.jpg" alt="Winner Celebration" />
+            <div class="awards-gallery-overlay">
+              <div class="awards-gallery-caption">Winner Celebration</div>
+            </div>
+          </div>
+          <div class="awards-gallery-item">
+            <img src="img/awards2.jpg" alt="Networking Event" />
+            <div class="awards-gallery-overlay">
+              <div class="awards-gallery-caption">Networking Event</div>
+            </div>
+          </div>
+          <div class="awards-gallery-item">
+            <img src="img/awards3.jpg" alt="Keynote Speech" />
+            <div class="awards-gallery-overlay">
+              <div class="awards-gallery-caption">Keynote Speech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="awards-footer-main" id="footer">
+      <div class="awards-container">
+        <div class="awards-footer-content">
+          <div class="awards-footer-column">
+            <h3>People First Awards</h3>
+            <p>
+              Celebrating organizations that put people at the heart of their
+              business. Recognizing excellence in workplace culture, community
+              impact, and sustainable practices since 2018.
+            </p>
+            <div class="awards-social-links">
+              <a href="#" class="awards-social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="awards-social-icon"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="awards-social-icon"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="awards-social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+          <div class="awards-footer-column">
+            <h3>Quick Links</h3>
+            <ul class="awards-footer-links">
+              <li class="awards-footer-link"><a href="#">Home</a></li>
+              <li class="awards-footer-link"><a href="#">Categories</a></li>
+              <li class="awards-footer-link"><a href="#">Voting Process</a></li>
+              <li class="awards-footer-link"><a href="#">Past Winners</a></li>
+            </ul>
+          </div>
+          <div class="awards-footer-column">
+            <h3>Information</h3>
+            <ul class="awards-footer-links">
+              <li class="awards-footer-link"><a href="#">About Us</a></li>
+              <li class="awards-footer-link"><a href="#">Partnerships</a></li>
+              <li class="awards-footer-link"><a href="#">FAQs</a></li>
+              <li class="awards-footer-link"><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="awards-footer-column">
+            <h3>Contact Us</h3>
+            <ul class="awards-footer-links">
+              <li class="awards-footer-link">
+                <i class="fas fa-map-marker-alt"></i> Prof Eyo Ita House, Marian
+                Road Calabar
+              </li>
+              <li class="awards-footer-link">
+                <i class="fas fa-phone"></i> +234 803 829 8980
+              </li>
+              <li class="awards-footer-link">
+                <i class="fas fa-envelope"></i>
+                peoplefirstenterpriseawards@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="awards-footer-bottom">
+          <p>
+            &copy; 2025 People First Enterprise Awards. All rights reserved.
+          </p>
+          <p>
+            Hosted by the Microfinance And Enterprise Development Agency
+            (M.E.D.A)
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-      // Background image slideshow
+      // Enhanced Carousel Functionality
       document.addEventListener("DOMContentLoaded", function () {
-        const slides = document.querySelectorAll(".slide");
-        let currentSlide = 0;
+        const awardsBgSlides = document.querySelectorAll(
+          ".awards-carousel-slide-bg"
+        );
+        const awardsTextSlides = document.querySelectorAll(
+          ".awards-carousel-slide"
+        );
+        const awardsDots = document.querySelectorAll(".awards-carousel-dot");
+        const awardsPrevBtn = document.querySelector(".awards-carousel-prev");
+        const awardsNextBtn = document.querySelector(".awards-carousel-next");
 
-        function nextSlide() {
-          slides[currentSlide].classList.remove("active");
-          currentSlide = (currentSlide + 1) % slides.length;
-          slides[currentSlide].classList.add("active");
+        let awardsCurrentSlide = 0;
+        let awardsAutoSlideInterval;
+
+        // Function to show specific slide
+        function awardsShowSlide(n) {
+          // Remove active class from all slides and dots
+          awardsBgSlides.forEach((slide) => slide.classList.remove("active"));
+          awardsTextSlides.forEach((slide) => slide.classList.remove("active"));
+          awardsDots.forEach((dot) => dot.classList.remove("active"));
+
+          // Update current slide index
+          awardsCurrentSlide =
+            (n + awardsBgSlides.length) % awardsBgSlides.length;
+
+          // Add active class to current slide and dot
+          awardsBgSlides[awardsCurrentSlide].classList.add("active");
+          awardsTextSlides[awardsCurrentSlide].classList.add("active");
+          awardsDots[awardsCurrentSlide].classList.add("active");
         }
 
-        // Change slide every 5 seconds
-        setInterval(nextSlide, 5000);
+        // Next slide function
+        function awardsNextSlide() {
+          awardsShowSlide(awardsCurrentSlide + 1);
+        }
+
+        // Previous slide function
+        function awardsPrevSlide() {
+          awardsShowSlide(awardsCurrentSlide - 1);
+        }
+
+        // Auto slide functionality
+        function awardsStartAutoSlide() {
+          awardsAutoSlideInterval = setInterval(awardsNextSlide, 5000);
+        }
+
+        function awardsStopAutoSlide() {
+          clearInterval(awardsAutoSlideInterval);
+        }
+
+        // Event listeners for navigation
+        awardsNextBtn.addEventListener("click", function () {
+          awardsNextSlide();
+          awardsStopAutoSlide();
+          awardsStartAutoSlide();
+        });
+
+        awardsPrevBtn.addEventListener("click", function () {
+          awardsPrevSlide();
+          awardsStopAutoSlide();
+          awardsStartAutoSlide();
+        });
+
+        // Event listeners for dots
+        awardsDots.forEach((dot, index) => {
+          dot.addEventListener("click", function () {
+            awardsShowSlide(index);
+            awardsStopAutoSlide();
+            awardsStartAutoSlide();
+          });
+        });
+
+        // Pause auto-slide on hover
+        const awardsCarousel = document.querySelector(".awards-hero-section");
+        awardsCarousel.addEventListener("mouseenter", awardsStopAutoSlide);
+        awardsCarousel.addEventListener("mouseleave", awardsStartAutoSlide);
+
+        // Touch swipe functionality for mobile
+        let awardsTouchStartX = 0;
+        let awardsTouchEndX = 0;
+
+        awardsCarousel.addEventListener("touchstart", function (e) {
+          awardsTouchStartX = e.changedTouches[0].screenX;
+        });
+
+        awardsCarousel.addEventListener("touchend", function (e) {
+          awardsTouchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        });
+
+        function handleSwipe() {
+          const awardsSwipeThreshold = 50;
+
+          if (awardsTouchEndX < awardsTouchStartX - awardsSwipeThreshold) {
+            // Swipe left - next slide
+            awardsNextSlide();
+          } else if (
+            awardsTouchEndX >
+            awardsTouchStartX + awardsSwipeThreshold
+          ) {
+            // Swipe right - previous slide
+            awardsPrevSlide();
+          }
+        }
+
+        // Initialize carousel
+        awardsStartAutoSlide();
+
+        // Responsive text adjustment
+        function awardsAdjustTextForMobile() {
+          const awardsTitles = document.querySelectorAll(
+            ".awards-carousel-title"
+          );
+          const awardsIsMobile = window.innerWidth <= 768;
+
+          awardsTitles.forEach((title) => {
+            if (awardsIsMobile && title.textContent.length > 40) {
+              title.style.fontSize = "1.6rem";
+            }
+          });
+        }
+
+        // Call on load and resize
+        awardsAdjustTextForMobile();
+        window.addEventListener("resize", awardsAdjustTextForMobile);
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector(".awards-mobile-toggle");
+        const navLinks = document.querySelector(".awards-nav-links");
+
+        mobileToggle.addEventListener("click", function () {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+
+        // Adjust menu for window resize
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 768) {
+            navLinks.style.display = "flex";
+          } else {
+            navLinks.style.display = "none";
+          }
+        });
       });
     </script>
-    <script src="js/ticker.js"></script>
-
     <script>
-// Countdown Functionality
-const awardDate = new Date('November 30, 2025 18:00:00').getTime();
+      // Countdown Functionality
+      const awardsCeremonyDate = new Date(
+        "November 30, 2025 18:00:00"
+      ).getTime();
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = awardDate - now;
-    
-    if (distance < 0) {
-        document.getElementById('days-count').textContent = '00';
-        document.getElementById('hours-count').textContent = '00';
-        document.getElementById('minutes-count').textContent = '00';
-        document.getElementById('seconds-count').textContent = '00';
-        return;
+      function awardsUpdateCountdown() {
+        const awardsCurrentTime = new Date().getTime();
+        const awardsTimeRemaining = awardsCeremonyDate - awardsCurrentTime;
+
+        if (awardsTimeRemaining < 0) {
+          document.getElementById("awards-days-count").textContent = "00";
+          document.getElementById("awards-hours-count").textContent = "00";
+          document.getElementById("awards-minutes-count").textContent = "00";
+          document.getElementById("awards-seconds-count").textContent = "00";
+          return;
+        }
+
+        const awardsDays = Math.floor(
+          awardsTimeRemaining / (1000 * 60 * 60 * 24)
+        );
+        const awardsHours = Math.floor(
+          (awardsTimeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const awardsMinutes = Math.floor(
+          (awardsTimeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const awardsSeconds = Math.floor(
+          (awardsTimeRemaining % (1000 * 60)) / 1000
+        );
+
+        // Update display
+        document.getElementById("awards-days-count").textContent = awardsDays
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("awards-hours-count").textContent = awardsHours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("awards-minutes-count").textContent =
+          awardsMinutes.toString().padStart(2, "0");
+        document.getElementById("awards-seconds-count").textContent =
+          awardsSeconds.toString().padStart(2, "0");
+
+        // Update circular progress with dynamic radius calculation
+        const awardsProgressCircle = document.querySelector(
+          ".awards-progress-circle"
+        );
+        const awardsCircleRadius = awardsProgressCircle.r.baseVal.value;
+        const awardsCircumference = 2 * Math.PI * awardsCircleRadius;
+
+        const awardsTotalDays = Math.ceil(
+          (awardsCeremonyDate - new Date("January 1, 2025").getTime()) /
+            (1000 * 60 * 60 * 24)
+        );
+        const awardsProgress =
+          ((awardsTotalDays - awardsDays) / awardsTotalDays) *
+          awardsCircumference;
+
+        awardsProgressCircle.style.strokeDasharray = awardsCircumference;
+        awardsProgressCircle.style.strokeDashoffset =
+          awardsCircumference - awardsProgress;
+      }
+
+      // Calendar Integration
+      function awardsAddToCalendar(platform) {
+        const awardsEventDetails = {
+          title: "People First Enterprise Awards 2025",
+          description:
+            "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
+          location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
+          start: "20251130T160000",
+          end: "20251130T220000",
+          timezone: "Africa/Lagos",
+        };
+
+        switch (platform) {
+          case "ios":
+            awardsAddToAppleCalendar(awardsEventDetails);
+            break;
+          case "android":
+            awardsAddToGoogleCalendar(awardsEventDetails);
+            break;
+          case "outlook":
+            awardsAddToOutlookCalendar(awardsEventDetails);
+            break;
+        }
+      }
+
+      // Apple Calendar - Download .ics file
+      function awardsAddToAppleCalendar(details) {
+        const awardsIcsContent = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "BEGIN:VEVENT",
+          `SUMMARY:${details.title}`,
+          `DESCRIPTION:${details.description}`,
+          `LOCATION:${details.location}`,
+          `DTSTART;TZID=${details.timezone}:${details.start}`,
+          `DTEND;TZID=${details.timezone}:${details.end}`,
+          "UID:" + Math.random().toString(36).substring(2),
+          "DTSTAMP:" +
+            new Date().toISOString().replace(/[-:]/g, "").split(".")[0] +
+            "Z",
+          "END:VEVENT",
+          "END:VCALENDAR",
+        ].join("\n");
+
+        const awardsBlob = new Blob([awardsIcsContent], {
+          type: "text/calendar;charset=utf-8",
+        });
+        const awardsLink = document.createElement("a");
+        awardsLink.href = URL.createObjectURL(awardsBlob);
+        awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
+        document.body.appendChild(awardsLink);
+        awardsLink.click();
+        document.body.removeChild(awardsLink);
+
+        // Show confirmation
+        awardsShowCalendarConfirmation("Apple Calendar");
+      }
+
+      // Google Calendar - Direct link
+      function awardsAddToGoogleCalendar(details) {
+        const awardsGoogleParams = new URLSearchParams({
+          action: "TEMPLATE",
+          text: details.title,
+          details: details.description,
+          location: details.location,
+          dates: `${details.start}/${details.end}`,
+          ctz: details.timezone,
+        });
+
+        window.open(
+          `https://calendar.google.com/calendar/render?${awardsGoogleParams.toString()}`,
+          "_blank"
+        );
+        awardsShowCalendarConfirmation("Google Calendar");
+      }
+
+      // Outlook Calendar - Direct link
+      function awardsAddToOutlookCalendar(details) {
+        const awardsOutlookParams = new URLSearchParams({
+          path: "/calendar/action/compose",
+          rru: "addevent",
+          subject: details.title,
+          body: details.description,
+          location: details.location,
+          startdt: "2025-11-30T18:00:00",
+          enddt: "2025-11-30T22:00:00",
+        });
+
+        window.open(
+          `https://outlook.live.com/calendar/0/deeplink/compose?${awardsOutlookParams.toString()}`,
+          "_blank"
+        );
+        awardsShowCalendarConfirmation("Outlook Calendar");
+      }
+
+      // Show calendar confirmation message
+      function awardsShowCalendarConfirmation(calendarType) {
+        // Create notification element
+        const awardsNotification = document.createElement("div");
+        awardsNotification.className = "awards-calendar-notification";
+        awardsNotification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Event added to ${calendarType} successfully!</span>
+    `;
+
+        // Add styles for notification
+        awardsNotification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 10000;
+        animation: awardsSlideIn 0.3s ease-out;
+    `;
+
+        document.body.appendChild(awardsNotification);
+
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+          awardsNotification.style.animation = "awardsSlideOut 0.3s ease-in";
+          setTimeout(() => {
+            if (awardsNotification.parentNode) {
+              awardsNotification.parentNode.removeChild(awardsNotification);
+            }
+          }, 300);
+        }, 3000);
+      }
+
+      // Add CSS for notification animations
+      const awardsNotificationStyles = document.createElement("style");
+      awardsNotificationStyles.textContent = `
+    @keyframes awardsSlideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
     
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    // Update display
-    document.getElementById('days-count').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours-count').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes-count').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds-count').textContent = seconds.toString().padStart(2, '0');
-    
-    // Update circular progress with dynamic radius calculation
-    const circle = document.querySelector('.progress-ring-circle');
-    const circleRadius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * circleRadius;
-    
-    const totalDays = Math.ceil((awardDate - new Date('January 1, 2025').getTime()) / (1000 * 60 * 60 * 24));
-    const progress = ((totalDays - days) / totalDays) * circumference;
-    
-    circle.style.strokeDasharray = circumference;
-    circle.style.strokeDashoffset = circumference - progress;
-}
-
-// Calendar Integration
-function addToCalendar(platform) {
-    const eventDetails = {
-        title: 'People First Enterprise Awards 2025',
-        description: 'Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.',
-        location: 'Hoggis Royal Conference Hall, Calabar, Nigeria',
-        start: '20251130T160000',
-        end: '20251130T220000',
-        timezone: 'Africa/Lagos'
-    };
-    
-    switch(platform) {
-        case 'ios':
-            addToAppleCalendar(eventDetails);
-            break;
-        case 'android':
-            addToGoogleCalendar(eventDetails);
-            break;
-        case 'outlook':
-            addToOutlookCalendar(eventDetails);
-            break;
+    @keyframes awardsSlideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
     }
-}
+`;
+      document.head.appendChild(awardsNotificationStyles);
 
-// Apple Calendar - Download .ics file
-function addToAppleCalendar(details) {
-    const icsContent = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'BEGIN:VEVENT',
-        `SUMMARY:${details.title}`,
-        `DESCRIPTION:${details.description}`,
-        `LOCATION:${details.location}`,
-        `DTSTART;TZID=${details.timezone}:${details.start}`,
-        `DTEND;TZID=${details.timezone}:${details.end}`,
-        'UID:' + Math.random().toString(36).substring(2),
-        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
-        'END:VEVENT',
-        'END:VCALENDAR'
-    ].join('\n');
-    
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'People first Enterprise-Awards-2025.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+      // Initialize countdown
+      awardsUpdateCountdown();
+      setInterval(awardsUpdateCountdown, 1000);
 
-// Google Calendar - Direct link
-function addToGoogleCalendar(details) {
-    const params = new URLSearchParams({
-        action: 'TEMPLATE',
-        text: details.title,
-        details: details.description,
-        location: details.location,
-        dates: `${details.start}/${details.end}`,
-        ctz: details.timezone
-    });
-    
-    window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, '_blank');
-}
+      // Add interactive effects to time units
+      document.addEventListener("DOMContentLoaded", function () {
+        const awardsTimeUnits = document.querySelectorAll(".awards-time-unit");
 
-// Outlook Calendar - Direct link
-function addToOutlookCalendar(details) {
-    const params = new URLSearchParams({
-        path: '/calendar/action/compose',
-        rru: 'addevent',
-        subject: details.title,
-        body: details.description,
-        location: details.location,
-        startdt: '2025-11-30T18:00:00',
-        enddt: '2025-11-30T22:00:00'
-    });
-    
-    window.open(`https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`, '_blank');
-}
-// Initialize countdown
-updateCountdown();
-setInterval(updateCountdown, 1000);
+        awardsTimeUnits.forEach((unit, index) => {
+          // Add staggered animation delay
+          unit.style.animationDelay = `${index * 0.1}s`;
 
-// Add some interactive effects
-document.addEventListener('DOMContentLoaded', function() {
-    const timeUnits = document.querySelectorAll('.time-unit');
-    
-    timeUnits.forEach((unit, index) => {
-        unit.style.animationDelay = `${index * 0.1}s`;
-    });
-});
-</script>  
+          // Add click effect
+          unit.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
 
+        // Add particle animation enhancements
+        const awardsParticles = document.querySelectorAll(".awards-particle");
+        awardsParticles.forEach((particle, index) => {
+          particle.style.animationDuration = `${15 + index * 2}s`;
+          particle.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Add progress circle animation on load
+        const awardsProgressCircle = document.querySelector(
+          ".awards-progress-circle"
+        );
+        if (awardsProgressCircle) {
+          setTimeout(() => {
+            awardsProgressCircle.style.transition =
+              "stroke-dashoffset 1.5s ease-in-out";
+          }, 500);
+        }
+      });
+
+      // Enhanced error handling for countdown
+      window.addEventListener("error", function (e) {
+        console.error("Awards countdown error:", e.error);
+
+        // Fallback: Ensure countdown elements have at least basic values
+        const awardsCountdownElements = {
+          "awards-days-count": "00",
+          "awards-hours-count": "00",
+          "awards-minutes-count": "00",
+          "awards-seconds-count": "00",
+        };
+
+        for (const [id, value] of Object.entries(awardsCountdownElements)) {
+          const element = document.getElementById(id);
+          if (element && !element.textContent) {
+            element.textContent = value;
+          }
+        }
+      });
+    </script>
+    <script>
+      // Enhanced ticker functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const awardsTickerTrack = document.querySelector(
+          ".awards-ticker-track"
+        );
+        const awardsSponsorCards = document.querySelectorAll(
+          ".awards-sponsor-card"
+        );
+
+        // Add hover effects
+        awardsSponsorCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-10px) scale(1.05)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+
+        // Add click functionality
+        awardsSponsorCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const sponsorName = this.querySelector(
+              ".awards-sponsor-name"
+            ).textContent;
+            alert(`Learn more about ${sponsorName} - our valued sponsor!`);
+          });
+        });
+
+        // Ensure smooth animation on all devices
+        function awardsCheckPerformance() {
+          const awardsReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          );
+
+          if (awardsReducedMotion.matches) {
+            awardsTickerTrack.style.animation = "none";
+          }
+        }
+
+        awardsCheckPerformance();
+      });
+    </script>
   </body>
 </html>
