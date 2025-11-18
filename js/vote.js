@@ -131,6 +131,90 @@ const nomineesData = {
       type: "startup",
     },
   ],
+  "media-startup": [
+    {
+      id: 1,
+      name: "Southsouth Digest",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 2,
+      name: "Events in Cross River",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 3,
+      name: "E-Cliques Media",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 4,
+      name: "The Leader Ng",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+    {
+      id: 5,
+      name: "Newspec",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
+    },
+  ],
+  "media-existing": [
+    {
+      id: 1,
+      name: "Calabargist",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 2,
+      name: "Hit FM",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 3,
+      name: "Chronicle",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 4,
+      name: "Comrade Archibong Bassey",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
+      name: "Comrade Michael Abang",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+  ],
   "tourism-existing": [
     {
       id: 1,
