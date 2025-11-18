@@ -470,7 +470,7 @@ const nomineesData = {
   "event-existing": [
     {
       id: 1,
-      name: "Ruvant",
+      name: "Ruvent",
       description: "",
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -507,6 +507,14 @@ const nomineesData = {
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "existing",
+    },
+    {
+      id: 6,
+      name: "Jayhnes Touch Eventz",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
   ],
   "manufacturing-startup": [
