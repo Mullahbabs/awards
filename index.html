@@ -2919,294 +2919,289 @@
       });
     </script>
     <script>
-            // Countdown Functionality
-            const awardsCeremonyDate = new Date(
-              "November 30, 2025 18:00:00"
-            ).getTime();
+      // Countdown Functionality
+      const awardsCeremonyDate = new Date(
+        "November 30, 2025 18:00:00"
+      ).getTime();
 
-            function awardsUpdateCountdown() {
-              const awardsCurrentTime = new Date().getTime();
-              const awardsTimeRemaining = awardsCeremonyDate - awardsCurrentTime;
+      function awardsUpdateCountdown() {
+        const awardsCurrentTime = new Date().getTime();
+        const awardsTimeRemaining = awardsCeremonyDate - awardsCurrentTime;
 
-              if (awardsTimeRemaining < 0) {
-                document.getElementById("awards-days-count").textContent = "00";
-                document.getElementById("awards-hours-count").textContent = "00";
-                document.getElementById("awards-minutes-count").textContent = "00";
-                document.getElementById("awards-seconds-count").textContent = "00";
-                return;
-              }
+        if (awardsTimeRemaining < 0) {
+          document.getElementById("awards-days-count").textContent = "00";
+          document.getElementById("awards-hours-count").textContent = "00";
+          document.getElementById("awards-minutes-count").textContent = "00";
+          document.getElementById("awards-seconds-count").textContent = "00";
+          return;
+        }
 
-              const awardsDays = Math.floor(
-                awardsTimeRemaining / (1000 * 60 * 60 * 24)
-              );
-              const awardsHours = Math.floor(
-                (awardsTimeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-              );
-              const awardsMinutes = Math.floor(
-                (awardsTimeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-              );
-              const awardsSeconds = Math.floor(
-                (awardsTimeRemaining % (1000 * 60)) / 1000
-              );
+        const awardsDays = Math.floor(
+          awardsTimeRemaining / (1000 * 60 * 60 * 24)
+        );
+        const awardsHours = Math.floor(
+          (awardsTimeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const awardsMinutes = Math.floor(
+          (awardsTimeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const awardsSeconds = Math.floor(
+          (awardsTimeRemaining % (1000 * 60)) / 1000
+        );
 
-              // Update display
-              document.getElementById("awards-days-count").textContent = awardsDays
-                .toString()
-                .padStart(2, "0");
-              document.getElementById("awards-hours-count").textContent = awardsHours
-                .toString()
-                .padStart(2, "0");
-              document.getElementById("awards-minutes-count").textContent =
-                awardsMinutes.toString().padStart(2, "0");
-              document.getElementById("awards-seconds-count").textContent =
-                awardsSeconds.toString().padStart(2, "0");
+        // Update display
+        document.getElementById("awards-days-count").textContent = awardsDays
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("awards-hours-count").textContent = awardsHours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("awards-minutes-count").textContent =
+          awardsMinutes.toString().padStart(2, "0");
+        document.getElementById("awards-seconds-count").textContent =
+          awardsSeconds.toString().padStart(2, "0");
 
-              // Update circular progress with dynamic radius calculation
-              const awardsProgressCircle = document.querySelector(
-                ".awards-progress-circle"
-              );
-              const awardsCircleRadius = awardsProgressCircle.r.baseVal.value;
-              const awardsCircumference = 2 * Math.PI * awardsCircleRadius;
+        // Update circular progress with dynamic radius calculation
+        const awardsProgressCircle = document.querySelector(
+          ".awards-progress-circle"
+        );
+        const awardsCircleRadius = awardsProgressCircle.r.baseVal.value;
+        const awardsCircumference = 2 * Math.PI * awardsCircleRadius;
 
-              const awardsTotalDays = Math.ceil(
-                (awardsCeremonyDate - new Date("January 1, 2025").getTime()) /
-                  (1000 * 60 * 60 * 24)
-              );
-              const awardsProgress =
-                ((awardsTotalDays - awardsDays) / awardsTotalDays) *
-                awardsCircumference;
+        const awardsTotalDays = Math.ceil(
+          (awardsCeremonyDate - new Date("January 1, 2025").getTime()) /
+            (1000 * 60 * 60 * 24)
+        );
+        const awardsProgress =
+          ((awardsTotalDays - awardsDays) / awardsTotalDays) *
+          awardsCircumference;
 
-              awardsProgressCircle.style.strokeDasharray = awardsCircumference;
-              awardsProgressCircle.style.strokeDashoffset =
-                awardsCircumference - awardsProgress;
+        awardsProgressCircle.style.strokeDasharray = awardsCircumference;
+        awardsProgressCircle.style.strokeDashoffset =
+          awardsCircumference - awardsProgress;
+      }
+
+      // Calendar Integration
+      function awardsAddToCalendar(platform) {
+        const awardsEventDetails = {
+          title: "People First Enterprise Awards 2025",
+          description:
+            "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
+          location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
+          start: "20251130T160000",
+          end: "20251130T220000",
+          timezone: "Africa/Lagos",
+        };
+
+        switch (platform) {
+          case "ios":
+            awardsAddToAppleCalendar(awardsEventDetails);
+            break;
+          case "android":
+            awardsAddToGoogleCalendar(awardsEventDetails);
+            break;
+          case "outlook":
+            awardsAddToOutlookCalendar(awardsEventDetails);
+            break;
+        }
+      }
+
+      // Apple Calendar - Download .ics file
+      function awardsAddToAppleCalendar(details) {
+        const awardsIcsContent = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "BEGIN:VEVENT",
+          `SUMMARY:${details.title}`,
+          `DESCRIPTION:${details.description}`,
+          `LOCATION:${details.location}`,
+          `DTSTART;TZID=${details.timezone}:${details.start}`,
+          `DTEND;TZID=${details.timezone}:${details.end}`,
+          "UID:" + Math.random().toString(36).substring(2),
+          "DTSTAMP:" +
+            new Date().toISOString().replace(/[-:]/g, "").split(".")[0] +
+            "Z",
+          "END:VEVENT",
+          "END:VCALENDAR",
+        ].join("\n");
+
+        const awardsBlob = new Blob([awardsIcsContent], {
+          type: "text/calendar;charset=utf-8",
+        });
+        const awardsLink = document.createElement("a");
+        awardsLink.href = URL.createObjectURL(awardsBlob);
+        awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
+        document.body.appendChild(awardsLink);
+        awardsLink.click();
+        document.body.removeChild(awardsLink);
+
+        // Show confirmation
+        awardsShowCalendarConfirmation("Apple Calendar");
+      }
+
+      // Google Calendar - Direct link
+      function awardsAddToGoogleCalendar(details) {
+        const awardsGoogleParams = new URLSearchParams({
+          action: "TEMPLATE",
+          text: details.title,
+          details: details.description,
+          location: details.location,
+          dates: `${details.start}/${details.end}`,
+          ctz: details.timezone,
+        });
+
+        window.open(
+          `https://calendar.google.com/calendar/render?${awardsGoogleParams.toString()}`,
+          "_blank"
+        );
+        awardsShowCalendarConfirmation("Google Calendar");
+      }
+
+      // Outlook Calendar - Direct link
+      function awardsAddToOutlookCalendar(details) {
+        const awardsOutlookParams = new URLSearchParams({
+          path: "/calendar/action/compose",
+          rru: "addevent",
+          subject: details.title,
+          body: details.description,
+          location: details.location,
+          startdt: "2025-11-30T18:00:00",
+          enddt: "2025-11-30T22:00:00",
+        });
+
+        window.open(
+          `https://outlook.live.com/calendar/0/deeplink/compose?${awardsOutlookParams.toString()}`,
+          "_blank"
+        );
+        awardsShowCalendarConfirmation("Outlook Calendar");
+      }
+
+      // Show calendar confirmation message
+      function awardsShowCalendarConfirmation(calendarType) {
+        // Create notification element
+        const awardsNotification = document.createElement("div");
+        awardsNotification.className = "awards-calendar-notification";
+        awardsNotification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Event added to ${calendarType} successfully!</span>
+    `;
+
+        // Add styles for notification
+        awardsNotification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 10000;
+        animation: awardsSlideIn 0.3s ease-out;
+    `;
+
+        document.body.appendChild(awardsNotification);
+
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+          awardsNotification.style.animation = "awardsSlideOut 0.3s ease-in";
+          setTimeout(() => {
+            if (awardsNotification.parentNode) {
+              awardsNotification.parentNode.removeChild(awardsNotification);
             }
+          }, 300);
+        }, 3000);
+      }
 
-            // Calendar Integration
-            function awardsAddToCalendar(platform) {
-              const awardsEventDetails = {
-                title: "People First Enterprise Awards 2025",
-                description:
-                  "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
-                location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
-                start: "20251130T160000",
-                end: "20251130T220000",
-                timezone: "Africa/Lagos",
-              };
+      // Add CSS for notification animations
+      const awardsNotificationStyles = document.createElement("style");
+      awardsNotificationStyles.textContent = `
+    @keyframes awardsSlideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes awardsSlideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+      document.head.appendChild(awardsNotificationStyles);
 
-              switch (platform) {
-                case "ios":
-                  awardsAddToAppleCalendar(awardsEventDetails);
-                  break;
-                case "android":
-                  awardsAddToGoogleCalendar(awardsEventDetails);
-                  break;
-                case "outlook":
-                  awardsAddToOutlookCalendar(awardsEventDetails);
-                  break;
-              }
-            }
+      // Initialize countdown
+      awardsUpdateCountdown();
+      setInterval(awardsUpdateCountdown, 1000);
 
-            function awardsAddToAppleCalendar(details) {
-          // For iOS devices, we need a different approach
-          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      // Add interactive effects to time units
+      document.addEventListener("DOMContentLoaded", function () {
+        const awardsTimeUnits = document.querySelectorAll(".awards-time-unit");
 
-          if (isIOS) {
-              // iOS-specific approach using data URL
-              const awardsIcsContent = [
-                  "BEGIN:VCALENDAR",
-                  "VERSION:2.0",
-                  "CALSCALE:GREGORIAN",
-                  "METHOD:PUBLISH",
-                  "BEGIN:VEVENT",
-                  `SUMMARY:${details.title}`,
-                  `DESCRIPTION:${details.description}`,
-                  `LOCATION:${details.location}`,
-                  `DTSTART:${details.start.replace(/-/g, '').replace(/:/g, '')}`,
-                  `DTEND:${details.end.replace(/-/g, '').replace(/:/g, '')}`,
-                  "UID:" + Math.random().toString(36).substring(2) + "@peoplefirstawards.com",
-                  "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
-                  "SEQUENCE:0",
-                  "STATUS:CONFIRMED",
-                  "TRANSP:OPAQUE",
-                  "END:VEVENT",
-                  "END:VCALENDAR"
-              ].join('\r\n');
+        awardsTimeUnits.forEach((unit, index) => {
+          // Add staggered animation delay
+          unit.style.animationDelay = `${index * 0.1}s`;
 
-              // Create data URL
-              const awardsDataURL = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(awardsIcsContent);
+          // Add click effect
+          unit.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
 
-              // Try to open in new tab/window
-              const awardsNewWindow = window.open(awardsDataURL, '_blank');
+        // Add particle animation enhancements
+        const awardsParticles = document.querySelectorAll(".awards-particle");
+        awardsParticles.forEach((particle, index) => {
+          particle.style.animationDuration = `${15 + index * 2}s`;
+          particle.style.animationDelay = `${index * 0.5}s`;
+        });
 
-              // Fallback: redirect current page
-              if (!awardsNewWindow) {
-                  window.location.href = awardsDataURL;
+        // Add progress circle animation on load
+        const awardsProgressCircle = document.querySelector(
+          ".awards-progress-circle"
+        );
+        if (awardsProgressCircle) {
+          setTimeout(() => {
+            awardsProgressCircle.style.transition =
+              "stroke-dashoffset 1.5s ease-in-out";
+          }, 500);
+        }
+      });
 
-                   // Show confirmation
-              awardsShowCalendarConfirmation("Apple Calendar");
-              }
+      // Enhanced error handling for countdown
+      window.addEventListener("error", function (e) {
+        console.error("Awards countdown error:", e.error);
 
-            // Google Calendar - Direct link
-            function awardsAddToGoogleCalendar(details) {
-              const params = new URLSearchParams({
-                action: "TEMPLATE",
-                text: details.title,
-                details: details.description,
-                location: details.location,
-                dates: `${details.start}/${details.end}`,
-                ctz: details.timezone,
-              });
+        // Fallback: Ensure countdown elements have at least basic values
+        const awardsCountdownElements = {
+          "awards-days-count": "00",
+          "awards-hours-count": "00",
+          "awards-minutes-count": "00",
+          "awards-seconds-count": "00",
+        };
 
-              window.open(
-                `https://calendar.google.com/calendar/render?${params.toString()}`,
-                "_blank"
-              );
-            }
-
-            // Outlook Calendar - Direct link
-            function awardsAddToOutlookCalendar(details) {
-              const params = new URLSearchParams({
-                path: "/calendar/action/compose",
-                rru: "addevent",
-                subject: details.title,
-                body: details.description,
-                location: details.location,
-                startdt: "2025-11-30T18:00:00",
-                enddt: "2025-11-30T22:00:00",
-              });
-
-              window.open(
-                `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`,
-                "_blank"
-              );
-            }
-
-            // Show calendar confirmation message
-            function awardsShowCalendarConfirmation(calendarType) {
-              // Create notification element
-              const awardsNotification = document.createElement("div");
-              awardsNotification.className = "awards-calendar-notification";
-              awardsNotification.innerHTML = `
-              <i class="fas fa-check-circle"></i>
-              <span>Event added to ${calendarType} successfully!</span>
-          `;
-
-              // Add styles for notification
-              awardsNotification.style.cssText = `
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              background: var(--primary-color);
-              color: white;
-              padding: 15px 20px;
-              border-radius: 6px;
-              box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              z-index: 10000;
-              animation: awardsSlideIn 0.3s ease-out;
-          `;
-
-              document.body.appendChild(awardsNotification);
-
-              // Remove notification after 3 seconds
-              setTimeout(() => {
-                awardsNotification.style.animation = "awardsSlideOut 0.3s ease-in";
-                setTimeout(() => {
-                  if (awardsNotification.parentNode) {
-                    awardsNotification.parentNode.removeChild(awardsNotification);
-                  }
-                }, 300);
-              }, 3000);
-            }
-
-            // Add CSS for notification animations
-            const awardsNotificationStyles = document.createElement("style");
-            awardsNotificationStyles.textContent = `
-          @keyframes awardsSlideIn {
-              from {
-                  transform: translateX(100%);
-                  opacity: 0;
-              }
-              to {
-                  transform: translateX(0);
-                  opacity: 1;
-              }
+        for (const [id, value] of Object.entries(awardsCountdownElements)) {
+          const element = document.getElementById(id);
+          if (element && !element.textContent) {
+            element.textContent = value;
           }
-
-          @keyframes awardsSlideOut {
-              from {
-                  transform: translateX(0);
-                  opacity: 1;
-              }
-              to {
-                  transform: translateX(100%);
-                  opacity: 0;
-              }
-          }
-      `;
-            document.head.appendChild(awardsNotificationStyles);
-
-            // Initialize countdown
-            awardsUpdateCountdown();
-            setInterval(awardsUpdateCountdown, 1000);
-
-            // Add interactive effects to time units
-            document.addEventListener("DOMContentLoaded", function () {
-              const awardsTimeUnits = document.querySelectorAll(".awards-time-unit");
-
-              awardsTimeUnits.forEach((unit, index) => {
-                // Add staggered animation delay
-                unit.style.animationDelay = `${index * 0.1}s`;
-
-                // Add click effect
-                unit.addEventListener("click", function () {
-                  this.style.transform = "scale(0.95)";
-                  setTimeout(() => {
-                    this.style.transform = "";
-                  }, 150);
-                });
-              });
-
-              // Add particle animation enhancements
-              const awardsParticles = document.querySelectorAll(".awards-particle");
-              awardsParticles.forEach((particle, index) => {
-                particle.style.animationDuration = `${15 + index * 2}s`;
-                particle.style.animationDelay = `${index * 0.5}s`;
-              });
-
-              // Add progress circle animation on load
-              const awardsProgressCircle = document.querySelector(
-                ".awards-progress-circle"
-              );
-              if (awardsProgressCircle) {
-                setTimeout(() => {
-                  awardsProgressCircle.style.transition =
-                    "stroke-dashoffset 1.5s ease-in-out";
-                }, 500);
-              }
-            });
-
-            // Enhanced error handling for countdown
-            window.addEventListener("error", function (e) {
-              console.error("Awards countdown error:", e.error);
-
-              // Fallback: Ensure countdown elements have at least basic values
-              const awardsCountdownElements = {
-                "awards-days-count": "00",
-                "awards-hours-count": "00",
-                "awards-minutes-count": "00",
-                "awards-seconds-count": "00",
-              };
-
-              for (const [id, value] of Object.entries(awardsCountdownElements)) {
-                const element = document.getElementById(id);
-                if (element && !element.textContent) {
-                  element.textContent = value;
-                }
-              }
-            });
+        }
+      });
     </script>
     <script>
       // Enhanced ticker functionality
