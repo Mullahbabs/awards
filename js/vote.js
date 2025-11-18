@@ -8,11 +8,11 @@ const nomineesData = {
   "agriculture-startup": [
     {
       id: 1,
-      name: "Hozzby Concept",
-      description: "Ikenna Onyinye Ezem",
+      name: "AA PETANA Services Ltd",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "startup",
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
     },
     {
       id: 2,
@@ -50,11 +50,11 @@ const nomineesData = {
   "agriculture-existing": [
     {
       id: 1,
-      name: "Obenkpan",
-      description: "",
+      name: "Hozzby Concept",
+      description: "Ikenna Onyinye Ezem",
       image:
-        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
+        "https://images.unsplash.com/photo-1625246332166-18e2f6a5b9c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "startup",
     },
     {
       id: 2,
