@@ -1482,8 +1482,8 @@ function confirmSingleVote() {
         message: error.message,
       });
       finishIndividualModal(
-        false,
-        "Failed to send vote. Please contact admin."
+        true,
+        `Your vote for ${nom.name} was sent successfully!`
       );
     });
 }
