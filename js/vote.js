@@ -1,5 +1,5 @@
 // Initialize EmailJS with your credentials
-emailjs.init("S-xQwmEV2I8oavOc1");
+emailjs.init("_PEwD_ZbRO1EoYbHU");
 console.log("Init done");
 
 const nomineesData = {
@@ -1462,7 +1462,7 @@ function confirmSingleVote() {
   showIndividualProgressModal();
 
   emailjs
-    .send("service_1vxim49", "template_y9u8ba5", templateParams)
+    .send("service_2lly29s", "template_5nro6ss", templateParams)
     .then((response) => {
       console.log("EmailJS Success:", response.status, response.text);
       userVotes[cat].submitted = true;
