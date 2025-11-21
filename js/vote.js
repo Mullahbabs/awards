@@ -92,7 +92,7 @@ const nomineesData = {
   "tourism-startup": [
     {
       id: 1,
-      name: "Destiny pasteries and food Ltd.",
+      name: "South Cafe.",
       description: "Destiny",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -410,7 +410,7 @@ const nomineesData = {
     },
     {
       id: 4,
-      name: "Brightflow Conglomerate",
+      name: "Benareb Services",
       description: "",
       image:
         "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -471,14 +471,6 @@ const nomineesData = {
     {
       id: 2,
       name: "Slaishows Ltd.",
-      description: "",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      type: "existing",
-    },
-    {
-      id: 3,
-      name: "Vicky Nanky",
       description: "",
       image:
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -746,6 +738,14 @@ const nomineesData = {
     },
     {
       id: 4,
+      name: "Vicky Nanky",
+      description: "",
+      image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      type: "existing",
+    },
+    {
+      id: 5,
       name: "Coslow Stores",
       description: "",
       image:
@@ -753,7 +753,7 @@ const nomineesData = {
       type: "existing",
     },
     {
-      id: 5,
+      id: 6,
       name: "Gracelee Global Resources",
       description: "",
       image:
