@@ -1,0 +1,39 @@
+[
+{
+  "label": "workspace",
+   "command": "npx",
+   "version": "2.0.0",
+   "tasks": [
+    {
+      "label": "Live Server (HTML)",
+      "type": "shell",
+      "command": "npx",
+      "args": ["live-server", "."],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Live Server (CSS)",
+      "type": "shell",
+      "command": "npx",
+      "args": ["live-server", "."],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Live Server (JS)",
+      "type": "shell",
+      "command": "npx",
+      "args": ["live-server", "."],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+]
