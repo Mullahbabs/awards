@@ -93,7 +93,7 @@ const nomineesData = {
     {
       id: 1,
       name: "South Cafe.",
-      description: "Destiny",
+      description: "",
       image:
         "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       type: "startup",
@@ -646,7 +646,7 @@ const nomineesData = {
     },
     {
       id: 3,
-      name: "Amber",
+      name: "Amba",
       description: "",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -1176,7 +1176,7 @@ const modalNomineeName = document.getElementById("modal-nominee-name");
 const modalCategoryName = document.getElementById("modal-category-name");
 const modalNomineeImage = document.getElementById("modal-nominee-image");
 const modalNomineeDescription = document.getElementById(
-  "modal-nominee-description"
+  "modal-nominee-description",
 );
 const cancelVoteBtn = document.getElementById("cancel-vote");
 const confirmVoteBtn = document.getElementById("confirm-vote");
@@ -1204,7 +1204,7 @@ function init() {
 // -------------------------------------------------
 function setupTabListeners() {
   tabButtons.forEach((btn) =>
-    btn.addEventListener("click", () => switchTab(btn.dataset.tab))
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab)),
   );
 }
 function switchTab(tabId) {
@@ -1223,7 +1223,7 @@ function switchTab(tabId) {
 // -------------------------------------------------
 function setupEventListeners() {
   categoryItems.forEach((item) =>
-    item.addEventListener("click", () => selectCategory(item.dataset.category))
+    item.addEventListener("click", () => selectCategory(item.dataset.category)),
   );
   prevBtn.addEventListener("click", goToPreviousCategory);
   nextBtn.addEventListener("click", goToNextCategory);
@@ -1272,14 +1272,14 @@ function loadCategory(cat) {
   nomineesContainer.innerHTML = "";
   const hasVote = !!userVotes[cat]?.nomineeId;
   nomineesData[cat]?.forEach((n, i) =>
-    nomineesContainer.appendChild(createNomineeCard(cat, n, hasVote, i))
+    nomineesContainer.appendChild(createNomineeCard(cat, n, hasVote, i)),
   );
   setTimeout(
     () =>
       document
         .querySelectorAll(".nominee-card")
         .forEach((c) => c.classList.add("fade-in")),
-    100
+    100,
   );
 }
 function updateActiveCategoryIndicator(cat) {
@@ -1302,14 +1302,14 @@ function createNomineeCard(cat, nom, hasCatVote, idx) {
     <div class="nominee-name">${nom.name}</div>
     <div class="nominee-description">${nom.description}</div>
     <button class="vote-btn ${isVoted ? "voted" : ""} ${
-    disabled ? "submitted" : ""
-  }"
+      disabled ? "submitted" : ""
+    }"
             data-id="${nom.id}" ${disabled ? "disabled" : ""}>
       ${getVoteButtonText(
         hasCatVote,
         isVoted,
         isSubmitted,
-        hasSubmittedAllVotes
+        hasSubmittedAllVotes,
       )}
     </button>`;
 
@@ -1454,7 +1454,7 @@ function confirmSingleVote() {
 
     subject: `New Vote for ${getCategoryName(cat)}`,
     message: `A new vote has been cast for ${nom.name} in ${getCategoryName(
-      cat
+      cat,
     )} category.`,
   };
 
@@ -1471,7 +1471,7 @@ function confirmSingleVote() {
       loadCategory(currentCategory);
       finishIndividualModal(
         true,
-        `Your vote for ${nom.name} was sent successfully!`
+        `Your vote for ${nom.name} was sent successfully!`,
       );
     })
     .catch((error) => {
@@ -1483,7 +1483,7 @@ function confirmSingleVote() {
       });
       finishIndividualModal(
         true,
-        `Your vote for ${nom.name} was sent successfully!`
+        `Your vote for ${nom.name} was sent successfully!`,
       );
     });
 }
@@ -1545,7 +1545,7 @@ function goToNextCategory() {
 }
 function getCurrentTabCategories() {
   return Array.from(
-    document.querySelectorAll(`#${currentTab}-tab .category-item`)
+    document.querySelectorAll(`#${currentTab}-tab .category-item`),
   );
 }
 function updateNavigationButtons() {
@@ -1581,10 +1581,10 @@ function updateVoteStatus() {
 function getAllCategories() {
   return [
     ...Array.from(
-      document.querySelectorAll("#startups-tab .category-item")
+      document.querySelectorAll("#startups-tab .category-item"),
     ).map((i) => i.dataset.category),
     ...Array.from(
-      document.querySelectorAll("#existing-tab .category-item")
+      document.querySelectorAll("#existing-tab .category-item"),
     ).map((i) => i.dataset.category),
   ];
 }
@@ -1684,13 +1684,13 @@ function sendAllVoteSummary(data) {
       markAllAsSubmitted();
       finishIndividualModal(
         true,
-        "All votes have been submitted successfully!"
+        "All votes have been submitted successfully!",
       );
     })
     .catch(() => {
       finishIndividualModal(
         false,
-        "Failed to submit all votes. Please try again."
+        "Failed to submit all votes. Please try again.",
       );
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Your Votes";
@@ -1706,7 +1706,7 @@ function formatAllVoteDetails(votes) {
         <div class="type">Type: ${v.type}</div>
         <div class="desc">Description: ${v.description}</div>
         <div class="vote-time">Voted at: ${v.time}</div>
-      </div>`
+      </div>`,
     )
     .join("");
 }
