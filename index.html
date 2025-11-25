@@ -1989,7 +1989,7 @@
                             </h2>
                             <p class="awards-carousel-subtitle">
                                 Mark your calendar for the grand ceremony on
-                                November 30, 2025, where we'll announce the
+                                December 02, 2025, where we'll announce the
                                 winners.
                             </p>
                             <a
@@ -3150,7 +3150,7 @@
         <script>
             // Countdown Functionality
             const awardsCeremonyDate = new Date(
-                "November 30, 2025 18:00:00",
+                "December 02, 2025 18:00:00",
             ).getTime();
 
             function awardsUpdateCountdown() {
@@ -3224,16 +3224,19 @@
                     title: "People First Enterprise Awards 2025",
                     description:
                         "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
-                    location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
+                    location:
+                        "Hogis Royal Conference Hall, Duke Town Drive, Calabar",
                     start: "20251130T180000",
                     end: "20251130T230000",
                     timezone: "Africa/Lagos",
                 };
 
                 switch (platform) {
+                    case "apple":
                     case "ios":
                         awardsAddToAppleCalendar(awardsEventDetails);
                         break;
+                    case "google":
                     case "android":
                         awardsAddToGoogleCalendar(awardsEventDetails);
                         break;
@@ -3248,22 +3251,29 @@
                 const awardsIcsContent = [
                     "BEGIN:VCALENDAR",
                     "VERSION:2.0",
+                    "CALSCALE:GREGORIAN",
+                    "METHOD:PUBLISH",
                     "BEGIN:VEVENT",
                     `SUMMARY:${details.title}`,
                     `DESCRIPTION:${details.description}`,
                     `LOCATION:${details.location}`,
                     `DTSTART;TZID=${details.timezone}:${details.start}`,
                     `DTEND;TZID=${details.timezone}:${details.end}`,
-                    "UID:" + Math.random().toString(36).substring(2),
+                    "UID:" +
+                        Math.random().toString(36).substring(2) +
+                        "@peoplefirstawards2025",
                     "DTSTAMP:" +
                         new Date()
                             .toISOString()
                             .replace(/[-:]/g, "")
                             .split(".")[0] +
                         "Z",
+                    "SEQUENCE:0",
+                    "STATUS:CONFIRMED",
+                    "TRANSP:OPAQUE",
                     "END:VEVENT",
                     "END:VCALENDAR",
-                ].join("\n");
+                ].join("\r\n");
 
                 const awardsBlob = new Blob([awardsIcsContent], {
                     type: "text/calendar;charset=utf-8",
@@ -3281,12 +3291,15 @@
 
             // Google Calendar - Direct link
             function awardsAddToGoogleCalendar(details) {
+                const startDate = "20251130T180000";
+                const endDate = "20251130T230000";
+
                 const awardsGoogleParams = new URLSearchParams({
                     action: "TEMPLATE",
                     text: details.title,
                     details: details.description,
                     location: details.location,
-                    dates: `${details.start}/${details.end}`,
+                    dates: `${startDate}/${endDate}`,
                     ctz: details.timezone,
                 });
 
@@ -3306,7 +3319,8 @@
                     body: details.description,
                     location: details.location,
                     startdt: "2025-11-30T18:00:00",
-                    enddt: "2025-11-30T22:00:00",
+                    enddt: "2025-11-30T23:00:00",
+                    allday: "false",
                 });
 
                 window.open(
