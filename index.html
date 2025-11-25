@@ -3246,46 +3246,78 @@
                 }
             }
 
-            // Apple Calendar - Download .ics file
+            // Apple Calendar - Using webcal protocol for native iOS integration
             function awardsAddToAppleCalendar(details) {
-                const awardsIcsContent = [
-                    "BEGIN:VCALENDAR",
-                    "VERSION:2.0",
-                    "CALSCALE:GREGORIAN",
-                    "METHOD:PUBLISH",
-                    "BEGIN:VEVENT",
-                    `SUMMARY:${details.title}`,
-                    `DESCRIPTION:${details.description}`,
-                    `LOCATION:${details.location}`,
-                    `DTSTART;TZID=${details.timezone}:${details.start}`,
-                    `DTEND;TZID=${details.timezone}:${details.end}`,
-                    "UID:" +
-                        Math.random().toString(36).substring(2) +
-                        "@peoplefirstawards2025",
-                    "DTSTAMP:" +
-                        new Date()
-                            .toISOString()
-                            .replace(/[-:]/g, "")
-                            .split(".")[0] +
-                        "Z",
-                    "SEQUENCE:0",
-                    "STATUS:CONFIRMED",
-                    "TRANSP:OPAQUE",
-                    "END:VEVENT",
-                    "END:VCALENDAR",
-                ].join("\r\n");
+                // For iOS devices, use the webcal protocol to open directly in Calendar app
+                if (
+                    /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+                    !window.MSStream
+                ) {
+                    const startDate = new Date("2025-11-30T18:00:00+01:00"); // Africa/Lagos timezone
+                    const endDate = new Date("2025-11-30T23:00:00+01:00");
 
-                const awardsBlob = new Blob([awardsIcsContent], {
-                    type: "text/calendar;charset=utf-8",
-                });
-                const awardsLink = document.createElement("a");
-                awardsLink.href = URL.createObjectURL(awardsBlob);
-                awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
-                document.body.appendChild(awardsLink);
-                awardsLink.click();
-                document.body.removeChild(awardsLink);
+                    // Format dates for iOS Calendar URL
+                    const formatDateForIOS = (date) => {
+                        return (
+                            date
+                                .toISOString()
+                                .replace(/[-:]/g, "")
+                                .split(".")[0] + "Z"
+                        );
+                    };
 
-                // Show confirmation
+                    const iosCalendarUrl = [
+                        "webcal://p30-calendars.icloud.com/publish/2/",
+                        `?title=${encodeURIComponent(details.title)}`,
+                        `&location=${encodeURIComponent(details.location)}`,
+                        `&start=${formatDateForIOS(startDate)}`,
+                        `&end=${formatDateForIOS(endDate)}`,
+                        `&url=${encodeURIComponent(window.location.href)}`,
+                        `&notes=${encodeURIComponent(details.description)}`,
+                    ].join("");
+
+                    window.location.href = iosCalendarUrl;
+                } else {
+                    // Fallback to .ics download for non-iOS devices
+                    const awardsIcsContent = [
+                        "BEGIN:VCALENDAR",
+                        "VERSION:2.0",
+                        "CALSCALE:GREGORIAN",
+                        "METHOD:PUBLISH",
+                        "BEGIN:VEVENT",
+                        `SUMMARY:${details.title}`,
+                        `DESCRIPTION:${details.description}`,
+                        `LOCATION:${details.location}`,
+                        `DTSTART:${details.start}`,
+                        `DTEND:${details.end}`,
+                        "UID:" +
+                            Math.random().toString(36).substring(2) +
+                            "@peoplefirstawards2025",
+                        "DTSTAMP:" +
+                            new Date()
+                                .toISOString()
+                                .replace(/[-:]/g, "")
+                                .split(".")[0] +
+                            "Z",
+                        "SEQUENCE:0",
+                        "STATUS:CONFIRMED",
+                        "TRANSP:OPAQUE",
+                        "END:VEVENT",
+                        "END:VCALENDAR",
+                    ].join("\r\n");
+
+                    const awardsBlob = new Blob([awardsIcsContent], {
+                        type: "text/calendar;charset=utf-8",
+                    });
+                    const awardsLink = document.createElement("a");
+                    awardsLink.href = URL.createObjectURL(awardsBlob);
+                    awardsLink.download =
+                        "People-First-Enterprise-Awards-2025.ics";
+                    document.body.appendChild(awardsLink);
+                    awardsLink.click();
+                    document.body.removeChild(awardsLink);
+                }
+
                 awardsShowCalendarConfirmation("Apple Calendar");
             }
 
