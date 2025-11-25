@@ -3246,66 +3246,66 @@
                 }
             }
 
-            // Apple Calendar - Using webcal protocol for native iOS integration
+            // Apple Calendar - Better iOS integration
             function awardsAddToAppleCalendar(details) {
-                // For iOS devices, use the webcal protocol to open directly in Calendar app
+                // For iOS/Mac, use data URL approach
+                const awardsIcsContent = [
+                    "BEGIN:VCALENDAR",
+                    "VERSION:2.0",
+                    "PRODID:-//People First Awards//EN",
+                    "CALSCALE:GREGORIAN",
+                    "METHOD:PUBLISH",
+                    "BEGIN:VEVENT",
+                    `SUMMARY:${details.title}`,
+                    `DESCRIPTION:${details.description}`,
+                    `LOCATION:${details.location}`,
+                    `DTSTART;TZID=${details.timezone}:${details.start}`,
+                    `DTEND;TZID=${details.timezone}:${details.end}`,
+                    "UID:" +
+                        Math.random().toString(36).substring(2) +
+                        "@peoplefirstawards2025",
+                    "DTSTAMP:" +
+                        new Date()
+                            .toISOString()
+                            .replace(/[-:]/g, "")
+                            .split(".")[0] +
+                        "Z",
+                    "SEQUENCE:0",
+                    "STATUS:CONFIRMED",
+                    "TRANSP:OPAQUE",
+                    "END:VEVENT",
+                    "END:VCALENDAR",
+                ].join("\r\n");
+
+                // Encode the ICS content
+                const encodedIcs = encodeURIComponent(awardsIcsContent);
+
+                // Create data URL
+                const dataUrl =
+                    "data:text/calendar;charset=utf-8," + encodedIcs;
+
+                // For iOS devices, try to open in Calendar app
                 if (
                     /iPad|iPhone|iPod/.test(navigator.userAgent) &&
                     !window.MSStream
                 ) {
-                    const startDate = new Date("2025-11-30T18:00:00+01:00"); // Africa/Lagos timezone
-                    const endDate = new Date("2025-11-30T23:00:00+01:00");
+                    // First try with a hidden iframe
+                    const iframe = document.createElement("iframe");
+                    iframe.style.display = "none";
+                    iframe.src = dataUrl;
+                    document.body.appendChild(iframe);
 
-                    // Format dates for iOS Calendar URL
-                    const formatDateForIOS = (date) => {
-                        return (
-                            date
-                                .toISOString()
-                                .replace(/[-:]/g, "")
-                                .split(".")[0] + "Z"
-                        );
-                    };
+                    // Fallback: redirect after a short delay
+                    setTimeout(() => {
+                        window.location.href = dataUrl;
+                    }, 500);
 
-                    const iosCalendarUrl = [
-                        "webcal://p30-calendars.icloud.com/publish/2/",
-                        `?title=${encodeURIComponent(details.title)}`,
-                        `&location=${encodeURIComponent(details.location)}`,
-                        `&start=${formatDateForIOS(startDate)}`,
-                        `&end=${formatDateForIOS(endDate)}`,
-                        `&url=${encodeURIComponent(window.location.href)}`,
-                        `&notes=${encodeURIComponent(details.description)}`,
-                    ].join("");
-
-                    window.location.href = iosCalendarUrl;
+                    // Clean up
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 2000);
                 } else {
-                    // Fallback to .ics download for non-iOS devices
-                    const awardsIcsContent = [
-                        "BEGIN:VCALENDAR",
-                        "VERSION:2.0",
-                        "CALSCALE:GREGORIAN",
-                        "METHOD:PUBLISH",
-                        "BEGIN:VEVENT",
-                        `SUMMARY:${details.title}`,
-                        `DESCRIPTION:${details.description}`,
-                        `LOCATION:${details.location}`,
-                        `DTSTART:${details.start}`,
-                        `DTEND:${details.end}`,
-                        "UID:" +
-                            Math.random().toString(36).substring(2) +
-                            "@peoplefirstawards2025",
-                        "DTSTAMP:" +
-                            new Date()
-                                .toISOString()
-                                .replace(/[-:]/g, "")
-                                .split(".")[0] +
-                            "Z",
-                        "SEQUENCE:0",
-                        "STATUS:CONFIRMED",
-                        "TRANSP:OPAQUE",
-                        "END:VEVENT",
-                        "END:VCALENDAR",
-                    ].join("\r\n");
-
+                    // For desktop and other devices, use download approach
                     const awardsBlob = new Blob([awardsIcsContent], {
                         type: "text/calendar;charset=utf-8",
                     });
