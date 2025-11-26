@@ -3243,7 +3243,7 @@
                 }
             }
 
-            // APPLE CALENDAR - Fixed: Simple ICS download (most reliable for iOS)
+            // APPLE CALENDAR - Optimized for iOS: HTTP ICS link with proper headers for native prompt
             function awardsAddToAppleCalendar(details) {
                 const icsContent = [
                     "BEGIN:VCALENDAR",
@@ -3252,29 +3252,41 @@
                     "BEGIN:VEVENT",
                     `UID:pfea2025-${Date.now()}@pfea.com`,
                     `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, "")}Z`,
-                    `SUMMARY:${details.title}`,
-                    `DESCRIPTION:${details.description}`,
-                    `LOCATION:${details.location}`,
+                    `SUMMARY:${details.title.replace(/,/g, "\\,")}`,
+                    `DESCRIPTION:${details.description.replace(/,/g, "\\,")}`,
+                    `LOCATION:${details.location.replace(/,/g, "\\,")}`,
                     `DTSTART;TZID=${details.timezone}:${details.start}`,
                     `DTEND;TZID=${details.timezone}:${details.end}`,
                     "STATUS:CONFIRMED",
                     "END:VEVENT",
                     "END:VCALENDAR",
-                ].join("\\r\\n"); // Use \r\n for proper line endings
+                ].join("\r\n"); // Proper CRLF line endings for ICS
 
+                // Create blob with correct MIME type for iOS recognition
                 const blob = new Blob([icsContent], {
                     type: "text/calendar;charset=utf-8",
                 });
                 const url = URL.createObjectURL(blob);
 
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "PFEA-2025.ics";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Create temporary form to serve the ICS as HTTP response with Content-Disposition: inline
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = ""; // Same origin
+                form.style.display = "none";
 
-                // Clean up
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "ics";
+                input.value = btoa(unescape(encodeURIComponent(icsContent))); // Base64 encode for safe transport
+
+                form.appendChild(input);
+                document.body.appendChild(form);
+
+                // Submit to trigger download with inline hint (iOS will prompt "Add to Calendar")
+                form.target = "_blank";
+                form.submit();
+
+                document.body.removeChild(form);
                 setTimeout(() => URL.revokeObjectURL(url), 1000);
 
                 awardsShowCalendarConfirmation("Apple Calendar");
