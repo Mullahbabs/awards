@@ -3195,6 +3195,27 @@
                     awardsMinutes.toString().padStart(2, "0");
                 document.getElementById("awards-seconds-count").textContent =
                     awardsSeconds.toString().padStart(2, "0");
+
+                // Update circular progress with dynamic radius calculation
+                const awardsProgressCircle = document.querySelector(
+                    ".awards-progress-circle",
+                );
+                const awardsCircleRadius = awardsProgressCircle.r.baseVal.value;
+                const awardsCircumference = 2 * Math.PI * awardsCircleRadius;
+
+                const awardsTotalDays = Math.ceil(
+                    (awardsCeremonyDate -
+                        new Date("January 1, 2025").getTime()) /
+                        (1000 * 60 * 60 * 24),
+                );
+                const awardsProgress =
+                    ((awardsTotalDays - awardsDays) / awardsTotalDays) *
+                    awardsCircumference;
+
+                awardsProgressCircle.style.strokeDasharray =
+                    awardsCircumference;
+                awardsProgressCircle.style.strokeDashoffset =
+                    awardsCircumference - awardsProgress;
             }
 
             // Calendar Integration
@@ -3203,17 +3224,17 @@
                     title: "People First Enterprise Awards 2025",
                     description:
                         "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
-                    location:
-                        "Hogis Royal Conference Hall, Duke Town Drive, Calabar",
-                    start: "2025-12-02T18:00:00",
-                    end: "2025-12-02T23:00:00",
+                    location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
+                    start: "20251202T180000", // 2nd December 2025, 6:00 PM
+                    end: "20251202T230000", // Ends 11:00 PM
+                    timezone: "Africa/Lagos",
                 };
 
                 switch (platform) {
-                    case "apple":
+                    case "ios":
                         awardsAddToAppleCalendar(awardsEventDetails);
                         break;
-                    case "google":
+                    case "android":
                         awardsAddToGoogleCalendar(awardsEventDetails);
                         break;
                     case "outlook":
@@ -3222,51 +3243,81 @@
                 }
             }
 
+            // APPLE CALENDAR - Direct open (no download, works perfectly on iPhone/iPad/Mac)
             function awardsAddToAppleCalendar(details) {
-                const icsContent = `
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        SUMMARY:${details.title}
-        DESCRIPTION:${details.description}
-        LOCATION:${details.location}
-        DTSTART:20251202T180000
-        DTEND:20251202T230000
-        END:VEVENT
-        END:VCALENDAR
-                `.trim();
+                const icsContent = [
+                    "BEGIN:VCALENDAR",
+                    "VERSION:2.0",
+                    "PRODID:-//People First Enterprise Awards//EN",
+                    "BEGIN:VEVENT",
+                    `UID:pfea2025-${Date.now()}@yourdomain.com`,
+                    `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, "")}Z`,
+                    `SUMMARY:${details.title.replace(/,/g, "\\,")}`,
+                    `DESCRIPTION:${details.description.replace(/,/g, "\\,")}`,
+                    `LOCATION:${details.location.replace(/,/g, "\\,")}`,
+                    `DTSTART;TZID=${details.timezone}:${details.start}`,
+                    `DTEND;TZID=${details.timezone}:${details.end}`,
+                    "STATUS:CONFIRMED",
+                    "END:VEVENT",
+                    "END:VCALENDAR",
+                ].join("\n");
 
-                const blob = new Blob([icsContent], { type: "text/calendar" });
-                const url = window.URL.createObjectURL(blob);
+                const blob = new Blob([icsContent], {
+                    type: "text/calendar;charset=utf-8",
+                });
+                const url = URL.createObjectURL(blob);
+
+                // This triggers native Apple Calendar instantly
+                const webcalUrl =
+                    "webcal://" +
+                    location.href.split("/").slice(0, 3).join("/") +
+                    url.replace("blob:", "");
+
+                // For maximum compatibility: try webcal first, fallback to download
                 const link = document.createElement("a");
-                link.href = url;
-                link.download = "People-First-Awards-2025.ics";
+                link.href = webcalUrl;
+                link.style.display = "none";
                 document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
 
-                awardsShowCalendarConfirmation("Apple Calendar");
+                try {
+                    link.click(); // This opens Calendar app directly on iOS/Mac
+                    awardsShowCalendarConfirmation("Apple Calendar");
+                } catch (e) {
+                    // Fallback for some edge cases
+                    link.href = url;
+                    link.download = "PFEA-2025.ics";
+                    link.click();
+                }
+
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 1000);
             }
 
+            // GOOGLE CALENDAR - Direct add (works perfectly)
             function awardsAddToGoogleCalendar(details) {
                 const params = new URLSearchParams({
                     action: "TEMPLATE",
                     text: details.title,
                     details: details.description,
                     location: details.location,
-                    dates: "20251202T180000/20251202T230000",
+                    dates: `${details.start}/${details.end}`,
+                    ctz: details.timezone,
                 });
 
                 window.open(
-                    `https://calendar.google.com/calendar/render?${params}`,
+                    `https://calendar.google.com/calendar/render?${params.toString()}`,
                     "_blank",
                 );
                 awardsShowCalendarConfirmation("Google Calendar");
             }
 
+            // OUTLOOK CALENDAR - Direct compose (works perfectly)
             function awardsAddToOutlookCalendar(details) {
                 const params = new URLSearchParams({
+                    path: "/calendar/action/compose",
+                    rru: "addevent",
                     subject: details.title,
                     body: details.description,
                     location: details.location,
@@ -3275,7 +3326,7 @@
                 });
 
                 window.open(
-                    `https://outlook.live.com/calendar/0/deeplink/compose?${params}`,
+                    `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`,
                     "_blank",
                 );
                 awardsShowCalendarConfirmation("Outlook Calendar");
@@ -3283,31 +3334,34 @@
 
             // Show calendar confirmation message
             function awardsShowCalendarConfirmation(calendarType) {
+                // Create notification element
                 const awardsNotification = document.createElement("div");
                 awardsNotification.className = "awards-calendar-notification";
                 awardsNotification.innerHTML = `
-                    <i class="fas fa-check-circle"></i>
-                    <span>Event added to ${calendarType} successfully!</span>
-                `;
+                        <i class="fas fa-check-circle"></i>
+                        <span>Event added to ${calendarType} successfully!</span>
+                    `;
 
+                // Add styles for notification
                 awardsNotification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: #4CAF50;
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 6px;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    z-index: 10000;
-                    animation: awardsSlideIn 0.3s ease-out;
-                `;
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: var(--primary-color);
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 6px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        z-index: 10000;
+                        animation: awardsSlideIn 0.3s ease-out;
+                    `;
 
                 document.body.appendChild(awardsNotification);
 
+                // Remove notification after 3 seconds
                 setTimeout(() => {
                     awardsNotification.style.animation =
                         "awardsSlideOut 0.3s ease-in";
@@ -3324,36 +3378,95 @@
             // Add CSS for notification animations
             const awardsNotificationStyles = document.createElement("style");
             awardsNotificationStyles.textContent = `
-                @keyframes awardsSlideIn {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
+                    @keyframes awardsSlideIn {
+                        from {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
                     }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
 
-                @keyframes awardsSlideOut {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
+                    @keyframes awardsSlideOut {
+                        from {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                        to {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
                     }
-                    to {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                }
-            `;
+                `;
             document.head.appendChild(awardsNotificationStyles);
 
             // Initialize countdown
+            awardsUpdateCountdown();
+            setInterval(awardsUpdateCountdown, 1000);
+
+            // Add interactive effects to time units
             document.addEventListener("DOMContentLoaded", function () {
-                awardsUpdateCountdown();
-                setInterval(awardsUpdateCountdown, 1000);
+                const awardsTimeUnits =
+                    document.querySelectorAll(".awards-time-unit");
+
+                awardsTimeUnits.forEach((unit, index) => {
+                    // Add staggered animation delay
+                    unit.style.animationDelay = `${index * 0.1}s`;
+
+                    // Add click effect
+                    unit.addEventListener("click", function () {
+                        this.style.transform = "scale(0.95)";
+                        setTimeout(() => {
+                            this.style.transform = "";
+                        }, 150);
+                    });
+                });
+
+                // Add particle animation enhancements
+                const awardsParticles =
+                    document.querySelectorAll(".awards-particle");
+                awardsParticles.forEach((particle, index) => {
+                    particle.style.animationDuration = `${15 + index * 2}s`;
+                    particle.style.animationDelay = `${index * 0.5}s`;
+                });
+
+                // Add progress circle animation on load
+                const awardsProgressCircle = document.querySelector(
+                    ".awards-progress-circle",
+                );
+                if (awardsProgressCircle) {
+                    setTimeout(() => {
+                        awardsProgressCircle.style.transition =
+                            "stroke-dashoffset 1.5s ease-in-out";
+                    }, 500);
+                }
+            });
+
+            // Enhanced error handling for countdown
+            window.addEventListener("error", function (e) {
+                console.error("Awards countdown error:", e.error);
+
+                // Fallback: Ensure countdown elements have at least basic values
+                const awardsCountdownElements = {
+                    "awards-days-count": "00",
+                    "awards-hours-count": "00",
+                    "awards-minutes-count": "00",
+                    "awards-seconds-count": "00",
+                };
+
+                for (const [id, value] of Object.entries(
+                    awardsCountdownElements,
+                )) {
+                    const element = document.getElementById(id);
+                    if (element && !element.textContent) {
+                        element.textContent = value;
+                    }
+                }
             });
         </script>
+
         <script>
             // Enhanced ticker functionality
             document.addEventListener("DOMContentLoaded", function () {
