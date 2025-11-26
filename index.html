@@ -3244,52 +3244,32 @@
             }
 
             // APPLE CALENDAR - Optimized for iOS: HTTP ICS link with proper headers for native prompt
+
             function awardsAddToAppleCalendar(details) {
-                const icsContent = [
+                const awardsIcsContent = [
                     "BEGIN:VCALENDAR",
                     "VERSION:2.0",
-                    "PRODID:-//People First Enterprise Awards//EN",
                     "BEGIN:VEVENT",
-                    `UID:pfea2025-${Date.now()}@pfea.com`,
-                    `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, "")}Z`,
-                    `SUMMARY:${details.title.replace(/,/g, "\\,")}`,
-                    `DESCRIPTION:${details.description.replace(/,/g, "\\,")}`,
-                    `LOCATION:${details.location.replace(/,/g, "\\,")}`,
-                    `DTSTART;TZID=${details.timezone}:${details.start}`,
-                    `DTEND;TZID=${details.timezone}:${details.end}`,
-                    "STATUS:CONFIRMED",
+                    `SUMMARY:${details.title}`,
+                    `DESCRIPTION:${details.description}`,
+                    `LOCATION:${details.location}`,
+                    "DTSTART:20251202T180000",
+                    "DTEND:20251202T230000",
                     "END:VEVENT",
                     "END:VCALENDAR",
-                ].join("\r\n"); // Proper CRLF line endings for ICS
+                ].join("\n");
 
-                // Create blob with correct MIME type for iOS recognition
-                const blob = new Blob([icsContent], {
+                const awardsBlob = new Blob([awardsIcsContent], {
                     type: "text/calendar;charset=utf-8",
                 });
-                const url = URL.createObjectURL(blob);
+                const awardsUrl = URL.createObjectURL(awardsBlob);
 
-                // Create temporary form to serve the ICS as HTTP response with Content-Disposition: inline
-                const form = document.createElement("form");
-                form.method = "POST";
-                form.action = ""; // Same origin
-                form.style.display = "none";
-
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = "ics";
-                input.value = btoa(unescape(encodeURIComponent(icsContent))); // Base64 encode for safe transport
-
-                form.appendChild(input);
-                document.body.appendChild(form);
-
-                // Submit to trigger download with inline hint (iOS will prompt "Add to Calendar")
-                form.target = "_blank";
-                form.submit();
-
-                document.body.removeChild(form);
-                setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-                awardsShowCalendarConfirmation("Apple Calendar");
+                const awardsLink = document.createElement("a");
+                awardsLink.href = awardsUrl;
+                awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
+                document.body.appendChild(awardsLink);
+                awardsLink.click();
+                document.body.removeChild(awardsLink);
             }
 
             // GOOGLE CALENDAR - Direct add (works perfectly)
