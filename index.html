@@ -3225,8 +3225,8 @@
                     description:
                         "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
                     location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
-                    start: "20251202T180000", // 2nd December 2025, 6:00 PM
-                    end: "20251202T230000", // Ends 11:00 PM
+                    start: "20251202T180000", // 2nd December 2025, 6:00 PM WAT
+                    end: "20251202T230000", // Ends 11:00 PM WAT
                     timezone: "Africa/Lagos",
                 };
 
@@ -3243,56 +3243,41 @@
                 }
             }
 
-            // APPLE CALENDAR - Direct open (no download, works perfectly on iPhone/iPad/Mac)
+            // APPLE CALENDAR - Fixed: Simple ICS download (most reliable for iOS)
             function awardsAddToAppleCalendar(details) {
                 const icsContent = [
                     "BEGIN:VCALENDAR",
                     "VERSION:2.0",
                     "PRODID:-//People First Enterprise Awards//EN",
                     "BEGIN:VEVENT",
-                    `UID:pfea2025-${Date.now()}@yourdomain.com`,
+                    `UID:pfea2025-${Date.now()}@pfea.com`,
                     `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d+/g, "")}Z`,
-                    `SUMMARY:${details.title.replace(/,/g, "\\,")}`,
-                    `DESCRIPTION:${details.description.replace(/,/g, "\\,")}`,
-                    `LOCATION:${details.location.replace(/,/g, "\\,")}`,
+                    `SUMMARY:${details.title}`,
+                    `DESCRIPTION:${details.description}`,
+                    `LOCATION:${details.location}`,
                     `DTSTART;TZID=${details.timezone}:${details.start}`,
                     `DTEND;TZID=${details.timezone}:${details.end}`,
                     "STATUS:CONFIRMED",
                     "END:VEVENT",
                     "END:VCALENDAR",
-                ].join("\n");
+                ].join("\\r\\n"); // Use \r\n for proper line endings
 
                 const blob = new Blob([icsContent], {
                     type: "text/calendar;charset=utf-8",
                 });
                 const url = URL.createObjectURL(blob);
 
-                // This triggers native Apple Calendar instantly
-                const webcalUrl =
-                    "webcal://" +
-                    location.href.split("/").slice(0, 3).join("/") +
-                    url.replace("blob:", "");
-
-                // For maximum compatibility: try webcal first, fallback to download
                 const link = document.createElement("a");
-                link.href = webcalUrl;
-                link.style.display = "none";
+                link.href = url;
+                link.download = "PFEA-2025.ics";
                 document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
 
-                try {
-                    link.click(); // This opens Calendar app directly on iOS/Mac
-                    awardsShowCalendarConfirmation("Apple Calendar");
-                } catch (e) {
-                    // Fallback for some edge cases
-                    link.href = url;
-                    link.download = "PFEA-2025.ics";
-                    link.click();
-                }
+                // Clean up
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-                setTimeout(() => {
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
-                }, 1000);
+                awardsShowCalendarConfirmation("Apple Calendar");
             }
 
             // GOOGLE CALENDAR - Direct add (works perfectly)
