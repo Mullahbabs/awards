@@ -3225,8 +3225,8 @@
                     description:
                         "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
                     location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
-                    start: "20251202T180000", // 2nd December 2025, 6:00 PM WAT
-                    end: "20251202T230000", // Ends 11:00 PM WAT
+                    start: "20251202T180000",
+                    end: "20251202T230000",
                     timezone: "Africa/Lagos",
                 };
 
@@ -3243,16 +3243,15 @@
                 }
             }
 
-            // APPLE CALENDAR - Optimized for iOS: HTTP ICS link with proper headers for native prompt
-
+            // APPLE CALENDAR - Fixed parameter usage
             function awardsAddToAppleCalendar(details) {
                 const awardsIcsContent = [
                     "BEGIN:VCALENDAR",
                     "VERSION:2.0",
                     "BEGIN:VEVENT",
-                    `SUMMARY:${awardsEventDetails.title}`,
-                    `DESCRIPTION:${awardsEventDetails.description}`,
-                    `LOCATION:${awardsEventDetails.location}`,
+                    `SUMMARY:"People First Enterprise Awards 2025"`,
+                    `DESCRIPTION:"Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation."`,
+                    `LOCATION:"Hoggis Royal Conference Hall, Calabar, Nigeria"`,
                     "DTSTART:20251202T180000",
                     "DTEND:20251202T230000",
                     "END:VEVENT",
@@ -3270,15 +3269,18 @@
                 document.body.appendChild(awardsLink);
                 awardsLink.click();
                 document.body.removeChild(awardsLink);
+
+                awardsShowCalendarConfirmation("Apple Calendar");
             }
 
-            // GOOGLE CALENDAR - Direct add (works perfectly)
+            // GOOGLE CALENDAR
             function awardsAddToGoogleCalendar(details) {
                 const params = new URLSearchParams({
                     action: "TEMPLATE",
-                    text: details.title,
-                    details: details.description,
-                    location: details.location,
+                    text: "People First Enterprise Awards 2025",
+                    details:
+                        "Join us for the prestigious People First Enterprise Awards ceremony celebrating business excellence and innovation.",
+                    location: "Hoggis Royal Conference Hall, Calabar, Nigeria",
                     dates: `${details.start}/${details.end}`,
                     ctz: details.timezone,
                 });
@@ -3290,7 +3292,7 @@
                 awardsShowCalendarConfirmation("Google Calendar");
             }
 
-            // OUTLOOK CALENDAR - Direct compose (works perfectly)
+            // OUTLOOK CALENDAR
             function awardsAddToOutlookCalendar(details) {
                 const params = new URLSearchParams({
                     path: "/calendar/action/compose",
