@@ -1301,7 +1301,7 @@ function createNomineeCard(cat, nom, hasCatVote, idx) {
     <div class="nominee-image"><img src="${nom.image}" alt="${nom.name}"></div>
     <div class="nominee-name">${nom.name}</div>
     <div class="nominee-description">${nom.description}</div>
-    <button class="vote-btn ${isVoted ? "voted" : ""} ${
+    <button class="vote-btn ${!disabled ? "voted" : ""} ${
       disabled ? "submitted" : ""
     }"
             data-id="${nom.id}" ${disabled ? "disabled" : ""}>
