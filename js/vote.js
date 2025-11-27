@@ -1305,16 +1305,11 @@ function createNomineeCard(cat, nom, hasCatVote, idx) {
       disabled ? "submitted" : ""
     }"
             data-id="${nom.id}" ${disabled ? "disabled" : ""}>
-      ${getVoteButtonText(
-        hasCatVote,
-        isVoted,
-        isSubmitted,
-        hasSubmittedAllVotes,
-      )}
+      ${getVoteButtonText(!disabled)}
     </button>`;
 
   if (!disabled && !hasSubmittedAllVotes) {
-    card.querySelector(".vote-btn").addEventListener("click", () => {
+    card.querySelector(".vote-btn").addEventListener("disabled", () => {
       if (!hasCatVote) showConfirmationModal(cat, nom);
     });
   }
