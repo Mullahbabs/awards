@@ -1,0 +1,2150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1a237e" />
+    <title>People First Enterprise Awards 2026 | Nominate a Business</title>
+    <meta
+      name="description"
+      content="Nominate a business you believe deserves recognition at the People First Enterprise Awards 2026. Choose a category, enter the business name and submit in under a minute."
+    />
+
+    <!-- ============================================================
+     CDN RESOURCES
+     - Font Awesome : category & UI icons
+     - EmailJS      : nomination submission service
+     ============================================================ -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+      /* ============================================================
+   1. DESIGN SYSTEM — CSS VARIABLES
+   ============================================================ */
+      :root {
+        --primary-color: #1a237e;
+        --secondary-color: #b71c1c;
+        --accent-color: #d4af37;
+        --text-dark: #212121;
+        --text-light: #212121;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+
+        /* Derived tones */
+        --primary-dark: #0d1240;
+        --primary-light: #2b36a8;
+        --accent-dark: #85691a;
+        --accent-soft: #fff8e4;
+        --muted: #5b5b6b;
+        --border: #e6e6ee;
+
+        --radius-sm: 12px;
+        --radius: 16px;
+        --radius-lg: 20px;
+
+        --shadow-sm: 0 2px 10px rgba(26, 35, 126, 0.06);
+        --shadow-md: 0 12px 30px rgba(26, 35, 126, 0.1);
+        --shadow-lg: 0 26px 60px rgba(13, 18, 64, 0.28);
+
+        --font:
+          "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      /* ============================================================
+   2. GLOBAL / RESET
+   ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--text-dark);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+
+      body.no-scroll {
+        overflow: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 0.55em;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+      }
+      h2 {
+        font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+      }
+      h3 {
+        font-size: 1.15rem;
+      }
+      p {
+        margin: 0 0 1em;
+      }
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent-color);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+      .section-alt {
+        background: var(--light-gray);
+      }
+
+      .section-head {
+        max-width: 680px;
+        margin: 0 auto 52px;
+        text-align: center;
+      }
+
+      .section-eyebrow {
+        display: inline-block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent-dark);
+        margin-bottom: 12px;
+      }
+
+      .section-sub {
+        color: var(--muted);
+        font-size: 1.02rem;
+        margin: 0;
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ============================================================
+   3. BUTTONS
+   ============================================================ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 0.95rem;
+        line-height: 1;
+        border: none;
+        border-radius: 999px;
+        padding: 14px 26px;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          background 0.18s ease,
+          color 0.18s ease;
+        white-space: nowrap;
+      }
+
+      .btn-gold {
+        background: linear-gradient(
+          135deg,
+          #e8c95f 0%,
+          #d4af37 55%,
+          #b8912b 100%
+        );
+        color: #1b1b1b;
+        box-shadow: 0 10px 24px rgba(212, 175, 55, 0.3);
+      }
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.16);
+        transform: translateY(-2px);
+      }
+
+      .btn-sm {
+        padding: 11px 20px;
+        font-size: 0.86rem;
+      }
+      .btn-lg {
+        padding: 17px 34px;
+        font-size: 1rem;
+      }
+      .btn-block {
+        width: 100%;
+        border-radius: 14px;
+        padding: 17px;
+        font-size: 1rem;
+      }
+
+      /* ============================================================
+   4. HEADER
+   ============================================================ */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 74px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text-dark);
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        color: var(--accent-color);
+        font-size: 1.05rem;
+        box-shadow: 0 6px 16px rgba(26, 35, 126, 0.22);
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+      }
+      .brand-text strong {
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .brand-text span {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* ============================================================
+   5. HERO
+   ============================================================ */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        padding: 78px 0 76px;
+        background: linear-gradient(
+          160deg,
+          #0b1038 0%,
+          #1a237e 58%,
+          #242f96 100%
+        );
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 84% 10%,
+            rgba(212, 175, 55, 0.26),
+            transparent 46%
+          ),
+          radial-gradient(
+            circle at 8% 92%,
+            rgba(212, 175, 55, 0.12),
+            transparent 42%
+          );
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-color),
+          transparent
+        );
+        opacity: 0.75;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 2px;
+        background: var(--accent-color);
+        display: inline-block;
+      }
+
+      .hero h1 {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .hero-sub {
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        color: rgba(255, 255, 255, 0.82);
+        max-width: 640px;
+        margin-bottom: 34px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 46px;
+      }
+
+      /* ---------- Countdown ---------- */
+      .countdown-card {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(212, 175, 55, 0.36);
+        border-radius: var(--radius-lg);
+        padding: 22px 28px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      }
+
+      .countdown-label {
+        margin: 0 0 14px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent-color);
+        text-align: center;
+      }
+
+      .countdown-grid {
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .cd-unit {
+        min-width: 82px;
+        text-align: center;
+        padding: 0 10px;
+      }
+      .cd-unit + .cd-unit {
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .cd-value {
+        display: block;
+        font-size: clamp(1.55rem, 4vw, 2.15rem);
+        font-weight: 800;
+        color: #fff;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
+      }
+
+      .cd-label {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.64rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.66);
+      }
+
+      .countdown-open {
+        margin: 0;
+        font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+        font-weight: 800;
+        color: var(--accent-color);
+        text-align: center;
+        letter-spacing: -0.01em;
+      }
+
+      /* ============================================================
+   6. HOW IT WORKS
+   ============================================================ */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+
+      .step {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 34px 28px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .step:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(212, 175, 55, 0.5);
+      }
+
+      .step-num {
+        display: inline-block;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: var(--accent-dark);
+        background: rgba(212, 175, 55, 0.16);
+        border-radius: 999px;
+        padding: 7px 16px;
+        margin-bottom: 18px;
+      }
+
+      .step h3 {
+        margin-bottom: 8px;
+      }
+      .step p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 0.96rem;
+      }
+
+      /* ============================================================
+   7. CATEGORY CARDS
+   ============================================================ */
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+        gap: 22px;
+      }
+
+      .category-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px 24px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease,
+          background 0.25s ease;
+        overflow: hidden;
+      }
+
+      .category-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(26, 35, 126, 0.22);
+      }
+      .category-card:hover::before {
+        opacity: 1;
+      }
+
+      .category-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-size: 1.35rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        color: var(--accent-color);
+        box-shadow: 0 8px 18px rgba(26, 35, 126, 0.2);
+        margin-bottom: 18px;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .category-name {
+        font-size: 1.08rem;
+        margin-bottom: 8px;
+        font-weight: 800;
+      }
+
+      .category-desc {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-bottom: 22px;
+        flex: 1 1 auto;
+      }
+
+      .category-btn {
+        width: 100%;
+        padding: 13px 18px;
+        border-radius: var(--radius-sm);
+        background: var(--primary-color);
+        color: #fff;
+        border: 1.5px solid var(--primary-color);
+        font-size: 0.92rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: inherit;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .category-btn:hover {
+        background: var(--primary-light);
+        border-color: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(26, 35, 126, 0.24);
+      }
+
+      .category-btn:disabled {
+        pointer-events: none;
+      }
+
+      /* Nominated state */
+      .card-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        display: none;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.64rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-dark);
+        background: rgba(212, 175, 55, 0.18);
+        border: 1px solid rgba(212, 175, 55, 0.55);
+        padding: 5px 10px;
+        border-radius: 999px;
+      }
+
+      .category-card.is-nominated {
+        background: linear-gradient(180deg, #fffdf5, #ffffff);
+        border-color: rgba(212, 175, 55, 0.6);
+        box-shadow: 0 8px 24px rgba(212, 175, 55, 0.14);
+      }
+      .category-card.is-nominated::before {
+        opacity: 1;
+      }
+      .category-card.is-nominated .card-badge {
+        display: inline-flex;
+      }
+      .category-card.is-nominated .category-icon {
+        background: linear-gradient(135deg, #e8c95f, #b8912b);
+        color: #fff;
+      }
+      .category-card.is-nominated .category-desc {
+        color: #8a8a99;
+      }
+
+      .category-btn.is-done,
+      .category-btn.is-done:hover {
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        border-color: rgba(212, 175, 55, 0.6);
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* ============================================================
+   8. MODALS (shared)
+   ============================================================ */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        padding: 20px;
+        overflow-y: auto;
+        background: rgba(11, 16, 56, 0.58);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
+      }
+
+      .modal-overlay.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .modal {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        max-width: 520px;
+        background: var(--white);
+        border-radius: 22px;
+        padding: 34px 30px 30px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(16px) scale(0.975);
+        opacity: 0;
+        transition:
+          transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.3s ease;
+      }
+
+      .modal-overlay.open .modal {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: none;
+        background: var(--light-gray);
+        color: var(--muted);
+        font-size: 1rem;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          transform 0.2s ease;
+      }
+      .modal-close:hover {
+        background: #e9e9f2;
+        color: var(--text-dark);
+        transform: rotate(90deg);
+      }
+
+      .modal h2 {
+        font-size: 1.45rem;
+        margin-bottom: 6px;
+        padding-right: 44px;
+      }
+
+      .modal-sub {
+        color: var(--muted);
+        font-size: 0.93rem;
+        margin-bottom: 22px;
+      }
+
+      /* ---------- Category chip inside modal ---------- */
+      .category-chip {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 35, 126, 0.06),
+          rgba(212, 175, 55, 0.14)
+        );
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 14px;
+        padding: 14px 18px;
+        margin-bottom: 24px;
+      }
+      .category-chip i {
+        color: var(--accent-dark);
+        font-size: 1.05rem;
+      }
+      .category-chip .chip-label {
+        display: block;
+        font-size: 0.64rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .category-chip .chip-value {
+        display: block;
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        line-height: 1.3;
+      }
+
+      /* ============================================================
+   9. FORM
+   ============================================================ */
+      .field {
+        margin-bottom: 18px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 0.83rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 7px;
+        color: var(--text-dark);
+      }
+
+      .field input {
+        width: 100%;
+        font-family: inherit;
+        font-size: 1rem;
+        color: var(--text-dark);
+        background: var(--white);
+        padding: 14px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        appearance: none;
+      }
+
+      .field input::placeholder {
+        color: #9a9aab;
+      }
+
+      .field input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(26, 35, 126, 0.1);
+      }
+
+      .field input.invalid {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 4px rgba(183, 28, 28, 0.09);
+      }
+
+      .field-error {
+        display: none;
+        margin: 7px 0 0;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+      }
+      .field-error.show {
+        display: block;
+      }
+
+      /* ---------- Error banner ---------- */
+      .form-error {
+        display: none;
+        gap: 12px;
+        background: #fdf3f3;
+        border: 1px solid rgba(183, 28, 28, 0.35);
+        border-radius: var(--radius-sm);
+        padding: 15px 17px;
+        margin-bottom: 20px;
+        color: #7d1414;
+        font-size: 0.9rem;
+      }
+      .form-error.show {
+        display: flex;
+      }
+      .form-error > i {
+        font-size: 1.15rem;
+        margin-top: 2px;
+        flex: 0 0 auto;
+      }
+      .form-error strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 0.95rem;
+      }
+      .form-error p {
+        margin: 0 0 12px;
+        line-height: 1.5;
+      }
+
+      .btn-try {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        border: 1.5px solid rgba(183, 28, 28, 0.45);
+        color: #7d1414;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 0.83rem;
+        padding: 9px 18px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+      .btn-try:hover {
+        background: #fbeaea;
+        transform: translateY(-1px);
+      }
+
+      /* ---------- Submit / spinner ---------- */
+      #submitBtn {
+        margin-top: 6px;
+      }
+
+      .spinner {
+        display: none;
+        width: 17px;
+        height: 17px;
+        border: 2.5px solid rgba(0, 0, 0, 0.2);
+        border-top-color: #1b1b1b;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        flex: 0 0 auto;
+      }
+
+      .btn.loading .spinner {
+        display: inline-block;
+      }
+      .btn.loading {
+        opacity: 0.9;
+        cursor: not-allowed;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .form-note {
+        margin: 14px 0 0;
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      /* ============================================================
+   10. SUCCESS MODAL
+   ============================================================ */
+      .modal-success {
+        max-width: 460px;
+        text-align: center;
+        padding: 42px 32px 34px;
+      }
+
+      .success-icon {
+        width: 82px;
+        height: 82px;
+        margin: 0 auto 22px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 2.1rem;
+        color: #fff;
+        background: linear-gradient(135deg, #e8c95f, #b8912b);
+        box-shadow: 0 14px 34px rgba(212, 175, 55, 0.42);
+        animation: pop 0.45s cubic-bezier(0.22, 1.4, 0.5, 1) both;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.4);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .modal-success h2 {
+        margin-bottom: 12px;
+        padding: 0;
+      }
+      .modal-success p {
+        color: var(--muted);
+        font-size: 0.96rem;
+        margin-bottom: 26px;
+      }
+      .modal-success p strong {
+        color: var(--primary-color);
+      }
+
+      /* ============================================================
+   11. FOOTER
+   ============================================================ */
+      .site-footer {
+        background: var(--primary-dark);
+        color: rgba(255, 255, 255, 0.82);
+        padding: 46px 0;
+        border-top: 3px solid var(--accent-color);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .footer-brand .brand-mark {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .footer-brand strong {
+        display: block;
+        color: #fff;
+        font-size: 0.98rem;
+      }
+      .footer-brand p {
+        margin: 2px 0 0;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .footer-copy {
+        margin: 0;
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ============================================================
+   12. RESPONSIVE
+   ============================================================ */
+      @media (max-width: 980px) {
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .section {
+          padding: 72px 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hero {
+          padding: 58px 0 60px;
+        }
+        .hero-actions {
+          gap: 12px;
+        }
+        .hero-actions .btn {
+          flex: 1 1 auto;
+        }
+        .countdown-card {
+          display: block;
+          padding: 20px 16px;
+        }
+        .cd-unit {
+          min-width: 0;
+          flex: 1 1 0;
+          padding: 0 6px;
+        }
+        .cd-value {
+          font-size: 1.5rem;
+        }
+        .cd-label {
+          font-size: 0.58rem;
+          letter-spacing: 0.1em;
+        }
+        .section {
+          padding: 62px 0;
+        }
+        .section-head {
+          margin-bottom: 40px;
+        }
+        .category-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .modal {
+          padding: 30px 20px 24px;
+          border-radius: 18px;
+        }
+        .modal-overlay {
+          padding: 14px;
+        }
+        .modal h2 {
+          font-size: 1.28rem;
+        }
+        .header-inner {
+          min-height: 66px;
+        }
+        .brand-text span {
+          display: none;
+        }
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .cd-value {
+          font-size: 1.3rem;
+        }
+        .cd-label {
+          font-size: 0.52rem;
+        }
+        .btn-lg {
+          padding: 15px 24px;
+          font-size: 0.95rem;
+        }
+      }
+
+      /* ============================================================
+   13. REDUCED MOTION
+   ============================================================ */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ============================================================
+     HEADER
+     ============================================================ -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a
+          class="brand"
+          href="#top"
+          aria-label="People First Enterprise Awards 2026 — home"
+        >
+          <span class="brand-mark" aria-hidden="true"
+            ><i class="fa-solid fa-award"></i
+          ></span>
+          <span class="brand-text">
+            <strong>People First</strong>
+            <span>Enterprise Awards 2026</span>
+          </span>
+        </a>
+        <a href="#categories" class="btn btn-gold btn-sm"
+          >Nominate a Business</a
+        >
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ========================================================
+         HERO + COUNTDOWN
+         ======================================================== -->
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container hero-inner">
+          <p class="hero-eyebrow">People First Enterprise Awards 2026</p>
+
+          <h1 id="heroTitle">Celebrate the Businesses Making a Difference</h1>
+
+          <p class="hero-sub">
+            Every great business is built by people who put people first.
+            Nominate the business you believe deserves recognition — it only
+            takes a minute, and anyone can take part.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#categories" class="btn btn-gold btn-lg">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              Nominate a Business
+            </a>
+            <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+          </div>
+
+          <div class="countdown-card">
+            <p class="countdown-label" id="countdownLabel">Voting opens in</p>
+            <div class="countdown-grid" id="countdownGrid">
+              <div class="cd-unit">
+                <span class="cd-value" id="cdDays">--</span>
+                <span class="cd-label">Days</span>
+              </div>
+              <div class="cd-unit">
+                <span class="cd-value" id="cdHours">--</span>
+                <span class="cd-label">Hours</span>
+              </div>
+              <div class="cd-unit">
+                <span class="cd-value" id="cdMinutes">--</span>
+                <span class="cd-label">Minutes</span>
+              </div>
+              <div class="cd-unit">
+                <span class="cd-value" id="cdSeconds">--</span>
+                <span class="cd-label">Seconds</span>
+              </div>
+            </div>
+            <p class="countdown-open" id="countdownOpen" hidden>
+              Voting is now open!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+         HOW IT WORKS
+         ======================================================== -->
+      <section class="section section-alt" id="how" aria-labelledby="howTitle">
+        <div class="container">
+          <div class="section-head">
+            <p class="section-eyebrow">How it works</p>
+            <h2 id="howTitle">Three simple steps</h2>
+            <p class="section-sub">
+              You are not choosing from a list of nominees — you tell us which
+              business you believe deserves to be recognised.
+            </p>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <span class="step-num">01</span>
+              <h3>Choose a Category</h3>
+              <p>
+                Select the award category that best represents the business.
+              </p>
+            </article>
+            <article class="step">
+              <span class="step-num">02</span>
+              <h3>Nominate a Business</h3>
+              <p>Enter the business name and your contact details.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">03</span>
+              <h3>Submit</h3>
+              <p>
+                Submit your nomination and help recognize deserving businesses.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+         NOMINATION CATEGORIES
+         ======================================================== -->
+      <section
+        class="section"
+        id="categories"
+        aria-labelledby="categoriesTitle"
+      >
+        <div class="container">
+          <div class="section-head">
+            <p class="section-eyebrow">Nomination categories</p>
+            <h2 id="categoriesTitle">Nominate a Business</h2>
+            <p class="section-sub">
+              Pick the category that fits best, then type in the name of the
+              business you would like to nominate. One nomination per category
+              per device.
+            </p>
+          </div>
+
+          <div class="category-grid" id="categoryGrid">
+            <!-- Category cards are generated by JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+     FOOTER
+     ============================================================ -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><i class="fa-solid fa-award"></i
+          ></span>
+          <div>
+            <strong>People First Enterprise Awards 2026</strong>
+            <p>Celebrating Entrepreneurship and Innovation.</p>
+          </div>
+        </div>
+        <p class="footer-copy">
+          &copy; 2026 People First Enterprise Awards. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- ============================================================
+     NOMINATION MODAL
+     ============================================================ -->
+    <div
+      class="modal-overlay"
+      id="nominationModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="nominationTitle"
+      aria-hidden="true"
+    >
+      <div class="modal">
+        <button
+          type="button"
+          class="modal-close"
+          id="nominationClose"
+          aria-label="Close nomination form"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <h2 id="nominationTitle">Nominate a Business</h2>
+        <p class="modal-sub">Tell us which business deserves this award.</p>
+
+        <div class="category-chip">
+          <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+          <div>
+            <span class="chip-label">Category</span>
+            <span class="chip-value" id="modalCategoryName">—</span>
+          </div>
+        </div>
+
+        <form id="nominationForm" novalidate>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              autocomplete="email"
+              required
+            />
+            <p class="field-error" id="emailError" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+              autocomplete="tel"
+              required
+            />
+            <p class="field-error" id="phoneError" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="business">Business Being Nominated</label>
+            <input
+              type="text"
+              id="business"
+              name="business"
+              placeholder="Enter the business name"
+              autocomplete="off"
+              required
+            />
+            <p class="field-error" id="businessError" role="alert"></p>
+          </div>
+
+          <div class="form-error" id="formError" role="alert">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            <div>
+              <strong>Something went wrong</strong>
+              <p id="formErrorText">
+                We couldn't submit your nomination right now. Please check your
+                connection and try again.
+              </p>
+              <button type="button" class="btn-try" id="tryAgainBtn">
+                <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Try
+                Again
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-block" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-label">Submit Nomination</span>
+          </button>
+
+          <p class="form-note">
+            Your details are used only to verify this nomination. We never store
+            your personal information in this browser.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ============================================================
+     SUCCESS MODAL
+     ============================================================ -->
+    <div
+      class="modal-overlay"
+      id="successModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="successTitle"
+      aria-hidden="true"
+    >
+      <div class="modal modal-success">
+        <div class="success-icon" aria-hidden="true">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h2 id="successTitle">Nomination Submitted!</h2>
+        <p id="successMessage">
+          Thank you for helping us recognize outstanding businesses. Your
+          nomination has been successfully received.
+        </p>
+        <button
+          type="button"
+          class="btn btn-gold btn-block"
+          id="successContinue"
+          data-autofocus
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+
+    <script>
+      /* ============================================================
+   1. CONFIGURATION — EMAILJS
+   ------------------------------------------------------------
+   Replace the three values below with your EmailJS credentials.
+   ============================================================ */
+      const EMAILJS_CONFIG = {
+        publicKey: "_JHzclbB7XxiSqGDZ", // <-- replace with your EmailJS Public Key
+        serviceId: "service_ipsz5gs", // <-- replace with your EmailJS Service ID
+        templateId: "template_r6m8lmk", // <-- replace with your EmailJS Template ID
+      };
+
+      /* LocalStorage key — only successfully nominated category names are stored here. */
+      const STORAGE_KEY = "pfae2026_nominated_categories";
+
+      /* Voting opens 6 November 2026 (local time). */
+      const VOTING_OPENS = new Date(2026, 10, 6, 0, 0, 0, 0);
+
+      /* ============================================================
+   2. CATEGORY DATA
+   ============================================================ */
+      const categories = [
+        {
+          id: "agric-value-chain",
+          name: "Agric Value Chain",
+          description:
+            "Farms, agro-processors and agribusinesses strengthening food systems from seed to shelf.",
+          icon: "fa-seedling",
+        },
+        {
+          id: "retail",
+          name: "Retail",
+          description:
+            "Stores, supermarkets and marketplaces delivering great products and service every day.",
+          icon: "fa-bag-shopping",
+        },
+        {
+          id: "fashion",
+          name: "Fashion",
+          description:
+            "Designers, tailors and fashion brands shaping style through craft and creativity.",
+          icon: "fa-shirt",
+        },
+        {
+          id: "technology-and-innovation",
+          name: "Technology and Innovation",
+          description:
+            "Startups and tech companies building smart solutions that move businesses forward.",
+          icon: "fa-microchip",
+        },
+        {
+          id: "transportation-and-logistics",
+          name: "Transportation and Logistics",
+          description:
+            "Movers, haulers and delivery services keeping people and goods connected.",
+          icon: "fa-truck-fast",
+        },
+        {
+          id: "manufacturing",
+          name: "Manufacturing",
+          description:
+            "Producers and makers creating quality goods and dependable local jobs.",
+          icon: "fa-industry",
+        },
+        {
+          id: "creative-sector",
+          name: "Creative Sector",
+          description:
+            "Artists, studios and creative enterprises turning ideas into culture and commerce.",
+          icon: "fa-palette",
+        },
+        {
+          id: "education",
+          name: "Education",
+          description:
+            "Schools, academies and learning platforms investing in people and knowledge.",
+          icon: "fa-graduation-cap",
+        },
+        {
+          id: "entertainment-and-lifestyle",
+          name: "Entertainment and Lifestyle",
+          description:
+            "Brands enriching everyday life through entertainment and lifestyle experiences.",
+          icon: "fa-film",
+        },
+        {
+          id: "tourism-and-hospitality",
+          name: "Tourism and Hospitality",
+          description:
+            "Hotels, tour operators and hospitality brands showcasing the best of our destinations.",
+          icon: "fa-plane-departure",
+        },
+      ];
+
+      /* ============================================================
+   3. DOM REFERENCES
+   ============================================================ */
+      const categoryGrid = document.getElementById("categoryGrid");
+      const nominationModal = document.getElementById("nominationModal");
+      const nominationForm = document.getElementById("nominationForm");
+      const nominationClose = document.getElementById("nominationClose");
+      const modalCategoryName = document.getElementById("modalCategoryName");
+      const submitBtn = document.getElementById("submitBtn");
+      const submitBtnLabel = submitBtn.querySelector(".btn-label");
+      const successModal = document.getElementById("successModal");
+      const successMessage = document.getElementById("successMessage");
+      const successContinue = document.getElementById("successContinue");
+      const formError = document.getElementById("formError");
+      const formErrorText = document.getElementById("formErrorText");
+      const tryAgainBtn = document.getElementById("tryAgainBtn");
+
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const businessInput = document.getElementById("business");
+
+      /* Currently selected category object */
+      let currentCategory = null;
+
+      /* Focus / modal bookkeeping */
+      let activeModal = null;
+      let lastFocusedElement = null;
+
+      /* ============================================================
+   4. LOCAL STORAGE
+   ============================================================ */
+
+      /** Read the map of successfully nominated categories, e.g. { "Fashion": true } */
+      function loadSubmittedCategories() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return {};
+          const parsed = JSON.parse(raw);
+          return parsed && typeof parsed === "object" ? parsed : {};
+        } catch (err) {
+          console.warn("Could not read saved nominations:", err);
+          return {};
+        }
+      }
+
+      /** Persist a successfully nominated category name. */
+      function saveSubmittedCategory(categoryName) {
+        try {
+          const submitted = loadSubmittedCategories();
+          submitted[categoryName] = true;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(submitted));
+        } catch (err) {
+          console.warn("Could not save nomination to LocalStorage:", err);
+        }
+      }
+
+      /** Has this category already been successfully nominated on this device? */
+      function isCategoryNominated(categoryName) {
+        const submitted = loadSubmittedCategories();
+        return submitted[categoryName] === true;
+      }
+
+      /* ============================================================
+   5. CATEGORY RENDERING & UI STATE
+   ============================================================ */
+
+      /** Build the category cards from the categories array. */
+      function renderCategories() {
+        categoryGrid.innerHTML = categories
+          .map(function (cat) {
+            return (
+              '<article class="category-card" data-category-id="' +
+              cat.id +
+              '">' +
+              '<span class="card-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Nominated</span>' +
+              '<div class="category-icon" aria-hidden="true"><i class="fa-solid ' +
+              cat.icon +
+              '"></i></div>' +
+              '<h3 class="category-name" id="cat-' +
+              cat.id +
+              '">' +
+              cat.name +
+              "</h3>" +
+              '<p class="category-desc">' +
+              cat.description +
+              "</p>" +
+              '<button type="button" class="category-btn" data-category-id="' +
+              cat.id +
+              '">' +
+              "<span>Nominate</span>" +
+              '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>' +
+              "</button>" +
+              "</article>"
+            );
+          })
+          .join("");
+
+        updateCategoryUI();
+      }
+
+      /** Apply the nominated / available visual state to every category card. */
+      function updateCategoryUI() {
+        const submitted = loadSubmittedCategories();
+
+        document.querySelectorAll(".category-card").forEach(function (card) {
+          const category = categories.find(function (c) {
+            return c.id === card.dataset.categoryId;
+          });
+          if (!category) return;
+
+          const button = card.querySelector(".category-btn");
+          const done = submitted[category.name] === true;
+
+          card.classList.toggle("is-nominated", done);
+
+          if (done) {
+            button.disabled = true;
+            button.classList.add("is-done");
+            button.innerHTML =
+              '<i class="fa-solid fa-check" aria-hidden="true"></i><span>Nominated</span>';
+            button.setAttribute(
+              "aria-label",
+              category.name + " — already nominated from this device",
+            );
+          } else {
+            button.disabled = false;
+            button.classList.remove("is-done");
+            button.innerHTML =
+              '<span>Nominate</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+            button.setAttribute(
+              "aria-label",
+              "Nominate a business in " + category.name,
+            );
+          }
+        });
+      }
+
+      /* ============================================================
+   6. MODAL HANDLING
+   ============================================================ */
+
+      function openModal(modalEl) {
+        lastFocusedElement = document.activeElement;
+
+        /* Compensate for the disappearing scrollbar to avoid layout shift */
+        const scrollbarWidth =
+          window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) {
+          document.body.style.paddingRight = scrollbarWidth + "px";
+        }
+
+        modalEl.classList.add("open");
+        modalEl.setAttribute("aria-hidden", "false");
+        document.body.classList.add("no-scroll");
+        activeModal = modalEl;
+
+        const focusTarget =
+          modalEl.querySelector("[data-autofocus]") ||
+          modalEl.querySelector("input, button");
+
+        if (focusTarget) {
+          window.setTimeout(function () {
+            focusTarget.focus();
+          }, 80);
+        }
+      }
+
+      function closeModal(modalEl) {
+        modalEl.classList.remove("open");
+        modalEl.setAttribute("aria-hidden", "true");
+
+        if (activeModal === modalEl) activeModal = null;
+
+        if (!document.querySelector(".modal-overlay.open")) {
+          document.body.classList.remove("no-scroll");
+          document.body.style.paddingRight = "";
+        }
+
+        restoreFocus();
+      }
+
+      /** Return focus to whatever triggered the modal (with a safe fallback). */
+      function restoreFocus() {
+        const target = lastFocusedElement;
+        lastFocusedElement = null;
+
+        if (
+          target &&
+          document.contains(target) &&
+          !target.disabled &&
+          typeof target.focus === "function"
+        ) {
+          target.focus();
+          return;
+        }
+
+        const fallback = document.getElementById("categories");
+        if (fallback) {
+          fallback.setAttribute("tabindex", "-1");
+          fallback.focus();
+        }
+      }
+
+      /** Keep keyboard focus inside the active modal. */
+      function trapFocus(event, container) {
+        const focusable = Array.from(
+          container.querySelectorAll(
+            "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), " +
+              'textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        );
+
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
+      /* ============================================================
+   7. NOMINATION MODAL
+   ============================================================ */
+
+      function openNominationModal(category) {
+        if (!category) return;
+        if (isCategoryNominated(category.name))
+          return; /* Already used on this device */
+
+        currentCategory = category;
+
+        modalCategoryName.textContent = category.name;
+
+        /* Reset form state for a fresh nomination */
+        nominationForm.reset();
+        clearAllFieldErrors();
+        hideFormError();
+        setLoading(false);
+
+        openModal(nominationModal);
+      }
+
+      function closeNominationModal() {
+        closeModal(nominationModal);
+        currentCategory = null;
+      }
+
+      /* ============================================================
+   8. SUCCESS MODAL
+   ============================================================ */
+
+      function showSuccessModal(categoryName) {
+        successMessage.innerHTML =
+          "Thank you for helping us recognize outstanding businesses. Your nomination for " +
+          "<strong>" +
+          escapeHtml(categoryName) +
+          "</strong> has been successfully received.";
+
+        openModal(successModal);
+      }
+
+      function hideSuccessModal() {
+        closeModal(successModal);
+      }
+
+      /** Minimal HTML escaping for text injected into the success message. */
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      /* ============================================================
+   9. FORM VALIDATION
+   ============================================================ */
+      const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+      const PHONE_ALLOWED = /^[+\d\s()\-.]+$/;
+
+      function setFieldError(inputId, message) {
+        const input = document.getElementById(inputId);
+        const errorEl = document.getElementById(inputId + "Error");
+        if (!input || !errorEl) return;
+
+        if (message) {
+          input.classList.add("invalid");
+          input.setAttribute("aria-invalid", "true");
+          errorEl.textContent = message;
+          errorEl.classList.add("show");
+        } else {
+          input.classList.remove("invalid");
+          input.removeAttribute("aria-invalid");
+          errorEl.textContent = "";
+          errorEl.classList.remove("show");
+        }
+      }
+
+      function clearAllFieldErrors() {
+        setFieldError("email", "");
+        setFieldError("phone", "");
+        setFieldError("business", "");
+      }
+
+      function validateForm() {
+        let isValid = true;
+        let firstInvalid = null;
+
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const business = businessInput.value.trim();
+
+        /* --- Email --- */
+        if (!email) {
+          setFieldError("email", "Please enter your email address.");
+          isValid = false;
+          firstInvalid = firstInvalid || emailInput;
+        } else if (!EMAIL_PATTERN.test(email)) {
+          setFieldError("email", "Please enter a valid email address.");
+          isValid = false;
+          firstInvalid = firstInvalid || emailInput;
+        } else {
+          setFieldError("email", "");
+        }
+
+        /* --- Phone --- */
+        const digits = phone.replace(/\D/g, "");
+        if (!phone) {
+          setFieldError("phone", "Please enter your phone number.");
+          isValid = false;
+          firstInvalid = firstInvalid || phoneInput;
+        } else if (
+          !PHONE_ALLOWED.test(phone) ||
+          digits.length < 7 ||
+          digits.length > 15
+        ) {
+          setFieldError("phone", "Please enter a valid phone number.");
+          isValid = false;
+          firstInvalid = firstInvalid || phoneInput;
+        } else {
+          setFieldError("phone", "");
+        }
+
+        /* --- Business name --- */
+        if (!business) {
+          setFieldError(
+            "business",
+            "Please enter the business you want to nominate.",
+          );
+          isValid = false;
+          firstInvalid = firstInvalid || businessInput;
+        } else if (business.length < 2) {
+          setFieldError("business", "That business name looks too short.");
+          isValid = false;
+          firstInvalid = firstInvalid || businessInput;
+        } else {
+          setFieldError("business", "");
+        }
+
+        if (firstInvalid) firstInvalid.focus();
+
+        return isValid;
+      }
+
+      /* ============================================================
+   10. LOADING & ERROR STATE
+   ============================================================ */
+
+      function setLoading(isLoading) {
+        if (isLoading) {
+          submitBtn.disabled = true;
+          submitBtn.classList.add("loading");
+          submitBtnLabel.textContent = "Submitting...";
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("loading");
+          submitBtnLabel.textContent = "Submit Nomination";
+        }
+      }
+
+      function showFormError(message) {
+        formErrorText.textContent = message;
+        formError.classList.add("show");
+      }
+
+      function hideFormError() {
+        formError.classList.remove("show");
+      }
+
+      /* ============================================================
+   11. EMAILJS SUBMISSION
+   ============================================================ */
+
+      /** Returns true only when real credentials have been provided. */
+      function isEmailJsConfigured() {
+        return Object.keys(EMAILJS_CONFIG).every(function (key) {
+          const value = EMAILJS_CONFIG[key];
+          return (
+            typeof value === "string" &&
+            value.length > 0 &&
+            value.indexOf("YOUR_") !== 0
+          );
+        });
+      }
+
+      function initEmailJS() {
+        if (typeof emailjs === "undefined") {
+          console.warn(
+            "EmailJS SDK failed to load. Nominations cannot be submitted.",
+          );
+          return false;
+        }
+        try {
+          emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+          return true;
+        } catch (err) {
+          console.warn("EmailJS initialisation failed:", err);
+          return false;
+        }
+      }
+
+      async function submitNomination(event) {
+        if (event) event.preventDefault();
+
+        hideFormError();
+
+        if (!currentCategory) {
+          showFormError(
+            "Please choose a category before submitting your nomination.",
+          );
+          return;
+        }
+
+        /* Guard against a duplicate nomination in the same category */
+        if (isCategoryNominated(currentCategory.name)) {
+          const name = currentCategory.name;
+          closeNominationModal();
+          showSuccessModal(name);
+          return;
+        }
+
+        if (!validateForm()) return;
+
+        const templateParams = {
+          email: emailInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          business: businessInput.value.trim(),
+          category: currentCategory.name,
+        };
+
+        const categoryName = currentCategory.name;
+
+        setLoading(true);
+
+        try {
+          if (typeof emailjs === "undefined") {
+            throw new Error("EmailJS SDK is not available.");
+          }
+          if (!isEmailJsConfigured()) {
+            throw new Error(
+              "EmailJS credentials have not been configured yet.",
+            );
+          }
+
+          const response = await emailjs.send(
+            EMAILJS_CONFIG.serviceId,
+            EMAILJS_CONFIG.templateId,
+            templateParams,
+          );
+
+          if (
+            response &&
+            typeof response.status !== "undefined" &&
+            response.status !== 200
+          ) {
+            throw new Error(
+              "Unexpected EmailJS response status: " + response.status,
+            );
+          }
+
+          /* ---- Only now is the nomination considered successful ---- */
+          saveSubmittedCategory(categoryName);
+          updateCategoryUI();
+
+          closeNominationModal();
+          showSuccessModal(categoryName);
+        } catch (err) {
+          console.error("Nomination submission failed:", err);
+          /* Category is NOT saved and remains available for another attempt. */
+          showFormError(
+            "We couldn't submit your nomination right now. " +
+              "Please check your connection and try again.",
+          );
+        } finally {
+          setLoading(false);
+        }
+      }
+
+      /* ============================================================
+   12. COUNTDOWN
+   ============================================================ */
+
+      function padTwo(value) {
+        return String(value).padStart(2, "0");
+      }
+
+      function startCountdown() {
+        const labelEl = document.getElementById("countdownLabel");
+        const gridEl = document.getElementById("countdownGrid");
+        const openEl = document.getElementById("countdownOpen");
+        const daysEl = document.getElementById("cdDays");
+        const hoursEl = document.getElementById("cdHours");
+        const minutesEl = document.getElementById("cdMinutes");
+        const secondsEl = document.getElementById("cdSeconds");
+
+        let timerId = null;
+        let opened = false;
+
+        function tick() {
+          const remaining = VOTING_OPENS.getTime() - Date.now();
+
+          if (remaining <= 0) {
+            if (!opened) {
+              opened = true;
+              labelEl.hidden = true;
+              gridEl.hidden = true;
+              openEl.hidden = false;
+              if (timerId) {
+                clearInterval(timerId);
+                timerId = null;
+              }
+            }
+            return;
+          }
+
+          const totalSeconds = Math.floor(remaining / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          daysEl.textContent = padTwo(days);
+          hoursEl.textContent = padTwo(hours);
+          minutesEl.textContent = padTwo(minutes);
+          secondsEl.textContent = padTwo(seconds);
+        }
+
+        tick();
+
+        if (!opened) {
+          timerId = setInterval(tick, 1000);
+        }
+      }
+
+      /* ============================================================
+   13. EVENT WIRING
+   ============================================================ */
+
+      /* Category cards: open the modal for the clicked category */
+      categoryGrid.addEventListener("click", function (event) {
+        const card = event.target.closest(".category-card");
+        if (!card) return;
+        if (card.classList.contains("is-nominated")) return;
+
+        const category = categories.find(function (c) {
+          return c.id === card.dataset.categoryId;
+        });
+        if (category) openNominationModal(category);
+      });
+
+      /* Modal close controls */
+      nominationClose.addEventListener("click", closeNominationModal);
+      successContinue.addEventListener("click", hideSuccessModal);
+
+      /* Click outside the modal to close */
+      nominationModal.addEventListener("mousedown", function (event) {
+        if (event.target === nominationModal) closeNominationModal();
+      });
+      successModal.addEventListener("mousedown", function (event) {
+        if (event.target === successModal) hideSuccessModal();
+      });
+
+      /* Escape to close + focus trap */
+      document.addEventListener("keydown", function (event) {
+        if (!activeModal) return;
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          if (activeModal === nominationModal) {
+            closeNominationModal();
+          } else {
+            hideSuccessModal();
+          }
+          return;
+        }
+
+        if (event.key === "Tab") {
+          trapFocus(event, activeModal);
+        }
+      });
+
+      /* Form submission */
+      nominationForm.addEventListener("submit", submitNomination);
+
+      /* "Try Again" — hide the error banner and let the user resubmit */
+      tryAgainBtn.addEventListener("click", function () {
+        hideFormError();
+        submitBtn.focus();
+      });
+
+      /* Clear a field error as soon as the user corrects it */
+      [
+        { el: emailInput, id: "email" },
+        { el: phoneInput, id: "phone" },
+        { el: businessInput, id: "business" },
+      ].forEach(function (item) {
+        item.el.addEventListener("input", function () {
+          if (item.el.classList.contains("invalid")) {
+            setFieldError(item.id, "");
+          }
+        });
+      });
+
+      /* ============================================================
+   14. INITIALISATION
+   ============================================================ */
+      (function init() {
+        renderCategories();
+        updateCategoryUI();
+        startCountdown();
+        initEmailJS();
+      })();
+    </script>
+  </body>
+</html>
