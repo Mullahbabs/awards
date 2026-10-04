@@ -1,0 +1,3397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vote for your favourite businesses and brands in the People First Enterprise Awards 2026. Public voting is open."
+    />
+    <title>Vote | People First Enterprise Awards 2026</title>
+
+    <!-- ============ FONTS ============ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============ ICONS ============ -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- ============ EMAILJS SDK ============ -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+      /* =========================================================
+   1. DESIGN TOKENS
+   ========================================================= */
+      :root {
+        --primary-color: #1a237e;
+        --primary-dark: #131a5e;
+        --secondary-color: #b71c1c;
+        --accent-color: #d4af37;
+        --text-dark: #212121;
+        --text-light: #212121;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+
+        --muted: #5c6178;
+        --border: #e5e7f0;
+        --radius-lg: 20px;
+        --radius-md: 16px;
+        --radius-sm: 12px;
+
+        --shadow-sm:
+          0 1px 2px rgba(16, 24, 64, 0.05), 0 4px 14px rgba(16, 24, 64, 0.06);
+        --shadow-md: 0 10px 30px rgba(16, 24, 64, 0.1);
+        --shadow-lg: 0 24px 70px rgba(16, 24, 64, 0.22);
+
+        --max-width: 1200px;
+        --font-body:
+          "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-display: "Playfair Display", Georgia, serif;
+      }
+
+      /* =========================================================
+   2. BASE / RESET
+   ========================================================= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--light-gray);
+        color: var(--text-dark);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      input {
+        font: inherit;
+      }
+      a {
+        color: inherit;
+      }
+      [hidden] {
+        display: none !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        line-height: 1.25;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
+
+      .container {
+        width: min(100% - 2.5rem, var(--max-width));
+        margin-inline: auto;
+      }
+
+      /* =========================================================
+   3. BUTTONS
+   ========================================================= */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-radius: 999px;
+        padding: 0.72rem 1.2rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        line-height: 1;
+        border: 1px solid transparent;
+        text-decoration: none;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        white-space: nowrap;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn:focus-visible {
+        outline: 3px solid rgba(26, 35, 126, 0.35);
+        outline-offset: 2px;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: #fff;
+        box-shadow: 0 6px 18px rgba(26, 35, 126, 0.22);
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-outline {
+        background: #fff;
+        border-color: #d8dbe9;
+        color: var(--primary-color);
+      }
+      .btn-outline:hover {
+        border-color: var(--primary-color);
+        background: #f7f8fd;
+      }
+
+      .btn-gold {
+        background: linear-gradient(135deg, var(--accent-color), #c9a227);
+        color: #1b1b1b;
+        box-shadow: 0 8px 22px rgba(212, 175, 55, 0.32);
+      }
+      .btn-gold:hover {
+        filter: brightness(1.05);
+      }
+
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.38);
+        color: #fff;
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none !important;
+      }
+
+      /* Voted state (locked category) */
+      .btn.is-voted {
+        background: #eceef7;
+        color: #6b7089;
+        border-color: #dfe2ee;
+        box-shadow: none;
+      }
+
+      /* Loading spinner inside buttons */
+      .spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255, 255, 255, 0.45);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* =========================================================
+   4. HEADER (compact awards header)
+   ========================================================= */
+      .site-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary-color) 55%,
+          #27319d
+        );
+        color: #fff;
+        border-bottom: 3px solid var(--accent-color);
+      }
+      .site-header .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-width: 0;
+      }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent-color), #f2dc9a);
+        display: grid;
+        place-items: center;
+        color: var(--primary-dark);
+        font-size: 1.05rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+      .brand-text {
+        min-width: 0;
+      }
+      .brand-text strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 1.02rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .brand-text span {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #c9cdf0;
+      }
+      .header-tag {
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border: 1px solid rgba(212, 175, 55, 0.65);
+        color: var(--accent-color);
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      /* =========================================================
+   5. HERO
+   ========================================================= */
+      .hero {
+        position: relative;
+        color: #fff;
+        padding: 3rem 0 4.5rem;
+        background:
+          radial-gradient(
+            circle at 12% -20%,
+            rgba(212, 175, 55, 0.22),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 92% 120%,
+            rgba(183, 28, 28, 0.28),
+            transparent 50%
+          ),
+          linear-gradient(135deg, var(--primary-color), #101858);
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -60% auto;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent-color);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        background: rgba(212, 175, 55, 0.08);
+        padding: 0.4rem 0.85rem;
+        border-radius: 999px;
+        margin-bottom: 1.15rem;
+      }
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .hero-sub {
+        font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+        font-weight: 600;
+        color: var(--accent-color);
+        margin-top: 0.5rem;
+        letter-spacing: 0.02em;
+      }
+      .hero-text {
+        margin-top: 1rem;
+        color: #dcdef3;
+        font-size: 1rem;
+        max-width: 660px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.75rem;
+      }
+
+      /* =========================================================
+   6. VOTING PROGRESS CARD
+   ========================================================= */
+      .progress-wrap {
+        margin-top: -2.75rem;
+        position: relative;
+        z-index: 5;
+      }
+      .progress-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        padding: 1.35rem 1.5rem;
+      }
+      .pc-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.9rem;
+      }
+      .pc-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .pc-count {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: var(--text-dark);
+      }
+      .pc-count strong {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        color: var(--primary-color);
+        margin-right: 0.15rem;
+      }
+      .pc-note {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      /* =========================================================
+   7. PROGRESS BARS
+   ========================================================= */
+      .progress {
+        height: 8px;
+        border-radius: 999px;
+        background: #eceef5;
+        overflow: hidden;
+      }
+      .progress-lg {
+        height: 12px;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--primary-color), #3f4dd0);
+        transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .progress-fill.gold {
+        background: linear-gradient(
+          90deg,
+          #c9a227,
+          var(--accent-color),
+          #f2dc9a
+        );
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .progress-fill {
+          transition: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* =========================================================
+   8. INSTRUCTIONS
+   ========================================================= */
+      .instructions {
+        padding: 3rem 0 1rem;
+      }
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 1.75rem;
+      }
+      .section-head h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        color: var(--primary-color);
+      }
+      .section-head p {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+      .eyebrow-dark {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.1rem;
+      }
+      .info-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1.25rem;
+        box-shadow: var(--shadow-sm);
+      }
+      .info-card i {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(26, 35, 126, 0.07);
+        color: var(--primary-color);
+        margin-bottom: 0.75rem;
+      }
+      .info-card h3 {
+        font-size: 0.98rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .info-card p {
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      /* =========================================================
+   9. CONTROLS (search + category nav) — sticky
+   ========================================================= */
+      .controls {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-top: 2rem;
+        padding: 0.85rem 0;
+      }
+      .controls-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .search-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        max-width: 420px;
+        width: 100%;
+      }
+      .search-box i {
+        position: absolute;
+        left: 1rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        pointer-events: none;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 0.72rem 1rem 0.72rem 2.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: #fbfbfe;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .search-box input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.12);
+        background: #fff;
+      }
+
+      .category-nav {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .category-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .chip {
+        flex: 0 0 auto;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 0.5rem 0.95rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .chip:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+      .chip.is-active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+        box-shadow: 0 6px 16px rgba(26, 35, 126, 0.22);
+      }
+      .chip:focus-visible {
+        outline: 3px solid rgba(26, 35, 126, 0.3);
+        outline-offset: 2px;
+      }
+
+      /* =========================================================
+   10. CATEGORY SECTIONS
+   ========================================================= */
+      .categories {
+        padding: 2.5rem 0 1rem;
+      }
+      .category {
+        scroll-margin-top: 150px;
+        padding: 2rem 0;
+        border-bottom: 1px solid #e9ebf3;
+      }
+      .category:last-child {
+        border-bottom: none;
+      }
+      .cat-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .cat-head h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+        color: var(--primary-color);
+        text-transform: capitalize;
+      }
+      .cat-head p {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-top: 0.35rem;
+        max-width: 640px;
+      }
+      .cat-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(26, 35, 126, 0.07);
+        color: var(--primary-color);
+        border: 1px solid rgba(26, 35, 126, 0.14);
+        white-space: nowrap;
+      }
+      .cat-status::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2e7d32;
+        box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.16);
+      }
+      .cat-status.voted {
+        background: rgba(212, 175, 55, 0.12);
+        color: #8a6d13;
+        border-color: rgba(212, 175, 55, 0.42);
+      }
+      .cat-status.voted::before {
+        background: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      }
+
+      /* =========================================================
+   11. NOMINEE GRID + CARDS
+   ========================================================= */
+      .nominee-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.4rem;
+      }
+      .nominee-card {
+        position: relative;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+        overflow: hidden;
+      }
+      .nominee-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-color),
+          rgba(212, 175, 55, 0)
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .nominee-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: #dcdfee;
+      }
+      .nominee-card:hover::before {
+        opacity: 1;
+      }
+
+      .nominee-top {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+
+      /* Logo box (with elegant initials fallback) */
+      .logo-box {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        flex: 0 0 64px;
+        border-radius: 14px;
+        border: 1px solid #e3e6f2;
+        background: linear-gradient(135deg, #eef0fa, #e1e5f6);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .logo-box.is-fallback::after {
+        content: attr(data-initials);
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: 0.02em;
+        color: var(--primary-color);
+      }
+      .logo-box.lg {
+        width: 96px;
+        height: 96px;
+        flex-basis: 96px;
+        border-radius: 18px;
+      }
+      .logo-box.lg.is-fallback::after {
+        font-size: 1.8rem;
+      }
+      .logo-box.sm {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        border-radius: 12px;
+      }
+      .logo-box.sm.is-fallback::after {
+        font-size: 0.95rem;
+      }
+
+      .nominee-heading {
+        min-width: 0;
+      }
+      .nominee-heading h3 {
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        overflow-wrap: anywhere;
+      }
+      .badge {
+        display: inline-block;
+        margin-top: 0.3rem;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        background: rgba(183, 28, 28, 0.07);
+        border: 1px solid rgba(183, 28, 28, 0.14);
+        padding: 0.22rem 0.55rem;
+        border-radius: 999px;
+      }
+      .nominee-desc {
+        font-size: 0.88rem;
+        color: var(--muted);
+        flex-grow: 1;
+      }
+      .vote-status {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .vote-status-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.76rem;
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      .vote-status-row strong {
+        font-size: 0.86rem;
+        color: var(--primary-color);
+        font-weight: 800;
+      }
+      .nominee-actions {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 0.2rem;
+      }
+      .nominee-actions .btn {
+        flex: 1;
+        padding: 0.75rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      /* No-results message */
+      .no-results {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      /* =========================================================
+   12. MERIT AWARDS
+   ========================================================= */
+      .merit-section {
+        padding: 3.5rem 0 4rem;
+        background: linear-gradient(180deg, #fff, #f7f8fc);
+        border-top: 1px solid var(--border);
+        margin-top: 2rem;
+      }
+      .merit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.2rem;
+      }
+      .merit-card {
+        position: relative;
+        background: #fff;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .merit-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+      .merit-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent-color), #f0d78a);
+        color: #4a3a05;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+      }
+      .merit-badge {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #8a6d13;
+        background: rgba(212, 175, 55, 0.14);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+      }
+      .merit-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.4rem;
+        padding-right: 5rem;
+      }
+      .merit-card p {
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      /* =========================================================
+   13. FOOTER
+   ========================================================= */
+      .site-footer {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary-color)
+        );
+        color: #fff;
+        padding: 2.75rem 0 2rem;
+        text-align: center;
+        border-top: 3px solid var(--accent-color);
+      }
+      .site-footer h3 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        margin-bottom: 0.4rem;
+      }
+      .site-footer p {
+        color: #c9cdf0;
+        font-size: 0.9rem;
+      }
+      .site-footer .copy {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 0.78rem;
+        color: #9ba1cc;
+      }
+
+      /* =========================================================
+   14. MODALS
+   ========================================================= */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(11, 15, 45, 0.58);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        width: min(560px, 100%);
+        max-height: min(90vh, 880px);
+        background: #fff;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transform: translateY(18px) scale(0.97);
+        transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .modal-overlay.open .modal {
+        transform: none;
+      }
+      .modal.wide {
+        width: min(900px, 100%);
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.15rem 1.4rem;
+        border-bottom: 1px solid var(--border);
+        flex: 0 0 auto;
+      }
+      .modal-header h2 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        color: var(--primary-color);
+      }
+      .modal-close {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text-dark);
+        display: grid;
+        place-items: center;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .modal-close:hover {
+        background: #f4f5fb;
+        border-color: #cfd3e6;
+        transform: rotate(90deg);
+      }
+      .modal-close:focus-visible {
+        outline: 3px solid rgba(26, 35, 126, 0.3);
+        outline-offset: 2px;
+      }
+
+      .modal-body {
+        padding: 1.4rem;
+        overflow-y: auto;
+        flex: 1 1 auto;
+      }
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.7rem;
+        padding: 1rem 1.4rem;
+        border-top: 1px solid var(--border);
+        background: #fbfbfe;
+        flex: 0 0 auto;
+        flex-wrap: wrap;
+      }
+
+      /* ---- Profile modal ---- */
+      .profile-head {
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+        margin-bottom: 1.25rem;
+      }
+      .profile-head h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .profile-text {
+        font-size: 0.92rem;
+        color: #3d4259;
+        margin-bottom: 1.25rem;
+      }
+      .profile-block {
+        background: #f7f8fd;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .profile-block .vote-status-row {
+        margin-bottom: 0.5rem;
+      }
+      .profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .profile-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        border: 1px solid var(--border);
+        background: #fff;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .profile-links a:hover {
+        border-color: var(--primary-color);
+        background: #f7f8fd;
+      }
+
+      /* ---- Vote modal ---- */
+      .vote-summary {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        background: #f7f8fd;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .vote-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.15rem;
+      }
+      .vote-summary h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .vote-note {
+        font-size: 0.85rem;
+        color: var(--secondary-color);
+        background: rgba(183, 28, 28, 0.06);
+        border: 1px solid rgba(183, 28, 28, 0.14);
+        border-radius: var(--radius-sm);
+        padding: 0.65rem 0.85rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+      .field-group {
+        margin-bottom: 1rem;
+      }
+      .field-group label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #3d4259;
+        margin-bottom: 0.4rem;
+      }
+      .field-group input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        background: #fbfbfe;
+        font-size: 0.95rem;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          background 0.2s;
+      }
+      .field-group input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.12);
+      }
+      .field-group input.has-error {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+      }
+      .field-error {
+        display: none;
+        font-size: 0.78rem;
+        color: var(--secondary-color);
+        margin-top: 0.35rem;
+        font-weight: 600;
+      }
+      .field-error.show {
+        display: block;
+      }
+
+      /* ---- Success modal ---- */
+      .success-wrap {
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+      .success-anim {
+        width: 78px;
+        height: 78px;
+        margin: 0 auto 1.1rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent-color), #f0d78a);
+        color: #4a3a05;
+        font-size: 2rem;
+        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+        animation: popIn 0.5s cubic-bezier(0.22, 1.4, 0.4, 1) both;
+      }
+      .success-anim::after {
+        content: "";
+        position: absolute;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        border: 2px solid rgba(212, 175, 55, 0.55);
+        animation: ringPulse 1.8s ease-out 0.3s infinite;
+      }
+      @keyframes popIn {
+        from {
+          transform: scale(0.4);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes ringPulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1.55);
+          opacity: 0;
+        }
+      }
+      .success-wrap h3 {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        margin-bottom: 0.6rem;
+      }
+      .success-wrap p {
+        font-size: 0.92rem;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .success-wrap .strong-line {
+        color: var(--text-dark);
+        font-weight: 600;
+      }
+      .demo-note {
+        font-size: 0.76rem !important;
+        color: #9a9fb5 !important;
+        margin-top: 0.9rem;
+        font-style: italic;
+      }
+
+      /* ---- Winners modal ---- */
+      .winners-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .winner-card {
+        display: flex;
+        gap: 0.9rem;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 0.85rem;
+        background: #fbfbfe;
+      }
+      .winner-card h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+      .winner-card span {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        margin-bottom: 0.15rem;
+      }
+      .winner-card p {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+      }
+
+      /* =========================================================
+   15. RESPONSIVE
+   ========================================================= */
+      @media (max-width: 980px) {
+        .nominee-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .info-grid {
+          grid-template-columns: 1fr;
+          gap: 0.85rem;
+        }
+        .winners-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .category {
+          scroll-margin-top: 190px;
+        }
+        .controls-inner {
+          gap: 0.6rem;
+        }
+        .search-box {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 1.75rem, var(--max-width));
+        }
+        .hero {
+          padding: 2.25rem 0 4rem;
+        }
+        .nominee-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .progress-card {
+          padding: 1.15rem;
+        }
+        .pc-head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.35rem;
+        }
+        .nominee-actions .btn {
+          padding: 0.85rem 1rem;
+          font-size: 0.88rem;
+        }
+        .modal-footer {
+          flex-direction: column-reverse;
+        }
+        .modal-footer .btn {
+          width: 100%;
+          padding: 0.85rem 1rem;
+        }
+        .modal-body {
+          padding: 1.15rem;
+        }
+        .modal-header {
+          padding: 1rem 1.15rem;
+        }
+        .profile-head {
+          flex-direction: column;
+          text-align: center;
+          gap: 0.75rem;
+        }
+        .cat-head {
+          flex-direction: column;
+        }
+        .brand-text strong {
+          font-size: 0.9rem;
+        }
+        .header-tag {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+     HEADER (compact — not a full navigation bar)
+     ========================================================= -->
+    <header class="site-header">
+      <div class="container inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div class="brand-text">
+            <strong>People First Enterprise Awards 2026</strong>
+            <span>Public Voting</span>
+          </div>
+        </div>
+        <span class="header-tag">Official Voting Page</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================================
+       HERO / INTRO
+       ========================================================= -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <span class="eyebrow"
+            ><i class="fa-solid fa-star" aria-hidden="true"></i> 2026 Edition ·
+            Voting Open</span
+          >
+          <h1>People First Enterprise Awards 2026</h1>
+          <p class="hero-sub">Cast Your Vote</p>
+          <p class="hero-text">
+            Support the businesses and brands making a difference across
+            Nigeria. You may vote in one or more categories, but you can only
+            vote once per category. Voting in every category is
+            <strong>not mandatory</strong>.
+          </p>
+          <div class="hero-actions">
+            <a href="#categories" class="btn btn-gold">
+              <i class="fa-solid fa-list-check" aria-hidden="true"></i> Browse
+              Categories
+            </a>
+            <button type="button" class="btn btn-ghost" id="viewWinnersBtn">
+              <i class="fa-solid fa-crown" aria-hidden="true"></i> View 2025
+              Winners
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+       VOTING PROGRESS CARD
+       ========================================================= -->
+      <div class="progress-wrap">
+        <div class="container">
+          <div class="progress-card">
+            <div class="pc-head">
+              <div>
+                <p class="pc-label">Your Voting Progress</p>
+                <p class="pc-count">
+                  <strong id="progressCount">0</strong> of
+                  <span id="progressTotal">10</span> categories completed
+                </p>
+              </div>
+              <span class="pc-note"
+                >You don't have to vote in every category.</span
+              >
+            </div>
+            <div class="progress progress-lg">
+              <div
+                class="progress-fill gold"
+                id="overallProgress"
+                role="progressbar"
+                aria-label="Overall voting progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+       INSTRUCTIONS
+       ========================================================= -->
+      <section class="instructions">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow-dark">How Voting Works</span>
+            <h2>Simple, quick and transparent</h2>
+            <p>
+              Browse the categories, view a nominee's profile, then cast your
+              vote. That's all it takes.
+            </p>
+          </div>
+          <div class="info-grid">
+            <div class="info-card">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <h3>1. Browse &amp; Search</h3>
+              <p>
+                Explore the 10 award categories or search for a specific nominee
+                by name.
+              </p>
+            </div>
+            <div class="info-card">
+              <i class="fa-solid fa-check-to-slot" aria-hidden="true"></i>
+              <h3>2. Vote Once Per Category</h3>
+              <p>
+                You can vote in as many categories as you like — but only once
+                in each category.
+              </p>
+            </div>
+            <div class="info-card">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              <h3>3. Verify &amp; Submit</h3>
+              <p>
+                Enter a valid email address and phone number to confirm your
+                vote. No account needed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+       CONTROLS: SEARCH + CATEGORY NAVIGATION (sticky)
+       ========================================================= -->
+      <div class="controls" id="controls">
+        <div class="container controls-inner">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search nominees..."
+              aria-label="Search nominees"
+              autocomplete="off"
+            />
+          </div>
+          <nav
+            class="category-nav"
+            id="categoryNav"
+            aria-label="Voting categories"
+          ></nav>
+        </div>
+      </div>
+
+      <!-- =========================================================
+       VOTING CATEGORIES (rendered by JavaScript)
+       ========================================================= -->
+      <section class="categories" id="categories">
+        <div class="container">
+          <p class="no-results" id="noResults" hidden>
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i><br />
+            No nominees match your search. Try a different name or clear the
+            search field.
+          </p>
+          <div id="categoriesContainer"></div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+       MERIT AWARDS (no voting)
+       ========================================================= -->
+      <section class="merit-section" id="meritAwards">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow-dark">Special Recognition</span>
+            <h2>People First Enterprise Awards 2026 — Merit Awards</h2>
+            <p>
+              These special merit awards recognize outstanding contributions and
+              achievements.
+              <strong>No public voting is required for these awards.</strong>
+            </p>
+          </div>
+          <div class="merit-grid" id="meritGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================================
+     FOOTER
+     ========================================================= -->
+    <footer class="site-footer">
+      <div class="container">
+        <h3>People First Enterprise Awards 2026</h3>
+        <p>
+          Celebrating businesses, leaders and innovators making a difference.
+        </p>
+        <p class="copy">
+          © 2026 People First Enterprise Awards. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- =========================================================
+     REUSABLE MODAL SHELL
+     ========================================================= -->
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+      <div
+        class="modal"
+        id="modalBox"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-header">
+          <h2 id="modalTitle">Modal</h2>
+          <button
+            type="button"
+            class="modal-close"
+            id="modalCloseBtn"
+            aria-label="Close dialog"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+      </div>
+    </div>
+
+    <script>
+      /* =========================================================================
+   PEOPLE FIRST ENTERPRISE AWARDS 2026 — PUBLIC VOTING PAGE
+   -------------------------------------------------------------------------
+   Structure of this script:
+     1.  EmailJS configuration
+     2.  Local Storage vote state
+     3.  Nominee data (EDIT ME)
+     4.  Previous winners data (EDIT ME)
+     5.  Merit awards data (EDIT ME)
+     6.  Utilities
+     7.  Modal system (reusable)
+     8.  Rendering
+     9.  Voting flow
+     10. Filters & navigation
+     11. Initialisation
+
+   -------------------------------------------------------------------------
+   SECURITY NOTE (for the developer/admin — not shown to voters):
+   Local Storage provides CLIENT-SIDE vote restriction only. A determined user
+   can clear storage or use another browser/device. For tamper-proof election
+   security, server-side vote validation would be required.
+   ========================================================================= */
+
+      /* =========================================================================
+   1. EMAILJS CONFIGURATION
+   -------------------------------------------------------------------------
+   Replace these values with your real EmailJS credentials:
+     • EMAILJS_PUBLIC_KEY  → EmailJS dashboard → Account → Public Key
+     • EMAILJS_SERVICE_ID  → EmailJS dashboard → Email Services
+     • EMAILJS_TEMPLATE_ID → EmailJS dashboard → Email Templates
+   ========================================================================= */
+      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+      /* -------------------------------------------------------------------------
+   DEMO MODE
+   Set to true ONLY while you are testing the page before adding your EmailJS
+   credentials. In demo mode, votes are simulated locally and NO email is sent.
+   ⚠️  SET THIS TO false IN PRODUCTION.
+   ------------------------------------------------------------------------- */
+      const DEMO_MODE = true;
+
+      /* Initialise EmailJS (safe to call even with placeholder keys) */
+      if (window.emailjs) {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      }
+      if (DEMO_MODE) {
+        console.warn(
+          "[PFE Awards 2026] DEMO_MODE is ON — votes are simulated and no email is sent. " +
+            "Set DEMO_MODE = false in the code after adding your EmailJS credentials.",
+        );
+      }
+
+      /* =========================================================================
+   2. LOCAL STORAGE VOTE STATE
+   -------------------------------------------------------------------------
+   Stores an object like: { "Agric Value Chain": { nominee: "...", ... } }
+   A category key present = user has already voted in that category.
+   ========================================================================= */
+      const STORAGE_KEY = "pfea2026_votes";
+
+      let voteState = loadVoteState();
+
+      function loadVoteState() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch (err) {
+          console.warn("Could not read vote state from Local Storage.", err);
+          return {};
+        }
+      }
+
+      /** Returns true if the user has already voted in this category. */
+      function hasVoted(categoryName) {
+        return Boolean(voteState[categoryName]);
+      }
+
+      /**
+       * Saves a vote for a category.
+       * IMPORTANT: only ever called AFTER EmailJS returns a successful response.
+       */
+      function saveVoteStatus(categoryName, details) {
+        voteState[categoryName] = details || {
+          voted: true,
+          time: new Date().toISOString(),
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(voteState));
+        } catch (err) {
+          console.warn("Could not save vote state to Local Storage.", err);
+        }
+      }
+
+      /* =========================================================================
+   3. NOMINEE DATA  ← EDIT ME
+   -------------------------------------------------------------------------
+   Replace names, logos, descriptions, profiles and percentages below.
+     • logo         → "images/your-logo.png" (leave "" to show initials)
+     • description  → short text shown on the card
+     • profile      → longer text shown in the View Profile modal
+                      (leave "" to auto-generate a default profile)
+     • percentage   → any number 0–100 (display only, safe if out of range)
+   ========================================================================= */
+      const categories = [
+        {
+          name: "Agric Value Chain",
+          navLabel: "Agric",
+          description:
+            "Recognizing outstanding businesses strengthening Nigeria's agricultural ecosystem.",
+          nominees: [
+            {
+              id: "agric-01",
+              name: "GreenHarvest Farms",
+              logo: "",
+              description: "Large-scale crop farming and agro-processing.",
+              profile:
+                "GreenHarvest Farms works with smallholder farmers across several states, providing certified inputs, agronomy training and guaranteed off-take. Its processing facility turns locally grown produce into packaged food products sold nationwide.",
+              percentage: 72,
+            },
+            {
+              id: "agric-02",
+              name: "AgroPrime Nigeria",
+              logo: "",
+              description: "Modern agribusiness and farm input supply.",
+              profile: "",
+              percentage: 65,
+            },
+            {
+              id: "agric-03",
+              name: "FarmBridge Foods",
+              logo: "",
+              description: "Connecting farms to markets nationwide.",
+              profile: "",
+              percentage: 58,
+            },
+            {
+              id: "agric-04",
+              name: "HarvestLink Africa",
+              logo: "",
+              description: "Agro-logistics and post-harvest solutions.",
+              profile: "",
+              percentage: 54,
+            },
+            {
+              id: "agric-05",
+              name: "Golden Fields Agro",
+              logo: "",
+              description: "Livestock, grains and agro-commodity trading.",
+              profile: "",
+              percentage: 47,
+            },
+            {
+              id: "agric-06",
+              name: "FreshRoots Nigeria",
+              logo: "",
+              description: "Fresh produce farming and home delivery.",
+              profile: "",
+              percentage: 40,
+            },
+          ],
+        },
+        {
+          name: "Retail",
+          navLabel: "Retail",
+          description:
+            "Honouring retailers delivering value, convenience and trust to Nigerian consumers.",
+          nominees: [
+            {
+              id: "retail-01",
+              name: "MarketHub Nigeria",
+              logo: "",
+              description: "Modern retail marketplace for everyday needs.",
+              profile: "",
+              percentage: 70,
+            },
+            {
+              id: "retail-02",
+              name: "UrbanMart",
+              logo: "",
+              description: "City-focused supermarket chain.",
+              profile: "",
+              percentage: 62,
+            },
+            {
+              id: "retail-03",
+              name: "ValuePoint Stores",
+              logo: "",
+              description: "Discount retail with a value promise.",
+              profile: "",
+              percentage: 55,
+            },
+            {
+              id: "retail-04",
+              name: "Prime Retail",
+              logo: "",
+              description: "Premium retail experience and brands.",
+              profile: "",
+              percentage: 49,
+            },
+            {
+              id: "retail-05",
+              name: "Everyday Choice",
+              logo: "",
+              description: "Convenient neighbourhood shopping.",
+              profile: "",
+              percentage: 44,
+            },
+            {
+              id: "retail-06",
+              name: "ShopConnect Nigeria",
+              logo: "",
+              description: "Omnichannel retail and same-day delivery.",
+              profile: "",
+              percentage: 38,
+            },
+          ],
+        },
+        {
+          name: "Fashion",
+          navLabel: "Fashion",
+          description:
+            "Celebrating designers and fashion brands redefining Nigerian style.",
+          nominees: [
+            {
+              id: "fashion-01",
+              name: "LuxeThread Africa",
+              logo: "",
+              description: "Contemporary luxury ready-to-wear.",
+              profile: "",
+              percentage: 74,
+            },
+            {
+              id: "fashion-02",
+              name: "Naija Couture",
+              logo: "",
+              description: "Bespoke bridal and occasion wear.",
+              profile: "",
+              percentage: 66,
+            },
+            {
+              id: "fashion-03",
+              name: "Urban Stitch",
+              logo: "",
+              description: "Streetwear and everyday essentials.",
+              profile: "",
+              percentage: 57,
+            },
+            {
+              id: "fashion-04",
+              name: "Heritage Designs",
+              logo: "",
+              description: "Traditional fabrics, modern tailoring.",
+              profile: "",
+              percentage: 52,
+            },
+            {
+              id: "fashion-05",
+              name: "StyleHouse NG",
+              logo: "",
+              description: "Fashion retail and personal styling.",
+              profile: "",
+              percentage: 45,
+            },
+            {
+              id: "fashion-06",
+              name: "Royal Threads",
+              logo: "",
+              description: "Tailored corporate and native wear.",
+              profile: "",
+              percentage: 39,
+            },
+          ],
+        },
+        {
+          name: "Technology and Innovation",
+          navLabel: "Technology",
+          description:
+            "Recognizing companies driving digital transformation and innovation in Nigeria.",
+          nominees: [
+            {
+              id: "tech-01",
+              name: "TechNova Africa",
+              logo: "",
+              description: "Software products built for African businesses.",
+              profile: "",
+              percentage: 71,
+            },
+            {
+              id: "tech-02",
+              name: "InnovateHub",
+              logo: "",
+              description: "Startup incubation and digital solutions.",
+              profile: "",
+              percentage: 63,
+            },
+            {
+              id: "tech-03",
+              name: "DigitalBridge NG",
+              logo: "",
+              description: "Connectivity and cloud infrastructure.",
+              profile: "",
+              percentage: 56,
+            },
+            {
+              id: "tech-04",
+              name: "FutureTech Nigeria",
+              logo: "",
+              description: "AI and data-driven enterprise tools.",
+              profile: "",
+              percentage: 50,
+            },
+            {
+              id: "tech-05",
+              name: "CodeSphere Africa",
+              logo: "",
+              description: "Engineering talent and product development.",
+              profile: "",
+              percentage: 44,
+            },
+            {
+              id: "tech-06",
+              name: "NextGen Solutions",
+              logo: "",
+              description: "Smart systems and managed IT support.",
+              profile: "",
+              percentage: 37,
+            },
+          ],
+        },
+        {
+          name: "Transportation and Logistics",
+          navLabel: "Transport",
+          description:
+            "Honouring businesses keeping Nigeria moving, safely and reliably.",
+          nominees: [
+            {
+              id: "transport-01",
+              name: "SwiftMove Logistics",
+              logo: "",
+              description: "Nationwide haulage and distribution.",
+              profile: "",
+              percentage: 69,
+            },
+            {
+              id: "transport-02",
+              name: "TransAfrica Express",
+              logo: "",
+              description: "Cross-border freight and cargo services.",
+              profile: "",
+              percentage: 61,
+            },
+            {
+              id: "transport-03",
+              name: "MoveRight Nigeria",
+              logo: "",
+              description: "Urban mobility and ride services.",
+              profile: "",
+              percentage: 55,
+            },
+            {
+              id: "transport-04",
+              name: "LogisticsPro",
+              logo: "",
+              description: "Warehousing and supply chain management.",
+              profile: "",
+              percentage: 48,
+            },
+            {
+              id: "transport-05",
+              name: "FastTrack Transport",
+              logo: "",
+              description: "Express parcel and courier delivery.",
+              profile: "",
+              percentage: 43,
+            },
+            {
+              id: "transport-06",
+              name: "RouteLink Africa",
+              logo: "",
+              description: "Fleet technology and route optimization.",
+              profile: "",
+              percentage: 36,
+            },
+          ],
+        },
+        {
+          name: "Manufacturing",
+          navLabel: "Manufacturing",
+          description:
+            "Celebrating makers and industries building Nigeria's productive capacity.",
+          nominees: [
+            {
+              id: "manu-01",
+              name: "Prime Manufacturing",
+              logo: "",
+              description: "Consumer goods production at scale.",
+              profile: "",
+              percentage: 68,
+            },
+            {
+              id: "manu-02",
+              name: "BuildRight Nigeria",
+              logo: "",
+              description: "Construction materials and block production.",
+              profile: "",
+              percentage: 60,
+            },
+            {
+              id: "manu-03",
+              name: "IndustrialWorks Africa",
+              logo: "",
+              description: "Heavy industry and metal fabrication.",
+              profile: "",
+              percentage: 53,
+            },
+            {
+              id: "manu-04",
+              name: "ProManufacture",
+              logo: "",
+              description: "Contract manufacturing and packaging.",
+              profile: "",
+              percentage: 47,
+            },
+            {
+              id: "manu-05",
+              name: "Unity Manufacturing",
+              logo: "",
+              description: "Industrial parts and components.",
+              profile: "",
+              percentage: 42,
+            },
+            {
+              id: "manu-06",
+              name: "MadeRight Industries",
+              logo: "",
+              description: "Locally made home and kitchen products.",
+              profile: "",
+              percentage: 35,
+            },
+          ],
+        },
+        {
+          name: "Creative Sector",
+          navLabel: "Creative",
+          description:
+            "Recognizing creative businesses and studios shaping culture and ideas.",
+          nominees: [
+            {
+              id: "creative-01",
+              name: "CreativeHub Africa",
+              logo: "",
+              description: "Creative studio and brand design house.",
+              profile: "",
+              percentage: 70,
+            },
+            {
+              id: "creative-02",
+              name: "ArtHouse Nigeria",
+              logo: "",
+              description: "Gallery, art sales and artist residencies.",
+              profile: "",
+              percentage: 62,
+            },
+            {
+              id: "creative-03",
+              name: "Inspire Studios",
+              logo: "",
+              description: "Film, photography and content production.",
+              profile: "",
+              percentage: 56,
+            },
+            {
+              id: "creative-04",
+              name: "CultureWorks",
+              logo: "",
+              description: "Cultural projects and storytelling.",
+              profile: "",
+              percentage: 49,
+            },
+            {
+              id: "creative-05",
+              name: "Visionary Creatives",
+              logo: "",
+              description: "Advertising and visual identity design.",
+              profile: "",
+              percentage: 43,
+            },
+            {
+              id: "creative-06",
+              name: "CreativeEdge NG",
+              logo: "",
+              description: "Design, animation and illustration.",
+              profile: "",
+              percentage: 37,
+            },
+          ],
+        },
+        {
+          name: "Education",
+          navLabel: "Education",
+          description:
+            "Honouring institutions and platforms expanding access to quality learning.",
+          nominees: [
+            {
+              id: "edu-01",
+              name: "FutureLearn Academy",
+              logo: "",
+              description: "STEM-focused private academy.",
+              profile: "",
+              percentage: 67,
+            },
+            {
+              id: "edu-02",
+              name: "Excellence Schools",
+              logo: "",
+              description: "Primary and secondary education.",
+              profile: "",
+              percentage: 61,
+            },
+            {
+              id: "edu-03",
+              name: "KnowledgeBridge",
+              logo: "",
+              description: "EdTech platform and exam preparation.",
+              profile: "",
+              percentage: 54,
+            },
+            {
+              id: "edu-04",
+              name: "EduPrime Nigeria",
+              logo: "",
+              description: "Teacher training and school support.",
+              profile: "",
+              percentage: 48,
+            },
+            {
+              id: "edu-05",
+              name: "BrightMinds Academy",
+              logo: "",
+              description: "Early years and primary learning.",
+              profile: "",
+              percentage: 42,
+            },
+            {
+              id: "edu-06",
+              name: "NextStep Education",
+              logo: "",
+              description: "Vocational and skills training.",
+              profile: "",
+              percentage: 36,
+            },
+          ],
+        },
+        {
+          name: "Entertainment and Lifestyle",
+          navLabel: "Entertainment",
+          description:
+            "Celebrating brands creating joy, culture and modern lifestyle experiences.",
+          nominees: [
+            {
+              id: "ent-01",
+              name: "Naija Entertainment Hub",
+              logo: "",
+              description: "Events, talent and content production.",
+              profile: "",
+              percentage: 71,
+            },
+            {
+              id: "ent-02",
+              name: "Lifestyle Africa",
+              logo: "",
+              description: "Lifestyle media and brand partnerships.",
+              profile: "",
+              percentage: 63,
+            },
+            {
+              id: "ent-03",
+              name: "Premium Events NG",
+              logo: "",
+              description: "Luxury event planning and production.",
+              profile: "",
+              percentage: 57,
+            },
+            {
+              id: "ent-04",
+              name: "VibeHouse",
+              logo: "",
+              description: "Music, lounge and nightlife brand.",
+              profile: "",
+              percentage: 50,
+            },
+            {
+              id: "ent-05",
+              name: "Entertainment Central",
+              logo: "",
+              description: "Artist management and promotion.",
+              profile: "",
+              percentage: 44,
+            },
+            {
+              id: "ent-06",
+              name: "Culture & Lifestyle Co.",
+              logo: "",
+              description: "Curated cultural experiences.",
+              profile: "",
+              percentage: 38,
+            },
+          ],
+        },
+        {
+          name: "Tourism and Hospitality",
+          navLabel: "Tourism",
+          description:
+            "Recognizing businesses showcasing Nigeria's beauty and warm hospitality.",
+          nominees: [
+            {
+              id: "tourism-01",
+              name: "Paradise Hotels",
+              logo: "",
+              description: "Premium hotel and resort group.",
+              profile: "",
+              percentage: 72,
+            },
+            {
+              id: "tourism-02",
+              name: "Explore Nigeria",
+              logo: "",
+              description: "Domestic tourism and tour packages.",
+              profile: "",
+              percentage: 64,
+            },
+            {
+              id: "tourism-03",
+              name: "Heritage Tourism",
+              logo: "",
+              description: "Cultural and heritage tours.",
+              profile: "",
+              percentage: 56,
+            },
+            {
+              id: "tourism-04",
+              name: "TravelNest Africa",
+              logo: "",
+              description: "Travel booking and concierge services.",
+              profile: "",
+              percentage: 49,
+            },
+            {
+              id: "tourism-05",
+              name: "GrandStay Hotels",
+              logo: "",
+              description: "Business hotels and conference facilities.",
+              profile: "",
+              percentage: 43,
+            },
+            {
+              id: "tourism-06",
+              name: "Destination Nigeria",
+              logo: "",
+              description: "Destination marketing and travel media.",
+              profile: "",
+              percentage: 37,
+            },
+          ],
+        },
+      ];
+
+      /* =========================================================================
+   4. PREVIOUS YEAR'S WINNERS  ← EDIT ME
+   ========================================================================= */
+      const previousWinners = [
+        {
+          category: "Agric Value Chain",
+          name: "AgroTrust Nigeria",
+          logo: "",
+          description: "Pioneered out-grower schemes for smallholder farmers.",
+        },
+        {
+          category: "Retail",
+          name: "CityMart Stores",
+          logo: "",
+          description: "Expanded affordable neighbourhood retail nationwide.",
+        },
+        {
+          category: "Fashion",
+          name: "Aso Couture House",
+          logo: "",
+          description: "Elevated Nigerian textiles onto the global stage.",
+        },
+        {
+          category: "Technology and Innovation",
+          name: "NaijaTech Labs",
+          logo: "",
+          description: "Built payment tools used by thousands of SMEs.",
+        },
+        {
+          category: "Transportation and Logistics",
+          name: "MetroFreight Nigeria",
+          logo: "",
+          description: "Delivered reliable nationwide freight solutions.",
+        },
+        {
+          category: "Manufacturing",
+          name: "AnchorWorks Industries",
+          logo: "",
+          description: "Championed local production and job creation.",
+        },
+        {
+          category: "Creative Sector",
+          name: "Studio Kulture",
+          logo: "",
+          description: "Shaped brand storytelling for Nigerian businesses.",
+        },
+        {
+          category: "Education",
+          name: "BrightPath Academy",
+          logo: "",
+          description: "Raised learning outcomes with modern teaching.",
+        },
+        {
+          category: "Entertainment and Lifestyle",
+          name: "Arena Live Africa",
+          logo: "",
+          description: "Produced world-class entertainment experiences.",
+        },
+        {
+          category: "Tourism and Hospitality",
+          name: "Savannah Resorts",
+          logo: "",
+          description: "Showcased Nigerian hospitality to the world.",
+        },
+      ];
+
+      /* =========================================================================
+   5. MERIT AWARDS  ← EDIT ME
+   (These are NOT voting categories — no Vote buttons appear here.)
+   ========================================================================= */
+      const meritAwards = [
+        {
+          icon: "fa-solid fa-award",
+          name: "Lifetime Enterprise Achievement Award",
+          description:
+            "Honouring a distinguished individual whose lifetime of enterprise has shaped Nigerian business and inspired generations.",
+        },
+        {
+          icon: "fa-solid fa-hand-holding-heart",
+          name: "Outstanding Community Impact Award",
+          description:
+            "Recognising an organisation whose work has measurably improved lives in the communities it serves.",
+        },
+        {
+          icon: "fa-solid fa-seedling",
+          name: "Emerging Enterprise Leader Award",
+          description:
+            "Celebrating a fast-rising enterprise demonstrating exceptional growth, vision and leadership.",
+        },
+        {
+          icon: "fa-solid fa-lightbulb",
+          name: "Excellence in Innovation Award",
+          description:
+            "Recognising breakthrough innovation that solves real problems and advances Nigerian industry.",
+        },
+        {
+          icon: "fa-solid fa-people-group",
+          name: "People First Leadership Award",
+          description:
+            "Honouring leadership that consistently puts people, ethics and long-term value first.",
+        },
+      ];
+
+      /* =========================================================================
+   6. UTILITIES
+   ========================================================================= */
+
+      /** Escapes HTML special characters for safe insertion into markup. */
+      function esc(str) {
+        return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[c];
+        });
+      }
+
+      /** Keeps percentages safe between 0 and 100. */
+      function clampPercentage(value) {
+        const num = Number(value);
+        if (isNaN(num)) return 0;
+        return Math.min(100, Math.max(0, Math.round(num)));
+      }
+
+      /** Builds initials from a nominee name, e.g. "GreenHarvest Farms" → "GF". */
+      function getInitials(name) {
+        const words = String(name || "")
+          .split(/\s+/)
+          .filter(function (w) {
+            return /^[A-Za-z0-9]/.test(w);
+          });
+        if (!words.length) return "?";
+        return words
+          .slice(0, 2)
+          .map(function (w) {
+            return w.charAt(0).toUpperCase();
+          })
+          .join("");
+      }
+
+      /** Creates a URL-safe id from a category name. */
+      function categoryId(name) {
+        return (
+          "cat-" +
+          String(name)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "")
+        );
+      }
+
+      /** Returns the nominee profile text (auto-generates one when empty). */
+      function getProfile(nominee, category) {
+        if (nominee.profile && String(nominee.profile).trim())
+          return nominee.profile;
+        return (
+          nominee.name +
+          " is nominated in the " +
+          category.name +
+          " category of the People First Enterprise Awards 2026. " +
+          nominee.description +
+          " The nominee was shortlisted by the awards panel for its contribution to Nigeria's " +
+          "enterprise landscape and the positive impact it has on the people and communities it serves."
+        );
+      }
+
+      /** Reusable logo markup with an elegant initials fallback. */
+      function logoHTML(nominee, extraClass) {
+        const initials = getInitials(nominee.name);
+        const hasLogo = nominee.logo && String(nominee.logo).trim();
+        const classes =
+          "logo-box " + (extraClass || "") + (hasLogo ? "" : " is-fallback");
+        const img = hasLogo
+          ? '<img src="' +
+            esc(nominee.logo) +
+            '" alt="' +
+            esc(nominee.name) +
+            ' logo" loading="lazy" ' +
+            "onerror=\"this.parentElement.classList.add('is-fallback'); this.remove();\">"
+          : "";
+        return (
+          '<div class="' +
+          classes.trim() +
+          '" data-initials="' +
+          esc(initials) +
+          '" aria-hidden="true">' +
+          img +
+          "</div>"
+        );
+      }
+
+      /** Simple email validation — sensible, not overly strict. */
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(
+          String(value || "").trim(),
+        );
+      }
+
+      /** Phone validation — accepts Nigerian formats and reasonable international ones. */
+      function isValidPhone(value) {
+        const cleaned = String(value || "").replace(/[\s\-().]/g, "");
+        if (!/^\+?\d{7,15}$/.test(cleaned)) return false;
+        const digits = cleaned.replace(/^\+/, "");
+        return digits.length >= 7 && digits.length <= 15;
+      }
+
+      /** Finds a nominee + its category by nominee id. */
+      function findNomineeById(id) {
+        for (let i = 0; i < categories.length; i++) {
+          const cat = categories[i];
+          for (let j = 0; j < cat.nominees.length; j++) {
+            if (cat.nominees[j].id === id)
+              return { nominee: cat.nominees[j], category: cat };
+          }
+        }
+        return null;
+      }
+
+      /* =========================================================================
+   7. REUSABLE MODAL SYSTEM
+   ========================================================================= */
+      const overlay = document.getElementById("modalOverlay");
+      const modalBox = document.getElementById("modalBox");
+      const modalTitleEl = document.getElementById("modalTitle");
+      const modalBodyEl = document.getElementById("modalBody");
+      const modalFooterEl = document.getElementById("modalFooter");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+      let lastFocusedElement = null;
+
+      /**
+       * Opens the shared modal shell.
+       * @param {Object} opts
+       * @param {string} opts.title     - Modal heading
+       * @param {string} opts.body      - HTML for the modal body
+       * @param {string} [opts.footer]  - HTML for the modal footer
+       * @param {boolean} [opts.wide]   - Use the wider modal variant
+       * @param {Function} [opts.onOpen]- Callback fired after the modal opens
+       */
+      function openModal(opts) {
+        modalTitleEl.textContent = opts.title || "";
+        modalBodyEl.innerHTML = opts.body || "";
+        modalFooterEl.innerHTML = opts.footer || "";
+        modalFooterEl.style.display = opts.footer ? "flex" : "none";
+        modalBox.classList.toggle("wide", Boolean(opts.wide));
+
+        lastFocusedElement = document.activeElement;
+
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        modalBodyEl.scrollTop = 0;
+
+        if (typeof opts.onOpen === "function") opts.onOpen();
+
+        // Move focus into the modal for accessibility
+        window.setTimeout(function () {
+          const target =
+            modalBodyEl.querySelector("input, textarea, select") ||
+            modalFooterEl.querySelector("button") ||
+            modalCloseBtn;
+          if (target) target.focus({ preventScroll: true });
+        }, 70);
+      }
+
+      /** Closes the shared modal shell and restores focus. */
+      function closeModal() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (
+          lastFocusedElement &&
+          typeof lastFocusedElement.focus === "function"
+        ) {
+          lastFocusedElement.focus({ preventScroll: true });
+        }
+      }
+
+      /* Close button */
+      modalCloseBtn.addEventListener("click", closeModal);
+
+      /* Click outside the modal closes it */
+      overlay.addEventListener("mousedown", function (e) {
+        if (e.target === overlay) closeModal();
+      });
+
+      /* ESC closes the modal + simple focus trap */
+      document.addEventListener("keydown", function (e) {
+        if (!overlay.classList.contains("open")) return;
+
+        if (e.key === "Escape") {
+          closeModal();
+          return;
+        }
+
+        if (e.key === "Tab") {
+          const focusables = overlay.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          );
+          const list = Array.prototype.filter.call(focusables, function (el) {
+            return !el.disabled && el.offsetParent !== null;
+          });
+          if (!list.length) return;
+          const first = list[0];
+          const last = list[list.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      /* =========================================================================
+   8. RENDERING
+   ========================================================================= */
+      const categoriesContainer = document.getElementById(
+        "categoriesContainer",
+      );
+      const categoryNav = document.getElementById("categoryNav");
+      const noResultsEl = document.getElementById("noResults");
+      const meritGrid = document.getElementById("meritGrid");
+      const searchInput = document.getElementById("searchInput");
+      const progressCountEl = document.getElementById("progressCount");
+      const progressTotalEl = document.getElementById("progressTotal");
+      const overallProgressEl = document.getElementById("overallProgress");
+
+      /* Progress bars animate when they scroll into view */
+      const progressObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.style.width = el.dataset.percentage + "%";
+              progressObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+
+      /** Registers every un-animated progress bar for viewport animation. */
+      function observeProgressBars(scope) {
+        const bars = (scope || document).querySelectorAll(
+          ".progress-fill[data-percentage]:not(.observed)",
+        );
+        bars.forEach(function (bar) {
+          bar.classList.add("observed");
+          progressObserver.observe(bar);
+        });
+      }
+
+      /** Builds a single nominee card. */
+      function createNomineeCard(nominee, category) {
+        const voted = hasVoted(category.name);
+        const pct = clampPercentage(nominee.percentage);
+
+        return (
+          '<article class="nominee-card" data-nominee-id="' +
+          esc(nominee.id) +
+          '" ' +
+          'data-name="' +
+          esc(nominee.name.toLowerCase()) +
+          '" ' +
+          'data-category="' +
+          esc(category.name) +
+          '">' +
+          '<div class="nominee-top">' +
+          logoHTML(nominee, "") +
+          '<div class="nominee-heading">' +
+          "<h3>" +
+          esc(nominee.name) +
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
+          "</div>" +
+          "</div>" +
+          '<p class="nominee-desc">' +
+          esc(nominee.description) +
+          "</p>" +
+          '<div class="vote-status">' +
+          '<div class="vote-status-row">' +
+          "<span>Current Voting Status</span>" +
+          "<strong>" +
+          pct +
+          "%</strong>" +
+          "</div>" +
+          '<div class="progress">' +
+          '<div class="progress-fill" data-percentage="' +
+          pct +
+          '" ' +
+          'role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' +
+          pct +
+          '" ' +
+          'aria-label="' +
+          esc(nominee.name) +
+          ' voting percentage"></div>' +
+          "</div>" +
+          "</div>" +
+          '<div class="nominee-actions">' +
+          '<button type="button" class="btn btn-outline" data-action="profile">' +
+          '<i class="fa-regular fa-address-card" aria-hidden="true"></i> View Profile' +
+          "</button>" +
+          '<button type="button" class="btn btn-primary' +
+          (voted ? " is-voted" : "") +
+          '" ' +
+          'data-action="vote"' +
+          (voted ? " disabled" : "") +
+          ">" +
+          (voted
+            ? '<i class="fa-solid fa-check" aria-hidden="true"></i> Voted'
+            : '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote') +
+          "</button>" +
+          "</div>" +
+          "</article>"
+        );
+      }
+
+      /** Builds a complete category section. */
+      function createCategorySection(category) {
+        const voted = hasVoted(category.name);
+
+        const cards = category.nominees
+          .map(function (nominee) {
+            return createNomineeCard(nominee, category);
+          })
+          .join("");
+
+        return (
+          '<section class="category" id="' +
+          categoryId(category.name) +
+          '" ' +
+          'data-category="' +
+          esc(category.name) +
+          '" ' +
+          'aria-labelledby="' +
+          categoryId(category.name) +
+          '-title">' +
+          '<div class="cat-head">' +
+          "<div>" +
+          '<h2 id="' +
+          categoryId(category.name) +
+          '-title">' +
+          esc(category.name) +
+          "</h2>" +
+          "<p>" +
+          esc(category.description) +
+          "</p>" +
+          "</div>" +
+          '<span class="cat-status' +
+          (voted ? " voted" : "") +
+          '">' +
+          (voted ? "You have voted in this category" : "Voting available") +
+          "</span>" +
+          "</div>" +
+          '<div class="nominee-grid">' +
+          cards +
+          "</div>" +
+          "</section>"
+        );
+      }
+
+      /** Renders all categories into the page. */
+      function renderCategories() {
+        categoriesContainer.innerHTML = categories
+          .map(createCategorySection)
+          .join("");
+        observeProgressBars(categoriesContainer);
+      }
+
+      /** Renders the category navigation chips. */
+      function renderCategoryNav() {
+        let html =
+          '<button type="button" class="chip is-active" data-target="all">All Categories</button>';
+        categories.forEach(function (cat) {
+          html +=
+            '<button type="button" class="chip" data-target="' +
+            categoryId(cat.name) +
+            '">' +
+            esc(cat.navLabel || cat.name) +
+            "</button>";
+        });
+        categoryNav.innerHTML = html;
+      }
+
+      /** Renders the merit awards (no voting). */
+      function renderMeritAwards() {
+        meritGrid.innerHTML = meritAwards
+          .map(function (award) {
+            return (
+              '<article class="merit-card">' +
+              '<span class="merit-badge">Merit Award</span>' +
+              '<div class="merit-icon"><i class="' +
+              esc(award.icon) +
+              '" aria-hidden="true"></i></div>' +
+              "<h3>" +
+              esc(award.name) +
+              "</h3>" +
+              "<p>" +
+              esc(award.description) +
+              "</p>" +
+              "</article>"
+            );
+          })
+          .join("");
+      }
+
+      /** Updates the "X of 10 categories completed" summary. */
+      function updateVotingProgress() {
+        const total = categories.length;
+        const completed = categories.filter(function (c) {
+          return hasVoted(c.name);
+        }).length;
+        const percent = total ? Math.round((completed / total) * 100) : 0;
+
+        progressCountEl.textContent = completed;
+        progressTotalEl.textContent = total;
+        overallProgressEl.style.width = percent + "%";
+        overallProgressEl.setAttribute("aria-valuenow", String(percent));
+      }
+
+      /** Refreshes one category's UI after a vote (no full re-render needed). */
+      function refreshCategory(category) {
+        const section = document.getElementById(categoryId(category.name));
+        if (!section) return;
+
+        const voted = hasVoted(category.name);
+
+        const statusEl = section.querySelector(".cat-status");
+        if (statusEl) {
+          statusEl.textContent = voted
+            ? "You have voted in this category"
+            : "Voting available";
+          statusEl.classList.toggle("voted", voted);
+        }
+
+        section
+          .querySelectorAll('[data-action="vote"]')
+          .forEach(function (btn) {
+            if (voted) {
+              btn.disabled = true;
+              btn.classList.add("is-voted");
+              btn.innerHTML =
+                '<i class="fa-solid fa-check" aria-hidden="true"></i> Voted';
+            } else {
+              btn.disabled = false;
+              btn.classList.remove("is-voted");
+              btn.innerHTML =
+                '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote';
+            }
+          });
+      }
+
+      /* =========================================================================
+   9. VOTING FLOW
+   ========================================================================= */
+
+      /* Card buttons (event delegation) */
+      categoriesContainer.addEventListener("click", function (e) {
+        const btn = e.target.closest("[data-action]");
+        if (!btn) return;
+
+        const card = btn.closest("[data-nominee-id]");
+        if (!card) return;
+
+        const found = findNomineeById(card.dataset.nomineeId);
+        if (!found) return;
+
+        const action = btn.dataset.action;
+        if (action === "profile") {
+          openProfileModal(found.nominee, found.category);
+        } else if (action === "vote") {
+          handleVoteClick(found.nominee, found.category);
+        }
+      });
+
+      /** Entry point when a user clicks a Vote button. */
+      function handleVoteClick(nominee, category) {
+        if (hasVoted(category.name)) {
+          showAlreadyVotedModal(category);
+          return;
+        }
+        openVoteModal(nominee, category);
+      }
+
+      /* ---------- Profile modal ---------- */
+      function openProfileModal(nominee, category) {
+        const voted = hasVoted(category.name);
+        const pct = clampPercentage(nominee.percentage);
+
+        const links = [];
+        if (nominee.website) {
+          links.push(
+            '<a href="' +
+              esc(nominee.website) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              '<i class="fa-solid fa-globe" aria-hidden="true"></i> Website</a>',
+          );
+        }
+        if (nominee.social) {
+          links.push(
+            '<a href="' +
+              esc(nominee.social) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              '<i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Social</a>',
+          );
+        }
+
+        const body =
+          '<div class="profile-head">' +
+          logoHTML(nominee, "lg") +
+          "<div>" +
+          "<h3>" +
+          esc(nominee.name) +
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
+          "</div>" +
+          "</div>" +
+          '<p class="profile-text">' +
+          esc(getProfile(nominee, category)) +
+          "</p>" +
+          '<div class="profile-block">' +
+          '<div class="vote-status-row">' +
+          "<span>Current Voting Status</span>" +
+          "<strong>" +
+          pct +
+          "%</strong>" +
+          "</div>" +
+          '<div class="progress">' +
+          '<div class="progress-fill" style="width:' +
+          pct +
+          '%"></div>' +
+          "</div>" +
+          "</div>" +
+          (links.length
+            ? '<div class="profile-links">' + links.join("") + "</div>"
+            : "");
+
+        const footer =
+          '<button type="button" class="btn btn-outline" data-close-modal>Close</button>' +
+          (voted
+            ? '<button type="button" class="btn is-voted" disabled><i class="fa-solid fa-check" aria-hidden="true"></i> Voting Completed</button>'
+            : '<button type="button" class="btn btn-primary" id="profileVoteBtn">' +
+              '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote for ' +
+              esc(nominee.name) +
+              "</button>");
+
+        openModal({
+          title: "Nominee Profile",
+          body: body,
+          footer: footer,
+          onOpen: function () {
+            const closeBtn = modalFooterEl.querySelector("[data-close-modal]");
+            if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+            const voteBtn = document.getElementById("profileVoteBtn");
+            if (voteBtn) {
+              voteBtn.addEventListener("click", function () {
+                openVoteModal(nominee, category);
+              });
+            }
+          },
+        });
+      }
+
+      /* ---------- Vote modal ---------- */
+      let lastAttempt = null; // remembers a failed attempt so "Try Again" can restore it
+
+      function openVoteModal(nominee, category, prefill) {
+        const data = prefill || {};
+
+        const body =
+          '<div class="vote-summary">' +
+          logoHTML(nominee, "sm") +
+          "<div>" +
+          '<p class="vote-label">You are about to vote for:</p>' +
+          "<h3>" +
+          esc(nominee.name) +
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
+          "</div>" +
+          "</div>" +
+          '<p class="vote-note">' +
+          '<i class="fa-solid fa-circle-info" aria-hidden="true"></i>' +
+          "<span>You can only vote once in this category. Your email and phone number are required to validate your vote.</span>" +
+          "</p>" +
+          '<form id="voteForm" novalidate>' +
+          '<div class="field-group">' +
+          '<label for="voterEmail">Email Address *</label>' +
+          '<input type="email" id="voterEmail" name="voterEmail" placeholder="you@example.com" ' +
+          'autocomplete="email" value="' +
+          esc(data.email || "") +
+          '" ' +
+          'aria-describedby="emailError" required />' +
+          '<p class="field-error" id="emailError" role="alert"></p>' +
+          "</div>" +
+          '<div class="field-group">' +
+          '<label for="voterPhone">Phone Number *</label>' +
+          '<input type="tel" id="voterPhone" name="voterPhone" placeholder="08012345678 or +2348012345678" ' +
+          'autocomplete="tel" value="' +
+          esc(data.phone || "") +
+          '" ' +
+          'aria-describedby="phoneError" required />' +
+          '<p class="field-error" id="phoneError" role="alert"></p>' +
+          "</div>" +
+          '<p class="field-error" id="formError" role="alert"></p>' +
+          "</form>";
+
+        const footer =
+          '<button type="button" class="btn btn-outline" id="cancelVoteBtn">Cancel</button>' +
+          '<button type="button" class="btn btn-primary" id="submitVoteBtn">' +
+          '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Vote' +
+          "</button>";
+
+        openModal({
+          title: "Confirm Your Vote",
+          body: body,
+          footer: footer,
+          onOpen: function () {
+            const form = document.getElementById("voteForm");
+            const submitBtn = document.getElementById("submitVoteBtn");
+            const cancelBtn = document.getElementById("cancelVoteBtn");
+            const emailInput = document.getElementById("voterEmail");
+            const phoneInput = document.getElementById("voterPhone");
+
+            cancelBtn.addEventListener("click", closeModal);
+
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+              handleVoteSubmit(
+                nominee,
+                category,
+                submitBtn,
+                emailInput,
+                phoneInput,
+              );
+            });
+
+            submitBtn.addEventListener("click", function () {
+              handleVoteSubmit(
+                nominee,
+                category,
+                submitBtn,
+                emailInput,
+                phoneInput,
+              );
+            });
+
+            // Clear error styling as the user types
+            [emailInput, phoneInput].forEach(function (input) {
+              input.addEventListener("input", function () {
+                input.classList.remove("has-error");
+                const err = document.getElementById(
+                  input.id === "voterEmail" ? "emailError" : "phoneError",
+                );
+                if (err) err.classList.remove("show");
+              });
+            });
+          },
+        });
+      }
+
+      /* ---------- Validation + submission ---------- */
+      function showFieldError(inputEl, errorEl, message) {
+        inputEl.classList.add("has-error");
+        errorEl.textContent = message;
+        errorEl.classList.add("show");
+      }
+
+      function handleVoteSubmit(
+        nominee,
+        category,
+        submitBtn,
+        emailInput,
+        phoneInput,
+      ) {
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+
+        const emailError = document.getElementById("emailError");
+        const phoneError = document.getElementById("phoneError");
+        const formError = document.getElementById("formError");
+
+        let valid = true;
+
+        // Reset previous errors
+        emailInput.classList.remove("has-error");
+        phoneInput.classList.remove("has-error");
+        emailError.classList.remove("show");
+        phoneError.classList.remove("show");
+        formError.classList.remove("show");
+
+        // --- Email validation ---
+        if (!email) {
+          showFieldError(
+            emailInput,
+            emailError,
+            "Please enter your email address.",
+          );
+          valid = false;
+        } else if (!isValidEmail(email)) {
+          showFieldError(
+            emailInput,
+            emailError,
+            "That email address doesn't look right. Please check it.",
+          );
+          valid = false;
+        }
+
+        // --- Phone validation ---
+        if (!phone) {
+          showFieldError(
+            phoneInput,
+            phoneError,
+            "Please enter your phone number.",
+          );
+          valid = false;
+        } else if (!isValidPhone(phone)) {
+          showFieldError(
+            phoneInput,
+            phoneError,
+            "Please enter a valid phone number, e.g. 08012345678 or +2348012345678.",
+          );
+          valid = false;
+        }
+
+        if (!valid) {
+          const firstError = modalBodyEl.querySelector(".has-error");
+          if (firstError) firstError.focus();
+          return;
+        }
+
+        // Double-check the category hasn't been voted in (safety net)
+        if (hasVoted(category.name)) {
+          closeModal();
+          showAlreadyVotedModal(category);
+          return;
+        }
+
+        submitVote(nominee, category, email, phone, submitBtn);
+      }
+
+      /**
+       * Sends the vote via EmailJS.
+       * The category is ONLY locked in Local Storage after EmailJS succeeds.
+       */
+      async function submitVote(nominee, category, email, phone, submitBtn) {
+        // ---- Loading state (prevents multiple submissions) ----
+        const originalBtnHTML = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="spinner" aria-hidden="true"></span> Submitting Vote...';
+
+        // Remember the attempt so "Try Again" can restore the form
+        lastAttempt = {
+          nominee: nominee,
+          category: category,
+          email: email,
+          phone: phone,
+        };
+
+        // ---- EmailJS template parameters ----
+        const templateParams = {
+          voter_email: email,
+          voter_phone: phone,
+          nominee_name: nominee.name,
+          nominee_id: nominee.id,
+          category: category.name,
+          vote_time: new Date().toLocaleString(),
+          vote_source: "PFE Awards 2026 — Public Voting Page",
+        };
+
+        try {
+          if (DEMO_MODE) {
+            // Simulated successful submission for testing without credentials
+            await new Promise(function (resolve) {
+              window.setTimeout(resolve, 900);
+            });
+            console.info(
+              "[DEMO MODE] Simulated vote submission:",
+              templateParams,
+            );
+          } else {
+            await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_TEMPLATE_ID,
+              templateParams,
+            );
+          }
+
+          // ---- SUCCESS: now (and only now) lock the category ----
+          saveVoteStatus(category.name, {
+            nominee: nominee.name,
+            nomineeId: nominee.id,
+            email: email,
+            phone: phone,
+            time: templateParams.vote_time,
+          });
+
+          closeModal();
+          refreshCategory(category);
+          updateVotingProgress();
+          showSuccessModal(nominee, category);
+        } catch (err) {
+          console.error("EmailJS submission failed:", err);
+
+          // Restore the button so the user can retry
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+
+          // Category is NOT marked as voted — the user may try again
+          closeModal();
+          showErrorModal();
+        }
+      }
+
+      /* ---------- Success modal ---------- */
+      function showSuccessModal(nominee, category) {
+        const body =
+          '<div class="success-wrap">' +
+          '<div class="success-anim" style="position:relative"><i class="fa-solid fa-check" aria-hidden="true"></i></div>' +
+          "<h3>Vote Successfully Submitted!</h3>" +
+          '<p class="strong-line">Thank you for supporting <strong>' +
+          esc(nominee.name) +
+          "</strong> in the " +
+          esc(category.name) +
+          " category.</p>" +
+          "<p>You can continue voting in other categories where you haven't voted yet.</p>" +
+          (DEMO_MODE
+            ? '<p class="demo-note">Demo mode is active — no email was sent. Set DEMO_MODE = will be false after subscribing to EmailJS and obtaining credentials.</p>'
+            : "") +
+          "</div>";
+
+        openModal({
+          title: "Vote Confirmed",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="continueVotingBtn">' +
+            '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Continue Voting' +
+            "</button>",
+          onOpen: function () {
+            const btn = document.getElementById("continueVotingBtn");
+            btn.addEventListener("click", function () {
+              closeModal();
+              const target = document.getElementById(categoryId(category.name));
+              if (target)
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+          },
+        });
+      }
+
+      /* ---------- Already voted modal ---------- */
+      function showAlreadyVotedModal(category) {
+        const record = voteState[category.name];
+        const votedFor = record && record.nominee ? record.nominee : null;
+
+        const body =
+          '<div class="success-wrap">' +
+          '<div class="success-anim" style="background:linear-gradient(135deg,#1a237e,#3f4dd0);color:#fff;">' +
+          '<i class="fa-solid fa-circle-check" aria-hidden="true"></i>' +
+          "</div>" +
+          "<h3>You've Already Voted</h3>" +
+          "<p>You have already submitted your vote for the <strong>" +
+          esc(category.name) +
+          "</strong> category" +
+          (votedFor ? " (for <strong>" + esc(votedFor) + "</strong>)" : "") +
+          ".</p>" +
+          "<p>You can still vote in the other categories.</p>" +
+          "</div>";
+
+        openModal({
+          title: "Already Voted",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="okAlreadyVoted">' +
+            '<i class="fa-solid fa-check" aria-hidden="true"></i> Got it' +
+            "</button>",
+          onOpen: function () {
+            document
+              .getElementById("okAlreadyVoted")
+              .addEventListener("click", closeModal);
+          },
+        });
+      }
+
+      /* ---------- Error modal ---------- */
+      function showErrorModal() {
+        const body =
+          '<div class="success-wrap">' +
+          '<div class="success-anim" style="background:linear-gradient(135deg,#b71c1c,#e53935);color:#fff;">' +
+          '<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>' +
+          "</div>" +
+          "<h3>Unable to Submit Vote</h3>" +
+          "<p>We couldn't submit your vote right now. Please check your internet connection and try again.</p>" +
+          "<p>Your vote has <strong>not</strong> been recorded for this category.</p>" +
+          "</div>";
+
+        openModal({
+          title: "Submission Failed",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-outline" id="errorCloseBtn">Close</button>' +
+            '<button type="button" class="btn btn-primary" id="tryAgainBtn">' +
+            '<i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Try Again' +
+            "</button>",
+          onOpen: function () {
+            document
+              .getElementById("errorCloseBtn")
+              .addEventListener("click", closeModal);
+            document
+              .getElementById("tryAgainBtn")
+              .addEventListener("click", function () {
+                if (lastAttempt) {
+                  openVoteModal(lastAttempt.nominee, lastAttempt.category, {
+                    email: lastAttempt.email,
+                    phone: lastAttempt.phone,
+                  });
+                }
+              });
+          },
+        });
+      }
+
+      /* ---------- Previous winners modal ---------- */
+      function showPreviousWinners() {
+        const cards = previousWinners
+          .map(function (winner) {
+            const nomineeLike = { name: winner.name, logo: winner.logo };
+            return (
+              '<div class="winner-card">' +
+              logoHTML(nomineeLike, "sm") +
+              "<div>" +
+              "<span>" +
+              esc(winner.category) +
+              "</span>" +
+              "<h4>" +
+              esc(winner.name) +
+              "</h4>" +
+              (winner.description
+                ? "<p>" + esc(winner.description) + "</p>"
+                : "") +
+              "</div>" +
+              "</div>"
+            );
+          })
+          .join("");
+
+        const body =
+          '<p style="font-size:.9rem;color:#5c6178;margin-bottom:1.1rem;">' +
+          "Congratulations to the winners of the People First Enterprise Awards 2025." +
+          "</p>" +
+          '<div class="winners-grid">' +
+          cards +
+          "</div>";
+
+        openModal({
+          title: "2025 Winners",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="winnersCloseBtn">Close</button>',
+          wide: true,
+          onOpen: function () {
+            document
+              .getElementById("winnersCloseBtn")
+              .addEventListener("click", closeModal);
+          },
+        });
+      }
+
+      document
+        .getElementById("viewWinnersBtn")
+        .addEventListener("click", showPreviousWinners);
+
+      /* =========================================================================
+   10. FILTERS & NAVIGATION
+   ========================================================================= */
+
+      /** Filters nominee cards by name (and category name) as the user types. */
+      function filterNominees() {
+        const term = searchInput.value.trim().toLowerCase();
+        let totalVisible = 0;
+
+        document.querySelectorAll(".category").forEach(function (section) {
+          let visibleInSection = 0;
+
+          section.querySelectorAll(".nominee-card").forEach(function (card) {
+            const matches =
+              !term ||
+              card.dataset.name.indexOf(term) !== -1 ||
+              card.dataset.category.toLowerCase().indexOf(term) !== -1;
+
+            card.hidden = !matches;
+            if (matches) visibleInSection++;
+          });
+
+          section.hidden = visibleInSection === 0;
+          totalVisible += visibleInSection;
+        });
+
+        noResultsEl.hidden = totalVisible > 0;
+      }
+
+      searchInput.addEventListener("input", filterNominees);
+
+      /* Category navigation chips */
+      categoryNav.addEventListener("click", function (e) {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
+
+        categoryNav.querySelectorAll(".chip").forEach(function (c) {
+          c.classList.remove("is-active");
+        });
+        chip.classList.add("is-active");
+
+        const target = chip.dataset.target;
+
+        if (target === "all") {
+          document
+            .getElementById("categories")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        const section = document.getElementById(target);
+        if (section) {
+          // Reveal the section in case a search filter hid it
+          if (section.hidden) {
+            searchInput.value = "";
+            filterNominees();
+          }
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      /* =========================================================================
+   11. INITIALISATION
+   ========================================================================= */
+      function init() {
+        renderCategories();
+        renderCategoryNav();
+        renderMeritAwards();
+        updateVotingProgress();
+        filterNominees();
+
+        // Keep multiple tabs in sync (optional nicety)
+        window.addEventListener("storage", function (e) {
+          if (e.key === STORAGE_KEY) {
+            voteState = loadVoteState();
+            categories.forEach(refreshCategory);
+            updateVotingProgress();
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>
