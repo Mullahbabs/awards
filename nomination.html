@@ -300,6 +300,7 @@
         overflow: hidden;
         color: #fff;
         padding: 78px 0 76px;
+
         background: linear-gradient(
           160deg,
           #0b1038 0%,
@@ -312,17 +313,18 @@
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            circle at 84% 10%,
-            rgba(212, 175, 55, 0.26),
-            transparent 46%
+        background-image:
+    /* Gradient overlay — keeps text readable. Adjust the rgba values if needed. */
+          linear-gradient(
+            160deg,
+            rgba(11, 16, 56, 0.88) 0%,
+            rgba(26, 35, 126, 0.28) 55%,
+            rgba(36, 47, 150, 0.22) 100%
           ),
-          radial-gradient(
-            circle at 8% 92%,
-            rgba(212, 175, 55, 0.12),
-            transparent 42%
-          );
+          /* Your actual image */ url("img/awards.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         pointer-events: none;
       }
 

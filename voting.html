@@ -301,6 +301,24 @@
           linear-gradient(135deg, var(--primary-color), #101858);
         overflow: hidden;
       }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+    /* Gradient overlay — keeps text readable. Adjust the rgba values if needed. */
+          linear-gradient(
+            160deg,
+            rgba(11, 16, 56, 0.88) 0%,
+            rgba(26, 35, 126, 0.28) 55%,
+            rgba(36, 47, 150, 0.22) 100%
+          ),
+          /* Your actual image */ url("img/awards.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        pointer-events: none;
+      }
       .hero::after {
         content: "";
         position: absolute;
@@ -1588,9 +1606,9 @@
      • EMAILJS_SERVICE_ID  → EmailJS dashboard → Email Services
      • EMAILJS_TEMPLATE_ID → EmailJS dashboard → Email Templates
    ========================================================================= */
-      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+      const EMAILJS_PUBLIC_KEY = "_JHzclbB7XxiSqGDZ";
+      const EMAILJS_SERVICE_ID = "service_ipsz5gs";
+      const EMAILJS_TEMPLATE_ID = "template_shqjapb";
 
       /* -------------------------------------------------------------------------
    DEMO MODE
@@ -1598,7 +1616,7 @@
    credentials. In demo mode, votes are simulated locally and NO email is sent.
    ⚠️  SET THIS TO false IN PRODUCTION.
    ------------------------------------------------------------------------- */
-      const DEMO_MODE = true;
+      const DEMO_MODE = false;
 
       /* Initialise EmailJS (safe to call even with placeholder keys) */
       if (window.emailjs) {
