@@ -4,18 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>People First Enterprise Awards 2025</title>
-
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
-
         <link rel="icon" href="/favicon.ico" />
         <link
             rel="icon"
@@ -38,477 +30,271 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d4af37" />
         <meta name="msapplication-TileColor" content="#1a237e" />
         <meta name="theme-color" content="#ffffff" />
-
         <style>
-            /* ============================================================
-               1. DESIGN TOKENS
-            ============================================================ */
-            :root {
-                --primary-color: #141a4e;
-                --secondary-color: #c1121f;
-                --accent-color: #e9b949;
-
-                --text-dark: #0f1226;
-                --text-light: #545b78;
-                --white: #ffffff;
-                --light-gray: #f5f6fb;
-
-                --ink: #070a1c;
-                --border: rgba(20, 26, 78, 0.09);
-
-                --gold-grad: linear-gradient(135deg, #f4d574 0%, #d9a72c 100%);
-                --indigo-grad: linear-gradient(135deg, #1c2470 0%, #0b0e2a 100%);
-                --crimson-grad: linear-gradient(135deg, #c1121f 0%, #8d0d16 100%);
-
-                --shadow-sm: 0 2px 10px rgba(11, 14, 31, 0.05);
-                --shadow-md: 0 14px 34px rgba(11, 14, 31, 0.09);
-                --shadow-lg: 0 30px 64px rgba(11, 14, 31, 0.16);
-
-                --radius-sm: 10px;
-                --radius-md: 16px;
-                --radius-lg: 24px;
-                --radius-xl: 32px;
-
-                --font-display: "Sora", "Segoe UI", Tahoma, sans-serif;
-                --font-body: "Inter", "Segoe UI", Tahoma, Geneva, Verdana,
-                    sans-serif;
-
-                --ease: cubic-bezier(0.22, 1, 0.36, 1);
-                --section-pad: clamp(72px, 9vw, 120px);
-            }
-
-            /* ============================================================
-               2. RESET & BASE
-            ============================================================ */
-            *,
-            *::before,
-            *::after {
+            /* Reset and Base Styles */
+            * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             }
 
-            html {
-                scroll-behavior: smooth;
-                -webkit-text-size-adjust: 100%;
+            :root {
+                --primary-color: #1a237e;
+                --secondary-color: #b71c1c;
+                --accent-color: #d4af37;
+                --text-dark: #212121;
+                --text-light: #212121;
+                --white: #ffffff;
+                --light-gray: #f5f5f5;
             }
 
-            body.awards-body {
-                font-family: var(--font-body);
-                color: var(--text-dark);
+            .awards-body {
                 background-color: var(--white);
-                line-height: 1.7;
-                overflow-x: hidden;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-
-            img {
-                max-width: 100%;
-                display: block;
-            }
-
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-
-            ul {
-                list-style: none;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                font-family: var(--font-display);
-                line-height: 1.18;
-                letter-spacing: -0.025em;
-                font-weight: 700;
-            }
-
-            section[id] {
-                scroll-margin-top: 92px;
-            }
-
-            ::selection {
-                background: var(--accent-color);
-                color: var(--ink);
-            }
-
-            /* Subtle custom scrollbar */
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-            ::-webkit-scrollbar-track {
-                background: #f0f1f7;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: linear-gradient(180deg, #1c2470, #0b0e2a);
-                border-radius: 999px;
-                border: 2px solid #f0f1f7;
+                color: var(--text-dark);
+                line-height: 1.6;
             }
 
             .awards-container {
                 width: 100%;
                 max-width: 1200px;
                 margin: 0 auto;
-                padding: 0 24px;
+                padding: 0 20px;
             }
 
-            /* ============================================================
-               3. SCROLL REVEAL (progressive enhancement)
-            ============================================================ */
-            .awards-reveal {
-                opacity: 0;
-                transform: translateY(26px);
-                transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-                will-change: opacity, transform;
-            }
-
-            .awards-reveal.is-visible {
-                opacity: 1;
-                transform: none;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .awards-reveal {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    transition: none !important;
-                }
-            }
-
-            /* ============================================================
-               4. HEADER / NAVIGATION
-            ============================================================ */
+            /* Header Styles */
             .awards-header-main {
+                background-color: var(--white);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 position: sticky;
                 top: 0;
                 z-index: 1000;
-                background: rgba(255, 255, 255, 0.8);
-                backdrop-filter: saturate(180%) blur(18px);
-                -webkit-backdrop-filter: saturate(180%) blur(18px);
-                border-bottom: 1px solid rgba(20, 26, 78, 0.07);
-                transition: box-shadow 0.35s var(--ease),
-                    background 0.35s var(--ease);
-            }
-
-            .awards-header-main.is-scrolled {
-                background: rgba(255, 255, 255, 0.94);
-                box-shadow: 0 12px 34px rgba(11, 14, 31, 0.09);
             }
 
             .awards-navbar {
-                position: relative;
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
-                gap: 24px;
-                padding: 14px 0;
+                align-items: center;
+                padding: 20px 0;
             }
 
             .awards-logo {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                flex: 0 0 auto;
-            }
-
-            .awards-logo-mark {
-                width: 44px;
-                height: 44px;
-                border-radius: 14px;
-                display: grid;
-                place-items: center;
-                background: var(--indigo-grad);
-                color: var(--accent-color);
-                font-size: 1.05rem;
-                box-shadow: 0 10px 24px rgba(20, 26, 78, 0.28);
-            }
-
-            .awards-logo-text {
-                display: flex;
-                flex-direction: column;
-                line-height: 1.15;
-                font-family: var(--font-display);
-                font-weight: 800;
-                font-size: 1.02rem;
+                font-size: 1.8rem;
+                font-weight: 700;
                 color: var(--primary-color);
             }
 
             .awards-logo-accent {
-                font-size: 0.64rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                background: linear-gradient(90deg, #b8891f, #e9b949);
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-                margin-top: 2px;
+                color: var(--accent-color);
             }
 
             .awards-nav-links {
                 display: flex;
-                align-items: center;
-                gap: 4px;
+                list-style: none;
+                gap: 30px;
             }
 
             .awards-nav-item {
-                display: inline-block;
-                padding: 10px 15px;
-                border-radius: 999px;
-                font-size: 0.9rem;
                 font-weight: 600;
-                color: var(--text-light);
-                transition: color 0.25s, background 0.25s;
+                color: var(--text-dark);
+                text-decoration: none;
+                transition: color 0.3s;
             }
 
             .awards-nav-item:hover {
                 color: var(--primary-color);
-                background: rgba(20, 26, 78, 0.06);
             }
 
             .awards-nav-cta {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                margin-left: 8px;
-                padding: 12px 24px;
-                border-radius: 999px;
-                background: var(--indigo-grad);
+                background-color: var(--primary-color);
                 color: var(--white);
-                font-weight: 700;
-                font-size: 0.88rem;
-                box-shadow: 0 12px 26px rgba(20, 26, 78, 0.28);
-                transition: transform 0.3s var(--ease), box-shadow 0.3s,
-                    background 0.3s;
+                padding: 10px 20px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: background-color 0.3s;
             }
 
             .awards-nav-cta:hover {
-                background: var(--crimson-grad);
-                transform: translateY(-2px);
-                box-shadow: 0 16px 32px rgba(193, 18, 31, 0.32);
+                background-color: var(--secondary-color);
             }
 
             .awards-mobile-toggle {
                 display: none;
-                width: 44px;
-                height: 44px;
-                border-radius: 13px;
-                border: 1px solid rgba(20, 26, 78, 0.12);
-                background: #fff;
-                color: var(--primary-color);
-                font-size: 1rem;
+                font-size: 1.5rem;
                 cursor: pointer;
-                place-items: center;
-                transition: background 0.25s, color 0.25s;
             }
 
-            .awards-mobile-toggle:hover {
-                background: var(--primary-color);
-                color: #fff;
-            }
-
-            /* ============================================================
-               5. HERO CAROUSEL
-            ============================================================ */
+            /* Hero Carousel Styles */
             .awards-hero-section {
                 position: relative;
-                min-height: 100svh;
-                display: flex;
-                align-items: center;
+                height: 100vh;
+                min-height: 600px;
                 overflow: hidden;
-                background: var(--ink);
-                isolation: isolate;
             }
 
             .awards-carousel-background {
                 position: absolute;
-                inset: 0;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
             }
 
             .awards-carousel-slide-bg {
                 position: absolute;
-                inset: 0;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 opacity: 0;
+                transition: opacity 1.5s ease-in-out;
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
-                transform: scale(1.06);
-                transition: opacity 1.4s ease-in-out;
             }
 
             .awards-carousel-slide-bg.active {
                 opacity: 1;
-                animation: awardsKenBurns 9s var(--ease) forwards;
             }
 
             .awards-carousel-slide-bg::after {
                 content: "";
                 position: absolute;
-                inset: 0;
-                background: radial-gradient(
-                        1100px 620px at 12% 18%,
-                        rgba(20, 26, 78, 0.9),
-                        transparent 62%
-                    ),
-                    linear-gradient(
-                        115deg,
-                        rgba(5, 7, 26, 0.95) 0%,
-                        rgba(12, 16, 48, 0.78) 45%,
-                        rgba(120, 12, 24, 0.5) 100%
-                    );
-            }
-
-            @keyframes awardsKenBurns {
-                from {
-                    transform: scale(1.06);
-                }
-                to {
-                    transform: scale(1);
-                }
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    135deg,
+                    rgba(26, 35, 126, 0.7) 0%,
+                    rgba(183, 28, 28, 0.5) 100%
+                );
             }
 
             .awards-carousel-overlay {
                 position: relative;
                 z-index: 2;
-                width: 100%;
-                padding: 130px 0 120px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
             }
 
             .awards-carousel-container {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: clamp(30px, 6vw, 70px);
+                gap: 40px;
                 width: 100%;
                 max-width: 1200px;
                 margin: 0 auto;
-                padding: 0 24px;
             }
 
             .awards-carousel-text {
-                flex: 1 1 55%;
+                flex: 1;
                 position: relative;
-                min-height: 440px;
+                height: 400px;
             }
 
             .awards-carousel-slide {
                 position: absolute;
-                inset: 0;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                opacity: 0;
-                transform: translateY(16px);
-                pointer-events: none;
-                transition: opacity 0.9s var(--ease),
-                    transform 0.9s var(--ease);
+                padding-right: 20px;
             }
 
             .awards-carousel-slide.active {
                 opacity: 1;
-                transform: none;
-                pointer-events: auto;
             }
 
             .awards-carousel-title {
-                font-size: clamp(2.1rem, 4.6vw, 3.6rem);
-                font-weight: 800;
+                font-size: 3rem;
+                font-weight: 700;
                 color: #ffffff;
                 margin-bottom: 20px;
-                line-height: 1.06;
-                letter-spacing: -0.035em;
-                text-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+                line-height: 1.2;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .awards-carousel-subtitle {
-                font-size: clamp(1rem, 1.4vw, 1.14rem);
-                color: rgba(255, 255, 255, 0.78);
-                margin-bottom: 34px;
-                max-width: 540px;
-                line-height: 1.75;
+                font-size: 1.3rem;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 30px;
+                max-width: 500px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
             .awards-carousel-cta {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                align-self: flex-start;
-                padding: 16px 34px;
-                border-radius: 999px;
-                background: var(--gold-grad);
-                color: #161a35;
+                display: inline-block;
+                background-color: #d4af37;
+                color: #212121;
+                padding: 15px 35px;
+                border-radius: 4px;
+                text-decoration: none;
                 font-weight: 700;
-                font-size: 1rem;
-                letter-spacing: -0.01em;
-                box-shadow: 0 18px 40px rgba(233, 185, 73, 0.35);
-                transition: transform 0.3s var(--ease), box-shadow 0.3s,
-                    background 0.3s;
+                font-size: 1.1rem;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             }
 
             .awards-carousel-cta:hover {
-                background: #ffffff;
-                transform: translateY(-3px);
-                box-shadow: 0 24px 52px rgba(233, 185, 73, 0.5);
+                background-color: #ffffff;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             }
 
             .awards-carousel-visual {
-                flex: 0 0 auto;
-                display: grid;
-                place-items: center;
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                height: 400px;
             }
 
             .awards-circular-text {
                 position: relative;
-                width: clamp(240px, 29vw, 360px);
-                aspect-ratio: 1 / 1;
-                display: grid;
-                place-items: center;
-            }
-
-            .awards-circular-text::before {
-                content: "";
-                position: absolute;
-                width: 72%;
-                aspect-ratio: 1 / 1;
-                border-radius: 50%;
-                background: radial-gradient(
-                    circle,
-                    rgba(233, 185, 73, 0.3),
-                    transparent 70%
-                );
-                filter: blur(24px);
+                width: 350px;
+                height: 350px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .awards-circle-text {
                 position: absolute;
-                inset: 0;
                 width: 100%;
                 height: 100%;
-                animation: awards-rotate 30s linear infinite;
+                animation: awards-rotate 25s linear infinite;
             }
 
-            .awards-circle-text text {
-                fill: rgba(255, 255, 255, 0.9);
-                font-family: var(--font-display);
-                font-size: 8px;
-                font-weight: 600;
-                letter-spacing: 1.4px;
+            .awards-circle-text path {
+                fill: #ffffff;
             }
 
             .awards-circle-image {
-                position: relative;
-                width: 40%;
-                aspect-ratio: 1 / 1;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 140px;
+                height: 140px;
                 border-radius: 50%;
                 overflow: hidden;
-                border: 4px solid var(--accent-color);
+                border: 4px solid #d4af37;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
                 background: #ffffff;
-                box-shadow: 0 0 0 10px rgba(233, 185, 73, 0.14),
-                    0 24px 56px rgba(0, 0, 0, 0.45);
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .awards-circle-image img {
@@ -519,66 +305,59 @@
 
             .awards-carousel-indicators {
                 position: absolute;
-                bottom: 44px;
+                bottom: 40px;
                 left: 50%;
                 transform: translateX(-50%);
                 display: flex;
-                align-items: center;
-                gap: 12px;
+                gap: 15px;
                 z-index: 3;
             }
 
             .awards-carousel-dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 999px;
-                background-color: rgba(255, 255, 255, 0.35);
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.5);
                 cursor: pointer;
-                transition: all 0.4s var(--ease);
-            }
-
-            .awards-carousel-dot:hover {
-                background-color: rgba(255, 255, 255, 0.65);
+                transition: all 0.3s;
             }
 
             .awards-carousel-dot.active {
-                width: 36px;
-                background: var(--gold-grad);
+                background-color: #d4af37;
+                transform: scale(1.3);
             }
 
             .awards-carousel-nav {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                width: 52px;
-                height: 52px;
-                border-radius: 50%;
-                border: 1px solid rgba(255, 255, 255, 0.25);
-                background-color: rgba(255, 255, 255, 0.08);
+                background-color: rgba(255, 255, 255, 0.2);
                 color: #ffffff;
-                font-size: 1rem;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 1.2rem;
                 cursor: pointer;
-                display: grid;
-                place-items: center;
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                transition: all 0.3s var(--ease);
+                transition: all 0.3s;
                 z-index: 3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(5px);
             }
 
             .awards-carousel-nav:hover {
-                background: var(--accent-color);
-                border-color: var(--accent-color);
-                color: #161a35;
-                transform: translateY(-50%) scale(1.07);
+                background-color: #d4af37;
+                color: #212121;
             }
 
             .awards-carousel-prev {
-                left: 28px;
+                left: 30px;
             }
 
             .awards-carousel-next {
-                right: 28px;
+                right: 30px;
             }
 
             @keyframes awards-rotate {
@@ -590,112 +369,1197 @@
                 }
             }
 
-            /* ============================================================
-               6. SHARED SECTION PIECES
-            ============================================================ */
-            .awards-section-header {
-                text-align: center;
-                margin-bottom: clamp(42px, 6vw, 66px);
+            /* Mobile Responsiveness */
+            @media (max-width: 992px) {
+                .awards-carousel-container {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 20px;
+                    padding: 20px 0;
+                }
+
+                .awards-carousel-text {
+                    height: auto;
+                    min-height: 300px;
+                    order: 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                .awards-carousel-visual {
+                    height: 300px;
+                    order: 1;
+                    margin-bottom: 20px;
+                }
+
+                .awards-carousel-slide {
+                    position: relative;
+                    opacity: 1;
+                    padding-right: 0;
+                }
+
+                .awards-carousel-slide:not(.active) {
+                    display: none;
+                }
+
+                .awards-carousel-title {
+                    font-size: 2.5rem;
+                }
+
+                .awards-carousel-subtitle {
+                    margin: 0 auto 30px;
+                }
+
+                .awards-circular-text {
+                    width: 280px;
+                    height: 280px;
+                }
+
+                .awards-circle-image {
+                    width: 120px;
+                    height: 120px;
+                }
             }
 
-            .awards-section-header .awards-about-text {
-                max-width: 660px;
-                margin: 0 auto;
+            @media (max-width: 768px) {
+                .awards-hero-section {
+                    height: 70vh;
+                    min-height: 500px;
+                }
+
+                .awards-carousel-container {
+                    gap: 15px;
+                    padding: 15px 0;
+                }
+
+                .awards-carousel-title {
+                    font-size: 2rem;
+                }
+
+                .awards-carousel-subtitle {
+                    font-size: 1.1rem;
+                    padding: 0 15px;
+                }
+
+                .awards-carousel-cta {
+                    padding: 12px 25px;
+                    font-size: 1rem;
+                }
+
+                .awards-carousel-visual {
+                    height: 250px;
+                }
+
+                .awards-circular-text {
+                    width: 220px;
+                    height: 220px;
+                }
+
+                .awards-circle-image {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .awards-carousel-nav {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1rem;
+                }
+
+                .awards-carousel-prev {
+                    left: 15px;
+                }
+
+                .awards-carousel-next {
+                    right: 15px;
+                }
+
+                .awards-carousel-indicators {
+                    bottom: 25px;
+                }
             }
 
-            .awards-section-title {
-                font-size: clamp(1.7rem, 3vw, 2.4rem);
-                font-weight: 800;
-                color: var(--primary-color);
-                position: relative;
-                padding-bottom: 18px;
-                margin-bottom: 24px;
-            }
+            @media (max-width: 480px) {
+                .awards-hero-section {
+                    height: 70vh;
+                    min-height: 450px;
+                }
 
-            .awards-section-title::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 64px;
-                height: 4px;
-                border-radius: 999px;
-                background: linear-gradient(
-                    90deg,
-                    var(--accent-color),
-                    rgba(233, 185, 73, 0.15)
-                );
-            }
+                .awards-carousel-container {
+                    gap: 10px;
+                    padding: 10px 0;
+                }
 
-            .awards-section-header .awards-section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+                .awards-carousel-title {
+                    font-size: 1.8rem;
+                }
 
-            .awards-about-text {
-                color: var(--text-light);
-                font-size: 1rem;
-                line-height: 1.85;
-                margin-bottom: 18px;
-            }
+                .awards-carousel-subtitle {
+                    font-size: 1rem;
+                    margin-bottom: 20px;
+                }
 
-            /* ============================================================
-               7. ABOUT
-            ============================================================ */
+                .awards-carousel-visual {
+                    height: 200px;
+                }
+
+                .awards-circular-text {
+                    width: 180px;
+                    height: 180px;
+                }
+
+                .awards-circle-image {
+                    width: 80px;
+                    height: 80px;
+                    border-width: 3px;
+                }
+
+                .awards-carousel-nav {
+                    display: none;
+                }
+
+                .awards-carousel-indicators {
+                    bottom: 20px;
+                }
+            }
+            /* About Section Styles */
             .awards-about-section {
-                padding: var(--section-pad) 0;
-                background: var(--white);
-                position: relative;
+                padding: 100px 0;
+                background-color: var(--white);
             }
 
             .awards-about-container {
                 display: flex;
                 align-items: center;
-                gap: clamp(36px, 6vw, 80px);
+                gap: 60px;
             }
 
             .awards-about-content {
-                flex: 1 1 55%;
+                flex: 1;
+            }
+
+            .awards-section-title {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                margin-bottom: 20px;
+                position: relative;
+                text-align: left;
+            }
+
+            .awards-section-title::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background-color: var(--accent-color);
+            }
+
+            .awards-about-text {
+                color: var(--text-light);
+                font-size: 16px;
+                margin-bottom: 30px;
+                line-height: 1.8;
+                text-align: justify;
             }
 
             .awards-about-image {
-                flex: 1 1 45%;
-                position: relative;
-                border-radius: var(--radius-lg);
+                flex: 1;
+                border-radius: 8px;
                 overflow: hidden;
-                box-shadow: var(--shadow-lg);
-            }
-
-            .awards-about-image::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                border-radius: var(--radius-lg);
-                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-                pointer-events: none;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             }
 
             .awards-about-image img {
                 width: 100%;
                 height: auto;
-                transition: transform 0.8s var(--ease);
+                display: block;
+                transition: transform 0.5s;
             }
 
             .awards-about-image:hover img {
                 transform: scale(1.05);
             }
 
-            /* ============================================================
-               8. UDUA TICKER
-            ============================================================ */
-            .awards-udua-ticker-section {
-                padding: clamp(40px, 5vw, 60px) 0;
+            /* Categories Section Styles */
+            .awards-categories-section {
+                padding: 100px 0;
+                background-color: var(--light-gray);
+            }
+
+            .awards-section-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
+            .awards-categories-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+                margin-bottom: 50px;
+            }
+
+            .awards-category-card {
+                background-color: var(--white);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+            }
+
+            .awards-category-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .awards-category-icon {
+                background-color: var(--primary-color);
+                color: var(--white);
+                font-size: 1.8rem;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .awards-category-content {
+                padding: 25px;
+            }
+
+            .awards-category-title {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+
+            .awards-category-description {
+                color: var(--text-light);
+                margin-bottom: 20px;
+                line-height: 1.6;
+            }
+
+            .awards-category-button {
+                display: inline-block;
+                background-color: transparent;
+                color: var(--primary-color);
+                border: 2px solid var(--primary-color);
+                padding: 8px 20px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s;
+            }
+
+            .awards-category-button:hover {
+                background-color: var(--primary-color);
+                color: var(--white);
+            }
+
+            .awards-categories-cta {
+                text-align: center;
+            }
+
+            .awards-main-cta {
+                display: inline-block;
+                background-color: var(--secondary-color);
+                color: var(--white);
+                padding: 15px 40px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.1rem;
+                transition: background-color 0.3s;
+            }
+
+            .awards-main-cta:hover {
+                background-color: var(--primary-color);
+            }
+
+            /* Gallery Section Styles */
+            .awards-gallery-section {
+                padding: 100px 0;
+                background-color: var(--white);
+            }
+
+            .awards-gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .awards-gallery-item {
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                height: 250px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .awards-gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s;
+            }
+
+            .awards-gallery-item:hover img {
+                transform: scale(1.1);
+            }
+
+            .awards-gallery-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 background: linear-gradient(
-                    120deg,
-                    #1b1450 0%,
-                    #3a1d6e 48%,
-                    #7a1f4a 100%
+                    to bottom,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.7) 100%
                 );
+                display: flex;
+                align-items: flex-end;
+                padding: 20px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .awards-gallery-item:hover .awards-gallery-overlay {
+                opacity: 1;
+            }
+
+            .awards-gallery-caption {
+                color: var(--white);
+                font-weight: 600;
+            }
+
+            /* Countdown Section Styles */
+            .awards-countdown-section {
+                padding: 100px 0;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .awards-countdown-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .awards-countdown-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
+            .awards-countdown-icon {
+                color: var(--accent-color);
+                margin-bottom: 20px;
+            }
+
+            .awards-countdown-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                position: relative;
+            }
+
+            .awards-countdown-title::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background-color: var(--accent-color);
+            }
+
+            .awards-countdown-subtitle {
+                font-size: 1.2rem;
+                color: var(--text-light);
+                margin-top: 30px;
+            }
+
+            .awards-countdown-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+
+            /* Circular Progress Countdown */
+            .awards-circle-progress {
+                position: relative;
+                width: 300px;
+                height: 300px;
+            }
+
+            .awards-progress-ring {
+                width: 100%;
+                height: 100%;
+                transform: rotate(-90deg);
+            }
+
+            .awards-progress-background {
+                fill: none;
+                stroke: rgba(26, 35, 126, 0.1);
+                stroke-width: 8;
+            }
+
+            .awards-progress-circle {
+                fill: none;
+                stroke: var(--primary-color);
+                stroke-width: 8;
+                stroke-linecap: round;
+                transition: stroke-dashoffset 1s ease-in-out;
+                stroke-dasharray: 816.8;
+                stroke-dashoffset: 0;
+            }
+
+            .awards-countdown-display {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .awards-days-count {
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                line-height: 1;
+            }
+
+            .awards-days-label {
+                font-size: 1.2rem;
+                color: var(--text-light);
+                font-weight: 600;
+                margin-top: 10px;
+            }
+
+            /* Time Units Grid */
+            .awards-time-grid {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .awards-time-unit {
+                text-align: center;
+                background: var(--white);
+                padding: 25px 20px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                min-width: 120px;
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+            }
+
+            .awards-time-unit:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            }
+
+            .awards-time-number {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                line-height: 1;
+                margin-bottom: 8px;
+            }
+
+            .awards-time-label {
+                font-size: 1rem;
+                color: var(--text-light);
+                font-weight: 600;
+            }
+
+            /* Calendar Integration */
+            .awards-calendar-integration {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .awards-calendar-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-bottom: 25px;
+            }
+
+            .awards-calendar-buttons {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .awards-calendar-btn {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                font-size: 0.95rem;
+            }
+
+            .awards-ios-btn {
+                background-color: #000;
+                color: var(--white);
+            }
+
+            .awards-ios-btn:hover {
+                background-color: #333;
+            }
+
+            .awards-android-btn {
+                background-color: #4285f4;
+                color: var(--white);
+            }
+
+            .awards-android-btn:hover {
+                background-color: #3367d6;
+            }
+
+            .awards-outlook-btn {
+                background-color: #0078d4;
+                color: var(--white);
+            }
+
+            .awards-outlook-btn:hover {
+                background-color: #106ebe;
+            }
+
+            /* Countdown Actions */
+            .awards-countdown-actions {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 40px;
+                flex-wrap: wrap;
+            }
+
+            .awards-nominee-form-btn,
+            .awards-view-categories-btn {
+                display: inline-flex;
+                align-items: center;
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 14px 30px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+            }
+
+            .awards-nominee-form-btn:hover,
+            .awards-view-categories-btn:hover {
+                background-color: var(--secondary-color);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(183, 28, 28, 0.4);
+            }
+
+            /* Floating Particles Background */
+            .awards-particles-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .awards-particle {
+                position: absolute;
+                background-color: rgba(212, 175, 55, 0.2);
+                border-radius: 50%;
+                animation: awards-float 15s infinite linear;
+            }
+
+            .awards-particle:nth-child(1) {
+                width: 8px;
+                height: 8px;
+                top: 20%;
+                left: 10%;
+                animation-delay: 0s;
+            }
+
+            .awards-particle:nth-child(2) {
+                width: 12px;
+                height: 12px;
+                top: 60%;
+                left: 5%;
+                animation-delay: 2s;
+            }
+
+            .awards-particle:nth-child(3) {
+                width: 6px;
+                height: 6px;
+                top: 40%;
+                left: 80%;
+                animation-delay: 4s;
+            }
+
+            .awards-particle:nth-child(4) {
+                width: 10px;
+                height: 10px;
+                top: 80%;
+                left: 70%;
+                animation-delay: 6s;
+            }
+
+            .awards-particle:nth-child(5) {
+                width: 7px;
+                height: 7px;
+                top: 30%;
+                left: 60%;
+                animation-delay: 8s;
+            }
+
+            .awards-particle:nth-child(6) {
+                width: 9px;
+                height: 9px;
+                top: 70%;
+                left: 20%;
+                animation-delay: 10s;
+            }
+
+            .awards-particle:nth-child(7) {
+                width: 5px;
+                height: 5px;
+                top: 10%;
+                left: 40%;
+                animation-delay: 12s;
+            }
+
+            .awards-particle:nth-child(8) {
+                width: 11px;
+                height: 11px;
+                top: 50%;
+                left: 90%;
+                animation-delay: 14s;
+            }
+
+            @keyframes awards-float {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translateY(-20px) rotate(180deg);
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: translateY(0) rotate(360deg);
+                    opacity: 1;
+                }
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .awards-countdown-title {
+                    font-size: 2rem;
+                }
+
+                .awards-circle-progress {
+                    width: 250px;
+                    height: 250px;
+                }
+
+                .awards-days-count {
+                    font-size: 3rem;
+                }
+
+                .awards-time-grid {
+                    gap: 20px;
+                }
+
+                .awards-time-unit {
+                    min-width: 100px;
+                    padding: 20px 15px;
+                }
+
+                .awards-time-number {
+                    font-size: 2rem;
+                }
+
+                .awards-calendar-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .awards-calendar-btn {
+                    width: 200px;
+                    justify-content: center;
+                }
+
+                .awards-countdown-actions {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .awards-nominee-form-btn,
+                .awards-view-categories-btn {
+                    width: 250px;
+                    justify-content: center;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .awards-countdown-section {
+                    padding: 70px 0;
+                }
+
+                .awards-countdown-title {
+                    font-size: 1.8rem;
+                }
+
+                .awards-circle-progress {
+                    width: 200px;
+                    height: 200px;
+                }
+
+                .awards-days-count {
+                    font-size: 2.5rem;
+                }
+
+                .awards-time-grid {
+                    gap: 15px;
+                }
+
+                .awards-time-unit {
+                    min-width: 80px;
+                    padding: 15px 10px;
+                }
+
+                .awards-time-number {
+                    font-size: 1.8rem;
+                }
+            }
+
+            /* Sponsors Section Styles */
+            .awards-sponsors-section {
+                padding: 80px 0;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .awards-sponsors-ticker {
+                position: relative;
+                margin: 50px 0;
+                padding: 30px 0;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+
+            .awards-ticker-track {
+                display: flex;
+                animation: awards-ticker-scroll 40s linear infinite;
+                gap: 30px;
+                padding: 0 20px;
+            }
+
+            .awards-sponsor-card {
+                flex: 0 0 auto;
+                width: 200px;
+                background: white;
+                border-radius: 15px;
+                padding: 25px 20px;
+                text-align: center;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                border: 1px solid rgba(26, 35, 126, 0.1);
+            }
+
+            .awards-sponsor-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+                border-color: #d4af37;
+            }
+
+            .awards-sponsor-logo {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 15px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 3px solid #f0f0f0;
+                transition: all 0.3s ease;
+            }
+
+            .awards-sponsor-card:hover .awards-sponsor-logo {
+                border-color: #d4af37;
+                transform: scale(1.1);
+            }
+
+            .awards-sponsor-logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .awards-sponsor-info {
+                margin-top: 10px;
+            }
+
+            .awards-sponsor-name {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #1a237e;
+                margin-bottom: 5px;
+                line-height: 1.3;
+            }
+
+            .awards-sponsor-tier {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: #d4af37;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* Sponsor Tiers */
+            .awards-sponsor-tiers {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+                margin: 50px 0;
+            }
+
+            .awards-tier-item {
+                text-align: center;
+                padding: 30px 20px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                transition: transform 0.3s ease;
+            }
+
+            .awards-tier-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .awards-tier-badge {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                margin: 0 auto 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                color: white;
+            }
+
+            .awards-tier-badge.platinum {
+                background: linear-gradient(135deg, #e5e4e2 0%, #b4b4b4 100%);
+            }
+
+            .awards-tier-badge.gold {
+                background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+            }
+
+            .awards-tier-badge.silver {
+                background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%);
+            }
+
+            .awards-tier-badge.bronze {
+                background: linear-gradient(135deg, #cd7f32 0%, #a57164 100%);
+            }
+
+            .awards-tier-item h4 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #1a237e;
+                margin-bottom: 10px;
+            }
+
+            .awards-tier-item p {
+                font-size: 0.9rem;
+                color: #757575;
+                line-height: 1.5;
+            }
+
+            /* Sponsor CTA */
+            .awards-sponsor-cta {
+                text-align: center;
+                background: white;
+                padding: 50px 40px;
+                border-radius: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                margin-top: 40px;
+            }
+
+            .awards-sponsor-cta h3 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #1a237e;
+                margin-bottom: 15px;
+            }
+
+            .awards-sponsor-cta p {
+                font-size: 1.1rem;
+                color: #757575;
+                margin-bottom: 30px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .awards-sponsor-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+                color: white;
+                padding: 15px 35px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 20px rgba(26, 35, 126, 0.3);
+            }
+
+            .awards-sponsor-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(26, 35, 126, 0.4);
+                background: linear-gradient(135deg, #283593 0%, #1a237e 100%);
+            }
+
+            /* Animations */
+            @keyframes awards-ticker-scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-200px * 6 - 30px * 6));
+                }
+            }
+
+            /* Pause animation on hover */
+            .awards-sponsors-ticker:hover .awards-ticker-track {
+                animation-play-state: paused;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .awards-sponsors-ticker {
+                    margin: 30px 0;
+                }
+
+                .awards-sponsor-card {
+                    width: 160px;
+                    padding: 20px 15px;
+                }
+
+                .awards-ticker-track {
+                    gap: 20px;
+                }
+
+                .awards-sponsor-tiers {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px;
+                }
+
+                .awards-sponsor-cta {
+                    padding: 30px 20px;
+                }
+
+                .awards-sponsor-cta h3 {
+                    font-size: 1.6rem;
+                }
+
+                @keyframes awards-ticker-scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-160px * 6 - 20px * 6));
+                    }
+                }
+            }
+
+            @media (max-width: 480px) {
+                .awards-sponsor-tiers {
+                    grid-template-columns: 1fr;
+                }
+
+                .awards-sponsor-card {
+                    width: 140px;
+                }
+
+                @keyframes awards-ticker-scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-140px * 6 - 20px * 6));
+                    }
+                }
+            }
+
+            /* Footer Styles */
+            .awards-footer-main {
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 70px 0 30px;
+            }
+
+            .awards-footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+
+            .awards-footer-column h3 {
+                font-size: 1.3rem;
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 10px;
+            }
+
+            .awards-footer-column h3::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 40px;
+                height: 3px;
+                background-color: var(--accent-color);
+            }
+
+            .awards-footer-links {
+                list-style: none;
+            }
+
+            .awards-footer-link {
+                margin-bottom: 12px;
+            }
+
+            .awards-footer-link a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+            .awards-footer-link a:hover {
+                color: var(--accent-color);
+            }
+
+            .awards-social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .awards-social-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                color: var(--white);
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+
+            .awards-social-icon:hover {
+                background-color: var(--accent-color);
+            }
+
+            .awards-footer-bottom {
+                text-align: center;
+                padding-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 992px) {
+                .awards-carousel-container {
+                    flex-direction: column;
+                }
+
+                .awards-about-container {
+                    flex-direction: column;
+                }
+
+                .awards-about-content {
+                    order: 2;
+                }
+
+                .awards-about-image {
+                    order: 1;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .awards-nav-links {
+                    display: none;
+                }
+
+                .awards-mobile-toggle {
+                    display: block;
+                }
+
+                .awards-carousel-title {
+                    font-size: 2rem;
+                }
+
+                .awards-circular-text {
+                    width: 250px;
+                    height: 250px;
+                }
+
+                .awards-circle-image {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .awards-categories-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .awards-gallery-grid {
+                    grid-template-columns: repeat(
+                        auto-fill,
+                        minmax(200px, 1fr)
+                    );
+                }
+
+                .awards-gallery-item {
+                    height: 200px;
+                }
+            }
+            /* UDUA Ticker Section Styles */
+            .awards-udua-ticker-section {
+                padding: 40px 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 position: relative;
                 overflow: hidden;
             }
@@ -705,17 +1569,21 @@
                 z-index: 2;
             }
 
+            /* Animated Background */
             .awards-udua-background {
                 position: absolute;
-                inset: 0;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 pointer-events: none;
             }
 
             .awards-udua-particle {
                 position: absolute;
+                background: rgba(255, 255, 255, 0.3);
                 border-radius: 50%;
-                background: rgba(255, 255, 255, 0.32);
-                animation: awards-udua-float 7s ease-in-out infinite;
+                animation: awards-udua-float 6s ease-in-out infinite;
             }
 
             .awards-udua-particle:nth-child(1) {
@@ -725,147 +1593,158 @@
                 left: 10%;
                 animation-delay: 0s;
             }
+
             .awards-udua-particle:nth-child(2) {
                 width: 12px;
                 height: 12px;
-                top: 62%;
-                left: 82%;
+                top: 60%;
+                left: 80%;
                 animation-delay: 1s;
             }
+
             .awards-udua-particle:nth-child(3) {
                 width: 6px;
                 height: 6px;
-                top: 38%;
-                left: 22%;
+                top: 40%;
+                left: 20%;
                 animation-delay: 2s;
             }
+
             .awards-udua-particle:nth-child(4) {
                 width: 10px;
                 height: 10px;
-                top: 78%;
-                left: 58%;
+                top: 80%;
+                left: 60%;
                 animation-delay: 3s;
             }
+
             .awards-udua-particle:nth-child(5) {
-                width: 14px;
-                height: 14px;
-                top: 28%;
+                width: 15px;
+                height: 15px;
+                top: 30%;
                 left: 90%;
                 animation-delay: 4s;
             }
 
+            /* Main Ticker */
             .awards-udua-ticker {
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50px;
+                padding: 15px 0;
+                margin: 0 auto 30px;
+                max-width: 800px;
                 position: relative;
-                max-width: 880px;
-                margin: 0 auto 26px;
-                padding: 14px 0;
-                border-radius: 999px;
                 overflow: hidden;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-                box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             }
 
             .awards-udua-track {
                 display: flex;
+                animation: awards-udua-scroll 20s linear infinite;
                 gap: 40px;
                 padding: 0 20px;
-                animation: awards-udua-scroll 20s linear infinite;
             }
 
             .awards-udua-item {
                 flex: 0 0 auto;
                 display: flex;
                 align-items: center;
-                gap: 14px;
-                padding: 10px 22px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.08);
-                border: 1px solid rgba(255, 255, 255, 0.16);
-                backdrop-filter: blur(6px);
-                cursor: pointer;
-                transition: all 0.3s var(--ease);
+                gap: 15px;
+                padding: 10px 20px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 30px;
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+                position: relative;
             }
 
             .awards-udua-item:hover {
-                background: rgba(255, 255, 255, 0.18);
-                transform: translateY(-3px);
-                box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+                background: rgba(255, 255, 255, 0.2);
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             }
 
             .awards-udua-badge {
-                padding: 5px 12px;
-                border-radius: 999px;
-                font-size: 0.66rem;
+                background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+                color: white;
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 0.7rem;
                 font-weight: 800;
-                letter-spacing: 0.14em;
                 text-transform: uppercase;
-                color: #fff;
-                background: linear-gradient(135deg, #ff8a4c 0%, #ef4444 100%);
-                animation: awards-udua-pulse 2.4s ease-in-out infinite;
+                letter-spacing: 0.5px;
+                animation: awards-udua-pulse 2s ease-in-out infinite;
             }
 
             .awards-udua-text {
-                color: #ffffff;
-                font-family: var(--font-display);
-                font-size: 0.95rem;
+                color: white;
+                font-size: 1.2rem;
                 font-weight: 700;
-                letter-spacing: 0.03em;
-                white-space: nowrap;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+                letter-spacing: 0.5px;
             }
 
             .awards-udua-sparkle {
-                font-size: 1rem;
-                animation: awards-udua-spin 4s linear infinite;
+                font-size: 1.1rem;
+                animation: awards-udua-spin 3s linear infinite;
             }
 
+            /* CTA Buttons */
             .awards-udua-cta {
                 display: flex;
                 justify-content: center;
-                gap: 16px;
+                gap: 20px;
                 flex-wrap: wrap;
             }
 
-            .awards-udua-notify-btn,
-            .awards-udua-learn-btn {
-                display: inline-flex;
+            .awards-udua-notify-btn {
+                display: flex;
                 align-items: center;
                 gap: 10px;
-                padding: 14px 30px;
-                border-radius: 999px;
-                font-family: var(--font-body);
-                font-weight: 700;
-                font-size: 0.92rem;
-                cursor: pointer;
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-udua-notify-btn {
+                background: linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%);
+                color: #2c3e50;
                 border: none;
-                background: var(--gold-grad);
-                color: #1a1330;
-                box-shadow: 0 16px 34px rgba(224, 168, 46, 0.35);
+                padding: 12px 25px;
+                border-radius: 25px;
+                font-weight: 700;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(255, 217, 61, 0.4);
             }
 
             .awards-udua-notify-btn:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 22px 44px rgba(224, 168, 46, 0.5);
+                box-shadow: 0 6px 20px rgba(255, 217, 61, 0.6);
+                background: linear-gradient(135deg, #ff9a3d 0%, #ffd93d 100%);
             }
 
             .awards-udua-learn-btn {
-                background: rgba(255, 255, 255, 0.12);
-                border: 1px solid rgba(255, 255, 255, 0.42);
-                color: #ffffff;
-                backdrop-filter: blur(6px);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                padding: 12px 25px;
+                border-radius: 25px;
+                font-weight: 700;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(5px);
             }
 
             .awards-udua-learn-btn:hover {
-                background: rgba(255, 255, 255, 0.24);
+                background: rgba(255, 255, 255, 0.3);
                 transform: translateY(-3px);
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
             }
 
+            /* Animations */
             @keyframes awards-udua-scroll {
                 0% {
                     transform: translateX(0);
@@ -894,8 +1773,8 @@
                     box-shadow: 0 0 0 rgba(255, 107, 107, 0.4);
                 }
                 50% {
-                    transform: scale(1.06);
-                    box-shadow: 0 0 18px rgba(255, 107, 107, 0.75);
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
                 }
             }
 
@@ -904,1089 +1783,73 @@
                     transform: rotate(0deg) scale(1);
                 }
                 50% {
-                    transform: rotate(180deg) scale(1.18);
+                    transform: rotate(180deg) scale(1.2);
                 }
                 100% {
                     transform: rotate(360deg) scale(1);
                 }
             }
 
+            /* Pause animation on hover */
             .awards-udua-ticker:hover .awards-udua-track {
                 animation-play-state: paused;
             }
 
-            /* ============================================================
-               9. CATEGORIES
-            ============================================================ */
-            .awards-categories-section {
-                padding: var(--section-pad) 0;
-                background: var(--light-gray);
-                position: relative;
-            }
-
-            .awards-categories-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-                gap: 24px;
-                margin-bottom: 56px;
-            }
-
-            .awards-category-card {
-                position: relative;
-                padding: 34px 30px;
-                background: var(--white);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-lg);
-                box-shadow: var(--shadow-sm);
-                overflow: hidden;
-                transition: transform 0.45s var(--ease), box-shadow 0.45s,
-                    border-color 0.45s;
-            }
-
-            .awards-category-card::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(
-                    135deg,
-                    rgba(233, 185, 73, 0.14),
-                    transparent 48%
-                );
-                opacity: 0;
-                transition: opacity 0.45s var(--ease);
-            }
-
-            .awards-category-card:hover {
-                transform: translateY(-8px);
-                box-shadow: var(--shadow-lg);
-                border-color: rgba(233, 185, 73, 0.55);
-            }
-
-            .awards-category-card:hover::before {
-                opacity: 1;
-            }
-
-            .awards-category-icon {
-                position: relative;
-                width: 58px;
-                height: 58px;
-                border-radius: 18px;
-                display: grid;
-                place-items: center;
-                margin-bottom: 22px;
-                font-size: 1.35rem;
-                color: var(--accent-color);
-                background: var(--indigo-grad);
-                box-shadow: 0 12px 26px rgba(20, 26, 78, 0.24);
-                transition: transform 0.45s var(--ease);
-            }
-
-            .awards-category-card:hover .awards-category-icon {
-                transform: rotate(-6deg) scale(1.06);
-            }
-
-            .awards-category-content {
-                position: relative;
-            }
-
-            .awards-category-title {
-                font-size: 1.1rem;
-                font-weight: 700;
-                color: var(--primary-color);
-                margin-bottom: 10px;
-            }
-
-            .awards-category-description {
-                color: var(--text-light);
-                font-size: 0.93rem;
-                line-height: 1.7;
-            }
-
-            .awards-categories-cta {
-                text-align: center;
-            }
-
-            .awards-main-cta {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding: 17px 42px;
-                border-radius: 999px;
-                background: var(--indigo-grad);
-                color: var(--white);
-                font-weight: 700;
-                font-size: 1rem;
-                box-shadow: 0 18px 38px rgba(20, 26, 78, 0.28);
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-main-cta:hover {
-                background: var(--crimson-grad);
-                transform: translateY(-3px);
-                box-shadow: 0 22px 46px rgba(193, 18, 31, 0.35);
-            }
-
-            /* ============================================================
-               10. COUNTDOWN
-            ============================================================ */
-            .awards-countdown-section {
-                padding: var(--section-pad) 0;
-                position: relative;
-                overflow: hidden;
-                background: radial-gradient(
-                        1100px 520px at 50% -10%,
-                        #eaedfb 0%,
-                        transparent 70%
-                    ),
-                    linear-gradient(180deg, #f8f9fd 0%, #ffffff 100%);
-            }
-
-            .awards-countdown-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 24px;
-                position: relative;
-                z-index: 1;
-            }
-
-            .awards-countdown-header {
-                text-align: center;
-                margin-bottom: clamp(42px, 6vw, 62px);
-            }
-
-            .awards-countdown-icon {
-                color: var(--accent-color);
-                margin-bottom: 16px;
-            }
-
-            .awards-countdown-title {
-                display: inline-block;
-                position: relative;
-                padding-bottom: 16px;
-                margin-bottom: 18px;
-                font-size: clamp(1.7rem, 3.2vw, 2.5rem);
-                font-weight: 800;
-                color: var(--primary-color);
-            }
-
-            .awards-countdown-title::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 80px;
-                height: 4px;
-                border-radius: 999px;
-                background: linear-gradient(
-                    90deg,
-                    rgba(233, 185, 73, 0.15),
-                    var(--accent-color),
-                    rgba(233, 185, 73, 0.15)
-                );
-            }
-
-            .awards-countdown-subtitle {
-                font-size: 1.04rem;
-                color: var(--text-light);
-            }
-
-            .awards-countdown-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 48px;
-                position: relative;
-                z-index: 1;
-            }
-
-            .awards-circle-progress {
-                position: relative;
-                width: 300px;
-                height: 300px;
-            }
-
-            .awards-progress-ring {
-                width: 100%;
-                height: 100%;
-                transform: rotate(-90deg);
-            }
-
-            .awards-progress-background {
-                fill: none;
-                stroke: rgba(20, 26, 78, 0.08);
-                stroke-width: 10;
-            }
-
-            .awards-progress-circle {
-                fill: none;
-                stroke: url(#awardsProgressGrad);
-                stroke-width: 10;
-                stroke-linecap: round;
-                stroke-dasharray: 816.8;
-                stroke-dashoffset: 0;
-                transition: stroke-dashoffset 1s ease-in-out;
-            }
-
-            .awards-countdown-display {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-            }
-
-            .awards-days-count {
-                font-family: var(--font-display);
-                font-size: 3.6rem;
-                font-weight: 800;
-                line-height: 1;
-                color: var(--primary-color);
-                font-variant-numeric: tabular-nums;
-            }
-
-            .awards-days-label {
-                margin-top: 10px;
-                font-size: 0.78rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--text-light);
-            }
-
-            .awards-time-grid {
-                display: flex;
-                gap: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .awards-time-unit {
-                min-width: 132px;
-                padding: 26px 22px;
-                text-align: center;
-                border-radius: var(--radius-lg);
-                background: rgba(255, 255, 255, 0.78);
-                border: 1px solid var(--border);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                box-shadow: var(--shadow-md);
-                transition: transform 0.35s var(--ease), box-shadow 0.35s;
-            }
-
-            .awards-time-unit:hover {
-                transform: translateY(-6px);
-                box-shadow: var(--shadow-lg);
-            }
-
-            .awards-time-number {
-                font-family: var(--font-display);
-                font-size: 2.4rem;
-                font-weight: 800;
-                line-height: 1;
-                margin-bottom: 10px;
-                color: var(--primary-color);
-                font-variant-numeric: tabular-nums;
-            }
-
-            .awards-time-label {
-                font-size: 0.72rem;
-                font-weight: 700;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: var(--text-light);
-            }
-
-            .awards-calendar-integration {
-                text-align: center;
-            }
-
-            .awards-calendar-title {
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: var(--primary-color);
-                margin-bottom: 22px;
-            }
-
-            .awards-calendar-buttons {
-                display: flex;
-                gap: 14px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .awards-calendar-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding: 13px 24px;
-                border-radius: 999px;
-                border: 1px solid transparent;
-                font-family: var(--font-body);
-                font-weight: 600;
-                font-size: 0.9rem;
-                cursor: pointer;
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-ios-btn {
-                background: #10132a;
-                color: #ffffff;
-            }
-            .awards-ios-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 14px 28px rgba(16, 19, 42, 0.3);
-            }
-
-            .awards-android-btn {
-                background: #ffffff;
-                color: #1a73e8;
-                border-color: rgba(26, 115, 232, 0.28);
-            }
-            .awards-android-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 14px 28px rgba(26, 115, 232, 0.22);
-            }
-
-            .awards-outlook-btn {
-                background: #ffffff;
-                color: #0b6bcb;
-                border-color: rgba(11, 107, 203, 0.28);
-            }
-            .awards-outlook-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 14px 28px rgba(11, 107, 203, 0.22);
-            }
-
-            .awards-countdown-actions {
-                display: flex;
-                gap: 18px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .awards-nominee-form-btn,
-            .awards-view-categories-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding: 16px 34px;
-                border-radius: 999px;
-                font-weight: 700;
-                font-size: 0.97rem;
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-nominee-form-btn {
-                background: var(--gold-grad);
-                color: #161a35;
-                box-shadow: 0 18px 36px rgba(233, 185, 73, 0.36);
-            }
-            .awards-nominee-form-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 24px 46px rgba(233, 185, 73, 0.5);
-            }
-
-            .awards-view-categories-btn {
-                background: var(--indigo-grad);
-                color: #ffffff;
-                box-shadow: 0 18px 36px rgba(20, 26, 78, 0.28);
-            }
-            .awards-view-categories-btn:hover {
-                background: var(--crimson-grad);
-                transform: translateY(-3px);
-                box-shadow: 0 24px 46px rgba(193, 18, 31, 0.35);
-            }
-
-            .awards-nominee-form-btn i,
-            .awards-view-categories-btn i {
-                color: inherit;
-            }
-
-            .awards-particles-container {
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-                z-index: 0;
-            }
-
-            .awards-particle {
-                position: absolute;
-                border-radius: 50%;
-                background-color: rgba(233, 185, 73, 0.35);
-                animation: awards-float 15s infinite linear;
-            }
-
-            .awards-particle:nth-child(1) {
-                width: 8px;
-                height: 8px;
-                top: 20%;
-                left: 10%;
-                animation-delay: 0s;
-            }
-            .awards-particle:nth-child(2) {
-                width: 12px;
-                height: 12px;
-                top: 60%;
-                left: 5%;
-                animation-delay: 2s;
-            }
-            .awards-particle:nth-child(3) {
-                width: 6px;
-                height: 6px;
-                top: 40%;
-                left: 80%;
-                animation-delay: 4s;
-            }
-            .awards-particle:nth-child(4) {
-                width: 10px;
-                height: 10px;
-                top: 80%;
-                left: 70%;
-                animation-delay: 6s;
-            }
-            .awards-particle:nth-child(5) {
-                width: 7px;
-                height: 7px;
-                top: 30%;
-                left: 60%;
-                animation-delay: 8s;
-            }
-            .awards-particle:nth-child(6) {
-                width: 9px;
-                height: 9px;
-                top: 70%;
-                left: 20%;
-                animation-delay: 10s;
-            }
-            .awards-particle:nth-child(7) {
-                width: 5px;
-                height: 5px;
-                top: 10%;
-                left: 40%;
-                animation-delay: 12s;
-            }
-            .awards-particle:nth-child(8) {
-                width: 11px;
-                height: 11px;
-                top: 50%;
-                left: 90%;
-                animation-delay: 14s;
-            }
-
-            @keyframes awards-float {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 1;
-                }
-                50% {
-                    transform: translateY(-20px) rotate(180deg);
-                    opacity: 0.7;
-                }
-                100% {
-                    transform: translateY(0) rotate(360deg);
-                    opacity: 1;
-                }
-            }
-
-            /* ============================================================
-               11. SPONSORS
-            ============================================================ */
-            .awards-sponsors-section {
-                padding: clamp(72px, 8vw, 110px) 0;
-                background: linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .awards-sponsors-ticker {
-                position: relative;
-                margin: 44px 0;
-                padding: 28px 0;
-                border-radius: var(--radius-xl);
-                background: rgba(255, 255, 255, 0.75);
-                border: 1px solid var(--border);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                box-shadow: var(--shadow-md);
-                overflow: hidden;
-            }
-
-            .awards-sponsors-ticker::before,
-            .awards-sponsors-ticker::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 90px;
-                z-index: 2;
-                pointer-events: none;
-            }
-
-            .awards-sponsors-ticker::before {
-                left: 0;
-                background: linear-gradient(
-                    90deg,
-                    #ffffff 0%,
-                    rgba(255, 255, 255, 0) 100%
-                );
-            }
-
-            .awards-sponsors-ticker::after {
-                right: 0;
-                background: linear-gradient(
-                    -90deg,
-                    #ffffff 0%,
-                    rgba(255, 255, 255, 0) 100%
-                );
-            }
-
-            .awards-ticker-track {
-                display: flex;
-                gap: 30px;
-                padding: 0 20px;
-                animation: awards-ticker-scroll 40s linear infinite;
-            }
-
-            .awards-sponsor-card {
-                flex: 0 0 auto;
-                width: 200px;
-                padding: 24px 18px;
-                text-align: center;
-                background: #ffffff;
-                border: 1px solid var(--border);
-                border-radius: var(--radius-lg);
-                box-shadow: var(--shadow-sm);
-                cursor: pointer;
-                transition: all 0.35s var(--ease);
-            }
-
-            .awards-sponsor-card:hover {
-                transform: translateY(-10px);
-                box-shadow: var(--shadow-lg);
-                border-color: rgba(233, 185, 73, 0.55);
-            }
-
-            .awards-sponsor-logo {
-                width: 76px;
-                height: 76px;
-                margin: 0 auto 14px;
-                border-radius: 50%;
-                overflow: hidden;
-                background: #ffffff;
-                border: 2px solid rgba(20, 26, 78, 0.08);
-                transition: all 0.35s var(--ease);
-            }
-
-            .awards-sponsor-card:hover .awards-sponsor-logo {
-                border-color: var(--accent-color);
-                transform: scale(1.06);
-            }
-
-            .awards-sponsor-logo img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .awards-sponsor-info {
-                margin-top: 8px;
-            }
-
-            .awards-sponsor-name {
-                font-family: var(--font-display);
-                font-size: 0.94rem;
-                font-weight: 700;
-                color: var(--primary-color);
-                line-height: 1.35;
-                margin-bottom: 5px;
-            }
-
-            .awards-sponsor-tier {
-                font-size: 0.68rem;
-                font-weight: 700;
-                letter-spacing: 0.14em;
-                text-transform: uppercase;
-                color: #b8891f;
-            }
-
-            .awards-sponsor-cta {
-                position: relative;
-                overflow: hidden;
-                text-align: center;
-                padding: clamp(42px, 6vw, 64px) 32px;
-                border-radius: var(--radius-xl);
-                background: radial-gradient(
-                        700px 320px at 50% 0%,
-                        rgba(233, 185, 73, 0.16),
-                        transparent 70%
-                    ),
-                    linear-gradient(135deg, #0d1130 0%, #1c2470 100%);
-                box-shadow: var(--shadow-lg);
-                margin-top: 40px;
-            }
-
-            .awards-sponsor-cta h3 {
-                font-size: clamp(1.4rem, 2.6vw, 2rem);
-                color: #ffffff;
-                margin-bottom: 14px;
-            }
-
-            .awards-sponsor-cta p {
-                max-width: 560px;
-                margin: 0 auto 30px;
-                color: rgba(255, 255, 255, 0.72);
-                font-size: 1.02rem;
-            }
-
-            .awards-sponsor-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding: 16px 36px;
-                border-radius: 999px;
-                background: var(--gold-grad);
-                color: #161a35;
-                font-weight: 700;
-                font-size: 1rem;
-                box-shadow: 0 18px 38px rgba(233, 185, 73, 0.3);
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-sponsor-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 24px 48px rgba(233, 185, 73, 0.45);
-            }
-
-            @keyframes awards-ticker-scroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-200px * 6 - 30px * 6));
-                }
-            }
-
-            .awards-sponsors-ticker:hover .awards-ticker-track {
-                animation-play-state: paused;
-            }
-
-            /* ============================================================
-               12. GALLERY
-            ============================================================ */
-            .awards-gallery-section {
-                padding: var(--section-pad) 0;
-                background: var(--white);
-            }
-
-            .awards-gallery-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 20px;
-            }
-
-            .awards-gallery-item {
-                position: relative;
-                border-radius: var(--radius-lg);
-                overflow: hidden;
-                aspect-ratio: 4 / 3;
-                box-shadow: var(--shadow-md);
-            }
-
-            .awards-gallery-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.8s var(--ease);
-            }
-
-            .awards-gallery-item:hover img {
-                transform: scale(1.08);
-            }
-
-            .awards-gallery-overlay {
-                position: absolute;
-                inset: 0;
-                display: flex;
-                align-items: flex-end;
-                padding: 24px;
-                opacity: 0;
-                background: linear-gradient(
-                    to top,
-                    rgba(8, 10, 28, 0.88) 0%,
-                    rgba(8, 10, 28, 0.15) 55%,
-                    transparent 100%
-                );
-                transition: opacity 0.4s var(--ease);
-            }
-
-            .awards-gallery-item:hover .awards-gallery-overlay {
-                opacity: 1;
-            }
-
-            .awards-gallery-caption {
-                font-family: var(--font-display);
-                font-size: 1.02rem;
-                font-weight: 700;
-                color: #ffffff;
-            }
-
-            /* ============================================================
-               13. FOOTER
-            ============================================================ */
-            .awards-footer-main {
-                position: relative;
-                padding: clamp(60px, 8vw, 92px) 0 30px;
-                background: radial-gradient(
-                        800px 400px at 15% 0%,
-                        rgba(28, 36, 112, 0.55),
-                        transparent 70%
-                    ),
-                    #070a1c;
-                color: rgba(255, 255, 255, 0.72);
-            }
-
-            .awards-footer-content {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-                gap: 44px;
-                margin-bottom: 48px;
-            }
-
-            .awards-footer-column h3 {
-                position: relative;
-                padding-bottom: 12px;
-                margin-bottom: 22px;
-                font-size: 1.02rem;
-                color: #ffffff;
-            }
-
-            .awards-footer-column h3::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 36px;
-                height: 3px;
-                border-radius: 999px;
-                background: var(--gold-grad);
-            }
-
-            .awards-footer-column p {
-                font-size: 0.91rem;
-                line-height: 1.85;
-            }
-
-            .awards-footer-links {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .awards-footer-link {
-                display: flex;
-                align-items: flex-start;
-                gap: 10px;
-                font-size: 0.91rem;
-                line-height: 1.6;
-            }
-
-            .awards-footer-link i {
-                color: var(--accent-color);
-                margin-top: 5px;
-                font-size: 0.85rem;
-            }
-
-            .awards-footer-link a {
-                color: rgba(255, 255, 255, 0.7);
-                transition: color 0.25s, transform 0.25s;
-                display: inline-block;
-            }
-
-            .awards-footer-link a:hover {
-                color: var(--accent-color);
-                transform: translateX(5px);
-            }
-
-            .awards-social-links {
-                display: flex;
-                gap: 12px;
-                margin-top: 22px;
-            }
-
-            .awards-social-icon {
-                width: 42px;
-                height: 42px;
-                display: grid;
-                place-items: center;
-                border-radius: 13px;
-                background: rgba(255, 255, 255, 0.06);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                color: #ffffff;
-                transition: all 0.3s var(--ease);
-            }
-
-            .awards-social-icon:hover {
-                background: var(--gold-grad);
-                border-color: transparent;
-                color: #161a35;
-                transform: translateY(-3px);
-            }
-
-            .awards-footer-bottom {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-                padding-top: 28px;
-                text-align: center;
-                border-top: 1px solid rgba(255, 255, 255, 0.08);
-                font-size: 0.84rem;
-                color: rgba(255, 255, 255, 0.5);
-            }
-
-            /* ============================================================
-               14. RESPONSIVE
-            ============================================================ */
-            @media (max-width: 992px) {
-                .awards-about-container {
-                    flex-direction: column;
-                }
-                .awards-about-content {
-                    order: 2;
-                }
-                .awards-about-image {
-                    order: 1;
-                    width: 100%;
-                }
-
-                .awards-carousel-container {
-                    flex-direction: column;
-                    text-align: center;
-                    gap: 32px;
-                }
-
-                .awards-carousel-visual {
-                    order: 1;
-                }
-
-                .awards-carousel-text {
-                    order: 2;
-                    width: 100%;
-                    min-height: auto;
-                }
-
-                .awards-carousel-slide {
-                    position: relative;
-                    inset: auto;
-                    display: none;
-                    opacity: 1;
-                    transform: none;
-                    pointer-events: auto;
-                    padding-right: 0;
-                }
-
-                .awards-carousel-slide.active {
-                    display: flex;
-                }
-
-                .awards-carousel-subtitle {
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-
-                .awards-carousel-cta {
-                    align-self: center;
-                }
-
-                .awards-carousel-overlay {
-                    padding: 110px 0 110px;
-                }
-            }
-
+            /* Responsive Design */
             @media (max-width: 768px) {
-                .awards-mobile-toggle {
-                    display: grid;
-                }
-
-                .awards-nav-links {
-                    display: none;
-                    position: absolute;
-                    top: calc(100% + 12px);
-                    left: 24px;
-                    right: 24px;
-                    flex-direction: column;
-                    align-items: stretch;
-                    gap: 4px;
-                    padding: 14px;
-                    border-radius: 22px;
-                    background: #ffffff;
-                    border: 1px solid var(--border);
-                    box-shadow: var(--shadow-lg);
-                    z-index: 1200;
-                }
-
-                .awards-nav-links li {
-                    width: 100%;
-                }
-
-                .awards-nav-item {
-                    display: block;
-                    padding: 13px 16px;
-                    border-radius: 14px;
-                }
-
-                .awards-nav-cta {
-                    width: 100%;
-                    justify-content: center;
-                    margin: 6px 0 0;
-                }
-
-                .awards-hero-section {
-                    min-height: auto;
-                }
-
-                .awards-carousel-overlay {
-                    padding: 90px 0 100px;
-                }
-
-                .awards-carousel-nav {
-                    width: 42px;
-                    height: 42px;
-                    font-size: 0.9rem;
-                }
-
-                .awards-carousel-prev {
-                    left: 12px;
-                }
-
-                .awards-carousel-next {
-                    right: 12px;
-                }
-
-                .awards-carousel-indicators {
-                    bottom: 28px;
-                }
-
-                .awards-countdown-title {
-                    font-size: 1.75rem;
-                }
-
-                .awards-circle-progress {
-                    width: 250px;
-                    height: 250px;
-                }
-
-                .awards-days-count {
-                    font-size: 3rem;
-                }
-
-                .awards-time-grid {
-                    gap: 14px;
-                }
-
-                .awards-time-unit {
-                    min-width: 104px;
-                    padding: 20px 16px;
-                }
-
-                .awards-time-number {
-                    font-size: 2rem;
-                }
-
-                .awards-calendar-buttons,
-                .awards-countdown-actions {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .awards-calendar-btn,
-                .awards-nominee-form-btn,
-                .awards-view-categories-btn {
-                    width: 250px;
-                    justify-content: center;
-                }
-
                 .awards-udua-ticker {
-                    border-radius: 26px;
+                    border-radius: 25px;
                     padding: 12px 0;
                 }
 
                 .awards-udua-track {
-                    gap: 26px;
+                    gap: 25px;
                     padding: 0 15px;
                 }
 
                 .awards-udua-item {
-                    padding: 9px 16px;
+                    padding: 8px 15px;
                     gap: 10px;
                 }
 
                 .awards-udua-text {
-                    font-size: 0.85rem;
+                    font-size: 1rem;
+                    color: var(--primary-color);
                 }
 
                 .awards-udua-badge {
                     font-size: 0.6rem;
-                    padding: 4px 9px;
+                    padding: 3px 8px;
                 }
 
-                .awards-sponsor-card {
-                    width: 160px;
-                    padding: 20px 15px;
+                .awards-udua-cta {
+                    gap: 15px;
                 }
 
-                .awards-ticker-track {
-                    gap: 20px;
+                .awards-udua-notify-btn,
+                .awards-udua-learn-btn {
+                    padding: 10px 20px;
+                    font-size: 0.9rem;
                 }
 
-                .awards-sponsors-ticker::before,
-                .awards-sponsors-ticker::after {
-                    width: 50px;
-                }
-
-                @keyframes awards-ticker-scroll {
+                @keyframes awards-udua-scroll {
                     0% {
                         transform: translateX(0);
                     }
                     100% {
-                        transform: translateX(calc(-160px * 6 - 20px * 6));
+                        transform: translateX(calc(-100% / 3 * 2));
                     }
                 }
             }
 
             @media (max-width: 480px) {
-                .awards-container {
-                    padding: 0 18px;
+                .awards-udua-ticker-section {
+                    padding: 30px 0;
                 }
 
-                .awards-carousel-title {
-                    font-size: 1.85rem;
-                }
-
-                .awards-carousel-subtitle {
-                    font-size: 0.97rem;
-                }
-
-                .awards-carousel-nav {
-                    display: none;
-                }
-
-                .awards-circle-progress {
-                    width: 210px;
-                    height: 210px;
-                }
-
-                .awards-days-count {
-                    font-size: 2.4rem;
-                }
-
-                .awards-time-unit {
-                    min-width: 82px;
-                    padding: 16px 12px;
-                }
-
-                .awards-time-number {
-                    font-size: 1.7rem;
+                .awards-udua-ticker {
+                    border-radius: 20px;
+                    padding: 10px 0;
                 }
 
                 .awards-udua-track {
@@ -1998,7 +1861,11 @@
                     flex-direction: column;
                     gap: 8px;
                     text-align: center;
-                    padding: 12px 16px;
+                    padding: 10px 15px;
+                }
+
+                .awards-udua-text {
+                    font-size: 0.9rem;
                 }
 
                 .awards-udua-cta {
@@ -2008,59 +1875,33 @@
 
                 .awards-udua-notify-btn,
                 .awards-udua-learn-btn {
-                    width: 220px;
+                    width: 200px;
                     justify-content: center;
-                }
-
-                .awards-sponsor-card {
-                    width: 145px;
-                }
-
-                @keyframes awards-ticker-scroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-145px * 6 - 20px * 6));
-                    }
                 }
             }
 
+            /* Reduced motion support */
             @media (prefers-reduced-motion: reduce) {
                 .awards-udua-track,
                 .awards-udua-particle,
                 .awards-udua-badge,
-                .awards-udua-sparkle,
-                .awards-ticker-track,
-                .awards-particle,
-                .awards-circle-text,
-                .awards-carousel-slide-bg.active {
-                    animation: none !important;
-                }
-
-                html {
-                    scroll-behavior: auto;
+                .awards-udua-sparkle {
+                    animation: none;
                 }
             }
         </style>
     </head>
     <body class="awards-body">
-        <!-- ===================== HEADER ===================== -->
+        <!-- Header -->
         <header class="awards-header-main">
             <div class="awards-container">
                 <nav class="awards-navbar">
-                    <a href="#" class="awards-logo">
-                        <span class="awards-logo-mark">
-                            <i class="fas fa-award"></i>
-                        </span>
-                        <span class="awards-logo-text">
-                            <span>People First</span>
-                            <span class="awards-logo-accent"
-                                >Enterprise Awards</span
-                            >
-                        </span>
-                    </a>
-
+                    <div class="awards-logo">
+                        People First
+                        <span class="awards-logo-accent"
+                            >Enterprise Awards</span
+                        >
+                    </div>
                     <ul class="awards-nav-links">
                         <li><a href="#" class="awards-nav-item">Home</a></li>
                         <li>
@@ -2082,25 +1923,18 @@
                             >
                         </li>
                         <li>
-                            <a href="nomination.html" class="awards-nav-cta"
-                                >Nominate
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <a href="categories.html" class="awards-nav-cta"
+                                >Vote Now</a
+                            >
                         </li>
                     </ul>
-
-                    <button
-                        class="awards-mobile-toggle"
-                        aria-label="Toggle navigation"
-                    >
-                        <i class="fas fa-bars"></i>
-                    </button>
                 </nav>
             </div>
         </header>
 
-        <!-- ===================== HERO CAROUSEL ===================== -->
+        <!-- Hero Carousel -->
         <section class="awards-hero-section">
+            <!-- Background Images -->
             <div class="awards-carousel-background">
                 <div
                     class="awards-carousel-slide-bg active"
@@ -2116,6 +1950,7 @@
                 ></div>
             </div>
 
+            <!-- Content Overlay -->
             <div class="awards-carousel-overlay">
                 <div class="awards-carousel-container">
                     <div class="awards-carousel-text">
@@ -2131,12 +1966,9 @@
                             <a
                                 href="categories.html"
                                 class="awards-carousel-cta"
+                                >View Categories</a
                             >
-                                View Categories
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
                         </div>
-
                         <div class="awards-carousel-slide">
                             <h2 class="awards-carousel-title">
                                 Vote for Your Favorites
@@ -2146,14 +1978,11 @@
                                 winners across 14 prestigious categories.
                             </p>
                             <a
-                                href="voting.html"
+                                href="categories.html"
                                 class="awards-carousel-cta"
+                                >Cast Your Vote</a
                             >
-                                Cast Your Vote
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
                         </div>
-
                         <div class="awards-carousel-slide">
                             <h2 class="awards-carousel-title">
                                 Join the Celebration
@@ -2163,13 +1992,11 @@
                                 November 29, 2026, where we'll announce the
                                 winners.
                             </p>
-                            <a href="nomination.html" class="awards-carousel-cta">
-                                Nominations
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <a href="air.html" class="awards-carousel-cta"
+                                >See Nominees</a
+                            >
                         </div>
                     </div>
-
                     <div class="awards-carousel-visual">
                         <div class="awards-circular-text">
                             <svg
@@ -2177,7 +2004,6 @@
                                 viewBox="0 0 100 100"
                                 width="100"
                                 height="100"
-                                aria-hidden="true"
                             >
                                 <defs>
                                     <path
@@ -2185,9 +2011,9 @@
                                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                                     />
                                 </defs>
-                                <text font-size="5" fill="#ffffff">
+                                <text font-size="8" fill="#ffffff">
                                     <textPath xlink:href="#awards-circle">
-                                        • THE PEOPLE FIRST ENTERPRISE AWARDS •
+                                        • THE PEOPLE FIRST ENTERPRISE AWARDS 2026 •
                                     </textPath>
                                 </text>
                             </svg>
@@ -2199,19 +2025,15 @@
                 </div>
             </div>
 
-            <button
-                class="awards-carousel-nav awards-carousel-prev"
-                aria-label="Previous slide"
-            >
+            <!-- Navigation Arrows -->
+            <button class="awards-carousel-nav awards-carousel-prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button
-                class="awards-carousel-nav awards-carousel-next"
-                aria-label="Next slide"
-            >
+            <button class="awards-carousel-nav awards-carousel-next">
                 <i class="fas fa-chevron-right"></i>
             </button>
 
+            <!-- Indicators -->
             <div class="awards-carousel-indicators">
                 <div class="awards-carousel-dot active" data-slide="0"></div>
                 <div class="awards-carousel-dot" data-slide="1"></div>
@@ -2219,7 +2041,7 @@
             </div>
         </section>
 
-        <!-- ===================== ABOUT ===================== -->
+        <!-- About Section -->
         <section class="awards-about-section" id="about">
             <div class="awards-container">
                 <div class="awards-about-container">
@@ -2261,10 +2083,10 @@
             </div>
         </section>
 
-        <!-- ===================== UDUA TICKER ===================== -->
         <section class="awards-udua-ticker-section">
             <div class="awards-container">
                 <div class="awards-udua-ticker-wrapper">
+                    <!-- Animated Background Elements -->
                     <div class="awards-udua-background">
                         <div class="awards-udua-particle"></div>
                         <div class="awards-udua-particle"></div>
@@ -2273,6 +2095,7 @@
                         <div class="awards-udua-particle"></div>
                     </div>
 
+                    <!-- Main Ticker -->
                     <div class="awards-udua-ticker">
                         <div class="awards-udua-track">
                             <div class="awards-udua-item">
@@ -2319,21 +2142,18 @@
                         </div>
                     </div>
 
+                    <!-- CTA Button -->
                     <div class="awards-udua-cta">
                         <button class="awards-udua-notify-btn">
                             <i class="fas fa-bell"></i>
-                            Coming Soon!!!
-                        </button>
-                        <button class="awards-udua-learn-btn">
-                            <i class="fas fa-circle-info"></i>
-                            Learn More
+                            Comming Soon!!!
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== CATEGORIES ===================== -->
+        <!-- Categories Section -->
         <section class="awards-categories-section" id="categories">
             <div class="awards-container">
                 <div class="awards-section-header">
@@ -2343,8 +2163,8 @@
                         all aspects of people-first enterprise
                     </p>
                 </div>
-
                 <div class="awards-categories-grid">
+                    <!-- Agriculture and Value Chain -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-tractor"></i>
@@ -2361,6 +2181,7 @@
                         </div>
                     </div>
 
+                    <!-- Retail, Wholesale and Distributorship -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-store"></i>
@@ -2377,6 +2198,7 @@
                         </div>
                     </div>
 
+                    <!-- Fashion and Styling -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-tshirt"></i>
@@ -2392,6 +2214,7 @@
                         </div>
                     </div>
 
+                    <!-- Technology and Innovation -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-laptop-code"></i>
@@ -2408,6 +2231,7 @@
                         </div>
                     </div>
 
+                    <!-- Tourism and Hospitality -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-hotel"></i>
@@ -2423,6 +2247,7 @@
                         </div>
                     </div>
 
+                    <!-- Entertainment and Lifestyle -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-music"></i>
@@ -2438,6 +2263,7 @@
                         </div>
                     </div>
 
+                    <!-- Transportation and Logistics -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-truck"></i>
@@ -2453,6 +2279,7 @@
                         </div>
                     </div>
 
+                    <!-- Artisan and Skilled Works -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-hammer"></i>
@@ -2469,6 +2296,7 @@
                         </div>
                     </div>
 
+                    <!-- Event Management and Concept -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-calendar-alt"></i>
@@ -2484,6 +2312,7 @@
                         </div>
                     </div>
 
+                    <!-- Education and Advocacy -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -2499,6 +2328,7 @@
                         </div>
                     </div>
 
+                    <!-- Health and Wellness -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-heartbeat"></i>
@@ -2514,6 +2344,7 @@
                         </div>
                     </div>
 
+                    <!-- Media and Journalism -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-newspaper"></i>
@@ -2529,6 +2360,7 @@
                         </div>
                     </div>
 
+                    <!-- Manufacturing and Production -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-industry"></i>
@@ -2544,6 +2376,7 @@
                         </div>
                     </div>
 
+                    <!-- Content Creation and Filmmaking -->
                     <div class="awards-category-card">
                         <div class="awards-category-icon">
                             <i class="fas fa-film"></i>
@@ -2559,20 +2392,18 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="awards-categories-cta">
-                    <a href="nomination.html" class="awards-main-cta">
-                        Enter Nomination Area
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="categories.html" class="awards-main-cta"
+                        >Enter Voting Area</a
+                    >
                 </div>
             </div>
         </section>
 
-        <!-- ===================== UDUA TICKER (2) ===================== -->
         <section class="awards-udua-ticker-section">
             <div class="awards-container">
                 <div class="awards-udua-ticker-wrapper">
+                    <!-- Animated Background Elements -->
                     <div class="awards-udua-background">
                         <div class="awards-udua-particle"></div>
                         <div class="awards-udua-particle"></div>
@@ -2581,6 +2412,7 @@
                         <div class="awards-udua-particle"></div>
                     </div>
 
+                    <!-- Main Ticker -->
                     <div class="awards-udua-ticker">
                         <div class="awards-udua-track">
                             <div class="awards-udua-item">
@@ -2627,21 +2459,17 @@
                         </div>
                     </div>
 
+                    <!-- CTA Button -->
                     <div class="awards-udua-cta">
                         <button class="awards-udua-notify-btn">
                             <i class="fas fa-bell"></i>
-                            Coming Soon!!!
-                        </button>
-                        <button class="awards-udua-learn-btn">
-                            <i class="fas fa-circle-info"></i>
-                            Learn More
+                            Comming Soon!!!
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== COUNTDOWN ===================== -->
         <section class="awards-countdown-section">
             <div class="awards-countdown-container">
                 <div class="awards-countdown-header">
@@ -2657,39 +2485,22 @@
                 </div>
 
                 <div class="awards-countdown-content">
+                    <!-- Circular Progress Countdown -->
                     <div class="awards-circle-progress">
                         <svg class="awards-progress-ring" viewBox="0 0 300 300">
-                            <defs>
-                                <linearGradient
-                                    id="awardsProgressGrad"
-                                    x1="0%"
-                                    y1="0%"
-                                    x2="100%"
-                                    y2="100%"
-                                >
-                                    <stop
-                                        offset="0%"
-                                        stop-color="#1c2470"
-                                    ></stop>
-                                    <stop
-                                        offset="100%"
-                                        stop-color="#e9b949"
-                                    ></stop>
-                                </linearGradient>
-                            </defs>
                             <circle
                                 class="awards-progress-background"
                                 cx="150"
                                 cy="150"
                                 r="130"
-                                stroke-width="10"
+                                stroke-width="8"
                             ></circle>
                             <circle
                                 class="awards-progress-circle"
                                 cx="150"
                                 cy="150"
                                 r="130"
-                                stroke-width="10"
+                                stroke-width="8"
                                 stroke-dasharray="816.8"
                                 stroke-dashoffset="0"
                             ></circle>
@@ -2705,6 +2516,7 @@
                         </div>
                     </div>
 
+                    <!-- Time Units Grid -->
                     <div class="awards-time-grid">
                         <div class="awards-time-unit">
                             <div
@@ -2735,6 +2547,7 @@
                         </div>
                     </div>
 
+                    <!-- Calendar Integration -->
                     <div class="awards-calendar-integration">
                         <h3 class="awards-calendar-title">Add to Calendar</h3>
                         <div class="awards-calendar-buttons">
@@ -2767,19 +2580,26 @@
                             href="https://bit.ly/PFEABio"
                             class="awards-nominee-form-btn"
                         >
-                            <i class="fas fa-star"></i>
+                            <i
+                                class="fas fa-star"
+                                style="margin-right: 10px; color: #e6b325"
+                            ></i>
                             Nominee Form
                         </a>
                         <a
                             href="categories.html"
                             class="awards-view-categories-btn"
                         >
-                            <i class="fas fa-star"></i>
+                            <i
+                                class="fas fa-star"
+                                style="margin-right: 10px; color: #e6b325"
+                            ></i>
                             View Categories
                         </a>
                     </div>
                 </div>
 
+                <!-- Floating Particles Background -->
                 <div class="awards-particles-container">
                     <div class="awards-particle"></div>
                     <div class="awards-particle"></div>
@@ -2793,7 +2613,7 @@
             </div>
         </section>
 
-        <!-- ===================== SPONSORS ===================== -->
+        <!-- Sponsors Ticker Section -->
         <section class="awards-sponsors-section">
             <div class="awards-container">
                 <div class="awards-section-header">
@@ -2804,13 +2624,15 @@
                     </p>
                 </div>
 
+                <!-- Main Sponsors Ticker -->
                 <div class="awards-sponsors-ticker">
                     <div class="awards-ticker-track">
+                        <!-- Sponsor 1 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
                                 <img
                                     src="img/crs.jpg"
-                                    alt="Destination Cross-River"
+                                    alt="TechCorp Solutions"
                                 />
                             </div>
                             <div class="awards-sponsor-info">
@@ -2821,9 +2643,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 2 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/meda.png" alt="MEDA CRS" />
+                                <img
+                                    src="img/meda.png"
+                                    alt="Global Finance Group"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">MEDA CRS</h4>
@@ -2831,9 +2657,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 3 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/uba.jpg" alt="UBA Group" />
+                                <img
+                                    src="img/uba.jpg"
+                                    alt="Innovate Ventures"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">UBA Group</h4>
@@ -2841,26 +2671,25 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 4 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img
-                                    src="img/boa.jpg"
-                                    alt="Bank Of Industry"
-                                />
+                                <img src="img/boa.jpg" alt="EcoFuture Ltd" />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">
-                                    Bank Of Industry
+                                    Bank Of industry
                                 </h4>
                                 <span class="awards-sponsor-tier">Sponsor</span>
                             </div>
                         </div>
 
+                        <!-- Sponsor 5 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
                                 <img
                                     src="img/sterling.jpg"
-                                    alt="Sterling Bank"
+                                    alt="Creative Minds Agency"
                                 />
                             </div>
                             <div class="awards-sponsor-info">
@@ -2873,9 +2702,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 6 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/232.jpg" alt="UDUA Premium" />
+                                <img
+                                    src="img/232.jpg"
+                                    alt="Digital Wave Tech"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">
@@ -2887,12 +2720,12 @@
                             </div>
                         </div>
 
-                        <!-- Duplicate set for seamless loop -->
+                        <!-- Duplicate for seamless loop -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
                                 <img
                                     src="img/crs.jpg"
-                                    alt="Destination Cross-River"
+                                    alt="TechCorp Solutions"
                                 />
                             </div>
                             <div class="awards-sponsor-info">
@@ -2903,9 +2736,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 2 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/meda.png" alt="MEDA CRS" />
+                                <img
+                                    src="img/meda.png"
+                                    alt="Global Finance Group"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">MEDA CRS</h4>
@@ -2913,9 +2750,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 3 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/uba.jpg" alt="UBA Group" />
+                                <img
+                                    src="img/uba.jpg"
+                                    alt="Innovate Ventures"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">UBA Group</h4>
@@ -2923,26 +2764,25 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 4 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img
-                                    src="img/boa.jpg"
-                                    alt="Bank Of Industry"
-                                />
+                                <img src="img/boa.jpg" alt="EcoFuture Ltd" />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">
-                                    Bank Of Industry
+                                    Bank Of industry
                                 </h4>
                                 <span class="awards-sponsor-tier">Sponsor</span>
                             </div>
                         </div>
 
+                        <!-- Sponsor 5 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
                                 <img
                                     src="img/sterling.jpg"
-                                    alt="Sterling Bank"
+                                    alt="Creative Minds Agency"
                                 />
                             </div>
                             <div class="awards-sponsor-info">
@@ -2955,9 +2795,13 @@
                             </div>
                         </div>
 
+                        <!-- Sponsor 6 -->
                         <div class="awards-sponsor-card">
                             <div class="awards-sponsor-logo">
-                                <img src="img/232.jpg" alt="UDUA Premium" />
+                                <img
+                                    src="img/232.jpg"
+                                    alt="Digital Wave Tech"
+                                />
                             </div>
                             <div class="awards-sponsor-info">
                                 <h4 class="awards-sponsor-name">
@@ -2971,6 +2815,7 @@
                     </div>
                 </div>
 
+                <!-- CTA for Sponsorship -->
                 <div class="awards-sponsor-cta">
                     <h3>Become a Sponsor</h3>
                     <p>
@@ -2985,7 +2830,7 @@
             </div>
         </section>
 
-        <!-- ===================== GALLERY ===================== -->
+        <!-- Gallery Section -->
         <section class="awards-gallery-section" id="gallery">
             <div class="awards-container">
                 <div class="awards-section-header">
@@ -2995,7 +2840,6 @@
                         celebration of excellence
                     </p>
                 </div>
-
                 <div class="awards-gallery-grid">
                     <div class="awards-gallery-item">
                         <img src="img/awards.jpg" alt="Awards Ceremony" />
@@ -3033,7 +2877,7 @@
             </div>
         </section>
 
-        <!-- ===================== FOOTER ===================== -->
+        <!-- Footer -->
         <footer class="awards-footer-main" id="footer">
             <div class="awards-container">
                 <div class="awards-footer-content">
@@ -3046,33 +2890,20 @@
                             practices since 2018.
                         </p>
                         <div class="awards-social-links">
-                            <a
-                                href="#"
-                                class="awards-social-icon"
-                                aria-label="Facebook"
+                            <a href="#" class="awards-social-icon"
                                 ><i class="fab fa-facebook-f"></i
                             ></a>
-                            <a
-                                href="#"
-                                class="awards-social-icon"
-                                aria-label="Twitter"
+                            <a href="#" class="awards-social-icon"
                                 ><i class="fab fa-twitter"></i
                             ></a>
-                            <a
-                                href="#"
-                                class="awards-social-icon"
-                                aria-label="LinkedIn"
+                            <a href="#" class="awards-social-icon"
                                 ><i class="fab fa-linkedin-in"></i
                             ></a>
-                            <a
-                                href="#"
-                                class="awards-social-icon"
-                                aria-label="Instagram"
+                            <a href="#" class="awards-social-icon"
                                 ><i class="fab fa-instagram"></i
                             ></a>
                         </div>
                     </div>
-
                     <div class="awards-footer-column">
                         <h3>Quick Links</h3>
                         <ul class="awards-footer-links">
@@ -3090,7 +2921,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <div class="awards-footer-column">
                         <h3>Information</h3>
                         <ul class="awards-footer-links">
@@ -3108,31 +2938,23 @@
                             </li>
                         </ul>
                     </div>
-
                     <div class="awards-footer-column">
                         <h3>Contact Us</h3>
                         <ul class="awards-footer-links">
                             <li class="awards-footer-link">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span
-                                    >Prof Eyo Ita House, Marian Road
-                                    Calabar</span
-                                >
+                                <i class="fas fa-map-marker-alt"></i> Prof Eyo
+                                Ita House, Marian Road Calabar
                             </li>
                             <li class="awards-footer-link">
-                                <i class="fas fa-phone"></i>
-                                <span>+234 803 829 8980</span>
+                                <i class="fas fa-phone"></i> +234 803 829 8980
                             </li>
                             <li class="awards-footer-link">
                                 <i class="fas fa-envelope"></i>
-                                <span
-                                    >peoplefirstenterpriseawards@gmail.com</span
-                                >
+                                peoplefirstenterpriseawards@gmail.com
                             </li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="awards-footer-bottom">
                     <p>
                         &copy; 2025 People First Enterprise Awards. All rights
@@ -3146,7 +2968,6 @@
             </div>
         </footer>
 
-        <!-- ===================== SCRIPTS ===================== -->
         <script>
             // Enhanced Carousel Functionality
             document.addEventListener("DOMContentLoaded", function () {
@@ -3169,7 +2990,9 @@
                 let awardsCurrentSlide = 0;
                 let awardsAutoSlideInterval;
 
+                // Function to show specific slide
                 function awardsShowSlide(n) {
+                    // Remove active class from all slides and dots
                     awardsBgSlides.forEach((slide) =>
                         slide.classList.remove("active"),
                     );
@@ -3178,9 +3001,11 @@
                     );
                     awardsDots.forEach((dot) => dot.classList.remove("active"));
 
+                    // Update current slide index
                     awardsCurrentSlide =
                         (n + awardsBgSlides.length) % awardsBgSlides.length;
 
+                    // Add active class to current slide and dot
                     awardsBgSlides[awardsCurrentSlide].classList.add("active");
                     awardsTextSlides[awardsCurrentSlide].classList.add(
                         "active",
@@ -3188,14 +3013,17 @@
                     awardsDots[awardsCurrentSlide].classList.add("active");
                 }
 
+                // Next slide function
                 function awardsNextSlide() {
                     awardsShowSlide(awardsCurrentSlide + 1);
                 }
 
+                // Previous slide function
                 function awardsPrevSlide() {
                     awardsShowSlide(awardsCurrentSlide - 1);
                 }
 
+                // Auto slide functionality
                 function awardsStartAutoSlide() {
                     awardsAutoSlideInterval = setInterval(
                         awardsNextSlide,
@@ -3207,6 +3035,7 @@
                     clearInterval(awardsAutoSlideInterval);
                 }
 
+                // Event listeners for navigation
                 awardsNextBtn.addEventListener("click", function () {
                     awardsNextSlide();
                     awardsStopAutoSlide();
@@ -3219,6 +3048,7 @@
                     awardsStartAutoSlide();
                 });
 
+                // Event listeners for dots
                 awardsDots.forEach((dot, index) => {
                     dot.addEventListener("click", function () {
                         awardsShowSlide(index);
@@ -3227,6 +3057,7 @@
                     });
                 });
 
+                // Pause auto-slide on hover
                 const awardsCarousel = document.querySelector(
                     ".awards-hero-section",
                 );
@@ -3239,7 +3070,7 @@
                     awardsStartAutoSlide,
                 );
 
-                // Touch swipe
+                // Touch swipe functionality for mobile
                 let awardsTouchStartX = 0;
                 let awardsTouchEndX = 0;
 
@@ -3259,15 +3090,18 @@
                         awardsTouchEndX <
                         awardsTouchStartX - awardsSwipeThreshold
                     ) {
+                        // Swipe left - next slide
                         awardsNextSlide();
                     } else if (
                         awardsTouchEndX >
                         awardsTouchStartX + awardsSwipeThreshold
                     ) {
+                        // Swipe right - previous slide
                         awardsPrevSlide();
                     }
                 }
 
+                // Initialize carousel
                 awardsStartAutoSlide();
 
                 // Responsive text adjustment
@@ -3280,12 +3114,11 @@
                     awardsTitles.forEach((title) => {
                         if (awardsIsMobile && title.textContent.length > 40) {
                             title.style.fontSize = "1.6rem";
-                        } else {
-                            title.style.fontSize = "";
                         }
                     });
                 }
 
+                // Call on load and resize
                 awardsAdjustTextForMobile();
                 window.addEventListener("resize", awardsAdjustTextForMobile);
 
@@ -3295,25 +3128,21 @@
                 );
                 const navLinks = document.querySelector(".awards-nav-links");
 
-                if (mobileToggle && navLinks) {
-                    mobileToggle.addEventListener("click", function () {
-                        navLinks.style.display =
-                            navLinks.style.display === "flex"
-                                ? "none"
-                                : "flex";
-                    });
+                mobileToggle.addEventListener("click", function () {
+                    navLinks.style.display =
+                        navLinks.style.display === "flex" ? "none" : "flex";
+                });
 
-                    window.addEventListener("resize", function () {
-                        if (window.innerWidth > 768) {
-                            navLinks.style.display = "flex";
-                        } else {
-                            navLinks.style.display = "none";
-                        }
-                    });
-                }
+                // Adjust menu for window resize
+                window.addEventListener("resize", function () {
+                    if (window.innerWidth > 768) {
+                        navLinks.style.display = "flex";
+                    } else {
+                        navLinks.style.display = "none";
+                    }
+                });
             });
         </script>
-
         <script>
             // Countdown Functionality
             const awardsCeremonyDate = new Date(
@@ -3353,6 +3182,7 @@
                     (awardsTimeRemaining % (1000 * 60)) / 1000,
                 );
 
+                // Update display
                 document.getElementById("awards-days-count").textContent =
                     awardsDays.toString().padStart(2, "0");
                 document.getElementById("awards-hours-count").textContent =
@@ -3362,11 +3192,10 @@
                 document.getElementById("awards-seconds-count").textContent =
                     awardsSeconds.toString().padStart(2, "0");
 
+                // Update circular progress with dynamic radius calculation
                 const awardsProgressCircle = document.querySelector(
                     ".awards-progress-circle",
                 );
-                if (!awardsProgressCircle) return;
-
                 const awardsCircleRadius = awardsProgressCircle.r.baseVal.value;
                 const awardsCircumference = 2 * Math.PI * awardsCircleRadius;
 
@@ -3410,7 +3239,7 @@
                 }
             }
 
-            // APPLE CALENDAR
+            // APPLE CALENDAR - Fixed parameter usage
             function awardsAddToAppleCalendar(details) {
                 const awardsIcsContent = [
                     "BEGIN:VCALENDAR",
@@ -3432,8 +3261,7 @@
 
                 const awardsLink = document.createElement("a");
                 awardsLink.href = awardsUrl;
-                awardsLink.download =
-                    "People-First-Enterprise-Awards-2025.ics";
+                awardsLink.download = "People-First-Enterprise-Awards-2025.ics";
                 document.body.appendChild(awardsLink);
                 awardsLink.click();
                 document.body.removeChild(awardsLink);
@@ -3481,6 +3309,7 @@
 
             // Show calendar confirmation message
             function awardsShowCalendarConfirmation(calendarType) {
+                // Create notification element
                 const awardsNotification = document.createElement("div");
                 awardsNotification.className = "awards-calendar-notification";
                 awardsNotification.innerHTML = `
@@ -3488,6 +3317,7 @@
                         <span>Event added to ${calendarType} successfully!</span>
                     `;
 
+                // Add styles for notification
                 awardsNotification.style.cssText = `
                         position: fixed;
                         top: 20px;
@@ -3495,19 +3325,18 @@
                         background: var(--primary-color);
                         color: white;
                         padding: 15px 20px;
-                        border-radius: 14px;
-                        box-shadow: 0 12px 34px rgba(0,0,0,0.28);
+                        border-radius: 6px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
                         display: flex;
                         align-items: center;
                         gap: 10px;
-                        font-family: var(--font-body);
-                        font-weight: 600;
                         z-index: 10000;
                         animation: awardsSlideIn 0.3s ease-out;
                     `;
 
                 document.body.appendChild(awardsNotification);
 
+                // Remove notification after 3 seconds
                 setTimeout(() => {
                     awardsNotification.style.animation =
                         "awardsSlideOut 0.3s ease-in";
@@ -3521,15 +3350,29 @@
                 }, 3000);
             }
 
+            // Add CSS for notification animations
             const awardsNotificationStyles = document.createElement("style");
             awardsNotificationStyles.textContent = `
                     @keyframes awardsSlideIn {
-                        from { transform: translateX(100%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
+                        from {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
                     }
+
                     @keyframes awardsSlideOut {
-                        from { transform: translateX(0); opacity: 1; }
-                        to { transform: translateX(100%); opacity: 0; }
+                        from {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                        to {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
                     }
                 `;
             document.head.appendChild(awardsNotificationStyles);
@@ -3538,14 +3381,16 @@
             awardsUpdateCountdown();
             setInterval(awardsUpdateCountdown, 1000);
 
-            // Interactive effects
+            // Add interactive effects to time units
             document.addEventListener("DOMContentLoaded", function () {
                 const awardsTimeUnits =
                     document.querySelectorAll(".awards-time-unit");
 
                 awardsTimeUnits.forEach((unit, index) => {
+                    // Add staggered animation delay
                     unit.style.animationDelay = `${index * 0.1}s`;
 
+                    // Add click effect
                     unit.addEventListener("click", function () {
                         this.style.transform = "scale(0.95)";
                         setTimeout(() => {
@@ -3554,6 +3399,7 @@
                     });
                 });
 
+                // Add particle animation enhancements
                 const awardsParticles =
                     document.querySelectorAll(".awards-particle");
                 awardsParticles.forEach((particle, index) => {
@@ -3561,6 +3407,7 @@
                     particle.style.animationDelay = `${index * 0.5}s`;
                 });
 
+                // Add progress circle animation on load
                 const awardsProgressCircle = document.querySelector(
                     ".awards-progress-circle",
                 );
@@ -3576,6 +3423,7 @@
             window.addEventListener("error", function (e) {
                 console.error("Awards countdown error:", e.error);
 
+                // Fallback: Ensure countdown elements have at least basic values
                 const awardsCountdownElements = {
                     "awards-days-count": "00",
                     "awards-hours-count": "00",
@@ -3595,7 +3443,7 @@
         </script>
 
         <script>
-            // Enhanced sponsors ticker functionality
+            // Enhanced ticker functionality
             document.addEventListener("DOMContentLoaded", function () {
                 const awardsTickerTrack = document.querySelector(
                     ".awards-ticker-track",
@@ -3604,6 +3452,7 @@
                     ".awards-sponsor-card",
                 );
 
+                // Add hover effects
                 awardsSponsorCards.forEach((card) => {
                     card.addEventListener("mouseenter", function () {
                         this.style.transform = "translateY(-10px) scale(1.05)";
@@ -3612,7 +3461,10 @@
                     card.addEventListener("mouseleave", function () {
                         this.style.transform = "translateY(0) scale(1)";
                     });
+                });
 
+                // Add click functionality
+                awardsSponsorCards.forEach((card) => {
                     card.addEventListener("click", function () {
                         const sponsorName = this.querySelector(
                             ".awards-sponsor-name",
@@ -3623,12 +3475,13 @@
                     });
                 });
 
+                // Ensure smooth animation on all devices
                 function awardsCheckPerformance() {
                     const awardsReducedMotion = window.matchMedia(
                         "(prefers-reduced-motion: reduce)",
                     );
 
-                    if (awardsReducedMotion.matches && awardsTickerTrack) {
+                    if (awardsReducedMotion.matches) {
                         awardsTickerTrack.style.animation = "none";
                     }
                 }
@@ -3636,10 +3489,12 @@
                 awardsCheckPerformance();
             });
         </script>
-
         <script>
             // Interactive UDUA Ticker Functionality
             document.addEventListener("DOMContentLoaded", function () {
+                const awardsUduaTicker = document.querySelector(
+                    ".awards-udua-ticker",
+                );
                 const awardsUduaItems =
                     document.querySelectorAll(".awards-udua-item");
                 const awardsNotifyBtn = document.querySelector(
@@ -3649,8 +3504,10 @@
                     ".awards-udua-learn-btn",
                 );
 
+                // Add click effects to ticker items
                 awardsUduaItems.forEach((item) => {
-                    item.addEventListener("click", function (event) {
+                    item.addEventListener("click", function () {
+                        // Create ripple effect
                         const ripple = document.createElement("div");
                         ripple.style.cssText = `
                     position: absolute;
@@ -3676,43 +3533,43 @@
                             ripple.remove();
                         }, 600);
 
+                        // Show notification
                         showUduaNotification();
                     });
                 });
 
-                if (awardsNotifyBtn) {
-                    awardsNotifyBtn.addEventListener("click", function () {
+                // Notify button functionality
+                awardsNotifyBtn.addEventListener("click", function () {
+                    this.innerHTML = '<i class="fas fa-check"></i> Notified!';
+                    this.style.background =
+                        "linear-gradient(135deg, #4cd964 0%, #2ecc71 100%)";
+                    this.style.transform = "scale(0.95)";
+
+                    setTimeout(() => {
                         this.innerHTML =
-                            '<i class="fas fa-check"></i> Notified!';
+                            '<i class="fas fa-bell"></i> Notify Me';
                         this.style.background =
-                            "linear-gradient(135deg, #4cd964 0%, #2ecc71 100%)";
-                        this.style.transform = "scale(0.95)";
+                            "linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%)";
+                        this.style.transform = "scale(1)";
+                    }, 2000);
 
-                        setTimeout(() => {
-                            this.innerHTML =
-                                '<i class="fas fa-bell"></i> Coming Soon!!!';
-                            this.style.background =
-                                "linear-gradient(135deg, #f4d574 0%, #d9a72c 100%)";
-                            this.style.transform = "scale(1)";
-                        }, 2000);
+                    showUduaNotification(
+                        "You will be notified when UDUA Premium launches! 🎉",
+                    );
+                });
 
-                        showUduaNotification(
-                            "You will be notified when UDUA Premium launches! 🎉",
-                        );
-                    });
-                }
+                // Learn more button functionality
+                awardsLearnBtn.addEventListener("click", function () {
+                    showUduaNotification(
+                        "UDUA Premium - Revolutionizing E-commerce Experience! 🚀",
+                    );
+                });
 
-                if (awardsLearnBtn) {
-                    awardsLearnBtn.addEventListener("click", function () {
-                        showUduaNotification(
-                            "UDUA Premium - Revolutionizing E-commerce Experience! 🚀",
-                        );
-                    });
-                }
-
+                // Notification function
                 function showUduaNotification(
                     message = "UDUA Premium E-Commerce Store - Get Ready for Something Amazing! 💫",
                 ) {
+                    // Create notification
                     const notification = document.createElement("div");
                     notification.className = "awards-udua-notification";
                     notification.innerHTML = `
@@ -3722,24 +3579,26 @@
                 </div>
             `;
 
+                    // Add styles
                     notification.style.cssText = `
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: linear-gradient(135deg, #1b1450 0%, #7a1f4a 100%);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 color: white;
                 padding: 15px 20px;
-                border-radius: 16px;
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
                 z-index: 10000;
                 animation: awards-udua-slideIn 0.3s ease-out;
-                max-width: 320px;
+                max-width: 300px;
                 backdrop-filter: blur(10px);
                 border: 1px solid rgba(255, 255, 255, 0.2);
             `;
 
                     document.body.appendChild(notification);
 
+                    // Remove after 3 seconds
                     setTimeout(() => {
                         notification.style.animation =
                             "awards-udua-slideOut 0.3s ease-in";
@@ -3753,30 +3612,48 @@
                     }, 3000);
                 }
 
+                // Add CSS for new animations
                 const style = document.createElement("style");
                 style.textContent = `
             @keyframes awards-udua-ripple {
-                to { transform: scale(2); opacity: 0; }
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
             }
+
             @keyframes awards-udua-slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
             }
+
             @keyframes awards-udua-slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
             }
+
             .awards-udua-notification-content {
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 font-weight: 600;
-                font-family: var(--font-body);
-                font-size: 0.9rem;
             }
         `;
                 document.head.appendChild(style);
 
+                // Performance optimization
                 function awardsCheckUduaPerformance() {
                     const awardsReducedMotion = window.matchMedia(
                         "(prefers-reduced-motion: reduce)",
@@ -3791,62 +3668,6 @@
                 }
 
                 awardsCheckUduaPerformance();
-            });
-        </script>
-
-        <script>
-            // Sticky header shadow + scroll reveal (progressive enhancement)
-            document.addEventListener("DOMContentLoaded", function () {
-                const header = document.querySelector(".awards-header-main");
-
-                function onScroll() {
-                    if (!header) return;
-                    if (window.scrollY > 12) {
-                        header.classList.add("is-scrolled");
-                    } else {
-                        header.classList.remove("is-scrolled");
-                    }
-                }
-
-                onScroll();
-                window.addEventListener("scroll", onScroll, { passive: true });
-
-                // ---- Scroll reveal ----
-                const revealTargets = document.querySelectorAll(
-                    [
-                        ".awards-about-content",
-                        ".awards-about-image",
-                        ".awards-section-header",
-                        ".awards-category-card",
-                        ".awards-gallery-item",
-                        ".awards-time-unit",
-                        ".awards-calendar-integration",
-                        ".awards-sponsor-cta",
-                        ".awards-udua-cta",
-                    ].join(","),
-                );
-
-                if (!("IntersectionObserver" in window) || !revealTargets.length) {
-                    return;
-                }
-
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("is-visible");
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
-                );
-
-                revealTargets.forEach((el, index) => {
-                    el.classList.add("awards-reveal");
-                    el.style.transitionDelay = `${(index % 4) * 70}ms`;
-                    observer.observe(el);
-                });
             });
         </script>
     </body>
