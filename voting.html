@@ -1513,6 +1513,20 @@
         </div>
       </section>
 
+      <section class="merit-section" id="calabarToTheWorld">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow-dark">Special Category</span>
+            <h2>Calabar to the World — 2026 Winners</h2>
+            <p>
+              These winners have already been announced.
+              <strong>No public voting is required</strong> for this category.
+            </p>
+          </div>
+          <div class="winners-grid" id="calabarWinnersGrid"></div>
+        </div>
+      </section>
+
       <!-- =========================================================
        MERIT AWARDS (no voting)
        ========================================================= -->
@@ -1543,6 +1557,8 @@
         </p>
         <p class="copy">
           © 2026 People First Enterprise Awards. All rights reserved.
+          <br />
+          Powered By BellaTECH NG
         </p>
       </div>
     </footer>
@@ -1678,74 +1694,107 @@
      • profile      → longer text shown in the View Profile modal
                       (leave "" to auto-generate a default profile)
      • percentage   → any number 0–100 (display only, safe if out of range)
+   /* =========================================================================
+   3. NOMINEE DATA  (FINAL — 10 voting categories × 10 nominees)
    ========================================================================= */
       const categories = [
         {
-          name: "Agric Value Chain",
+          name: "Agriculture and Value Chain",
           navLabel: "Agric",
           description:
             "Recognizing outstanding businesses strengthening Nigeria's agricultural ecosystem.",
           nominees: [
             {
               id: "agric-01",
-              name: "",
+              name: "Uyimakpene's Glamour",
               logo: "",
-              description: ".",
-              profile:
-                "GreenHarvest Farms works with smallholder farmers across several states, providing certified inputs, agronomy training and guaranteed off-take. Its processing facility turns locally grown produce into packaged food products sold nationwide.",
+              description: "Agribusiness and value-chain enterprise.",
+              profile: "",
               percentage: 0,
             },
             {
               id: "agric-02",
-              name: "",
+              name: "Obubra Garri",
               logo: "",
-              description: "",
+              description: "Locally processed cassava garri from Obubra.",
               profile: "",
               percentage: 0,
             },
             {
               id: "agric-03",
-              name: "",
+              name: "Obudu Farms",
               logo: "",
-              description: "",
+              description: "BEST OF PRODUCE.",
               profile: "",
               percentage: 0,
             },
             {
               id: "agric-04",
-              name: "",
+              name: "Fazenda Integrated",
               logo: "",
-              description: "",
+              description: "Integrated farming and agro-production.",
               profile: "",
               percentage: 0,
             },
             {
               id: "agric-05",
-              name: "",
+              name: "JV Farms Global Ltd",
               logo: "",
-              description: "",
+              description: "Commercial farming and agro-enterprise.",
               profile: "",
               percentage: 0,
             },
             {
               id: "agric-06",
-              name: "",
+              name: "ANTA Resort Farm",
               logo: "",
-              description: "",
+              description: "Farm resort and agricultural production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-07",
+              name: "NDI Farms",
+              logo: "",
+              description: "Crop farming and agricultural production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-08",
+              name: "AGOGROW Ventures",
+              logo: "",
+              description: "Agro-venture and farm produce.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-09",
+              name: "DZUKEY'S Global Resources",
+              logo: "",
+              description: "Agro-allied resources and production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-10",
+              name: "RUDINRIDENI Enterprise",
+              logo: "",
+              description: "Agricultural enterprise and value chain.",
               profile: "",
               percentage: 0,
             },
           ],
         },
         {
-          name: "Retail",
+          name: "Retail and Distribution",
           navLabel: "Retail",
           description:
             "Honouring retailers delivering value, convenience and trust to Nigerian consumers.",
           nominees: [
             {
               id: "retail-01",
-              name: "Nank's Superstore",
+              name: "Nanky's Superstore",
               logo: "",
               description: "Modern retail marketplace for everyday needs.",
               profile: "",
@@ -1761,40 +1810,72 @@
             },
             {
               id: "retail-03",
-              name: "",
+              name: "Positives Retail Stores",
               logo: "",
-              description: "",
+              description: "Quality household products at affordable prices.",
               profile: "",
               percentage: 0,
             },
             {
               id: "retail-04",
-              name: "l",
+              name: "Tailor's Mart",
               logo: "",
-              description: "",
+              description: "Fashion tailoring supplies and services.",
               profile: "",
               percentage: 0,
             },
             {
               id: "retail-05",
-              name: "",
+              name: "Shakara by Lona",
               logo: "",
-              description: "",
+              description: "Fashion and lifestyle retail.",
               profile: "",
               percentage: 0,
             },
             {
               id: "retail-06",
-              name: "",
+              name: "Nijo Luxury",
               logo: "",
-              description: "",
+              description: "Luxury retail brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-07",
+              name: "Cee Edison Phones",
+              logo: "",
+              description: "Mobile phones and accessories retail.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-08",
+              name: "Glowin Kiddies World",
+              logo: "",
+              description: "Children's clothing and lifestyle store.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-09",
+              name: "Vyee Wigs Tools",
+              logo: "",
+              description: "Wigs, hair tools and beauty retail.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-10",
+              name: "Maryice",
+              logo: "",
+              description: "Retail brand.",
               profile: "",
               percentage: 0,
             },
           ],
         },
         {
-          name: "Fashion",
+          name: "Fashion and Styling",
           navLabel: "Fashion",
           description:
             "Celebrating designers and fashion brands redefining Nigerian style.",
@@ -1809,41 +1890,73 @@
             },
             {
               id: "fashion-02",
-              name: "Stavi Clothing",
+              name: "De Statesman Fashion & Styling",
               logo: "",
-              description: "Bespoke bridal and occasion wear.",
+              description: "Bespoke menswear and styling services.",
               profile: "",
               percentage: 0,
             },
             {
               id: "fashion-03",
-              name: "",
+              name: "The Milliner Girl Enterprise",
               logo: "",
-              description: "",
+              description: "Custom headwear and millinery designs.",
               profile: "",
               percentage: 0,
             },
             {
               id: "fashion-04",
-              name: "",
+              name: "Enyique NG",
               logo: "",
-              description: "",
+              description: "Contemporary Nigerian fashion brand.",
               profile: "",
               percentage: 0,
             },
             {
               id: "fashion-05",
-              name: "",
+              name: "House of Anipearl",
               logo: "",
-              description: "",
+              description: "Elegant fashion and accessories.",
               profile: "",
               percentage: 0,
             },
             {
               id: "fashion-06",
-              name: "",
+              name: "Danelec FZE",
               logo: "",
-              description: "Tailored corporate and native wear.",
+              description: "Fashion retail and global sourcing.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-07",
+              name: "Bukeh Fashion Niche",
+              logo: "",
+              description: "Made-to-measure fashion and styling.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-08",
+              name: "MB Fashion Academy",
+              logo: "",
+              description: "Fashion design training and mentorship.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-09",
+              name: "GP Styles and Kols",
+              logo: "",
+              description: "Fashion styling and lifestyle brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-10",
+              name: "Sally Rojaz",
+              logo: "",
+              description: "Fashion and styling brand.",
               profile: "",
               percentage: 0,
             },
@@ -1857,23 +1970,24 @@
           nominees: [
             {
               id: "tech-01",
-              name: "FXT Telecoms and AI Solutions",
+              name: "FXT Telecoms and AI",
               logo: "",
-              description: "Networks and Software solutions built for African businesses.",
+              description:
+                "Networks and software solutions built for African businesses.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tech-02",
-              name: "Nugitech",
+              name: "Factory Hub Tinapa",
               logo: "",
-              description: "Digital solutions.",
+              description: "Innovation and technology hub.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tech-03",
-              name: "Cafe one",
+              name: "Cafe One",
               logo: "",
               description: "Connectivity and cloud infrastructure.",
               profile: "",
@@ -1881,25 +1995,57 @@
             },
             {
               id: "tech-04",
-              name: "",
+              name: "D'litehouse Hub",
               logo: "",
-              description: "AI and data-driven enterprise tools.",
+              description: "Digital and creative technology hub.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tech-05",
-              name: "",
+              name: "Techface Limited",
               logo: "",
-              description: "Engineering talent and product development.",
+              description: "Technology solutions provider.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tech-06",
-              name: "",
+              name: "Roynek Technologies",
               logo: "",
-              description: "Smart systems and managed IT support.",
+              description: "Technology and digital services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-07",
+              name: "Hack 51 Africa",
+              logo: "",
+              description: "Tech innovation and developer community.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-08",
+              name: "Guru Innovation Hub",
+              logo: "",
+              description: "Innovation hub and tech incubation.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-09",
+              name: "Go Creative Digital Agency",
+              logo: "",
+              description: "Digital agency and technology services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-10",
+              name: "CloudMart Service",
+              logo: "",
+              description: "Cloud and digital commerce services.",
               profile: "",
               percentage: 0,
             },
@@ -1913,7 +2059,7 @@
           nominees: [
             {
               id: "transport-01",
-              name: "Atem Logistics",
+              name: "Atam Ltd",
               logo: "",
               description: "Nationwide haulage and distribution.",
               profile: "",
@@ -1921,145 +2067,209 @@
             },
             {
               id: "transport-02",
-              name: "Now Now Dispatch",
+              name: "Usetu Logistics",
               logo: "",
-              description: "Intercity logistics services.",
+              description: "Logistics and delivery services.",
               profile: "",
               percentage: 0,
             },
             {
               id: "transport-03",
-              name: "",
+              name: "Caplog Deliveries",
               logo: "",
-              description: "Urban mobility and ride services.",
+              description: "Logistics and delivery services.",
               profile: "",
               percentage: 0,
             },
             {
               id: "transport-04",
-              name: "",
+              name: "Kwikie",
               logo: "",
-              description: "Warehousing and supply chain management.",
+              description: "Fast delivery and courier service.",
               profile: "",
               percentage: 0,
             },
             {
               id: "transport-05",
-              name: "",
+              name: "IK Logistics",
               logo: "",
-              description: "Express parcel and courier delivery.",
+              description: "Logistics and supply chain services.",
               profile: "",
               percentage: 0,
             },
             {
               id: "transport-06",
-              name: "",
+              name: "Seaexpress",
               logo: "",
-              description: "Fleet technology and route optimization.",
+              description: "Sea freight and logistics.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-07",
+              name: "Abitto Logistics",
+              logo: "",
+              description: "Logistics and haulage.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-08",
+              name: "GIG",
+              logo: "",
+              description: "Logistics and delivery services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-09",
+              name: "Cargoburg Logistics",
+              logo: "",
+              description: "Cargo and freight logistics.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-10",
+              name: "Shoreline Logistics",
+              logo: "",
+              description: "Logistics and freight services.",
               profile: "",
               percentage: 0,
             },
           ],
         },
         {
-          name: "Manufacturing",
+          name: "Manufacturing and Production",
           navLabel: "Manufacturing",
           description:
             "Celebrating makers and industries building Nigeria's productive capacity.",
           nominees: [
             {
               id: "manu-01",
-              name: "",
+              name: "All in All Chemicals and Allied Production",
               logo: "",
-              description: "Consumer goods production at scale.",
+              description: "Chemical manufacturing and allied products.",
               profile: "",
               percentage: 0,
             },
             {
               id: "manu-02",
-              name: "",
+              name: "GEES Footwears",
               logo: "",
-              description: "Construction materials and block production.",
+              description: "Locally made footwear.",
               profile: "",
               percentage: 0,
             },
             {
               id: "manu-03",
-              name: "",
+              name: "Seekee's Footwears",
               logo: "",
-              description: "Heavy industry and metal fabrication.",
+              description: "Nigerian footwear brand.",
               profile: "",
               percentage: 0,
             },
             {
               id: "manu-04",
-              name: "",
+              name: "Ima's Food Stuff",
               logo: "",
-              description: "Contract manufacturing and packaging.",
+              description: "Processed food and food stuffs.",
               profile: "",
               percentage: 0,
             },
             {
               id: "manu-05",
-              name: "",
+              name: "NERZ Marine Paints",
               logo: "",
-              description: "Industrial parts and components.",
+              description: "Marine and industrial paints.",
               profile: "",
               percentage: 0,
             },
             {
               id: "manu-06",
-              name: "",
+              name: "Exclusive Parfait",
               logo: "",
-              description: "Locally made home and kitchen products.",
+              description: "Parfait and dessert production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-07",
+              name: "Hauz Sips",
+              logo: "",
+              description: "Beverage production and drinks.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-08",
+              name: "EKEBE",
+              logo: "",
+              description: "Manufacturing and production brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-09",
+              name: "SatFarms",
+              logo: "",
+              description: "Agro-processing and production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-10",
+              name: "Ethel Signature",
+              logo: "",
+              description: "Manufacturing and lifestyle products.",
               profile: "",
               percentage: 0,
             },
           ],
         },
         {
-          name: "Creative Sector",
+          name: "Content Creation and Media",
           navLabel: "Creative",
           description:
             "Recognizing creative businesses and studios shaping culture and ideas.",
           nominees: [
             {
               id: "creative-01",
-              name: "Umpirewave Studio",
-              logo: "",
-              description: "Creative studio and brand design house.",
-              profile: "",
-              percentage: 0,
-            },
-            {
-              id: "creative-02",
-              name: "TOB'IDS Expressions",
-              logo: "",
-              description: "Gallery, art sales and artist residencies.",
-              profile: "",
-              percentage: 0,
-            },
-            {
-              id: "creative-03",
-              name: "Jossy Entertainment",
-              logo: "",
-              description: "Outdoor entertainment and event production.",
-              profile: "",
-              percentage: 0,
-            },
-            {
-              id: "creative-04",
-              name: "Two Thumbs",
+              name: "Two Thumbs Creation",
               logo: "",
               description: "Cultural projects and storytelling.",
               profile: "",
               percentage: 0,
             },
             {
-              id: "creative-05",
-              name: "D'litehouse Hub",
+              id: "creative-02",
+              name: "Inimfon Iwang",
               logo: "",
-              description: "Advertising and visual identity design.",
+              description: "Content creator and media personality.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-03",
+              name: "Calabar Blog",
+              logo: "",
+              description: "Lifestyle and culture blog.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-04",
+              name: "Kandy Umoh",
+              logo: "",
+              description: "Content creator and lifestyle influencer.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-05",
+              name: "Hawt Chocolate",
+              logo: "",
+              description: "Lifestyle and entertainment brand.",
               profile: "",
               percentage: 0,
             },
@@ -2071,10 +2281,42 @@
               profile: "",
               percentage: 0,
             },
+            {
+              id: "creative-07",
+              name: "Umpire Wave Studios",
+              logo: "",
+              description: "Creative studio and brand design house.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-08",
+              name: "The Kartunes Studio",
+              logo: "",
+              description: "Creative studio and content production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-09",
+              name: "Tob'ids Expression",
+              logo: "",
+              description: "Gallery, art sales and artist residencies.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-10",
+              name: "Calabar Gist",
+              logo: "",
+              description: "Culture and lifestyle media platform.",
+              profile: "",
+              percentage: 0,
+            },
           ],
         },
         {
-          name: "Education",
+          name: "Education and Advocacy",
           navLabel: "Education",
           description:
             "Honouring institutions and platforms expanding access to quality learning.",
@@ -2083,47 +2325,79 @@
               id: "edu-01",
               name: "Nana Arts Initiative",
               logo: "",
-              description: "STEM-focused private academy.",
+              description: "Arts and education initiative.",
               profile: "",
               percentage: 0,
             },
             {
               id: "edu-02",
-              name: "",
+              name: "Bloom Lane Lessons",
               logo: "",
-              description: "Primary and secondary education.",
+              description: "Learning platform and academic support.",
               profile: "",
               percentage: 0,
             },
             {
               id: "edu-03",
-              name: "",
+              name: "Ademi Development Aid Initiative",
               logo: "",
-              description: "EdTech platform and exam preparation.",
+              description: "Educational advocacy and community development.",
               profile: "",
               percentage: 0,
             },
             {
               id: "edu-04",
-              name: "",
+              name: "Tell Your Story by Queen Esther",
               logo: "",
-              description: "Teacher training and school support.",
+              description: "Storytelling and advocacy platform.",
               profile: "",
               percentage: 0,
             },
             {
               id: "edu-05",
-              name: "",
+              name: "Walkathon by Healthy Billionaire Club",
               logo: "",
-              description: "Early years and primary learning.",
+              description: "Health and community advocacy.",
               profile: "",
               percentage: 0,
             },
             {
               id: "edu-06",
-              name: "",
+              name: "Impact in Leadership Foundation",
               logo: "",
-              description: "Vocational and skills training.",
+              description: "Leadership development and advocacy.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-07",
+              name: "Pearl Project",
+              logo: "",
+              description: "Community and advocacy project.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-08",
+              name: "Pink Africa Foundation",
+              logo: "",
+              description: "Health and community advocacy foundation.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-09",
+              name: "My Business My Tomorrow by Speaking Nightingale",
+              logo: "",
+              description: "Business and youth advocacy platform.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-10",
+              name: "Advocacy Networks Limited",
+              logo: "",
+              description: "Advocacy and development network.",
               profile: "",
               percentage: 0,
             },
@@ -2134,52 +2408,84 @@
           navLabel: "Entertainment",
           description:
             "Celebrating brands creating joy, culture and modern lifestyle experiences.",
-            nominees: [
+          nominees: [
             {
               id: "ent-01",
-              name: "Hilarious Foundation",
+              name: "Romaan Lounge",
               logo: "",
-              description: "Talent and content production.",
+              description: "Lounge and lifestyle experience.",
               profile: "",
               percentage: 0,
             },
             {
               id: "ent-02",
-              name: "Utanii",
+              name: "Tipsy Mistress",
               logo: "",
-              description: "Lifestyle media and brand partnerships.",
+              description: "Lifestyle and entertainment brand.",
               profile: "",
               percentage: 0,
             },
             {
               id: "ent-03",
-              name: "",
+              name: "Jossy Entertainment",
               logo: "",
-              description: "Luxury event planning and production.",
+              description: "Outdoor entertainment and event production.",
               profile: "",
               percentage: 0,
             },
             {
               id: "ent-04",
-              name: "",
+              name: "See You Outside",
               logo: "",
-              description: "Music, lounge and nightlife brand.",
+              description: "Events and outdoor entertainment brand.",
               profile: "",
               percentage: 0,
             },
             {
               id: "ent-05",
-              name: "",
+              name: "Lucas Modeling House",
               logo: "",
-              description: "Artist management and promotion.",
+              description: "Modeling agency and talent management.",
               profile: "",
               percentage: 0,
             },
             {
               id: "ent-06",
-              name: "",
+              name: "Unleashed Concert",
               logo: "",
-              description: "Curated cultural experiences.",
+              description: "Concert and live entertainment brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-07",
+              name: "Aqua Nova Fest",
+              logo: "",
+              description: "Festival and entertainment experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-08",
+              name: "CEC by Hit FM",
+              logo: "",
+              description: "Entertainment and media brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-09",
+              name: "Mayfair Lounge",
+              logo: "",
+              description: "Lounge and lifestyle experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-10",
+              name: "Vogue Lounge",
+              logo: "",
+              description: "Lounge and lifestyle experience.",
               profile: "",
               percentage: 0,
             },
@@ -2193,7 +2499,7 @@
           nominees: [
             {
               id: "tourism-01",
-              name: "Signature by Deluxe",
+              name: "Signature by Delux",
               logo: "",
               description: "Premium hotel and resort group.",
               profile: "",
@@ -2201,41 +2507,73 @@
             },
             {
               id: "tourism-02",
-              name: "",
+              name: "Ascott Center",
               logo: "",
-              description: "Domestic tourism and tour packages.",
+              description: "Hospitality and events center.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tourism-03",
-              name: "",
+              name: "Gemba Resorts",
               logo: "",
-              description: "Cultural and heritage tours.",
+              description: "Resort and leisure destination.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tourism-04",
-              name: "",
+              name: "Obudu Centurion Hotel & Resort",
               logo: "",
-              description: "Travel booking and concierge services.",
+              description: "Premium hotel and resort in Obudu.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tourism-05",
-              name: "",
+              name: "Palladium by Gerald",
               logo: "",
-              description: "Business hotels and conference facilities.",
+              description: "Premium hospitality destination.",
               profile: "",
               percentage: 0,
             },
             {
               id: "tourism-06",
-              name: "",
+              name: "Hara Grills",
               logo: "",
-              description: "Destination marketing and travel media.",
+              description: "Hospitality and dining experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-07",
+              name: "Ekebe",
+              logo: "",
+              description: "Hospitality and lifestyle brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-08",
+              name: "The Roots",
+              logo: "",
+              description: "Hospitality and dining destination.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-09",
+              name: "International Conference Centre Hotel (ICC)",
+              logo: "",
+              description: "Conference hotel and hospitality.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-10",
+              name: "Oceanwinds Hotel and Apartment",
+              logo: "",
+              description: "Hotel and serviced apartments.",
               profile: "",
               percentage: 0,
             },
@@ -2244,23 +2582,23 @@
       ];
 
       /* =========================================================================
-   4. PREVIOUS YEAR'S WINNERS  ← EDIT ME
+   4. PREVIOUS YEAR'S WINNERS  (unchanged from your paste)
    ========================================================================= */
       const previousWinners = [
         {
-          category: "Agric Value Chain",
+          category: "Agriculture and Value Chain",
           name: "AgroTrust Nigeria",
           logo: "",
           description: "Pioneered out-grower schemes for smallholder farmers.",
         },
         {
-          category: "Retail",
+          category: "Retail and Distribution",
           name: "CityMart Stores",
           logo: "",
           description: "Expanded affordable neighbourhood retail nationwide.",
         },
         {
-          category: "Fashion",
+          category: "Fashion and Styling",
           name: "Aso Couture House",
           logo: "",
           description: "Elevated Nigerian textiles onto the global stage.",
@@ -2278,7 +2616,7 @@
           description: "Delivered reliable nationwide freight solutions.",
         },
         {
-          category: "Manufacturing",
+          category: "Manufacturing and Production",
           name: "AnchorWorks Industries",
           logo: "",
           description: "Championed local production and job creation.",
@@ -2290,7 +2628,7 @@
           description: "Shaped brand storytelling for Nigerian businesses.",
         },
         {
-          category: "Education",
+          category: "Education and Advocacy",
           name: "BrightPath Academy",
           logo: "",
           description: "Raised learning outcomes with modern teaching.",
@@ -2306,6 +2644,74 @@
           name: "Savannah Resorts",
           logo: "",
           description: "Showcased Nigerian hospitality to the world.",
+        },
+      ];
+
+      /* =========================================================================
+   5b. CALABAR TO THE WORLD — 2026 WINNERS (NON-VOTING)
+   -------------------------------------------------------------------------
+   Winners already determined. No Vote buttons — display only.
+   ========================================================================= */
+      const calabarToTheWorld = [
+        {
+          category: "Agriculture",
+          name: "Enjoyment by Henzz",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Fashion and Styling",
+          name: "Affifima",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Tech and Innovation",
+          name: "Uke ENUN",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Entertainment",
+          name: "Mc Mbakara",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Construction",
+          name: "Faith Plant",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Tourism and Hospitality",
+          name: "Novarosta",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Manufacturing",
+          name: "Melonypine",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Beauty and Wellness",
+          name: "Nature Boutique",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Oil and Gas",
+          name: "Edward Odey",
+          logo: "",
+          description: "CEO, Blue Dolphin",
+        },
+        {
+          category: "Transport and Logistics",
+          name: "Engr NSA Ekpeyong",
+          logo: "",
+          description: "",
         },
       ];
 
@@ -2752,6 +3158,29 @@
               esc(award.description) +
               "</p>" +
               "</article>"
+            );
+          })
+          .join("");
+      }
+
+      function renderCalabarWinners() {
+        const grid = document.getElementById("calabarWinnersGrid");
+        if (!grid) return;
+        grid.innerHTML = calabarToTheWorld
+          .map(function (w) {
+            return (
+              '<div class="winner-card">' +
+              logoHTML({ name: w.name, logo: w.logo }, "sm") +
+              "<div>" +
+              "<span>" +
+              esc(w.category) +
+              "</span>" +
+              "<h4>" +
+              esc(w.name) +
+              "</h4>" +
+              (w.description ? "<p>" + esc(w.description) + "</p>" : "") +
+              "</div>" +
+              "</div>"
             );
           })
           .join("");
@@ -3396,6 +3825,7 @@
         renderCategories();
         renderCategoryNav();
         renderMeritAwards();
+        renderCalabarWinners();
         updateVotingProgress();
         filterNominees();
 
