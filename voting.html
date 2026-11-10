@@ -1590,8 +1590,8 @@
       </div>
     </div>
 
-   <script>
-/* =========================================================================
+    <script>
+      /* =========================================================================
    PEOPLE FIRST ENTERPRISE AWARDS 2026 — PUBLIC VOTING PAGE
    -------------------------------------------------------------------------
    Structure of this script:
@@ -1633,8 +1633,7 @@
    election security, server-side vote validation would be required.
    ========================================================================= */
 
-
-/* =========================================================================
+      /* =========================================================================
    1. EMAILJS CONFIGURATION
    -------------------------------------------------------------------------
    Replace these values with your real EmailJS credentials:
@@ -1642,73 +1641,71 @@
      • EMAILJS_SERVICE_ID  → EmailJS dashboard → Email Services
      • EMAILJS_TEMPLATE_ID → EmailJS dashboard → Email Templates
    ========================================================================= */
-const EMAILJS_PUBLIC_KEY = "_JHzclbB7XxiSqGDZ";
-const EMAILJS_SERVICE_ID = "service_ipsz5gs";
-const EMAILJS_TEMPLATE_ID = "template_shqjapb";
+      const EMAILJS_PUBLIC_KEY = "_JHzclbB7XxiSqGDZ";
+      const EMAILJS_SERVICE_ID = "service_ipsz5gs";
+      const EMAILJS_TEMPLATE_ID = "template_shqjapb";
 
-/* -------------------------------------------------------------------------
+      /* -------------------------------------------------------------------------
    DEMO MODE
    When true, EmailJS is skipped entirely and the send is simulated locally.
    When false, a real emailjs.send() is attempted — but failures are silent
    to the user (console only).
    ⚠️  Set to false in production so notifications actually reach your inbox.
    ------------------------------------------------------------------------- */
-const DEMO_MODE = false;
+      const DEMO_MODE = false;
 
-/* Initialise EmailJS (safe even with placeholder keys) */
-if (window.emailjs) {
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-}
-if (DEMO_MODE) {
-  console.info(
-    "[PFE Awards 2026] DEMO_MODE is ON — votes are recorded locally, no email is sent."
-  );
-}
+      /* Initialise EmailJS (safe even with placeholder keys) */
+      if (window.emailjs) {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      }
+      if (DEMO_MODE) {
+        console.info(
+          "[PFE Awards 2026] DEMO_MODE is ON — votes are recorded locally, no email is sent.",
+        );
+      }
 
-
-/* =========================================================================
+      /* =========================================================================
    2. LOCAL STORAGE VOTE STATE
    -------------------------------------------------------------------------
    Stores an object like: { "Agric Value Chain": { nominee: "...", ... } }
    A category key present = user has already voted in that category.
    ========================================================================= */
-const STORAGE_KEY = "pfea2026_votes";
+      const STORAGE_KEY = "pfea2026_votes";
 
-let voteState = loadVoteState();
+      let voteState = loadVoteState();
 
-function loadVoteState() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-  } catch (err) {
-    console.warn("Could not read vote state from Local Storage.", err);
-    return {};
-  }
-}
+      function loadVoteState() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch (err) {
+          console.warn("Could not read vote state from Local Storage.", err);
+          return {};
+        }
+      }
 
-/** Returns true if the user has already voted in this category. */
-function hasVoted(categoryName) {
-  return Boolean(voteState[categoryName]);
-}
+      /** Returns true if the user has already voted in this category. */
+      function hasVoted(categoryName) {
+        return Boolean(voteState[categoryName]);
+      }
 
-/**
- * Saves a vote for a category.
- * Called from submitVote() AFTER the EmailJS attempt has settled
- * (successfully OR not) — see the submission path below.
- */
-function saveVoteStatus(categoryName, details) {
-  voteState[categoryName] = details || {
-    voted: true,
-    time: new Date().toISOString(),
-  };
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(voteState));
-  } catch (err) {
-    console.warn("Could not save vote state to Local Storage.", err);
-  }
-}
+      /**
+       * Saves a vote for a category.
+       * Called from submitVote() AFTER the EmailJS attempt has settled
+       * (successfully OR not) — see the submission path below.
+       */
+      function saveVoteStatus(categoryName, details) {
+        voteState[categoryName] = details || {
+          voted: true,
+          time: new Date().toISOString(),
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(voteState));
+        } catch (err) {
+          console.warn("Could not save vote state to Local Storage.", err);
+        }
+      }
 
-
-/* =========================================================================
+      /* =========================================================================
    3. NOMINEE DATA  ← EDIT ME
    -------------------------------------------------------------------------
    Replace names, logos, descriptions, profiles and percentages below.
@@ -1718,1162 +1715,2126 @@ function saveVoteStatus(categoryName, details) {
                       (leave "" to auto-generate a default profile)
      • percentage   → any number 0–100 (display only, safe if out of range)
    ========================================================================= */
-const categories = [
-  {
-    name: "Agric Value Chain",
-    navLabel: "Agric",
-    description:
-      "Recognizing outstanding businesses strengthening Nigeria's agricultural ecosystem.",
-    nominees: [
-      { id: "agric-01", name: "Uyimakpene's Glamour",      logo: "", description: "Agribusiness and value-chain enterprise.",      profile: "", percentage: 0 },
-      { id: "agric-02", name: "Obubra Garri",              logo: "", description: "Locally processed cassava garri from Obubra.",   profile: "", percentage: 0 },
-      { id: "agric-03", name: "Obudu Farms",               logo: "", description: "BEST OF PRODUCE.",                              profile: "", percentage: 0 },
-      { id: "agric-04", name: "Fazenda Integrated",        logo: "", description: "Integrated farming and agro-production.",       profile: "", percentage: 0 },
-      { id: "agric-05", name: "JV Farms Global Ltd",       logo: "", description: "Commercial farming and agro-enterprise.",       profile: "", percentage: 0 },
-      { id: "agric-06", name: "ANTA Resort Farm",          logo: "", description: "Farm resort and agricultural production.",      profile: "", percentage: 0 },
-      { id: "agric-07", name: "NDI Farms",                 logo: "", description: "Crop farming and agricultural production.",     profile: "", percentage: 0 },
-      { id: "agric-08", name: "AGOGROW Ventures",          logo: "", description: "Agro-venture and farm produce.",                profile: "", percentage: 0 },
-      { id: "agric-09", name: "DZUKEY'S Global Resources", logo: "", description: "Agro-allied resources and production.",         profile: "", percentage: 0 },
-      { id: "agric-10", name: "RUDINRIDENI Enterprise",    logo: "", description: "Agricultural enterprise and value chain.",      profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Retail",
-    navLabel: "Retail",
-    description:
-      "Honouring retailers delivering value, convenience and trust to Nigerian consumers.",
-    nominees: [
-      { id: "retail-01", name: "Nanky's Superstore",      logo: "", description: "Modern retail marketplace for everyday needs.",   profile: "", percentage: 0 },
-      { id: "retail-02", name: "Kana City",               logo: "", description: "City-focused supermarket chain.",                 profile: "", percentage: 0 },
-      { id: "retail-03", name: "Positives Retail Stores", logo: "", description: "Quality household products at affordable prices.", profile: "", percentage: 0 },
-      { id: "retail-04", name: "Tailor's Mart",           logo: "", description: "Fashion tailoring supplies and services.",        profile: "", percentage: 0 },
-      { id: "retail-05", name: "Shakara by Lona",         logo: "", description: "Fashion and lifestyle retail.",                   profile: "", percentage: 0 },
-      { id: "retail-06", name: "Nijo Luxury",             logo: "", description: "Luxury retail brand.",                            profile: "", percentage: 0 },
-      { id: "retail-07", name: "Cee Edison Phones",       logo: "", description: "Mobile phones and accessories retail.",           profile: "", percentage: 0 },
-      { id: "retail-08", name: "Glowin Kiddies World",    logo: "", description: "Children's clothing and lifestyle store.",        profile: "", percentage: 0 },
-      { id: "retail-09", name: "Vyee Wigs Tools",         logo: "", description: "Wigs, hair tools and beauty retail.",             profile: "", percentage: 0 },
-      { id: "retail-10", name: "Maryice",                 logo: "", description: "Retail brand.",                                   profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Fashion",
-    navLabel: "Fashion",
-    description:
-      "Celebrating designers and fashion brands redefining Nigerian style.",
-    nominees: [
-      { id: "fashion-01", name: "Skije Clothing",                 logo: "", description: "Contemporary luxury ready-to-wear.",     profile: "", percentage: 0 },
-      { id: "fashion-02", name: "De Statesman Fashion & Styling", logo: "", description: "Bespoke menswear and styling services.",  profile: "", percentage: 0 },
-      { id: "fashion-03", name: "The Milliner Girl Enterprise",   logo: "", description: "Custom headwear and millinery designs.",  profile: "", percentage: 0 },
-      { id: "fashion-04", name: "Enyique NG",                     logo: "", description: "Contemporary Nigerian fashion brand.",    profile: "", percentage: 0 },
-      { id: "fashion-05", name: "House of Anipearl",              logo: "", description: "Elegant fashion and accessories.",        profile: "", percentage: 0 },
-      { id: "fashion-06", name: "Danelec FZE",                    logo: "", description: "Fashion retail and global sourcing.",     profile: "", percentage: 0 },
-      { id: "fashion-07", name: "Bukeh Fashion Niche",            logo: "", description: "Made-to-measure fashion and styling.",    profile: "", percentage: 0 },
-      { id: "fashion-08", name: "MB Fashion Academy",             logo: "", description: "Fashion design training and mentorship.", profile: "", percentage: 0 },
-      { id: "fashion-09", name: "GP Styles and Kols",             logo: "", description: "Fashion styling and lifestyle brand.",    profile: "", percentage: 0 },
-      { id: "fashion-10", name: "Sally Rojaz",                    logo: "", description: "Fashion and styling brand.",              profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Technology and Innovation",
-    navLabel: "Technology",
-    description:
-      "Recognizing companies driving digital transformation and innovation in Nigeria.",
-    nominees: [
-      { id: "tech-01", name: "FXT Telecoms and AI",        logo: "", description: "Networks and software solutions built for African businesses.", profile: "", percentage: 0 },
-      { id: "tech-02", name: "Factory Hub Tinapa",         logo: "", description: "Innovation and technology hub.",          profile: "", percentage: 0 },
-      { id: "tech-03", name: "Cafe One",                   logo: "", description: "Connectivity and cloud infrastructure.",  profile: "", percentage: 0 },
-      { id: "tech-04", name: "D'litehouse Hub",            logo: "", description: "Digital and creative technology hub.",    profile: "", percentage: 0 },
-      { id: "tech-05", name: "Techface Limited",           logo: "", description: "Technology solutions provider.",          profile: "", percentage: 0 },
-      { id: "tech-06", name: "Roynek Technologies",        logo: "", description: "Technology and digital services.",        profile: "", percentage: 0 },
-      { id: "tech-07", name: "Hack 51 Africa",             logo: "", description: "Tech innovation and developer community.", profile: "", percentage: 0 },
-      { id: "tech-08", name: "Guru Innovation Hub",        logo: "", description: "Innovation hub and tech incubation.",     profile: "", percentage: 0 },
-      { id: "tech-09", name: "Go Creative Digital Agency", logo: "", description: "Digital agency and technology services.", profile: "", percentage: 0 },
-      { id: "tech-10", name: "CloudMart Service",          logo: "", description: "Cloud and digital commerce services.",    profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Transportation and Logistics",
-    navLabel: "Transport",
-    description:
-      "Honouring businesses keeping Nigeria moving, safely and reliably.",
-    nominees: [
-      { id: "transport-01", name: "Atam Ltd",            logo: "", description: "Nationwide haulage and distribution.",   profile: "", percentage: 0 },
-      { id: "transport-02", name: "Usetu Logistics",     logo: "", description: "Logistics and delivery services.",       profile: "", percentage: 0 },
-      { id: "transport-03", name: "Caplog Deliveries",   logo: "", description: "Logistics and delivery services.",       profile: "", percentage: 0 },
-      { id: "transport-04", name: "Kwikie",              logo: "", description: "Fast delivery and courier service.",     profile: "", percentage: 0 },
-      { id: "transport-05", name: "IK Logistics",        logo: "", description: "Logistics and supply chain services.",   profile: "", percentage: 0 },
-      { id: "transport-06", name: "Seaexpress",          logo: "", description: "Sea freight and logistics.",             profile: "", percentage: 0 },
-      { id: "transport-07", name: "Abitto Logistics",    logo: "", description: "Logistics and haulage.",                 profile: "", percentage: 0 },
-      { id: "transport-08", name: "GIG",                 logo: "", description: "Logistics and delivery services.",       profile: "", percentage: 0 },
-      { id: "transport-09", name: "Cargoburg Logistics", logo: "", description: "Cargo and freight logistics.",           profile: "", percentage: 0 },
-      { id: "transport-10", name: "Shoreline Logistics", logo: "", description: "Logistics and freight services.",        profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Manufacturing",
-    navLabel: "Manufacturing",
-    description:
-      "Celebrating makers and industries building Nigeria's productive capacity.",
-    nominees: [
-      { id: "manu-01", name: "All in All Chemicals and Allied Production", logo: "", description: "Chemical manufacturing and allied products.", profile: "", percentage: 0 },
-      { id: "manu-02", name: "GEES Footwears",     logo: "", description: "Locally made footwear.",                profile: "", percentage: 0 },
-      { id: "manu-03", name: "Seekee's Footwears", logo: "", description: "Nigerian footwear brand.",              profile: "", percentage: 0 },
-      { id: "manu-04", name: "Ima's Food Stuff",   logo: "", description: "Processed food and food stuffs.",       profile: "", percentage: 0 },
-      { id: "manu-05", name: "NERZ Marine Paints", logo: "", description: "Marine and industrial paints.",         profile: "", percentage: 0 },
-      { id: "manu-06", name: "Exclusive Parfait",  logo: "", description: "Parfait and dessert production.",       profile: "", percentage: 0 },
-      { id: "manu-07", name: "Hauz Sips",          logo: "", description: "Beverage production and drinks.",       profile: "", percentage: 0 },
-      { id: "manu-08", name: "EKEBE",              logo: "", description: "Manufacturing and production brand.",   profile: "", percentage: 0 },
-      { id: "manu-09", name: "SatFarms",           logo: "", description: "Agro-processing and production.",       profile: "", percentage: 0 },
-      { id: "manu-10", name: "Ethel Signature",    logo: "", description: "Manufacturing and lifestyle products.", profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Creative Sector",
-    navLabel: "Creative",
-    description:
-      "Recognizing creative businesses and studios shaping culture and ideas.",
-    nominees: [
-      { id: "creative-01", name: "Two Thumbs Creation",  logo: "", description: "Cultural projects and storytelling.",       profile: "", percentage: 0 },
-      { id: "creative-02", name: "Inimfon Iwang",        logo: "", description: "Content creator and media personality.",    profile: "", percentage: 0 },
-      { id: "creative-03", name: "Calabar Blog",         logo: "", description: "Lifestyle and culture blog.",               profile: "", percentage: 0 },
-      { id: "creative-04", name: "Kandy Umoh",           logo: "", description: "Content creator and lifestyle influencer.", profile: "", percentage: 0 },
-      { id: "creative-05", name: "Hawt Chocolate",       logo: "", description: "Lifestyle and entertainment brand.",        profile: "", percentage: 0 },
-      { id: "creative-06", name: "Stormblast Media",     logo: "", description: "Design, animation and illustration.",       profile: "", percentage: 0 },
-      { id: "creative-07", name: "Umpire Wave Studios",  logo: "", description: "Creative studio and brand design house.",   profile: "", percentage: 0 },
-      { id: "creative-08", name: "The Kartunes Studio",  logo: "", description: "Creative studio and content production.",   profile: "", percentage: 0 },
-      { id: "creative-09", name: "Tob'ids Expression",   logo: "", description: "Gallery, art sales and artist residencies.",profile: "", percentage: 0 },
-      { id: "creative-10", name: "Calabar Gist",         logo: "", description: "Culture and lifestyle media platform.",     profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Education",
-    navLabel: "Education",
-    description:
-      "Honouring institutions and platforms expanding access to quality learning.",
-    nominees: [
-      { id: "edu-01", name: "Nana Arts Initiative",                            logo: "", description: "Arts and education initiative.",                 profile: "", percentage: 0 },
-      { id: "edu-02", name: "Bloom Lane Lessons",                              logo: "", description: "Learning platform and academic support.",        profile: "", percentage: 0 },
-      { id: "edu-03", name: "Ademi Development Aid Initiative",                logo: "", description: "Educational advocacy and community development.", profile: "", percentage: 0 },
-      { id: "edu-04", name: "Tell Your Story by Queen Esther",                 logo: "", description: "Storytelling and advocacy platform.",            profile: "", percentage: 0 },
-      { id: "edu-05", name: "Walkathon by Healthy Billionaire Club",           logo: "", description: "Health and community advocacy.",                 profile: "", percentage: 0 },
-      { id: "edu-06", name: "Impact in Leadership Foundation",                 logo: "", description: "Leadership development and advocacy.",           profile: "", percentage: 0 },
-      { id: "edu-07", name: "Pearl Project",                                   logo: "", description: "Community and advocacy project.",                profile: "", percentage: 0 },
-      { id: "edu-08", name: "Pink Africa Foundation",                          logo: "", description: "Health and community advocacy foundation.",      profile: "", percentage: 0 },
-      { id: "edu-09", name: "My Business My Tomorrow by Speaking Nightingale", logo: "", description: "Business and youth advocacy platform.",          profile: "", percentage: 0 },
-      { id: "edu-10", name: "Advocacy Networks Limited",                       logo: "", description: "Advocacy and development network.",              profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Entertainment and Lifestyle",
-    navLabel: "Entertainment",
-    description:
-      "Celebrating brands creating joy, culture and modern lifestyle experiences.",
-    nominees: [
-      { id: "ent-01", name: "Romaan Lounge",        logo: "", description: "Lounge and lifestyle experience.",            profile: "", percentage: 0 },
-      { id: "ent-02", name: "Tipsy Mistress",       logo: "", description: "Lifestyle and entertainment brand.",          profile: "", percentage: 0 },
-      { id: "ent-03", name: "Jossy Entertainment",  logo: "", description: "Outdoor entertainment and event production.", profile: "", percentage: 0 },
-      { id: "ent-04", name: "See You Outside",      logo: "", description: "Events and outdoor entertainment brand.",     profile: "", percentage: 0 },
-      { id: "ent-05", name: "Lucas Modeling House", logo: "", description: "Modeling agency and talent management.",      profile: "", percentage: 0 },
-      { id: "ent-06", name: "Unleashed Concert",    logo: "", description: "Concert and live entertainment brand.",       profile: "", percentage: 0 },
-      { id: "ent-07", name: "Aqua Nova Fest",       logo: "", description: "Festival and entertainment experience.",      profile: "", percentage: 0 },
-      { id: "ent-08", name: "CEC by Hit FM",        logo: "", description: "Entertainment and media brand.",              profile: "", percentage: 0 },
-      { id: "ent-09", name: "Mayfair Lounge",       logo: "", description: "Lounge and lifestyle experience.",            profile: "", percentage: 0 },
-      { id: "ent-10", name: "Vogue Lounge",         logo: "", description: "Lounge and lifestyle experience.",            profile: "", percentage: 0 },
-    ],
-  },
-  {
-    name: "Tourism and Hospitality",
-    navLabel: "Tourism",
-    description:
-      "Recognizing businesses showcasing Nigeria's beauty and warm hospitality.",
-    nominees: [
-      { id: "tourism-01", name: "Signature by Delux",                          logo: "", description: "Premium hotel and resort group.",    profile: "", percentage: 0 },
-      { id: "tourism-02", name: "Ascott Center",                               logo: "", description: "Hospitality and events center.",     profile: "", percentage: 13 },
-      { id: "tourism-03", name: "Gemba Resorts",                               logo: "", description: "Resort and leisure destination.",    profile: "", percentage: 0 },
-      { id: "tourism-04", name: "Obudu Centurion Hotel & Resort",              logo: "", description: "Premium hotel and resort in Obudu.", profile: "", percentage: 0 },
-      { id: "tourism-05", name: "Palladium by Gerald",                         logo: "", description: "Premium hospitality destination.",   profile: "", percentage: 0 },
-      { id: "tourism-06", name: "Hara Grills",                                 logo: "", description: "Hospitality and dining experience.", profile: "", percentage: 0 },
-      { id: "tourism-07", name: "Ekebe",                                       logo: "", description: "Hospitality and lifestyle brand.",   profile: "", percentage: 0 },
-      { id: "tourism-08", name: "The Roots",                                   logo: "", description: "Hospitality and dining destination.",profile: "", percentage: 0 },
-      { id: "tourism-09", name: "International Conference Centre Hotel (ICC)", logo: "", description: "Conference hotel and hospitality.",  profile: "", percentage: 0 },
-      { id: "tourism-10", name: "Oceanwinds Hotel and Apartment",              logo: "", description: "Hotel and serviced apartments.",     profile: "", percentage: 0 },
-    ],
-  },
-];
+      const categories = [
+        {
+          name: "Agric Value Chain",
+          navLabel: "Agric",
+          description:
+            "Recognizing outstanding businesses strengthening Nigeria's agricultural ecosystem.",
+          nominees: [
+            {
+              id: "agric-01",
+              name: "Uyimakpene's Glamour",
+              logo: "",
+              description: "Agribusiness and value-chain enterprise.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-02",
+              name: "Obubra Garri",
+              logo: "",
+              description: "Locally processed cassava garri from Obubra.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-03",
+              name: "Obudu Farms",
+              logo: "",
+              description: "BEST OF PRODUCE.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-04",
+              name: "Fazenda Integrated",
+              logo: "",
+              description: "Integrated farming and agro-production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-05",
+              name: "JV Farms Global Ltd",
+              logo: "",
+              description: "Commercial farming and agro-enterprise.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-06",
+              name: "ANTA Resort Farm",
+              logo: "",
+              description: "Farm resort and agricultural production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-07",
+              name: "NDI Farms",
+              logo: "",
+              description: "Crop farming and agricultural production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-08",
+              name: "AGOGROW Ventures",
+              logo: "",
+              description: "Agro-venture and farm produce.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-09",
+              name: "DZUKEY'S Global Resources",
+              logo: "",
+              description: "Agro-allied resources and production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "agric-10",
+              name: "RUDINRIDENI Enterprise",
+              logo: "",
+              description: "Agricultural enterprise and value chain.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Retail",
+          navLabel: "Retail",
+          description:
+            "Honouring retailers delivering value, convenience and trust to Nigerian consumers.",
+          nominees: [
+            {
+              id: "retail-01",
+              name: "Nanky's Superstore",
+              logo: "",
+              description: "Modern retail marketplace for everyday needs.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-02",
+              name: "Kana City",
+              logo: "",
+              description: "City-focused supermarket chain.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-03",
+              name: "Positives Retail Stores",
+              logo: "",
+              description: "Quality household products at affordable prices.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-04",
+              name: "Tailor's Mart",
+              logo: "",
+              description: "Fashion tailoring supplies and services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-05",
+              name: "Shakara by Lona",
+              logo: "",
+              description: "Fashion and lifestyle retail.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-06",
+              name: "Nijo Luxury",
+              logo: "",
+              description: "Luxury retail brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-07",
+              name: "Cee Edison Phones",
+              logo: "",
+              description: "Mobile phones and accessories retail.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-08",
+              name: "Glowin Kiddies World",
+              logo: "",
+              description: "Children's clothing and lifestyle store.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-09",
+              name: "Vyee Wigs Tools",
+              logo: "",
+              description: "Wigs, hair tools and beauty retail.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "retail-10",
+              name: "Maryice",
+              logo: "",
+              description: "Retail brand.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Fashion",
+          navLabel: "Fashion",
+          description:
+            "Celebrating designers and fashion brands redefining Nigerian style.",
+          nominees: [
+            {
+              id: "fashion-01",
+              name: "Skije Clothing",
+              logo: "",
+              description: "Contemporary luxury ready-to-wear.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-02",
+              name: "De Statesman Fashion & Styling",
+              logo: "",
+              description: "Bespoke menswear and styling services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-03",
+              name: "The Milliner Girl Enterprise",
+              logo: "",
+              description: "Custom headwear and millinery designs.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-04",
+              name: "Enyique NG",
+              logo: "",
+              description: "Contemporary Nigerian fashion brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-05",
+              name: "House of Anipearl",
+              logo: "",
+              description: "Elegant fashion and accessories.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-06",
+              name: "Danelec FZE",
+              logo: "",
+              description: "Fashion retail and global sourcing.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-07",
+              name: "Bukeh Fashion Niche",
+              logo: "",
+              description: "Made-to-measure fashion and styling.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-08",
+              name: "MB Fashion Academy",
+              logo: "",
+              description: "Fashion design training and mentorship.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-09",
+              name: "GP Styles and Kols",
+              logo: "",
+              description: "Fashion styling and lifestyle brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "fashion-10",
+              name: "Sally Rojaz",
+              logo: "",
+              description: "Fashion and styling brand.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Technology and Innovation",
+          navLabel: "Technology",
+          description:
+            "Recognizing companies driving digital transformation and innovation in Nigeria.",
+          nominees: [
+            {
+              id: "tech-01",
+              name: "FXT Telecoms and AI",
+              logo: "",
+              description:
+                "Networks and software solutions built for African businesses.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-02",
+              name: "Factory Hub Tinapa",
+              logo: "",
+              description: "Innovation and technology hub.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-03",
+              name: "Cafe One",
+              logo: "",
+              description: "Connectivity and cloud infrastructure.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-04",
+              name: "D'litehouse Hub",
+              logo: "",
+              description: "Digital and creative technology hub.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-05",
+              name: "Techface Limited",
+              logo: "",
+              description: "Technology solutions provider.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-06",
+              name: "Roynek Technologies",
+              logo: "",
+              description: "Technology and digital services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-07",
+              name: "Hack 51 Africa",
+              logo: "",
+              description: "Tech innovation and developer community.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-08",
+              name: "Guru Innovation Hub",
+              logo: "",
+              description: "Innovation hub and tech incubation.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-09",
+              name: "Go Creative Digital Agency",
+              logo: "",
+              description: "Digital agency and technology services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tech-10",
+              name: "CloudMart Service",
+              logo: "",
+              description: "Cloud and digital commerce services.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Transportation and Logistics",
+          navLabel: "Transport",
+          description:
+            "Honouring businesses keeping Nigeria moving, safely and reliably.",
+          nominees: [
+            {
+              id: "transport-01",
+              name: "Atam Ltd",
+              logo: "",
+              description: "Nationwide haulage and distribution.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-02",
+              name: "Usetu Logistics",
+              logo: "",
+              description: "Logistics and delivery services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-03",
+              name: "Caplog Deliveries",
+              logo: "",
+              description: "Logistics and delivery services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-04",
+              name: "Kwikie",
+              logo: "",
+              description: "Fast delivery and courier service.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-05",
+              name: "IK Logistics",
+              logo: "",
+              description: "Logistics and supply chain services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-06",
+              name: "Seaexpress",
+              logo: "",
+              description: "Sea freight and logistics.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-07",
+              name: "Abitto Logistics",
+              logo: "",
+              description: "Logistics and haulage.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-08",
+              name: "GIG",
+              logo: "",
+              description: "Logistics and delivery services.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-09",
+              name: "Cargoburg Logistics",
+              logo: "",
+              description: "Cargo and freight logistics.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "transport-10",
+              name: "Shoreline Logistics",
+              logo: "",
+              description: "Logistics and freight services.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Manufacturing",
+          navLabel: "Manufacturing",
+          description:
+            "Celebrating makers and industries building Nigeria's productive capacity.",
+          nominees: [
+            {
+              id: "manu-01",
+              name: "All in All Chemicals and Allied Production",
+              logo: "",
+              description: "Chemical manufacturing and allied products.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-02",
+              name: "GEES Footwears",
+              logo: "",
+              description: "Locally made footwear.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-03",
+              name: "Seekee's Footwears",
+              logo: "",
+              description: "Nigerian footwear brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-04",
+              name: "Ima's Food Stuff",
+              logo: "",
+              description: "Processed food and food stuffs.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-05",
+              name: "NERZ Marine Paints",
+              logo: "",
+              description: "Marine and industrial paints.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-06",
+              name: "Exclusive Parfait",
+              logo: "",
+              description: "Parfait and dessert production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-07",
+              name: "Hauz Sips",
+              logo: "",
+              description: "Beverage production and drinks.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-08",
+              name: "EKEBE",
+              logo: "",
+              description: "Manufacturing and production brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-09",
+              name: "SatFarms",
+              logo: "",
+              description: "Agro-processing and production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "manu-10",
+              name: "Ethel Signature",
+              logo: "",
+              description: "Manufacturing and lifestyle products.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Creative Sector",
+          navLabel: "Creative",
+          description:
+            "Recognizing creative businesses and studios shaping culture and ideas.",
+          nominees: [
+            {
+              id: "creative-01",
+              name: "Two Thumbs Creation",
+              logo: "",
+              description: "Cultural projects and storytelling.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-02",
+              name: "Inimfon Iwang",
+              logo: "",
+              description: "Content creator and media personality.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-03",
+              name: "Calabar Blog",
+              logo: "",
+              description: "Lifestyle and culture blog.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-04",
+              name: "Kandy Umoh",
+              logo: "",
+              description: "Content creator and lifestyle influencer.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-05",
+              name: "Hawt Chocolate",
+              logo: "",
+              description: "Lifestyle and entertainment brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-06",
+              name: "Stormblast Media",
+              logo: "",
+              description: "Design, animation and illustration.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-07",
+              name: "Umpire Wave Studios",
+              logo: "",
+              description: "Creative studio and brand design house.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-08",
+              name: "The Kartunes Studio",
+              logo: "",
+              description: "Creative studio and content production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-09",
+              name: "Tob'ids Expression",
+              logo: "",
+              description: "Gallery, art sales and artist residencies.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "creative-10",
+              name: "Calabar Gist",
+              logo: "",
+              description: "Culture and lifestyle media platform.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Education",
+          navLabel: "Education",
+          description:
+            "Honouring institutions and platforms expanding access to quality learning.",
+          nominees: [
+            {
+              id: "edu-01",
+              name: "Nana Arts Initiative",
+              logo: "",
+              description: "Arts and education initiative.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-02",
+              name: "Bloom Lane Lessons",
+              logo: "",
+              description: "Learning platform and academic support.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-03",
+              name: "Ademi Development Aid Initiative",
+              logo: "",
+              description: "Educational advocacy and community development.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-04",
+              name: "Tell Your Story by Queen Esther",
+              logo: "",
+              description: "Storytelling and advocacy platform.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-05",
+              name: "Walkathon by Healthy Billionaire Club",
+              logo: "",
+              description: "Health and community advocacy.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-06",
+              name: "Impact in Leadership Foundation",
+              logo: "",
+              description: "Leadership development and advocacy.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-07",
+              name: "Pearl Project",
+              logo: "",
+              description: "Community and advocacy project.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-08",
+              name: "Pink Africa Foundation",
+              logo: "",
+              description: "Health and community advocacy foundation.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-09",
+              name: "My Business My Tomorrow by Speaking Nightingale",
+              logo: "",
+              description: "Business and youth advocacy platform.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "edu-10",
+              name: "Advocacy Networks Limited",
+              logo: "",
+              description: "Advocacy and development network.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Entertainment and Lifestyle",
+          navLabel: "Entertainment",
+          description:
+            "Celebrating brands creating joy, culture and modern lifestyle experiences.",
+          nominees: [
+            {
+              id: "ent-01",
+              name: "Romaan Lounge",
+              logo: "",
+              description: "Lounge and lifestyle experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-02",
+              name: "Tipsy Mistress",
+              logo: "",
+              description: "Lifestyle and entertainment brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-03",
+              name: "Jossy Entertainment",
+              logo: "",
+              description: "Outdoor entertainment and event production.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-04",
+              name: "See You Outside",
+              logo: "",
+              description: "Events and outdoor entertainment brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-05",
+              name: "Lucas Modeling House",
+              logo: "",
+              description: "Modeling agency and talent management.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-06",
+              name: "Unleashed Concert",
+              logo: "",
+              description: "Concert and live entertainment brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-07",
+              name: "Aqua Nova Fest",
+              logo: "",
+              description: "Festival and entertainment experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-08",
+              name: "CEC by Hit FM",
+              logo: "",
+              description: "Entertainment and media brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-09",
+              name: "Mayfair Lounge",
+              logo: "",
+              description: "Lounge and lifestyle experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "ent-10",
+              name: "Vogue Lounge",
+              logo: "",
+              description: "Lounge and lifestyle experience.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+        {
+          name: "Tourism and Hospitality",
+          navLabel: "Tourism",
+          description:
+            "Recognizing businesses showcasing Nigeria's beauty and warm hospitality.",
+          nominees: [
+            {
+              id: "tourism-01",
+              name: "Signature by Delux",
+              logo: "",
+              description: "Premium hotel and resort group.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-02",
+              name: "Ascott Center",
+              logo: "",
+              description: "Hospitality and events center.",
+              profile: "",
+              percentage: 13,
+            },
+            {
+              id: "tourism-03",
+              name: "Gemba Resorts",
+              logo: "",
+              description: "Resort and leisure destination.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-04",
+              name: "Obudu Centurion Hotel & Resort",
+              logo: "",
+              description: "Premium hotel and resort in Obudu.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-05",
+              name: "Palladium by Gerald",
+              logo: "",
+              description: "Premium hospitality destination.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-06",
+              name: "Hara Grills",
+              logo: "",
+              description: "Hospitality and dining experience.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-07",
+              name: "Ekebe",
+              logo: "",
+              description: "Hospitality and lifestyle brand.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-08",
+              name: "The Roots",
+              logo: "",
+              description: "Hospitality and dining destination.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-09",
+              name: "International Conference Centre Hotel (ICC)",
+              logo: "",
+              description: "Conference hotel and hospitality.",
+              profile: "",
+              percentage: 0,
+            },
+            {
+              id: "tourism-10",
+              name: "Oceanwinds Hotel and Apartment",
+              logo: "",
+              description: "Hotel and serviced apartments.",
+              profile: "",
+              percentage: 0,
+            },
+          ],
+        },
+      ];
 
-
-/* =========================================================================
+      /* =========================================================================
    4. PREVIOUS YEAR'S WINNERS  ← EDIT ME
    ========================================================================= */
-const previousWinners = [
-  { category: "Agric Value Chain",            name: "AgroTrust Nigeria",      logo: "", description: "Pioneered out-grower schemes for smallholder farmers." },
-  { category: "Retail",                       name: "CityMart Stores",        logo: "", description: "Expanded affordable neighbourhood retail nationwide." },
-  { category: "Fashion",                      name: "Aso Couture House",      logo: "", description: "Elevated Nigerian textiles onto the global stage." },
-  { category: "Technology and Innovation",    name: "NaijaTech Labs",         logo: "", description: "Built payment tools used by thousands of SMEs." },
-  { category: "Transportation and Logistics", name: "MetroFreight Nigeria",   logo: "", description: "Delivered reliable nationwide freight solutions." },
-  { category: "Manufacturing",                name: "AnchorWorks Industries", logo: "", description: "Championed local production and job creation." },
-  { category: "Creative Sector",              name: "Studio Kulture",         logo: "", description: "Shaped brand storytelling for Nigerian businesses." },
-  { category: "Education",                    name: "BrightPath Academy",     logo: "", description: "Raised learning outcomes with modern teaching." },
-  { category: "Entertainment and Lifestyle",  name: "Arena Live Africa",      logo: "", description: "Produced world-class entertainment experiences." },
-  { category: "Tourism and Hospitality",      name: "Savannah Resorts",       logo: "", description: "Showcased Nigerian hospitality to the world." },
-];
+      const previousWinners = [
+        {
+          category: "Agric Value Chain",
+          name: "AgroTrust Nigeria",
+          logo: "",
+          description: "Pioneered out-grower schemes for smallholder farmers.",
+        },
+        {
+          category: "Retail",
+          name: "CityMart Stores",
+          logo: "",
+          description: "Expanded affordable neighbourhood retail nationwide.",
+        },
+        {
+          category: "Fashion",
+          name: "Aso Couture House",
+          logo: "",
+          description: "Elevated Nigerian textiles onto the global stage.",
+        },
+        {
+          category: "Technology and Innovation",
+          name: "NaijaTech Labs",
+          logo: "",
+          description: "Built payment tools used by thousands of SMEs.",
+        },
+        {
+          category: "Transportation and Logistics",
+          name: "MetroFreight Nigeria",
+          logo: "",
+          description: "Delivered reliable nationwide freight solutions.",
+        },
+        {
+          category: "Manufacturing",
+          name: "AnchorWorks Industries",
+          logo: "",
+          description: "Championed local production and job creation.",
+        },
+        {
+          category: "Creative Sector",
+          name: "Studio Kulture",
+          logo: "",
+          description: "Shaped brand storytelling for Nigerian businesses.",
+        },
+        {
+          category: "Education",
+          name: "BrightPath Academy",
+          logo: "",
+          description: "Raised learning outcomes with modern teaching.",
+        },
+        {
+          category: "Entertainment and Lifestyle",
+          name: "Arena Live Africa",
+          logo: "",
+          description: "Produced world-class entertainment experiences.",
+        },
+        {
+          category: "Tourism and Hospitality",
+          name: "Savannah Resorts",
+          logo: "",
+          description: "Showcased Nigerian hospitality to the world.",
+        },
+      ];
 
-
-/* =========================================================================
+      /* =========================================================================
    5. MERIT AWARDS  ← EDIT ME
    (Not voting categories — no Vote buttons appear here.)
    ========================================================================= */
-const meritAwards = [
-  { icon: "fa-solid fa-award",              name: "Lifetime Enterprise Achievement Award", description: "Honouring a distinguished individual whose lifetime of enterprise has shaped Nigerian business and inspired generations." },
-  { icon: "fa-solid fa-hand-holding-heart", name: "Outstanding Community Impact Award",    description: "Recognising an organisation whose work has measurably improved lives in the communities it serves." },
-  { icon: "fa-solid fa-seedling",           name: "Emerging Enterprise Leader Award",      description: "Celebrating a fast-rising enterprise demonstrating exceptional growth, vision and leadership." },
-  { icon: "fa-solid fa-lightbulb",          name: "Excellence in Innovation Award",        description: "Recognising breakthrough innovation that solves real problems and advances Nigerian industry." },
-  { icon: "fa-solid fa-people-group",       name: "People First Leadership Award",         description: "Honouring leadership that consistently puts people, ethics and long-term value first." },
-];
+      const meritAwards = [
+        {
+          icon: "fa-solid fa-award",
+          name: "Lifetime Enterprise Achievement Award",
+          description:
+            "Honouring a distinguished individual whose lifetime of enterprise has shaped Nigerian business and inspired generations.",
+        },
+        {
+          icon: "fa-solid fa-hand-holding-heart",
+          name: "Outstanding Community Impact Award",
+          description:
+            "Recognising an organisation whose work has measurably improved lives in the communities it serves.",
+        },
+        {
+          icon: "fa-solid fa-seedling",
+          name: "Emerging Enterprise Leader Award",
+          description:
+            "Celebrating a fast-rising enterprise demonstrating exceptional growth, vision and leadership.",
+        },
+        {
+          icon: "fa-solid fa-lightbulb",
+          name: "Excellence in Innovation Award",
+          description:
+            "Recognising breakthrough innovation that solves real problems and advances Nigerian industry.",
+        },
+        {
+          icon: "fa-solid fa-people-group",
+          name: "People First Leadership Award",
+          description:
+            "Honouring leadership that consistently puts people, ethics and long-term value first.",
+        },
+      ];
 
-
-/* =========================================================================
+      /* =========================================================================
    5b. CALABAR TO THE WORLD — NON-VOTING WINNERS
    -------------------------------------------------------------------------
    Winners already determined. Display only — no Vote buttons render for
    these entries (the render function below builds read-only cards).
    ========================================================================= */
-const calabarToTheWorld = [
-  { category: "Agriculture",             name: "Onjoyment by Henzz", logo: "", description: "" },
-  { category: "Fashion and Styling",     name: "Affifima",           logo: "", description: "" },
-  { category: "Tech and Innovation",     name: "Uke ENUN",           logo: "", description: "" },
-  { category: "Entertainment",           name: "Mc Mbakara",         logo: "", description: "" },
-  { category: "Construction",            name: "Faith Plant",        logo: "", description: "" },
-  { category: "Tourism and Hospitality", name: "Novarosta",          logo: "", description: "" },
-  { category: "Manufacturing",           name: "Melonypine",         logo: "", description: "" },
-  { category: "Beauty and Wellness",     name: "Nature Boutique",    logo: "", description: "" },
-  { category: "Oil and Gas",             name: "Edward Odey",        logo: "", description: "CEO, Blue Dolphin" },
-  { category: "Transport and Logistics", name: "Engr NSA Ekpeyong",  logo: "", description: "" },
-];
+      const calabarToTheWorld = [
+        {
+          category: "Agriculture",
+          name: "Onjoyment by Henzz",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Fashion and Styling",
+          name: "Affifima",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Tech and Innovation",
+          name: "Uke ENUN",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Entertainment",
+          name: "Mc Mbakara",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Construction",
+          name: "Faith Plant",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Tourism and Hospitality",
+          name: "Novarosta",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Manufacturing",
+          name: "Melonypine",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Beauty and Wellness",
+          name: "Nature Boutique",
+          logo: "",
+          description: "",
+        },
+        {
+          category: "Oil and Gas",
+          name: "Edward Odey",
+          logo: "",
+          description: "CEO, Blue Dolphin",
+        },
+        {
+          category: "Transport and Logistics",
+          name: "Engr NSA Ekpeyong",
+          logo: "",
+          description: "",
+        },
+      ];
 
-
-/* =========================================================================
+      /* =========================================================================
    6. UTILITIES
    ========================================================================= */
 
-/** Escapes HTML special characters for safe insertion into markup. */
-function esc(str) {
-  return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
-    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-  });
-}
+      /** Escapes HTML special characters for safe insertion into markup. */
+      function esc(str) {
+        return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[c];
+        });
+      }
 
-/** Keeps percentages safe between 0 and 100. */
-function clampPercentage(value) {
-  const num = Number(value);
-  if (isNaN(num)) return 0;
-  return Math.min(100, Math.max(0, Math.round(num)));
-}
+      /** Keeps percentages safe between 0 and 100. */
+      function clampPercentage(value) {
+        const num = Number(value);
+        if (isNaN(num)) return 0;
+        return Math.min(100, Math.max(0, Math.round(num)));
+      }
 
-/** Builds initials from a nominee name, e.g. "GreenHarvest Farms" → "GF". */
-function getInitials(name) {
-  const words = String(name || "")
-    .split(/\s+/)
-    .filter(function (w) { return /^[A-Za-z0-9]/.test(w); });
-  if (!words.length) return "?";
-  return words
-    .slice(0, 2)
-    .map(function (w) { return w.charAt(0).toUpperCase(); })
-    .join("");
-}
+      /** Builds initials from a nominee name, e.g. "GreenHarvest Farms" → "GF". */
+      function getInitials(name) {
+        const words = String(name || "")
+          .split(/\s+/)
+          .filter(function (w) {
+            return /^[A-Za-z0-9]/.test(w);
+          });
+        if (!words.length) return "?";
+        return words
+          .slice(0, 2)
+          .map(function (w) {
+            return w.charAt(0).toUpperCase();
+          })
+          .join("");
+      }
 
-/** Creates a URL-safe id from a category name. */
-function categoryId(name) {
-  return (
-    "cat-" +
-    String(name)
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "")
-  );
-}
+      /** Creates a URL-safe id from a category name. */
+      function categoryId(name) {
+        return (
+          "cat-" +
+          String(name)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "")
+        );
+      }
 
-/** Returns the nominee profile text (auto-generates one when empty). */
-function getProfile(nominee, category) {
-  if (nominee.profile && String(nominee.profile).trim()) return nominee.profile;
-  return (
-    nominee.name +
-    " is nominated in the " +
-    category.name +
-    " category of the People First Enterprise Awards 2026. " +
-    nominee.description +
-    " The nominee was shortlisted by the awards panel for its contribution to Nigeria's " +
-    "enterprise landscape and the positive impact it has on the people and communities it serves."
-  );
-}
+      /** Returns the nominee profile text (auto-generates one when empty). */
+      function getProfile(nominee, category) {
+        if (nominee.profile && String(nominee.profile).trim())
+          return nominee.profile;
+        return (
+          nominee.name +
+          " is nominated in the " +
+          category.name +
+          " category of the People First Enterprise Awards 2026. " +
+          nominee.description +
+          " The nominee was shortlisted by the awards panel for its contribution to Nigeria's " +
+          "enterprise landscape and the positive impact it has on the people and communities it serves."
+        );
+      }
 
-/** Reusable logo markup with an elegant initials fallback. */
-function logoHTML(nominee, extraClass) {
-  const initials = getInitials(nominee.name);
-  const hasLogo = nominee.logo && String(nominee.logo).trim();
-  const classes =
-    "logo-box " + (extraClass || "") + (hasLogo ? "" : " is-fallback");
-  const img = hasLogo
-    ? '<img src="' +
-      esc(nominee.logo) +
-      '" alt="' +
-      esc(nominee.name) +
-      ' logo" loading="lazy" ' +
-      "onerror=\"this.parentElement.classList.add('is-fallback'); this.remove();\">"
-    : "";
-  return (
-    '<div class="' +
-    classes.trim() +
-    '" data-initials="' +
-    esc(initials) +
-    '" aria-hidden="true">' +
-    img +
-    "</div>"
-  );
-}
+      /** Reusable logo markup with an elegant initials fallback. */
+      function logoHTML(nominee, extraClass) {
+        const initials = getInitials(nominee.name);
+        const hasLogo = nominee.logo && String(nominee.logo).trim();
+        const classes =
+          "logo-box " + (extraClass || "") + (hasLogo ? "" : " is-fallback");
+        const img = hasLogo
+          ? '<img src="' +
+            esc(nominee.logo) +
+            '" alt="' +
+            esc(nominee.name) +
+            ' logo" loading="lazy" ' +
+            "onerror=\"this.parentElement.classList.add('is-fallback'); this.remove();\">"
+          : "";
+        return (
+          '<div class="' +
+          classes.trim() +
+          '" data-initials="' +
+          esc(initials) +
+          '" aria-hidden="true">' +
+          img +
+          "</div>"
+        );
+      }
 
-/** Simple email validation — sensible, not overly strict. */
-function isValidEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(String(value || "").trim());
-}
+      /** Simple email validation — sensible, not overly strict. */
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(
+          String(value || "").trim(),
+        );
+      }
 
-/** Phone validation — accepts Nigerian formats and reasonable international ones. */
-function isValidPhone(value) {
-  const cleaned = String(value || "").replace(/[\s\-().]/g, "");
-  if (!/^\+?\d{7,15}$/.test(cleaned)) return false;
-  const digits = cleaned.replace(/^\+/, "");
-  return digits.length >= 7 && digits.length <= 15;
-}
+      /** Phone validation — accepts Nigerian formats and reasonable international ones. */
+      function isValidPhone(value) {
+        const cleaned = String(value || "").replace(/[\s\-().]/g, "");
+        if (!/^\+?\d{7,15}$/.test(cleaned)) return false;
+        const digits = cleaned.replace(/^\+/, "");
+        return digits.length >= 7 && digits.length <= 15;
+      }
 
-/** Finds a nominee + its category by nominee id. */
-function findNomineeById(id) {
-  for (let i = 0; i < categories.length; i++) {
-    const cat = categories[i];
-    for (let j = 0; j < cat.nominees.length; j++) {
-      if (cat.nominees[j].id === id) return { nominee: cat.nominees[j], category: cat };
-    }
-  }
-  return null;
-}
+      /** Finds a nominee + its category by nominee id. */
+      function findNomineeById(id) {
+        for (let i = 0; i < categories.length; i++) {
+          const cat = categories[i];
+          for (let j = 0; j < cat.nominees.length; j++) {
+            if (cat.nominees[j].id === id)
+              return { nominee: cat.nominees[j], category: cat };
+          }
+        }
+        return null;
+      }
 
-
-/* =========================================================================
+      /* =========================================================================
    7. REUSABLE MODAL SYSTEM
    ========================================================================= */
-const overlay       = document.getElementById("modalOverlay");
-const modalBox      = document.getElementById("modalBox");
-const modalTitleEl  = document.getElementById("modalTitle");
-const modalBodyEl   = document.getElementById("modalBody");
-const modalFooterEl = document.getElementById("modalFooter");
-const modalCloseBtn = document.getElementById("modalCloseBtn");
+      const overlay = document.getElementById("modalOverlay");
+      const modalBox = document.getElementById("modalBox");
+      const modalTitleEl = document.getElementById("modalTitle");
+      const modalBodyEl = document.getElementById("modalBody");
+      const modalFooterEl = document.getElementById("modalFooter");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
 
-let lastFocusedElement = null;
+      let lastFocusedElement = null;
 
-/**
- * Opens the shared modal shell.
- * @param {Object} opts
- * @param {string} opts.title     - Modal heading
- * @param {string} opts.body      - HTML for the modal body
- * @param {string} [opts.footer]  - HTML for the modal footer
- * @param {boolean} [opts.wide]   - Use the wider modal variant
- * @param {Function} [opts.onOpen]- Callback fired after the modal opens
- */
-function openModal(opts) {
-  modalTitleEl.textContent = opts.title || "";
-  modalBodyEl.innerHTML = opts.body || "";
-  modalFooterEl.innerHTML = opts.footer || "";
-  modalFooterEl.style.display = opts.footer ? "flex" : "none";
-  modalBox.classList.toggle("wide", Boolean(opts.wide));
+      /**
+       * Opens the shared modal shell.
+       * @param {Object} opts
+       * @param {string} opts.title     - Modal heading
+       * @param {string} opts.body      - HTML for the modal body
+       * @param {string} [opts.footer]  - HTML for the modal footer
+       * @param {boolean} [opts.wide]   - Use the wider modal variant
+       * @param {Function} [opts.onOpen]- Callback fired after the modal opens
+       */
+      function openModal(opts) {
+        modalTitleEl.textContent = opts.title || "";
+        modalBodyEl.innerHTML = opts.body || "";
+        modalFooterEl.innerHTML = opts.footer || "";
+        modalFooterEl.style.display = opts.footer ? "flex" : "none";
+        modalBox.classList.toggle("wide", Boolean(opts.wide));
 
-  lastFocusedElement = document.activeElement;
+        lastFocusedElement = document.activeElement;
 
-  overlay.classList.add("open");
-  overlay.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-  modalBodyEl.scrollTop = 0;
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        modalBodyEl.scrollTop = 0;
 
-  if (typeof opts.onOpen === "function") opts.onOpen();
+        if (typeof opts.onOpen === "function") opts.onOpen();
 
-  window.setTimeout(function () {
-    const target =
-      modalBodyEl.querySelector("input, textarea, select") ||
-      modalFooterEl.querySelector("button") ||
-      modalCloseBtn;
-    if (target) target.focus({ preventScroll: true });
-  }, 70);
-}
+        window.setTimeout(function () {
+          const target =
+            modalBodyEl.querySelector("input, textarea, select") ||
+            modalFooterEl.querySelector("button") ||
+            modalCloseBtn;
+          if (target) target.focus({ preventScroll: true });
+        }, 70);
+      }
 
-/** Closes the shared modal shell and restores focus. */
-function closeModal() {
-  overlay.classList.remove("open");
-  overlay.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-    lastFocusedElement.focus({ preventScroll: true });
-  }
-}
+      /** Closes the shared modal shell and restores focus. */
+      function closeModal() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (
+          lastFocusedElement &&
+          typeof lastFocusedElement.focus === "function"
+        ) {
+          lastFocusedElement.focus({ preventScroll: true });
+        }
+      }
 
-/* Close button */
-modalCloseBtn.addEventListener("click", closeModal);
+      /* Close button */
+      modalCloseBtn.addEventListener("click", closeModal);
 
-/* Click outside the modal closes it */
-overlay.addEventListener("mousedown", function (e) {
-  if (e.target === overlay) closeModal();
-});
+      /* Click outside the modal closes it */
+      overlay.addEventListener("mousedown", function (e) {
+        if (e.target === overlay) closeModal();
+      });
 
-/* ESC closes the modal + simple focus trap */
-document.addEventListener("keydown", function (e) {
-  if (!overlay.classList.contains("open")) return;
+      /* ESC closes the modal + simple focus trap */
+      document.addEventListener("keydown", function (e) {
+        if (!overlay.classList.contains("open")) return;
 
-  if (e.key === "Escape") {
-    closeModal();
-    return;
-  }
+        if (e.key === "Escape") {
+          closeModal();
+          return;
+        }
 
-  if (e.key === "Tab") {
-    const focusables = overlay.querySelectorAll(
-      "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"
-    );
-    const list = Array.prototype.filter.call(focusables, function (el) {
-      return !el.disabled && el.offsetParent !== null;
-    });
-    if (!list.length) return;
-    const first = list[0];
-    const last = list[list.length - 1];
+        if (e.key === "Tab") {
+          const focusables = overlay.querySelectorAll(
+            "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])",
+          );
+          const list = Array.prototype.filter.call(focusables, function (el) {
+            return !el.disabled && el.offsetParent !== null;
+          });
+          if (!list.length) return;
+          const first = list[0];
+          const last = list[list.length - 1];
 
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  }
-});
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
 
-
-/* =========================================================================
+      /* =========================================================================
    8. RENDERING
    ========================================================================= */
-const categoriesContainer = document.getElementById("categoriesContainer");
-const categoryNav         = document.getElementById("categoryNav");
-const noResultsEl         = document.getElementById("noResults");
-const meritGrid           = document.getElementById("meritGrid");
-const searchInput         = document.getElementById("searchInput");
-const progressCountEl     = document.getElementById("progressCount");
-const progressTotalEl     = document.getElementById("progressTotal");
-const overallProgressEl   = document.getElementById("overallProgress");
+      const categoriesContainer = document.getElementById(
+        "categoriesContainer",
+      );
+      const categoryNav = document.getElementById("categoryNav");
+      const noResultsEl = document.getElementById("noResults");
+      const meritGrid = document.getElementById("meritGrid");
+      const searchInput = document.getElementById("searchInput");
+      const progressCountEl = document.getElementById("progressCount");
+      const progressTotalEl = document.getElementById("progressTotal");
+      const overallProgressEl = document.getElementById("overallProgress");
 
-/* Progress bars animate when they scroll into view */
-const progressObserver = new IntersectionObserver(
-  function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        el.style.width = el.dataset.percentage + "%";
-        progressObserver.unobserve(el);
+      /* Progress bars animate when they scroll into view */
+      const progressObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.style.width = el.dataset.percentage + "%";
+              progressObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+
+      /** Registers every un-animated progress bar for viewport animation. */
+      function observeProgressBars(scope) {
+        const bars = (scope || document).querySelectorAll(
+          ".progress-fill[data-percentage]:not(.observed)",
+        );
+        bars.forEach(function (bar) {
+          bar.classList.add("observed");
+          progressObserver.observe(bar);
+        });
       }
-    });
-  },
-  { threshold: 0.25 }
-);
 
-/** Registers every un-animated progress bar for viewport animation. */
-function observeProgressBars(scope) {
-  const bars = (scope || document).querySelectorAll(
-    ".progress-fill[data-percentage]:not(.observed)"
-  );
-  bars.forEach(function (bar) {
-    bar.classList.add("observed");
-    progressObserver.observe(bar);
-  });
-}
+      /** Builds a single nominee card. */
+      function createNomineeCard(nominee, category) {
+        const voted = hasVoted(category.name);
+        const pct = clampPercentage(nominee.percentage);
 
-/** Builds a single nominee card. */
-function createNomineeCard(nominee, category) {
-  const voted = hasVoted(category.name);
-  const pct = clampPercentage(nominee.percentage);
-
-  return (
-    '<article class="nominee-card" data-nominee-id="' + esc(nominee.id) + '" ' +
-      'data-name="' + esc(nominee.name.toLowerCase()) + '" ' +
-      'data-category="' + esc(category.name) + '">' +
-
-      '<div class="nominee-top">' +
-        logoHTML(nominee, "") +
-        '<div class="nominee-heading">' +
-          "<h3>" + esc(nominee.name) + "</h3>" +
-          '<span class="badge">' + esc(category.name) + "</span>" +
-        "</div>" +
-      "</div>" +
-
-      '<p class="nominee-desc">' + esc(nominee.description) + "</p>" +
-
-      '<div class="vote-status">' +
-        '<div class="vote-status-row">' +
+        return (
+          '<article class="nominee-card" data-nominee-id="' +
+          esc(nominee.id) +
+          '" ' +
+          'data-name="' +
+          esc(nominee.name.toLowerCase()) +
+          '" ' +
+          'data-category="' +
+          esc(category.name) +
+          '">' +
+          '<div class="nominee-top">' +
+          logoHTML(nominee, "") +
+          '<div class="nominee-heading">' +
+          "<h3>" +
+          esc(nominee.name) +
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
+          "</div>" +
+          "</div>" +
+          '<p class="nominee-desc">' +
+          esc(nominee.description) +
+          "</p>" +
+          '<div class="vote-status">' +
+          '<div class="vote-status-row">' +
           "<span>Current Voting Status</span>" +
-          "<strong>" + pct + "%</strong>" +
-        "</div>" +
-        '<div class="progress">' +
-          '<div class="progress-fill" data-percentage="' + pct + '" ' +
-               'role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" ' +
-               'aria-label="' + esc(nominee.name) + ' voting percentage"></div>' +
-        "</div>" +
-      "</div>" +
-
-      '<div class="nominee-actions">' +
-        '<button type="button" class="btn btn-outline" data-action="profile">' +
+          "<strong>" +
+          pct +
+          "%</strong>" +
+          "</div>" +
+          '<div class="progress">' +
+          '<div class="progress-fill" data-percentage="' +
+          pct +
+          '" ' +
+          'role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' +
+          pct +
+          '" ' +
+          'aria-label="' +
+          esc(nominee.name) +
+          ' voting percentage"></div>' +
+          "</div>" +
+          "</div>" +
+          '<div class="nominee-actions">' +
+          '<button type="button" class="btn btn-outline" data-action="profile">' +
           '<i class="fa-regular fa-address-card" aria-hidden="true"></i> View Profile' +
-        "</button>" +
-        '<button type="button" class="btn btn-primary' + (voted ? " is-voted" : "") + '" ' +
-                'data-action="vote"' + (voted ? " disabled" : "") + ">" +
+          "</button>" +
+          '<button type="button" class="btn btn-primary' +
+          (voted ? " is-voted" : "") +
+          '" ' +
+          'data-action="vote"' +
+          (voted ? " disabled" : "") +
+          ">" +
           (voted
             ? '<i class="fa-solid fa-check" aria-hidden="true"></i> Voted'
             : '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote') +
-        "</button>" +
-      "</div>" +
-
-    "</article>"
-  );
-}
-
-/** Builds a complete category section. */
-function createCategorySection(category) {
-  const voted = hasVoted(category.name);
-
-  const cards = category.nominees
-    .map(function (nominee) { return createNomineeCard(nominee, category); })
-    .join("");
-
-  return (
-    '<section class="category" id="' + categoryId(category.name) + '" ' +
-             'data-category="' + esc(category.name) + '" ' +
-             'aria-labelledby="' + categoryId(category.name) + '-title">' +
-
-      '<div class="cat-head">' +
-        "<div>" +
-          '<h2 id="' + categoryId(category.name) + '-title">' + esc(category.name) + "</h2>" +
-          "<p>" + esc(category.description) + "</p>" +
-        "</div>" +
-        '<span class="cat-status' + (voted ? " voted" : "") + '">' +
-          (voted ? "You have voted in this category" : "Voting available") +
-        "</span>" +
-      "</div>" +
-
-      '<div class="nominee-grid">' + cards + "</div>" +
-
-    "</section>"
-  );
-}
-
-/** Renders all categories into the page. */
-function renderCategories() {
-  categoriesContainer.innerHTML = categories.map(createCategorySection).join("");
-  observeProgressBars(categoriesContainer);
-}
-
-/** Renders the category navigation chips. */
-function renderCategoryNav() {
-  let html = '<button type="button" class="chip is-active" data-target="all">All Categories</button>';
-  categories.forEach(function (cat) {
-    html +=
-      '<button type="button" class="chip" data-target="' + categoryId(cat.name) + '">' +
-      esc(cat.navLabel || cat.name) +
-      "</button>";
-  });
-  categoryNav.innerHTML = html;
-}
-
-/** Renders the merit awards (no voting). */
-function renderMeritAwards() {
-  meritGrid.innerHTML = meritAwards
-    .map(function (award) {
-      return (
-        '<article class="merit-card">' +
-          '<span class="merit-badge">Merit Award</span>' +
-          '<div class="merit-icon"><i class="' + esc(award.icon) + '" aria-hidden="true"></i></div>' +
-          "<h3>" + esc(award.name) + "</h3>" +
-          "<p>" + esc(award.description) + "</p>" +
-        "</article>"
-      );
-    })
-    .join("");
-}
-
-/** Renders the Calabar-to-the-World winners (read-only, no voting). */
-function renderCalabarWinners() {
-  const grid = document.getElementById("calabarWinnersGrid");
-  if (!grid) return;
-  grid.innerHTML = calabarToTheWorld
-    .map(function (w) {
-      return (
-        '<div class="winner-card">' +
-          logoHTML({ name: w.name, logo: w.logo }, "sm") +
-          "<div>" +
-            "<span>" + esc(w.category) + "</span>" +
-            "<h4>" + esc(w.name) + "</h4>" +
-            (w.description ? "<p>" + esc(w.description) + "</p>" : "") +
+          "</button>" +
           "</div>" +
-        "</div>"
-      );
-    })
-    .join("");
-}
+          "</article>"
+        );
+      }
 
-/** Updates the "X of 10 categories completed" summary. */
-function updateVotingProgress() {
-  const total = categories.length;
-  const completed = categories.filter(function (c) { return hasVoted(c.name); }).length;
-  const percent = total ? Math.round((completed / total) * 100) : 0;
+      /** Builds a complete category section. */
+      function createCategorySection(category) {
+        const voted = hasVoted(category.name);
 
-  progressCountEl.textContent = completed;
-  progressTotalEl.textContent = total;
-  overallProgressEl.style.width = percent + "%";
-  overallProgressEl.setAttribute("aria-valuenow", String(percent));
-}
+        const cards = category.nominees
+          .map(function (nominee) {
+            return createNomineeCard(nominee, category);
+          })
+          .join("");
 
-/** Refreshes one category's UI after a vote (no full re-render needed). */
-function refreshCategory(category) {
-  const section = document.getElementById(categoryId(category.name));
-  if (!section) return;
+        return (
+          '<section class="category" id="' +
+          categoryId(category.name) +
+          '" ' +
+          'data-category="' +
+          esc(category.name) +
+          '" ' +
+          'aria-labelledby="' +
+          categoryId(category.name) +
+          '-title">' +
+          '<div class="cat-head">' +
+          "<div>" +
+          '<h2 id="' +
+          categoryId(category.name) +
+          '-title">' +
+          esc(category.name) +
+          "</h2>" +
+          "<p>" +
+          esc(category.description) +
+          "</p>" +
+          "</div>" +
+          '<span class="cat-status' +
+          (voted ? " voted" : "") +
+          '">' +
+          (voted ? "You have voted in this category" : "Voting available") +
+          "</span>" +
+          "</div>" +
+          '<div class="nominee-grid">' +
+          cards +
+          "</div>" +
+          "</section>"
+        );
+      }
 
-  const voted = hasVoted(category.name);
+      /** Renders all categories into the page. */
+      function renderCategories() {
+        categoriesContainer.innerHTML = categories
+          .map(createCategorySection)
+          .join("");
+        observeProgressBars(categoriesContainer);
+      }
 
-  const statusEl = section.querySelector(".cat-status");
-  if (statusEl) {
-    statusEl.textContent = voted ? "You have voted in this category" : "Voting available";
-    statusEl.classList.toggle("voted", voted);
-  }
+      /** Renders the category navigation chips. */
+      function renderCategoryNav() {
+        let html =
+          '<button type="button" class="chip is-active" data-target="all">All Categories</button>';
+        categories.forEach(function (cat) {
+          html +=
+            '<button type="button" class="chip" data-target="' +
+            categoryId(cat.name) +
+            '">' +
+            esc(cat.navLabel || cat.name) +
+            "</button>";
+        });
+        categoryNav.innerHTML = html;
+      }
 
-  section.querySelectorAll('[data-action="vote"]').forEach(function (btn) {
-    if (voted) {
-      btn.disabled = true;
-      btn.classList.add("is-voted");
-      btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Voted';
-    } else {
-      btn.disabled = false;
-      btn.classList.remove("is-voted");
-      btn.innerHTML = '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote';
-    }
-  });
-}
+      /** Renders the merit awards (no voting). */
+      function renderMeritAwards() {
+        meritGrid.innerHTML = meritAwards
+          .map(function (award) {
+            return (
+              '<article class="merit-card">' +
+              '<span class="merit-badge">Merit Award</span>' +
+              '<div class="merit-icon"><i class="' +
+              esc(award.icon) +
+              '" aria-hidden="true"></i></div>' +
+              "<h3>" +
+              esc(award.name) +
+              "</h3>" +
+              "<p>" +
+              esc(award.description) +
+              "</p>" +
+              "</article>"
+            );
+          })
+          .join("");
+      }
 
+      /** Renders the Calabar-to-the-World winners (read-only, no voting). */
+      function renderCalabarWinners() {
+        const grid = document.getElementById("calabarWinnersGrid");
+        if (!grid) return;
+        grid.innerHTML = calabarToTheWorld
+          .map(function (w) {
+            return (
+              '<div class="winner-card">' +
+              logoHTML({ name: w.name, logo: w.logo }, "sm") +
+              "<div>" +
+              "<span>" +
+              esc(w.category) +
+              "</span>" +
+              "<h4>" +
+              esc(w.name) +
+              "</h4>" +
+              (w.description ? "<p>" + esc(w.description) + "</p>" : "") +
+              "</div>" +
+              "</div>"
+            );
+          })
+          .join("");
+      }
 
-/* =========================================================================
+      /** Updates the "X of 10 categories completed" summary. */
+      function updateVotingProgress() {
+        const total = categories.length;
+        const completed = categories.filter(function (c) {
+          return hasVoted(c.name);
+        }).length;
+        const percent = total ? Math.round((completed / total) * 100) : 0;
+
+        progressCountEl.textContent = completed;
+        progressTotalEl.textContent = total;
+        overallProgressEl.style.width = percent + "%";
+        overallProgressEl.setAttribute("aria-valuenow", String(percent));
+      }
+
+      /** Refreshes one category's UI after a vote (no full re-render needed). */
+      function refreshCategory(category) {
+        const section = document.getElementById(categoryId(category.name));
+        if (!section) return;
+
+        const voted = hasVoted(category.name);
+
+        const statusEl = section.querySelector(".cat-status");
+        if (statusEl) {
+          statusEl.textContent = voted
+            ? "You have voted in this category"
+            : "Voting available";
+          statusEl.classList.toggle("voted", voted);
+        }
+
+        section
+          .querySelectorAll('[data-action="vote"]')
+          .forEach(function (btn) {
+            if (voted) {
+              btn.disabled = true;
+              btn.classList.add("is-voted");
+              btn.innerHTML =
+                '<i class="fa-solid fa-check" aria-hidden="true"></i> Voted';
+            } else {
+              btn.disabled = false;
+              btn.classList.remove("is-voted");
+              btn.innerHTML =
+                '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote';
+            }
+          });
+      }
+
+      /* =========================================================================
    9. VOTING FLOW
    ========================================================================= */
 
-/* Card buttons (event delegation) */
-categoriesContainer.addEventListener("click", function (e) {
-  const btn = e.target.closest("[data-action]");
-  if (!btn) return;
+      /* Card buttons (event delegation) */
+      categoriesContainer.addEventListener("click", function (e) {
+        const btn = e.target.closest("[data-action]");
+        if (!btn) return;
 
-  const card = btn.closest("[data-nominee-id]");
-  if (!card) return;
+        const card = btn.closest("[data-nominee-id]");
+        if (!card) return;
 
-  const found = findNomineeById(card.dataset.nomineeId);
-  if (!found) return;
+        const found = findNomineeById(card.dataset.nomineeId);
+        if (!found) return;
 
-  const action = btn.dataset.action;
-  if (action === "profile") {
-    openProfileModal(found.nominee, found.category);
-  } else if (action === "vote") {
-    handleVoteClick(found.nominee, found.category);
-  }
-});
+        const action = btn.dataset.action;
+        if (action === "profile") {
+          openProfileModal(found.nominee, found.category);
+        } else if (action === "vote") {
+          handleVoteClick(found.nominee, found.category);
+        }
+      });
 
-/** Entry point when a user clicks a Vote button. */
-function handleVoteClick(nominee, category) {
-  if (hasVoted(category.name)) {
-    showAlreadyVotedModal(category);
-    return;
-  }
-  openVoteModal(nominee, category);
-}
+      /** Entry point when a user clicks a Vote button. */
+      function handleVoteClick(nominee, category) {
+        if (hasVoted(category.name)) {
+          showAlreadyVotedModal(category);
+          return;
+        }
+        openVoteModal(nominee, category);
+      }
 
-/* ---------- Profile modal ---------- */
-function openProfileModal(nominee, category) {
-  const voted = hasVoted(category.name);
-  const pct = clampPercentage(nominee.percentage);
+      /* ---------- Profile modal ---------- */
+      function openProfileModal(nominee, category) {
+        const voted = hasVoted(category.name);
+        const pct = clampPercentage(nominee.percentage);
 
-  const links = [];
-  if (nominee.website) {
-    links.push(
-      '<a href="' + esc(nominee.website) + '" target="_blank" rel="noopener noreferrer">' +
-        '<i class="fa-solid fa-globe" aria-hidden="true"></i> Website</a>'
-    );
-  }
-  if (nominee.social) {
-    links.push(
-      '<a href="' + esc(nominee.social) + '" target="_blank" rel="noopener noreferrer">' +
-        '<i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Social</a>'
-    );
-  }
+        const links = [];
+        if (nominee.website) {
+          links.push(
+            '<a href="' +
+              esc(nominee.website) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              '<i class="fa-solid fa-globe" aria-hidden="true"></i> Website</a>',
+          );
+        }
+        if (nominee.social) {
+          links.push(
+            '<a href="' +
+              esc(nominee.social) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              '<i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Social</a>',
+          );
+        }
 
-  const body =
-    '<div class="profile-head">' +
-      logoHTML(nominee, "lg") +
-      "<div>" +
-        "<h3>" + esc(nominee.name) + "</h3>" +
-        '<span class="badge">' + esc(category.name) + "</span>" +
-      "</div>" +
-    "</div>" +
-
-    '<p class="profile-text">' + esc(getProfile(nominee, category)) + "</p>" +
-
-    '<div class="profile-block">' +
-      '<div class="vote-status-row">' +
-        "<span>Current Voting Status</span>" +
-        "<strong>" + pct + "%</strong>" +
-      "</div>" +
-      '<div class="progress">' +
-        '<div class="progress-fill" style="width:' + pct + '%"></div>' +
-      "</div>" +
-    "</div>" +
-
-    (links.length ? '<div class="profile-links">' + links.join("") + "</div>" : "");
-
-  const footer =
-    '<button type="button" class="btn btn-outline" data-close-modal>Close</button>' +
-    (voted
-      ? '<button type="button" class="btn is-voted" disabled>' +
-          '<i class="fa-solid fa-check" aria-hidden="true"></i> Voting Completed' +
-        "</button>"
-      : '<button type="button" class="btn btn-primary" id="profileVoteBtn">' +
-          '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote for ' +
+        const body =
+          '<div class="profile-head">' +
+          logoHTML(nominee, "lg") +
+          "<div>" +
+          "<h3>" +
           esc(nominee.name) +
-        "</button>");
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
+          "</div>" +
+          "</div>" +
+          '<p class="profile-text">' +
+          esc(getProfile(nominee, category)) +
+          "</p>" +
+          '<div class="profile-block">' +
+          '<div class="vote-status-row">' +
+          "<span>Current Voting Status</span>" +
+          "<strong>" +
+          pct +
+          "%</strong>" +
+          "</div>" +
+          '<div class="progress">' +
+          '<div class="progress-fill" style="width:' +
+          pct +
+          '%"></div>' +
+          "</div>" +
+          "</div>" +
+          (links.length
+            ? '<div class="profile-links">' + links.join("") + "</div>"
+            : "");
 
-  openModal({
-    title: "Nominee Profile",
-    body: body,
-    footer: footer,
-    onOpen: function () {
-      const closeBtn = modalFooterEl.querySelector("[data-close-modal]");
-      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        const footer =
+          '<button type="button" class="btn btn-outline" data-close-modal>Close</button>' +
+          (voted
+            ? '<button type="button" class="btn is-voted" disabled>' +
+              '<i class="fa-solid fa-check" aria-hidden="true"></i> Voting Completed' +
+              "</button>"
+            : '<button type="button" class="btn btn-primary" id="profileVoteBtn">' +
+              '<i class="fa-solid fa-check-to-slot" aria-hidden="true"></i> Vote for ' +
+              esc(nominee.name) +
+              "</button>");
 
-      const voteBtn = document.getElementById("profileVoteBtn");
-      if (voteBtn) {
-        voteBtn.addEventListener("click", function () {
-          openVoteModal(nominee, category);
+        openModal({
+          title: "Nominee Profile",
+          body: body,
+          footer: footer,
+          onOpen: function () {
+            const closeBtn = modalFooterEl.querySelector("[data-close-modal]");
+            if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+            const voteBtn = document.getElementById("profileVoteBtn");
+            if (voteBtn) {
+              voteBtn.addEventListener("click", function () {
+                openVoteModal(nominee, category);
+              });
+            }
+          },
         });
       }
-    },
-  });
-}
 
-/* ---------- Vote modal ---------- */
-function openVoteModal(nominee, category) {
-  const body =
-    '<div class="vote-summary">' +
-      logoHTML(nominee, "sm") +
-      "<div>" +
-        '<p class="vote-label">You are about to vote for:</p>' +
-        "<h3>" + esc(nominee.name) + "</h3>" +
-        '<span class="badge">' + esc(category.name) + "</span>" +
-      "</div>" +
-    "</div>" +
-
-    '<p class="vote-note">' +
-      '<i class="fa-solid fa-circle-info" aria-hidden="true"></i>' +
-      "<span>You can only vote once in this category. Your email and phone number are required to validate your vote.</span>" +
-    "</p>" +
-
-    '<form id="voteForm" novalidate>' +
-      '<div class="field-group">' +
-        '<label for="voterEmail">Email Address *</label>' +
-        '<input type="email" id="voterEmail" name="voterEmail" placeholder="you@example.com" ' +
-               'autocomplete="email" aria-describedby="emailError" required />' +
-        '<p class="field-error" id="emailError" role="alert"></p>' +
-      "</div>" +
-
-      '<div class="field-group">' +
-        '<label for="voterPhone">Phone Number *</label>' +
-        '<input type="tel" id="voterPhone" name="voterPhone" placeholder="08012345678 or +2348012345678" ' +
-               'autocomplete="tel" aria-describedby="phoneError" required />' +
-        '<p class="field-error" id="phoneError" role="alert"></p>' +
-      "</div>" +
-
-      '<p class="field-error" id="formError" role="alert"></p>' +
-    "</form>";
-
-  const footer =
-    '<button type="button" class="btn btn-outline" id="cancelVoteBtn">Cancel</button>' +
-    '<button type="button" class="btn btn-primary" id="submitVoteBtn">' +
-      '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Vote' +
-    "</button>";
-
-  openModal({
-    title: "Confirm Your Vote",
-    body: body,
-    footer: footer,
-    onOpen: function () {
-      const form = document.getElementById("voteForm");
-      const submitBtn = document.getElementById("submitVoteBtn");
-      const cancelBtn = document.getElementById("cancelVoteBtn");
-      const emailInput = document.getElementById("voterEmail");
-      const phoneInput = document.getElementById("voterPhone");
-
-      cancelBtn.addEventListener("click", closeModal);
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        handleVoteSubmit(nominee, category, submitBtn, emailInput, phoneInput);
-      });
-
-      submitBtn.addEventListener("click", function () {
-        handleVoteSubmit(nominee, category, submitBtn, emailInput, phoneInput);
-      });
-
-      [emailInput, phoneInput].forEach(function (input) {
-        input.addEventListener("input", function () {
-          input.classList.remove("has-error");
-          const err = document.getElementById(
-            input.id === "voterEmail" ? "emailError" : "phoneError"
-          );
-          if (err) err.classList.remove("show");
-        });
-      });
-    },
-  });
-}
-
-/* ---------- Validation + submission ---------- */
-function showFieldError(inputEl, errorEl, message) {
-  inputEl.classList.add("has-error");
-  errorEl.textContent = message;
-  errorEl.classList.add("show");
-}
-
-function handleVoteSubmit(nominee, category, submitBtn, emailInput, phoneInput) {
-  const email = emailInput.value.trim();
-  const phone = phoneInput.value.trim();
-
-  const emailError = document.getElementById("emailError");
-  const phoneError = document.getElementById("phoneError");
-  const formError  = document.getElementById("formError");
-
-  let valid = true;
-
-  // Reset previous errors
-  emailInput.classList.remove("has-error");
-  phoneInput.classList.remove("has-error");
-  emailError.classList.remove("show");
-  phoneError.classList.remove("show");
-  formError.classList.remove("show");
-
-  // --- Email validation ---
-  if (!email) {
-    showFieldError(emailInput, emailError, "Please enter your email address.");
-    valid = false;
-  } else if (!isValidEmail(email)) {
-    showFieldError(emailInput, emailError, "That email address doesn't look right. Please check it.");
-    valid = false;
-  }
-
-  // --- Phone validation ---
-  if (!phone) {
-    showFieldError(phoneInput, phoneError, "Please enter your phone number.");
-    valid = false;
-  } else if (!isValidPhone(phone)) {
-    showFieldError(
-      phoneInput,
-      phoneError,
-      "Please enter a valid phone number, e.g. 08012345678 or +2348012345678."
-    );
-    valid = false;
-  }
-
-  if (!valid) {
-    const firstError = modalBodyEl.querySelector(".has-error");
-    if (firstError) firstError.focus();
-    return;
-  }
-
-  // Double-check the category hasn't been voted in (safety net)
-  if (hasVoted(category.name)) {
-    closeModal();
-    showAlreadyVotedModal(category);
-    return;
-  }
-
-  submitVote(nominee, category, email, phone, submitBtn);
-}
-
-/**
- * Sends the vote via EmailJS — with SILENT-FAILURE semantics.
- *
- * Regardless of whether the EmailJS call succeeds, times out, or throws,
- * the function proceeds to:
- *   • lock the category in Local Storage,
- *   • refresh the category UI,
- *   • update the overall progress summary,
- *   • display the success modal.
- *
- * Every EmailJS failure is reported ONLY via console.error() so the end
- * user never sees an error state. See the file-header comment for the
- * implications of this behaviour.
- */
-async function submitVote(nominee, category, email, phone, submitBtn) {
-  // ---- Loading state (prevents multiple submissions) ----
-  const originalBtnHTML = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML =
-    '<span class="spinner" aria-hidden="true"></span> Submitting Vote...';
-
-  // ---- EmailJS template parameters ----
-  const templateParams = {
-    voter_email: email,
-    voter_phone: phone,
-    nominee_name: nominee.name,
-    nominee_id: nominee.id,
-    category: category.name,
-    vote_time: new Date().toLocaleString(),
-    vote_source: "PFE Awards 2026 — Public Voting Page",
-  };
-
-  // ---- Attempt delivery (silently) ----
-  try {
-    if (DEMO_MODE) {
-      // Simulated latency for the demo UI
-      await new Promise(function (resolve) { window.setTimeout(resolve, 600); });
-      console.info(
-        "[DEMO MODE] Vote recorded locally — no email sent. Payload:",
-        templateParams
-      );
-    } else if (typeof emailjs === "undefined" || !emailjs || typeof emailjs.send !== "function") {
-      // SDK not loaded (CDN blocked, offline, etc.)
-      throw new Error(
-        "EmailJS SDK is not available. Did the CDN script load? The vote will still be recorded locally."
-      );
-    } else {
-      // 10s safety timeout so a hanging request can't freeze the UI
-      await Promise.race([
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams),
-        new Promise(function (_, reject) {
-          window.setTimeout(function () {
-            reject(new Error("EmailJS request timed out after 10s."));
-          }, 10000);
-        }),
-      ]);
-      console.info("Vote submitted via EmailJS:", templateParams);
-    }
-  } catch (err) {
-    // SILENT FAILURE — user never sees this. Log only.
-    console.error(
-      "Vote submission to EmailJS failed (recorded locally anyway):",
-      err
-    );
-  }
-
-  // ---- SUCCESS PATH — runs unconditionally ----
-  saveVoteStatus(category.name, {
-    nominee: nominee.name,
-    nomineeId: nominee.id,
-    email: email,
-    phone: phone,
-    time: templateParams.vote_time,
-  });
-
-  closeModal();
-  refreshCategory(category);
-  updateVotingProgress();
-  showSuccessModal(nominee, category);
-
-  // submitBtn has been detached by closeModal; restoring its HTML is a no-op
-  // but harmless and keeps the variable referenced for clarity.
-  submitBtn.innerHTML = originalBtnHTML;
-}
-
-/* ---------- Success modal ---------- */
-function showSuccessModal(nominee, category) {
-  // Note: "An email confirmation has been sent." is shown to keep the UX
-  // consistent — in DEMO_MODE, or when EmailJS silently fails, no email is
-  // actually delivered. See the file header for the implications.
-  const body =
-    '<div class="success-wrap">' +
-      '<div class="success-anim" style="position:relative">' +
-        '<i class="fa-solid fa-check" aria-hidden="true"></i>' +
-      "</div>" +
-      "<h3>Vote Successfully Submitted!</h3>" +
-      '<p class="strong-line">Thank you for supporting <strong>' +
-        esc(nominee.name) +
-        "</strong> in the " +
-        esc(category.name) +
-        " category.</p>" +
-      "<p>You can continue voting in other categories where you haven't voted yet.</p>" +
-      '<p class="email-sent">An email confirmation has been sent.</p>' +
-    "</div>";
-
-  openModal({
-    title: "Vote Confirmed",
-    body: body,
-    footer:
-      '<button type="button" class="btn btn-primary" id="continueVotingBtn">' +
-        '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Continue Voting' +
-      "</button>",
-    onOpen: function () {
-      const btn = document.getElementById("continueVotingBtn");
-      btn.addEventListener("click", function () {
-        closeModal();
-        const target = document.getElementById(categoryId(category.name));
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    },
-  });
-}
-
-/* ---------- Already voted modal ---------- */
-function showAlreadyVotedModal(category) {
-  const record = voteState[category.name];
-  const votedFor = record && record.nominee ? record.nominee : null;
-
-  const body =
-    '<div class="success-wrap">' +
-      '<div class="success-anim" style="background:linear-gradient(135deg,#1a237e,#3f4dd0);color:#fff;">' +
-        '<i class="fa-solid fa-circle-check" aria-hidden="true"></i>' +
-      "</div>" +
-      "<h3>You've Already Voted</h3>" +
-      "<p>You have already submitted your vote for the <strong>" +
-        esc(category.name) +
-        "</strong> category" +
-        (votedFor ? " (for <strong>" + esc(votedFor) + "</strong>)" : "") +
-        ".</p>" +
-      "<p>You can still vote in the other categories.</p>" +
-    "</div>";
-
-  openModal({
-    title: "Already Voted",
-    body: body,
-    footer:
-      '<button type="button" class="btn btn-primary" id="okAlreadyVoted">' +
-        '<i class="fa-solid fa-check" aria-hidden="true"></i> Got it' +
-      "</button>",
-    onOpen: function () {
-      document.getElementById("okAlreadyVoted").addEventListener("click", closeModal);
-    },
-  });
-}
-
-/* ---------- Previous winners modal ---------- */
-function showPreviousWinners() {
-  const cards = previousWinners
-    .map(function (winner) {
-      const nomineeLike = { name: winner.name, logo: winner.logo };
-      return (
-        '<div class="winner-card">' +
-          logoHTML(nomineeLike, "sm") +
+      /* ---------- Vote modal ---------- */
+      function openVoteModal(nominee, category) {
+        const body =
+          '<div class="vote-summary">' +
+          logoHTML(nominee, "sm") +
           "<div>" +
-            "<span>" + esc(winner.category) + "</span>" +
-            "<h4>" + esc(winner.name) + "</h4>" +
-            (winner.description ? "<p>" + esc(winner.description) + "</p>" : "") +
+          '<p class="vote-label">You are about to vote for:</p>' +
+          "<h3>" +
+          esc(nominee.name) +
+          "</h3>" +
+          '<span class="badge">' +
+          esc(category.name) +
+          "</span>" +
           "</div>" +
-        "</div>"
-      );
-    })
-    .join("");
+          "</div>" +
+          '<p class="vote-note">' +
+          '<i class="fa-solid fa-circle-info" aria-hidden="true"></i>' +
+          "<span>You can only vote once in this category. Your email and phone number are required to validate your vote.</span>" +
+          "</p>" +
+          '<form id="voteForm" novalidate>' +
+          '<div class="field-group">' +
+          '<label for="voterEmail">Email Address *</label>' +
+          '<input type="email" id="voterEmail" name="voterEmail" placeholder="you@example.com" ' +
+          'autocomplete="email" aria-describedby="emailError" required />' +
+          '<p class="field-error" id="emailError" role="alert"></p>' +
+          "</div>" +
+          '<div class="field-group">' +
+          '<label for="voterPhone">Phone Number *</label>' +
+          '<input type="tel" id="voterPhone" name="voterPhone" placeholder="08012345678 or +2348012345678" ' +
+          'autocomplete="tel" aria-describedby="phoneError" required />' +
+          '<p class="field-error" id="phoneError" role="alert"></p>' +
+          "</div>" +
+          '<p class="field-error" id="formError" role="alert"></p>' +
+          "</form>";
 
-  const body =
-    '<p style="font-size:.9rem;color:#5c6178;margin-bottom:1.1rem;">' +
-      "Congratulations to the winners of the People First Enterprise Awards 2025." +
-    "</p>" +
-    '<div class="winners-grid">' + cards + "</div>";
+        const footer =
+          '<button type="button" class="btn btn-outline" id="cancelVoteBtn">Cancel</button>' +
+          '<button type="button" class="btn btn-primary" id="submitVoteBtn">' +
+          '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Vote' +
+          "</button>";
 
-  openModal({
-    title: "2025 Winners",
-    body: body,
-    footer: '<button type="button" class="btn btn-primary" id="winnersCloseBtn">Close</button>',
-    wide: true,
-    onOpen: function () {
-      document.getElementById("winnersCloseBtn").addEventListener("click", closeModal);
-    },
-  });
-}
+        openModal({
+          title: "Confirm Your Vote",
+          body: body,
+          footer: footer,
+          onOpen: function () {
+            const form = document.getElementById("voteForm");
+            const submitBtn = document.getElementById("submitVoteBtn");
+            const cancelBtn = document.getElementById("cancelVoteBtn");
+            const emailInput = document.getElementById("voterEmail");
+            const phoneInput = document.getElementById("voterPhone");
 
-document.getElementById("viewWinnersBtn").addEventListener("click", showPreviousWinners);
+            cancelBtn.addEventListener("click", closeModal);
 
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+              handleVoteSubmit(
+                nominee,
+                category,
+                submitBtn,
+                emailInput,
+                phoneInput,
+              );
+            });
 
-/* =========================================================================
+            submitBtn.addEventListener("click", function () {
+              handleVoteSubmit(
+                nominee,
+                category,
+                submitBtn,
+                emailInput,
+                phoneInput,
+              );
+            });
+
+            [emailInput, phoneInput].forEach(function (input) {
+              input.addEventListener("input", function () {
+                input.classList.remove("has-error");
+                const err = document.getElementById(
+                  input.id === "voterEmail" ? "emailError" : "phoneError",
+                );
+                if (err) err.classList.remove("show");
+              });
+            });
+          },
+        });
+      }
+
+      /* ---------- Validation + submission ---------- */
+      function showFieldError(inputEl, errorEl, message) {
+        inputEl.classList.add("has-error");
+        errorEl.textContent = message;
+        errorEl.classList.add("show");
+      }
+
+      function handleVoteSubmit(
+        nominee,
+        category,
+        submitBtn,
+        emailInput,
+        phoneInput,
+      ) {
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+
+        const emailError = document.getElementById("emailError");
+        const phoneError = document.getElementById("phoneError");
+        const formError = document.getElementById("formError");
+
+        let valid = true;
+
+        // Reset previous errors
+        emailInput.classList.remove("has-error");
+        phoneInput.classList.remove("has-error");
+        emailError.classList.remove("show");
+        phoneError.classList.remove("show");
+        formError.classList.remove("show");
+
+        // --- Email validation ---
+        if (!email) {
+          showFieldError(
+            emailInput,
+            emailError,
+            "Please enter your email address.",
+          );
+          valid = false;
+        } else if (!isValidEmail(email)) {
+          showFieldError(
+            emailInput,
+            emailError,
+            "That email address doesn't look right. Please check it.",
+          );
+          valid = false;
+        }
+
+        // --- Phone validation ---
+        if (!phone) {
+          showFieldError(
+            phoneInput,
+            phoneError,
+            "Please enter your phone number.",
+          );
+          valid = false;
+        } else if (!isValidPhone(phone)) {
+          showFieldError(
+            phoneInput,
+            phoneError,
+            "Please enter a valid phone number, e.g. 08012345678 or +2348012345678.",
+          );
+          valid = false;
+        }
+
+        if (!valid) {
+          const firstError = modalBodyEl.querySelector(".has-error");
+          if (firstError) firstError.focus();
+          return;
+        }
+
+        // Double-check the category hasn't been voted in (safety net)
+        if (hasVoted(category.name)) {
+          closeModal();
+          showAlreadyVotedModal(category);
+          return;
+        }
+
+        submitVote(nominee, category, email, phone, submitBtn);
+      }
+
+      /**
+       * Sends the vote via EmailJS — with SILENT-FAILURE semantics.
+       *
+       * Regardless of whether the EmailJS call succeeds, times out, or throws,
+       * the function proceeds to:
+       *   • lock the category in Local Storage,
+       *   • refresh the category UI,
+       *   • update the overall progress summary,
+       *   • display the success modal.
+       *
+       * Every EmailJS failure is reported ONLY via console.error() so the end
+       * user never sees an error state. See the file-header comment for the
+       * implications of this behaviour.
+       */
+      async function submitVote(nominee, category, email, phone, submitBtn) {
+        // ---- Loading state (prevents multiple submissions) ----
+        const originalBtnHTML = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="spinner" aria-hidden="true"></span> Submitting Vote...';
+
+        // ---- EmailJS template parameters ----
+        const templateParams = {
+          voter_email: email,
+          voter_phone: phone,
+          nominee_name: nominee.name,
+          nominee_id: nominee.id,
+          category: category.name,
+          vote_time: new Date().toLocaleString(),
+          vote_source: "PFE Awards 2026 — Public Voting Page",
+        };
+
+        // ---- Attempt delivery (silently) ----
+        try {
+          if (DEMO_MODE) {
+            // Simulated latency for the demo UI
+            await new Promise(function (resolve) {
+              window.setTimeout(resolve, 600);
+            });
+            console.info(
+              "[DEMO MODE] Vote recorded locally — no email sent. Payload:",
+              templateParams,
+            );
+          } else if (
+            typeof emailjs === "undefined" ||
+            !emailjs ||
+            typeof emailjs.send !== "function"
+          ) {
+            // SDK not loaded (CDN blocked, offline, etc.)
+            throw new Error(
+              "EmailJS SDK is not available. Did the CDN script load? The vote will still be recorded locally.",
+            );
+          } else {
+            // 10s safety timeout so a hanging request can't freeze the UI
+            await Promise.race([
+              emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams,
+              ),
+              new Promise(function (_, reject) {
+                window.setTimeout(function () {
+                  reject(new Error("EmailJS request timed out after 10s."));
+                }, 10000);
+              }),
+            ]);
+            console.info("Vote submitted via EmailJS:", templateParams);
+          }
+        } catch (err) {
+          // SILENT FAILURE — user never sees this. Log only.
+          console.error(
+            "Vote submission to EmailJS failed (recorded locally anyway):",
+            err,
+          );
+        }
+
+        // ---- SUCCESS PATH — runs unconditionally ----
+        saveVoteStatus(category.name, {
+          nominee: nominee.name,
+          nomineeId: nominee.id,
+          email: email,
+          phone: phone,
+          time: templateParams.vote_time,
+        });
+
+        closeModal();
+        refreshCategory(category);
+        updateVotingProgress();
+        showSuccessModal(nominee, category);
+
+        // submitBtn has been detached by closeModal; restoring its HTML is a no-op
+        // but harmless and keeps the variable referenced for clarity.
+        submitBtn.innerHTML = originalBtnHTML;
+      }
+
+      /* ---------- Success modal ---------- */
+      function showSuccessModal(nominee, category) {
+        // Note: "An email confirmation has been sent." is shown to keep the UX
+        // consistent — in DEMO_MODE, or when EmailJS silently fails, no email is
+        // actually delivered. See the file header for the implications.
+        const body =
+          '<div class="success-wrap">' +
+          '<div class="success-anim" style="position:relative">' +
+          '<i class="fa-solid fa-check" aria-hidden="true"></i>' +
+          "</div>" +
+          "<h3>Vote Successfully Submitted!</h3>" +
+          '<p class="strong-line">Thank you for supporting <strong>' +
+          esc(nominee.name) +
+          "</strong> in the " +
+          esc(category.name) +
+          " category.</p>" +
+          "<p>You can continue voting in other categories where you haven't voted yet.</p>" +
+          '<p class="email-sent">Your Vote Has Been Recorded Successfully.</p>' +
+          "</div>";
+
+        openModal({
+          title: "Vote Confirmed",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="continueVotingBtn">' +
+            '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Continue Voting' +
+            "</button>",
+          onOpen: function () {
+            const btn = document.getElementById("continueVotingBtn");
+            btn.addEventListener("click", function () {
+              closeModal();
+              const target = document.getElementById(categoryId(category.name));
+              if (target)
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+          },
+        });
+      }
+
+      /* ---------- Already voted modal ---------- */
+      function showAlreadyVotedModal(category) {
+        const record = voteState[category.name];
+        const votedFor = record && record.nominee ? record.nominee : null;
+
+        const body =
+          '<div class="success-wrap">' +
+          '<div class="success-anim" style="background:linear-gradient(135deg,#1a237e,#3f4dd0);color:#fff;">' +
+          '<i class="fa-solid fa-circle-check" aria-hidden="true"></i>' +
+          "</div>" +
+          "<h3>You've Already Voted</h3>" +
+          "<p>You have already submitted your vote for the <strong>" +
+          esc(category.name) +
+          "</strong> category" +
+          (votedFor ? " (for <strong>" + esc(votedFor) + "</strong>)" : "") +
+          ".</p>" +
+          "<p>You can still vote in the other categories.</p>" +
+          "</div>";
+
+        openModal({
+          title: "Already Voted",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="okAlreadyVoted">' +
+            '<i class="fa-solid fa-check" aria-hidden="true"></i> Got it' +
+            "</button>",
+          onOpen: function () {
+            document
+              .getElementById("okAlreadyVoted")
+              .addEventListener("click", closeModal);
+          },
+        });
+      }
+
+      /* ---------- Previous winners modal ---------- */
+      function showPreviousWinners() {
+        const cards = previousWinners
+          .map(function (winner) {
+            const nomineeLike = { name: winner.name, logo: winner.logo };
+            return (
+              '<div class="winner-card">' +
+              logoHTML(nomineeLike, "sm") +
+              "<div>" +
+              "<span>" +
+              esc(winner.category) +
+              "</span>" +
+              "<h4>" +
+              esc(winner.name) +
+              "</h4>" +
+              (winner.description
+                ? "<p>" + esc(winner.description) + "</p>"
+                : "") +
+              "</div>" +
+              "</div>"
+            );
+          })
+          .join("");
+
+        const body =
+          '<p style="font-size:.9rem;color:#5c6178;margin-bottom:1.1rem;">' +
+          "Congratulations to the winners of the People First Enterprise Awards 2025." +
+          "</p>" +
+          '<div class="winners-grid">' +
+          cards +
+          "</div>";
+
+        openModal({
+          title: "2025 Winners",
+          body: body,
+          footer:
+            '<button type="button" class="btn btn-primary" id="winnersCloseBtn">Close</button>',
+          wide: true,
+          onOpen: function () {
+            document
+              .getElementById("winnersCloseBtn")
+              .addEventListener("click", closeModal);
+          },
+        });
+      }
+
+      document
+        .getElementById("viewWinnersBtn")
+        .addEventListener("click", showPreviousWinners);
+
+      /* =========================================================================
    10. FILTERS & NAVIGATION
    ========================================================================= */
 
-/** Filters nominee cards by name (and category name) as the user types. */
-function filterNominees() {
-  const term = searchInput.value.trim().toLowerCase();
-  let totalVisible = 0;
+      /** Filters nominee cards by name (and category name) as the user types. */
+      function filterNominees() {
+        const term = searchInput.value.trim().toLowerCase();
+        let totalVisible = 0;
 
-  document.querySelectorAll(".category").forEach(function (section) {
-    let visibleInSection = 0;
+        document.querySelectorAll(".category").forEach(function (section) {
+          let visibleInSection = 0;
 
-    section.querySelectorAll(".nominee-card").forEach(function (card) {
-      const matches =
-        !term ||
-        card.dataset.name.indexOf(term) !== -1 ||
-        card.dataset.category.toLowerCase().indexOf(term) !== -1;
+          section.querySelectorAll(".nominee-card").forEach(function (card) {
+            const matches =
+              !term ||
+              card.dataset.name.indexOf(term) !== -1 ||
+              card.dataset.category.toLowerCase().indexOf(term) !== -1;
 
-      card.hidden = !matches;
-      if (matches) visibleInSection++;
-    });
+            card.hidden = !matches;
+            if (matches) visibleInSection++;
+          });
 
-    section.hidden = visibleInSection === 0;
-    totalVisible += visibleInSection;
-  });
+          section.hidden = visibleInSection === 0;
+          totalVisible += visibleInSection;
+        });
 
-  noResultsEl.hidden = totalVisible > 0;
-}
+        noResultsEl.hidden = totalVisible > 0;
+      }
 
-searchInput.addEventListener("input", filterNominees);
+      searchInput.addEventListener("input", filterNominees);
 
-/* Category navigation chips */
-categoryNav.addEventListener("click", function (e) {
-  const chip = e.target.closest(".chip");
-  if (!chip) return;
+      /* Category navigation chips */
+      categoryNav.addEventListener("click", function (e) {
+        const chip = e.target.closest(".chip");
+        if (!chip) return;
 
-  categoryNav.querySelectorAll(".chip").forEach(function (c) {
-    c.classList.remove("is-active");
-  });
-  chip.classList.add("is-active");
+        categoryNav.querySelectorAll(".chip").forEach(function (c) {
+          c.classList.remove("is-active");
+        });
+        chip.classList.add("is-active");
 
-  const target = chip.dataset.target;
+        const target = chip.dataset.target;
 
-  if (target === "all") {
-    document.getElementById("categories").scrollIntoView({ behavior: "smooth", block: "start" });
-    return;
-  }
+        if (target === "all") {
+          document
+            .getElementById("categories")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
 
-  const section = document.getElementById(target);
-  if (section) {
-    if (section.hidden) {
-      searchInput.value = "";
-      filterNominees();
-    }
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-});
+        const section = document.getElementById(target);
+        if (section) {
+          if (section.hidden) {
+            searchInput.value = "";
+            filterNominees();
+          }
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
 
-
-/* =========================================================================
+      /* =========================================================================
    11. INITIALISATION
    ========================================================================= */
-function init() {
-  renderCategories();
-  renderCategoryNav();
-  renderMeritAwards();
-  renderCalabarWinners();
-  updateVotingProgress();
-  filterNominees();
+      function init() {
+        renderCategories();
+        renderCategoryNav();
+        renderMeritAwards();
+        renderCalabarWinners();
+        updateVotingProgress();
+        filterNominees();
 
-  // Keep multiple tabs in sync (optional nicety)
-  window.addEventListener("storage", function (e) {
-    if (e.key === STORAGE_KEY) {
-      voteState = loadVoteState();
-      categories.forEach(refreshCategory);
-      updateVotingProgress();
-    }
-  });
-}
+        // Keep multiple tabs in sync (optional nicety)
+        window.addEventListener("storage", function (e) {
+          if (e.key === STORAGE_KEY) {
+            voteState = loadVoteState();
+            categories.forEach(refreshCategory);
+            updateVotingProgress();
+          }
+        });
+      }
 
-document.addEventListener("DOMContentLoaded", init);
-</script>
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
   </body>
 </html>
