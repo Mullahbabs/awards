@@ -1544,6 +1544,17 @@
           <div class="merit-grid" id="meritGrid"></div>
         </div>
       </section>
+
+      <section class="merit-section" id="calabarToTheWorld">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">Special Category</span>
+      <h2>Calabar to the World — 2026 Winners</h2>
+      <p>These winners have already been announced. <strong>No public voting is required</strong> for this category.</p>
+    </div>
+    <div class="winners-grid" id="calabarWinnersGrid"></div>
+  </div>
+</section>
     </main>
 
     <!-- =========================================================
@@ -1641,9 +1652,9 @@
      • EMAILJS_SERVICE_ID  → EmailJS dashboard → Email Services
      • EMAILJS_TEMPLATE_ID → EmailJS dashboard → Email Templates
    ========================================================================= */
-      const EMAILJS_PUBLIC_KEY = "_JHzclbB7XxiSqGDZ";
-      const EMAILJS_SERVICE_ID = "service_ipsz5gs";
-      const EMAILJS_TEMPLATE_ID = "template_shqjapb";
+      const EMAILJS_PUBLIC_KEY = "S-xQwmEV2I8oavOc1";
+      const EMAILJS_SERVICE_ID = "service_5tf829h";
+      const EMAILJS_TEMPLATE_ID = "template_y9u8ba5";
 
       /* -------------------------------------------------------------------------
    DEMO MODE
@@ -1715,10 +1726,13 @@
                       (leave "" to auto-generate a default profile)
      • percentage   → any number 0–100 (display only, safe if out of range)
    ========================================================================= */
+      /* =========================================================================
+   3. NOMINEE DATA  (FINAL — verified against the master list)
+   ========================================================================= */
       const categories = [
         {
-          name: "Agric Value Chain",
-          navLabel: "Agric",
+          name: "Agric and Value Chain",
+          navLabel: "Agriculture and Value Chain",
           description:
             "Recognizing outstanding businesses strengthening Nigeria's agricultural ecosystem.",
           nominees: [
@@ -1805,8 +1819,8 @@
           ],
         },
         {
-          name: "Retail",
-          navLabel: "Retail",
+          name: "Retail and Distribution",
+          navLabel: "Retail and Distribution",
           description:
             "Honouring retailers delivering value, convenience and trust to Nigerian consumers.",
           nominees: [
@@ -1893,8 +1907,8 @@
           ],
         },
         {
-          name: "Fashion",
-          navLabel: "Fashion",
+          name: "Fashion and Styling",
+          navLabel: "Fashion and Styling",
           description:
             "Celebrating designers and fashion brands redefining Nigerian style.",
           nominees: [
@@ -1982,7 +1996,7 @@
         },
         {
           name: "Technology and Innovation",
-          navLabel: "Technology",
+          navLabel: "Technology and Innovation",
           description:
             "Recognizing companies driving digital transformation and innovation in Nigeria.",
           nominees: [
@@ -1997,7 +2011,7 @@
             },
             {
               id: "tech-02",
-              name: "Factory Hub Tinapa",
+              name: "Factory Hub",
               logo: "",
               description: "Innovation and technology hub.",
               profile: "",
@@ -2071,7 +2085,7 @@
         },
         {
           name: "Transportation and Logistics",
-          navLabel: "Transport",
+          navLabel: "Transportation and Logistics",
           description:
             "Honouring businesses keeping Nigeria moving, safely and reliably.",
           nominees: [
@@ -2158,8 +2172,8 @@
           ],
         },
         {
-          name: "Manufacturing",
-          navLabel: "Manufacturing",
+          name: "Manufacturing and Production",
+          navLabel: "Manufacturing and Production",
           description:
             "Celebrating makers and industries building Nigeria's productive capacity.",
           nominees: [
@@ -2247,7 +2261,7 @@
         },
         {
           name: "Creative Sector",
-          navLabel: "Creative",
+          navLabel: "Creative Sector",
           description:
             "Recognizing creative businesses and studios shaping culture and ideas.",
           nominees: [
@@ -2325,7 +2339,7 @@
             },
             {
               id: "creative-10",
-              name: "Calabar Gist",
+              name: "Calabar gist",
               logo: "",
               description: "Culture and lifestyle media platform.",
               profile: "",
@@ -2334,8 +2348,8 @@
           ],
         },
         {
-          name: "Education",
-          navLabel: "Education",
+          name: "Education and Advocacy",
+          navLabel: "Education and Advocacy",
           description:
             "Honouring institutions and platforms expanding access to quality learning.",
           nominees: [
@@ -2423,7 +2437,7 @@
         },
         {
           name: "Entertainment and Lifestyle",
-          navLabel: "Entertainment",
+          navLabel: "Entertainment and Lifestyle",
           description:
             "Celebrating brands creating joy, culture and modern lifestyle experiences.",
           nominees: [
@@ -2511,7 +2525,7 @@
         },
         {
           name: "Tourism and Hospitality",
-          navLabel: "Tourism",
+          navLabel: "Tourism and Hospitality",
           description:
             "Recognizing businesses showcasing Nigeria's beauty and warm hospitality.",
           nominees: [
@@ -2529,7 +2543,7 @@
               logo: "",
               description: "Hospitality and events center.",
               profile: "",
-              percentage: 13,
+              percentage: 0,
             },
             {
               id: "tourism-03",
@@ -2735,9 +2749,9 @@
         },
         {
           category: "Construction",
-          name: "Faith Plant",
+          name: "Ner and Zadok",
           logo: "",
-          description: "",
+          description: "Construction Pillar",
         },
         {
           category: "Tourism and Hospitality",
