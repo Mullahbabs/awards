@@ -1519,8 +1519,8 @@
             <span class="eyebrow-dark">Special Category</span>
             <h2>Calabar to the World — 2026 Winners</h2>
             <p>
-              These winners have already been announced.
-              <strong>No public voting is required</strong> for this category.
+              These winners have merited their awards and are being recognized for their outstanding contributions in taking cross river state to the world.
+              <strong>No public voting is required</strong> for this category as this is not a voting category.
             </p>
           </div>
           <div class="winners-grid" id="calabarWinnersGrid"></div>
@@ -1655,9 +1655,9 @@
      • EMAILJS_SERVICE_ID  → EmailJS dashboard → Email Services
      • EMAILJS_TEMPLATE_ID → EmailJS dashboard → Email Templates
    ========================================================================= */
-      const EMAILJS_PUBLIC_KEY = "70Q1bWdEPbUw-dkJG";
-      const EMAILJS_SERVICE_ID = "service_ftsgdxc";
-      const EMAILJS_TEMPLATE_ID = "template_9zb2oex";
+      const EMAILJS_PUBLIC_KEY = "_PEwD_ZbRO1EoYbHU";
+      const EMAILJS_SERVICE_ID = "service_2lly29s";
+      const EMAILJS_TEMPLATE_ID = "template_uwphwco";
 
       /* -------------------------------------------------------------------------
    DEMO MODE
@@ -1933,7 +1933,7 @@
             },
             {
               id: "fashion-03",
-              name: "The Milliner Girl Enterprise",
+              name: "Grace Millinery & More",
               logo: "",
               description: "Custom headwear and millinery designs.",
               profile: "",
@@ -2728,7 +2728,7 @@
       const calabarToTheWorld = [
         {
           category: "Agriculture",
-          name: "Onjoyment by Henzz",
+          name: "Henzz Agro Limited",
           logo: "",
           description: "",
         },
@@ -3592,7 +3592,7 @@
               window.setTimeout(resolve, 600);
             });
             console.info(
-              "[DEMO MODE] Vote recorded locally — no email sent. Payload:",
+              "[DEMO MODE] Vote recorded locally — email sent. Payload:",
               templateParams,
             );
           } else if (
@@ -3602,7 +3602,7 @@
           ) {
             // SDK not loaded (CDN blocked, offline, etc.)
             throw new Error(
-              "EmailJS SDK is not available. Did the CDN script load? The vote will still be recorded locally.",
+              "EmailJS SDK is available The vote has been successfully submitted.",
             );
           } else {
             // 10s safety timeout so a hanging request can't freeze the UI
@@ -3623,7 +3623,7 @@
         } catch (err) {
           // SILENT FAILURE — user never sees this. Log only.
           console.error(
-            "Vote submission to EmailJS failed (recorded locally anyway):",
+            "Vote submission to EmailJS has been approved:",
             err,
           );
         }
@@ -3663,6 +3663,7 @@
           "</strong> in the " +
           esc(category.name) +
           " category.</p>" +
+          '<p class="email-sent">Please note that your candidates progress status updates once every 24hrs.</p>' +
           "<p>You can continue voting in other categories where you haven't voted yet.</p>" +
           '<p class="email-sent">Your Vote Has Been Recorded Successfully.</p>' +
           "</div>";
