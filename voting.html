@@ -1371,6 +1371,194 @@
           display: none;
         }
       }
+
+      /* ============================================================
+   KEY DATES — DIGITAL CLOCKS
+   ============================================================ */
+      .clock-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      .clock-card {
+        position: relative;
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px 26px 28px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .clock-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+      }
+
+      .clock-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(26, 35, 126, 0.22);
+      }
+
+      /* Event card uses the gold accent as its top bar */
+      .clock-card--event::before {
+        background: linear-gradient(
+          90deg,
+          var(--accent-color),
+          var(--primary-color)
+        );
+      }
+
+      .clock-icon {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 16px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-light)
+        );
+        color: var(--accent-color);
+        box-shadow: 0 8px 18px rgba(26, 35, 126, 0.2);
+      }
+
+      .clock-card--event .clock-icon {
+        background: linear-gradient(135deg, #e8c95f, #b8912b);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(212, 175, 55, 0.35);
+      }
+
+      .clock-title {
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+        font-weight: 800;
+      }
+
+      .clock-date {
+        margin: 0;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* ---------- Digital display panel ---------- */
+      .clock-display {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+        margin-top: 22px;
+        padding: 20px 10px 16px;
+        border-radius: 14px;
+        background: linear-gradient(160deg, #0d1240 0%, #1a237e 100%);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        box-shadow:
+          inset 0 0 40px rgba(0, 0, 0, 0.35),
+          0 10px 24px rgba(13, 18, 64, 0.18);
+      }
+
+      .clock-display[hidden] {
+        display: none;
+      }
+
+      .clock-unit {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .clock-value {
+        font-family:
+          "SF Mono", ui-monospace, Consolas, "Courier New", monospace;
+        font-size: clamp(1.35rem, 3.2vw, 2rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        font-variant-numeric: tabular-nums;
+        color: var(--accent-color);
+        text-shadow: 0 0 14px rgba(212, 175, 55, 0.45);
+      }
+
+      .clock-label {
+        margin-top: 6px;
+        font-size: 0.56rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .clock-sep {
+        font-family:
+          "SF Mono", ui-monospace, Consolas, "Courier New", monospace;
+        font-size: clamp(1.1rem, 2.6vw, 1.55rem);
+        font-weight: 700;
+        line-height: 1.1;
+        color: rgba(212, 175, 55, 0.55);
+        padding-top: 1px;
+      }
+
+      /* ---------- Replaces the display once the date passes ---------- */
+      .clock-status {
+        margin: 22px 0 0;
+        padding: 22px 14px;
+        border-radius: 14px;
+        background: linear-gradient(160deg, #0d1240 0%, #1a237e 100%);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: var(--accent-color);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .clock-status[hidden] {
+        display: none;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 720px) {
+        .clock-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .clock-card {
+          padding: 28px 20px 24px;
+        }
+        .clock-value {
+          font-size: clamp(1.3rem, 6vw, 1.75rem);
+        }
+        .clock-label {
+          font-size: 0.5rem;
+          letter-spacing: 0.14em;
+        }
+      }
     </style>
   </head>
 
@@ -1406,8 +1594,9 @@
           <h1>People First Enterprise Awards 2026</h1>
           <p class="hero-sub">PUBLIC NOTICE</p>
           <h1 class="hero-text">
-            VOTING ENDS ON WEDNESDAY 25TH NOVEMBER 2026, WINNERS WOULD BE ANNOUNCED AT THE EVENT.
-            <br>GOOD LUCK!
+            VOTING ENDS ON WEDNESDAY 25TH NOVEMBER 2026, WINNERS WOULD BE
+            ANNOUNCED AT THE EVENT.
+            <br />GOOD LUCK!
           </h1>
           <div class="hero-actions">
             <a href="#categories" class="btn btn-gold">
@@ -1494,6 +1683,107 @@
                 vote. No account needed.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+     KEY DATES — TWO DIGITAL CLOCKS
+     ======================================================== -->
+      <section
+        class="section section-alt"
+        id="key-dates"
+        aria-labelledby="keyDatesTitle"
+      >
+        <div class="container">
+          <div class="section-head">
+            <p class="section-eyebrow">Key dates</p>
+            <h2 id="keyDatesTitle">Countdown to the Awards</h2>
+            <p class="section-sub">
+              Two moments that matter — when nominations close and when the main
+              event begins.
+            </p>
+          </div>
+
+          <div class="clock-grid">
+            <!-- ---------- CLOCK 1 — VOTING CLOSES ---------- -->
+            <article class="clock-card" aria-labelledby="clockVotingLabel">
+              <div class="clock-icon" aria-hidden="true">
+                <i class="fa-solid fa-check-to-slot"></i>
+              </div>
+              <h3 class="clock-title" id="clockVotingLabel">Voting Closes</h3>
+              <p class="clock-date">26 November 2026</p>
+
+              <div class="clock-display" id="clockVoting" aria-hidden="true">
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="days">--</span>
+                  <span class="clock-label">Days</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="hours">--</span>
+                  <span class="clock-label">Hours</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="minutes">--</span>
+                  <span class="clock-label">Minutes</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="seconds">--</span>
+                  <span class="clock-label">Seconds</span>
+                </div>
+              </div>
+
+              <p
+                class="clock-status"
+                id="clockVotingStatus"
+                role="status"
+                hidden
+              ></p>
+            </article>
+
+            <!-- ---------- CLOCK 2 — MAIN EVENT ---------- -->
+            <article
+              class="clock-card clock-card--event"
+              aria-labelledby="clockEventLabel"
+            >
+              <div class="clock-icon" aria-hidden="true">
+                <i class="fa-solid fa-champagne-glasses"></i>
+              </div>
+              <h3 class="clock-title" id="clockEventLabel">Main Event</h3>
+              <p class="clock-date">29 November 2026</p>
+
+              <div class="clock-display" id="clockEvent" aria-hidden="true">
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="days">--</span>
+                  <span class="clock-label">Days</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="hours">--</span>
+                  <span class="clock-label">Hours</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="minutes">--</span>
+                  <span class="clock-label">Minutes</span>
+                </div>
+                <span class="clock-sep" aria-hidden="true">:</span>
+                <div class="clock-unit">
+                  <span class="clock-value" data-unit="seconds">--</span>
+                  <span class="clock-label">Seconds</span>
+                </div>
+              </div>
+
+              <p
+                class="clock-status"
+                id="clockEventStatus"
+                role="status"
+                hidden
+              ></p>
+            </article>
           </div>
         </div>
       </section>
@@ -1771,7 +2061,6 @@
               logo: "",
               description: "Agribusiness and value-chain enterprise.",
               profile: "",
-              
             },
             {
               id: "agric-02",
@@ -1779,7 +2068,6 @@
               logo: "/img/obubra.jpg",
               description: "Locally processed cassava garri from Obubra.",
               profile: "",
-              
             },
             {
               id: "agric-03",
@@ -1787,7 +2075,6 @@
               logo: "/img/obudu.jpg",
               description: "BEST OF PRODUCE.",
               profile: "",
-              
             },
             {
               id: "agric-04",
@@ -1795,7 +2082,6 @@
               logo: "",
               description: "Integrated farming and agro-production.",
               profile: "",
-              
             },
             {
               id: "agric-05",
@@ -1803,7 +2089,6 @@
               logo: "/img/jvfarms.jfif",
               description: "Commercial farming and agro-enterprise.",
               profile: "",
-              
             },
             {
               id: "agric-06",
@@ -1811,7 +2096,6 @@
               logo: "",
               description: "Farm resort and agricultural production.",
               profile: "",
-              
             },
             {
               id: "agric-07",
@@ -1819,7 +2103,6 @@
               logo: "",
               description: "Crop farming and agricultural production.",
               profile: "",
-              
             },
             {
               id: "agric-08",
@@ -1827,7 +2110,6 @@
               logo: "",
               description: "Agro-venture and farm produce.",
               profile: "",
-              
             },
             {
               id: "agric-09",
@@ -1835,7 +2117,6 @@
               logo: "",
               description: "Agro-allied resources and production.",
               profile: "",
-              
             },
             {
               id: "agric-10",
@@ -1843,7 +2124,6 @@
               logo: "",
               description: "Agricultural enterprise and value chain.",
               profile: "",
-              
             },
           ],
         },
@@ -1859,7 +2139,6 @@
               logo: "/img/nanky.jpg",
               description: "Modern retail marketplace for everyday needs.",
               profile: "",
-              
             },
             {
               id: "retail-02",
@@ -1867,7 +2146,6 @@
               logo: "/img/kana.jfif",
               description: "City-focused supermarket chain.",
               profile: "",
-              
             },
             {
               id: "retail-03",
@@ -1875,7 +2153,6 @@
               logo: "",
               description: "Quality household products at affordable prices.",
               profile: "/img/positives.jfif",
-              
             },
             {
               id: "retail-04",
@@ -1883,7 +2160,6 @@
               logo: "",
               description: "Fashion tailoring supplies and services.",
               profile: "",
-              
             },
             {
               id: "retail-05",
@@ -1891,7 +2167,6 @@
               logo: "",
               description: "Fashion and lifestyle retail.",
               profile: "",
-              
             },
             {
               id: "retail-06",
@@ -1899,7 +2174,6 @@
               logo: "",
               description: "Luxury retail brand.",
               profile: "",
-              
             },
             {
               id: "retail-07",
@@ -1907,7 +2181,6 @@
               logo: "",
               description: "Mobile phones and accessories retail.",
               profile: "",
-              
             },
             {
               id: "retail-08",
@@ -1915,7 +2188,6 @@
               logo: "",
               description: "Children's clothing and lifestyle store.",
               profile: "",
-              
             },
             {
               id: "retail-09",
@@ -1923,7 +2195,6 @@
               logo: "",
               description: "Wigs, hair tools and beauty retail.",
               profile: "",
-              
             },
             {
               id: "retail-10",
@@ -1931,7 +2202,6 @@
               logo: "",
               description: "Retail brand.",
               profile: "",
-              
             },
           ],
         },
@@ -1947,7 +2217,6 @@
               logo: "",
               description: "Contemporary luxury ready-to-wear.",
               profile: "",
-              
             },
             {
               id: "fashion-02",
@@ -1955,7 +2224,6 @@
               logo: "",
               description: "Bespoke menswear and styling services.",
               profile: "",
-              
             },
             {
               id: "fashion-03",
@@ -1963,7 +2231,6 @@
               logo: "",
               description: "Custom headwear and millinery designs.",
               profile: "",
-              
             },
             {
               id: "fashion-04",
@@ -1971,7 +2238,6 @@
               logo: "",
               description: "Contemporary Nigerian fashion brand.",
               profile: "",
-              
             },
             {
               id: "fashion-05",
@@ -1979,7 +2245,6 @@
               logo: "",
               description: "Elegant fashion and accessories.",
               profile: "",
-              
             },
             {
               id: "fashion-06",
@@ -1987,7 +2252,6 @@
               logo: "",
               description: "Fashion retail and global sourcing.",
               profile: "",
-              
             },
             {
               id: "fashion-07",
@@ -1995,7 +2259,6 @@
               logo: "",
               description: "Made-to-measure fashion and styling.",
               profile: "",
-              
             },
             {
               id: "fashion-08",
@@ -2003,7 +2266,6 @@
               logo: "",
               description: "Fashion design training and mentorship.",
               profile: "",
-              
             },
             {
               id: "fashion-09",
@@ -2011,7 +2273,6 @@
               logo: "",
               description: "Fashion styling and lifestyle brand.",
               profile: "",
-              
             },
             {
               id: "fashion-10",
@@ -2019,7 +2280,6 @@
               logo: "",
               description: "Fashion and styling brand.",
               profile: "",
-              
             },
           ],
         },
@@ -2036,7 +2296,6 @@
               description:
                 "Networks and software solutions built for African businesses.",
               profile: "",
-              
             },
             {
               id: "tech-02",
@@ -2044,7 +2303,6 @@
               logo: "",
               description: "Innovation and technology hub.",
               profile: "",
-              
             },
             {
               id: "tech-03",
@@ -2052,7 +2310,6 @@
               logo: "",
               description: "Connectivity and cloud infrastructure.",
               profile: "",
-              
             },
             {
               id: "tech-04",
@@ -2060,7 +2317,6 @@
               logo: "",
               description: "Digital and creative technology hub.",
               profile: "",
-              
             },
             {
               id: "tech-05",
@@ -2068,7 +2324,6 @@
               logo: "",
               description: "Technology solutions provider.",
               profile: "",
-              
             },
             {
               id: "tech-06",
@@ -2076,7 +2331,6 @@
               logo: "",
               description: "Technology and digital services.",
               profile: "",
-              
             },
             {
               id: "tech-07",
@@ -2084,7 +2338,6 @@
               logo: "",
               description: "Tech innovation and developer community.",
               profile: "",
-              
             },
             {
               id: "tech-08",
@@ -2092,7 +2345,6 @@
               logo: "",
               description: "Innovation hub and tech incubation.",
               profile: "",
-              
             },
             {
               id: "tech-09",
@@ -2100,7 +2352,6 @@
               logo: "",
               description: "Digital agency and technology services.",
               profile: "",
-              
             },
             {
               id: "tech-10",
@@ -2108,7 +2359,6 @@
               logo: "",
               description: "Cloud and digital commerce services.",
               profile: "",
-              
             },
           ],
         },
@@ -2124,7 +2374,6 @@
               logo: "",
               description: "Nationwide haulage and distribution.",
               profile: "",
-              
             },
             {
               id: "transport-02",
@@ -2132,7 +2381,6 @@
               logo: "",
               description: "Logistics and delivery services.",
               profile: "",
-              
             },
             {
               id: "transport-03",
@@ -2140,7 +2388,6 @@
               logo: "",
               description: "Logistics and delivery services.",
               profile: "",
-              
             },
             {
               id: "transport-04",
@@ -2148,7 +2395,6 @@
               logo: "",
               description: "Fast delivery and courier service.",
               profile: "",
-              
             },
             {
               id: "transport-05",
@@ -2156,7 +2402,6 @@
               logo: "",
               description: "Logistics and supply chain services.",
               profile: "",
-              
             },
             {
               id: "transport-06",
@@ -2164,7 +2409,6 @@
               logo: "",
               description: "Sea freight and logistics.",
               profile: "",
-              
             },
             {
               id: "transport-07",
@@ -2172,7 +2416,6 @@
               logo: "",
               description: "Logistics and haulage.",
               profile: "",
-              
             },
             {
               id: "transport-08",
@@ -2180,7 +2423,6 @@
               logo: "",
               description: "Logistics and delivery services.",
               profile: "",
-              
             },
             {
               id: "transport-09",
@@ -2188,7 +2430,6 @@
               logo: "",
               description: "Cargo and freight logistics.",
               profile: "",
-              
             },
             {
               id: "transport-10",
@@ -2196,7 +2437,6 @@
               logo: "",
               description: "Logistics and freight services.",
               profile: "",
-              
             },
           ],
         },
@@ -2212,7 +2452,6 @@
               logo: "",
               description: "Chemical manufacturing and allied products.",
               profile: "",
-              
             },
             {
               id: "manu-02",
@@ -2220,7 +2459,6 @@
               logo: "",
               description: "Locally made footwear.",
               profile: "",
-              
             },
             {
               id: "manu-03",
@@ -2228,7 +2466,6 @@
               logo: "",
               description: "Nigerian footwear brand.",
               profile: "",
-              
             },
             {
               id: "manu-04",
@@ -2236,7 +2473,6 @@
               logo: "",
               description: "Processed food and food stuffs.",
               profile: "",
-              
             },
             {
               id: "manu-05",
@@ -2244,7 +2480,6 @@
               logo: "",
               description: "Marine and industrial paints.",
               profile: "",
-              
             },
             {
               id: "manu-06",
@@ -2252,7 +2487,6 @@
               logo: "",
               description: "Parfait and dessert production.",
               profile: "",
-              
             },
             {
               id: "manu-07",
@@ -2260,7 +2494,6 @@
               logo: "",
               description: "Beverage production and drinks.",
               profile: "",
-              
             },
             {
               id: "manu-08",
@@ -2268,7 +2501,6 @@
               logo: "",
               description: "Manufacturing and production brand.",
               profile: "",
-              
             },
             {
               id: "manu-09",
@@ -2276,7 +2508,6 @@
               logo: "",
               description: "Agro-processing and production.",
               profile: "",
-              
             },
             {
               id: "manu-10",
@@ -2284,7 +2515,7 @@
               logo: "",
               description: "Manufacturing and lifestyle products.",
               profile: "",
-                          },
+            },
           ],
         },
         {
@@ -2299,7 +2530,6 @@
               logo: "",
               description: "Cultural projects and storytelling.",
               profile: "",
-              
             },
             {
               id: "creative-02",
@@ -2307,7 +2537,6 @@
               logo: "",
               description: "Content creator and media personality.",
               profile: "",
-              
             },
             {
               id: "creative-03",
@@ -2315,7 +2544,6 @@
               logo: "",
               description: "Lifestyle and culture blog.",
               profile: "",
-              
             },
             {
               id: "creative-04",
@@ -2323,7 +2551,6 @@
               logo: "",
               description: "Content creator and lifestyle influencer.",
               profile: "",
-              
             },
             {
               id: "creative-05",
@@ -2331,7 +2558,6 @@
               logo: "",
               description: "Lifestyle and entertainment brand.",
               profile: "",
-              
             },
             {
               id: "creative-06",
@@ -2339,7 +2565,6 @@
               logo: "",
               description: "Design, animation and illustration.",
               profile: "",
-              
             },
             {
               id: "creative-07",
@@ -2347,7 +2572,6 @@
               logo: "",
               description: "Creative studio and brand design house.",
               profile: "",
-              
             },
             {
               id: "creative-08",
@@ -2355,7 +2579,6 @@
               logo: "",
               description: "Creative studio and content production.",
               profile: "",
-              
             },
             {
               id: "creative-09",
@@ -2363,7 +2586,6 @@
               logo: "",
               description: "Gallery, art sales and artist residencies.",
               profile: "",
-              
             },
             {
               id: "creative-10",
@@ -2371,7 +2593,6 @@
               logo: "",
               description: "Culture and lifestyle media platform.",
               profile: "",
-              
             },
           ],
         },
@@ -2387,7 +2608,6 @@
               logo: "",
               description: "Arts and education initiative.",
               profile: "",
-              
             },
             {
               id: "edu-02",
@@ -2395,7 +2615,6 @@
               logo: "",
               description: "Learning platform and academic support.",
               profile: "",
-              
             },
             {
               id: "edu-03",
@@ -2403,7 +2622,6 @@
               logo: "",
               description: "Educational advocacy and community development.",
               profile: "",
-              
             },
             {
               id: "edu-04",
@@ -2411,7 +2629,6 @@
               logo: "",
               description: "Storytelling and advocacy platform.",
               profile: "",
-              
             },
             {
               id: "edu-05",
@@ -2419,7 +2636,6 @@
               logo: "",
               description: "Health and community advocacy.",
               profile: "",
-              
             },
             {
               id: "edu-06",
@@ -2427,7 +2643,6 @@
               logo: "",
               description: "Leadership development and advocacy.",
               profile: "",
-              
             },
             {
               id: "edu-07",
@@ -2435,7 +2650,6 @@
               logo: "",
               description: "Community and advocacy project.",
               profile: "",
-              
             },
             {
               id: "edu-08",
@@ -2443,7 +2657,6 @@
               logo: "",
               description: "Health and community advocacy foundation.",
               profile: "",
-              
             },
             {
               id: "edu-09",
@@ -2451,7 +2664,6 @@
               logo: "",
               description: "Business and youth advocacy platform.",
               profile: "",
-              
             },
             {
               id: "edu-10",
@@ -2459,7 +2671,6 @@
               logo: "",
               description: "Advocacy and development network.",
               profile: "",
-              
             },
           ],
         },
@@ -2475,7 +2686,6 @@
               logo: "",
               description: "Lounge and lifestyle experience.",
               profile: "",
-              
             },
             {
               id: "ent-02",
@@ -2483,7 +2693,6 @@
               logo: "",
               description: "Lifestyle and entertainment brand.",
               profile: "",
-              
             },
             {
               id: "ent-03",
@@ -2491,14 +2700,13 @@
               logo: "",
               description: "Outdoor entertainment and event production.",
               profile: "",
-                          },
+            },
             {
               id: "ent-04",
               name: "See You Outside",
               logo: "",
               description: "Events and outdoor entertainment brand.",
               profile: "",
-              
             },
             {
               id: "ent-05",
@@ -2506,7 +2714,6 @@
               logo: "",
               description: "Modeling agency and talent management.",
               profile: "",
-              
             },
             {
               id: "ent-06",
@@ -2514,7 +2721,6 @@
               logo: "",
               description: "Concert and live entertainment brand.",
               profile: "",
-              
             },
             {
               id: "ent-07",
@@ -2522,7 +2728,6 @@
               logo: "",
               description: "Festival and entertainment experience.",
               profile: "",
-              
             },
             {
               id: "ent-08",
@@ -2530,7 +2735,6 @@
               logo: "",
               description: "Entertainment and media brand.",
               profile: "",
-              
             },
             {
               id: "ent-09",
@@ -2538,7 +2742,6 @@
               logo: "",
               description: "Lounge and lifestyle experience.",
               profile: "",
-              
             },
             {
               id: "ent-10",
@@ -2546,7 +2749,6 @@
               logo: "",
               description: "Lounge and lifestyle experience.",
               profile: "",
-              
             },
           ],
         },
@@ -2562,7 +2764,6 @@
               logo: "",
               description: "Premium hotel and resort group.",
               profile: "",
-              
             },
             {
               id: "tourism-02",
@@ -2570,7 +2771,6 @@
               logo: "",
               description: "Hospitality and events center.",
               profile: "",
-              
             },
             {
               id: "tourism-03",
@@ -2578,7 +2778,6 @@
               logo: "",
               description: "Resort and leisure destination.",
               profile: "",
-              
             },
             {
               id: "tourism-04",
@@ -2586,7 +2785,6 @@
               logo: "",
               description: "Premium hotel and resort in Obudu.",
               profile: "",
-              
             },
             {
               id: "tourism-05",
@@ -2594,7 +2792,6 @@
               logo: "",
               description: "Premium hospitality destination.",
               profile: "",
-              
             },
             {
               id: "tourism-06",
@@ -2602,7 +2799,6 @@
               logo: "",
               description: "Hospitality and dining experience.",
               profile: "",
-              
             },
             {
               id: "tourism-07",
@@ -2610,7 +2806,6 @@
               logo: "",
               description: "Hospitality and lifestyle brand.",
               profile: "",
-              
             },
             {
               id: "tourism-08",
@@ -2618,7 +2813,6 @@
               logo: "",
               description: "Hospitality and dining destination.",
               profile: "",
-              
             },
             {
               id: "tourism-09",
@@ -2626,7 +2820,6 @@
               logo: "",
               description: "Conference hotel and hospitality.",
               profile: "",
-              
             },
             {
               id: "tourism-10",
@@ -2634,7 +2827,6 @@
               logo: "",
               description: "Hotel and serviced apartments.",
               profile: "",
-              
             },
           ],
         },
@@ -3876,6 +4068,94 @@
         }
       });
 
+      /* ============================================================
+   KEY DATES — TWO DIGITAL CLOCKS
+   ------------------------------------------------------------
+   Dates use the visitor's local timezone.
+   Month index is 0-based → 10 = November.
+   ============================================================ */
+      const CLOCK_CONFIG = [
+        {
+          displayId: "clockVoting",
+          statusId: "clockVotingStatus",
+          /* Voting closes at the end of 26 November 2026 */
+          target: new Date(2026, 10, 26, 23, 59, 59),
+          zeroText: "Voting has closed",
+        },
+        {
+          displayId: "clockEvent",
+          statusId: "clockEventStatus",
+          /* Main event — change the hour if it doesn't start at midnight */
+          target: new Date(2026, 10, 29, 0, 0, 0),
+          zeroText: "The main event has begun",
+        },
+      ];
+
+      /** Build a tick function for a single clock. Returns a function that
+       *  updates the DOM and returns false once the target has passed. */
+      function createClock(config) {
+        const display = document.getElementById(config.displayId);
+        const status = document.getElementById(config.statusId);
+        if (!display || !status) return null;
+
+        const units = {
+          days: display.querySelector('[data-unit="days"]'),
+          hours: display.querySelector('[data-unit="hours"]'),
+          minutes: display.querySelector('[data-unit="minutes"]'),
+          seconds: display.querySelector('[data-unit="seconds"]'),
+        };
+
+        const pad = (n) => String(n).padStart(2, "0");
+
+        return function tick() {
+          const remaining = config.target.getTime() - Date.now();
+
+          if (remaining <= 0) {
+            display.hidden = true;
+            status.hidden = false;
+            status.textContent = config.zeroText;
+            return false; /* stop this clock */
+          }
+
+          const totalSeconds = Math.floor(remaining / 1000);
+          units.days.textContent = pad(Math.floor(totalSeconds / 86400));
+          units.hours.textContent = pad(
+            Math.floor((totalSeconds % 86400) / 3600),
+          );
+          units.minutes.textContent = pad(
+            Math.floor((totalSeconds % 3600) / 60),
+          );
+          units.seconds.textContent = pad(totalSeconds % 60);
+
+          return true;
+        };
+      }
+
+      function startDigitalClocks() {
+        const clocks = CLOCK_CONFIG.map(createClock).filter(Boolean);
+        if (clocks.length === 0) return;
+
+        let intervalId = null;
+
+        function tickAll() {
+          const stillRunning = clocks.filter(function (tick) {
+            return tick();
+          });
+          return stillRunning.length > 0;
+        }
+
+        const running = tickAll();
+
+        if (running) {
+          intervalId = setInterval(function () {
+            if (!tickAll()) {
+              clearInterval(intervalId);
+              intervalId = null;
+            }
+          }, 1000);
+        }
+      }
+
       /* =========================================================================
    11. INITIALISATION
    ========================================================================= */
@@ -3886,6 +4166,8 @@
         renderCalabarWinners();
         updateVotingProgress();
         filterNominees();
+        startDigitalClocks();
+        startCountdown();
 
         // Keep multiple tabs in sync (optional nicety)
         window.addEventListener("storage", function (e) {
