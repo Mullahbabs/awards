@@ -19,7 +19,7 @@
               logo: "/img/obubra.jpg",
               description: "Locally processed cassava garri from Obubra.",
               profile: "",
-              percentage: 25,
+              percentage: 26,
             },
             {
               id: "agric-03",
@@ -43,7 +43,7 @@
               logo: "/img/jvfarms.jfif",
               description: "Commercial farming and agro-enterprise.",
               profile: "",
-              percentage: 45,
+              percentage: 46,
             },
             {
               id: "agric-06",
@@ -67,7 +67,7 @@
               logo: "",
               description: "Agro-venture and farm produce.",
               profile: "",
-              percentage: 16,
+              percentage: 17,
             },
             {
               id: "agric-09",
@@ -99,7 +99,7 @@
               logo: "/img/nanky.jpg",
               description: "Modern retail marketplace for everyday needs.",
               profile: "",
-              percentage: 34,
+              percentage: 35,
             },
             {
               id: "retail-02",
@@ -147,7 +147,7 @@
               logo: "",
               description: "Mobile phones and accessories retail.",
               profile: "",
-              percentage: 34,
+              percentage: 35,
             },
             {
               id: "retail-08",
@@ -163,7 +163,7 @@
               logo: "",
               description: "Wigs, hair tools and beauty retail.",
               profile: "",
-              percentage: 34,
+              percentage: 35,
             },
             {
               id: "retail-10",
@@ -187,7 +187,7 @@
               logo: "",
               description: "Contemporary luxury ready-to-wear.",
               profile: "",
-              percentage: 25,
+              percentage: 26,
             },
             {
               id: "fashion-02",
@@ -203,7 +203,7 @@
               logo: "",
               description: "Custom headwear and millinery designs.",
               profile: "",
-              percentage: 22,
+              percentage: 23,
             },
             {
               id: "fashion-04",
@@ -219,7 +219,7 @@
               logo: "",
               description: "Elegant fashion and accessories.",
               profile: "",
-              percentage: 56,
+              percentage: 57,
             },
             {
               id: "fashion-06",
@@ -243,7 +243,7 @@
               logo: "",
               description: "Fashion design training and mentorship.",
               profile: "",
-              percentage: 14,
+              percentage: 15,
             },
             {
               id: "fashion-09",
@@ -251,7 +251,7 @@
               logo: "",
               description: "Fashion styling and lifestyle brand.",
               profile: "",
-              percentage: 19,
+              percentage: 20,
             },
             {
               id: "fashion-10",
@@ -300,7 +300,7 @@
               logo: "",
               description: "Digital and creative technology hub.",
               profile: "",
-              percentage: 15,
+              percentage: 16,
             },
             {
               id: "tech-05",
@@ -316,7 +316,7 @@
               logo: "",
               description: "Technology and digital services.",
               profile: "",
-              percentage: 12,
+              percentage: 13,
             },
             {
               id: "tech-07",
@@ -364,7 +364,7 @@
               logo: "",
               description: "Nationwide haulage and distribution.",
               profile: "",
-              percentage: 24,
+              percentage: 25,
             },
             {
               id: "transport-02",
@@ -396,7 +396,7 @@
               logo: "",
               description: "Logistics and supply chain services.",
               profile: "",
-              percentage: 18,
+              percentage: 19,
             },
             {
               id: "transport-06",
@@ -420,7 +420,7 @@
               logo: "",
               description: "Logistics and delivery services.",
               profile: "",
-              percentage: 20,
+              percentage: 21,
             },
             {
               id: "transport-09",
@@ -468,7 +468,7 @@
               logo: "",
               description: "Nigerian footwear brand.",
               profile: "",
-              percentage: 30,
+              percentage: 31,
             },
             {
               id: "manu-04",
@@ -516,7 +516,7 @@
               logo: "",
               description: "Agro-processing and production.",
               profile: "",
-              percentage: 19,
+              percentage: 20,
             },
             {
               id: "manu-10",
@@ -580,7 +580,7 @@
               logo: "",
               description: "Design, animation and illustration.",
               profile: "",
-              percentage: 23,
+              percentage: 24,
             },
             {
               id: "creative-07",
@@ -604,7 +604,7 @@
               logo: "",
               description: "Gallery, art sales and artist residencies.",
               profile: "",
-              percentage: 38,
+              percentage: 39,
             },
             {
               id: "creative-10",
@@ -644,7 +644,7 @@
               logo: "",
               description: "Educational advocacy and community development.",
               profile: "",
-              percentage: 21,
+              percentage: 22,
             },
             {
               id: "edu-04",
@@ -676,7 +676,7 @@
               logo: "",
               description: "Community and advocacy project.",
               profile: "",
-              percentage: 22,
+              percentage: 23,
             },
             {
               id: "edu-08",
@@ -692,7 +692,7 @@
               logo: "",
               description: "Business and youth advocacy platform.",
               profile: "",
-              percentage: 18,
+              percentage: 19,
             },
             {
               id: "edu-10",
@@ -716,7 +716,7 @@
               logo: "",
               description: "Lounge and lifestyle experience.",
               profile: "",
-              percentage: 18,
+              percentage: 19,
             },
             {
               id: "ent-02",
@@ -724,7 +724,7 @@
               logo: "",
               description: "Lifestyle and entertainment brand.",
               profile: "",
-              percentage: 25,
+              percentage: 27,
             },
             {
               id: "ent-03",
@@ -788,7 +788,7 @@
               logo: "",
               description: "Lounge and lifestyle experience.",
               profile: "",
-              percentage: 14,
+              percentage: 15,
             },
           ],
         },
@@ -804,7 +804,7 @@
               logo: "",
               description: "Premium hotel and resort group.",
               profile: "",
-              percentage: 40,
+              percentage: 41,
             },
             {
               id: "tourism-02",
@@ -836,7 +836,7 @@
               logo: "",
               description: "Premium hospitality destination.",
               profile: "",
-              percentage: 26,
+              percentage: 27,
             },
             {
               id: "tourism-06",
@@ -844,7 +844,7 @@
               logo: "",
               description: "Hospitality and dining experience.",
               profile: "",
-              percentage: 31,
+              percentage: 34,
             },
             {
               id: "tourism-07",
